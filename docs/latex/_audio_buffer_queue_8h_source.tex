@@ -1,0 +1,64 @@
+\hypertarget{_audio_buffer_queue_8h_source}{}\doxysection{Audio\+Buffer\+Queue.\+h}
+\label{_audio_buffer_queue_8h_source}\index{Source/AudioBufferQueue.h@{Source/AudioBufferQueue.h}}
+\mbox{\hyperlink{_audio_buffer_queue_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00002}00002\ \textcolor{comment}{\ \ ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ AudioBufferQueue.h}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ Created:\ 24\ Feb\ 2023\ 6:49:10pm}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ Author:\ \ wadda}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00007}00007\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00008}00008\ \textcolor{comment}{\ \ ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00009}00009\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00011}00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <JuceHeader.h>}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00017}00017\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ SampleType>}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00018}\mbox{\hyperlink{class_audio_buffer_queue}{00018}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_audio_buffer_queue}{AudioBufferQueue}}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00020}00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00022}\mbox{\hyperlink{class_audio_buffer_queue_a56b5c4555b02b045154728e6e8c8782a}{00022}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_audio_buffer_queue_a56b5c4555b02b045154728e6e8c8782a}{order}}\ =\ 9;\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00023}\mbox{\hyperlink{class_audio_buffer_queue_a236d9ac1e5fff495e7193ff2d5867003}{00023}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_audio_buffer_queue_a236d9ac1e5fff495e7193ff2d5867003}{bufferSize}}\ =\ 1U\ <<\ \mbox{\hyperlink{class_audio_buffer_queue_a56b5c4555b02b045154728e6e8c8782a}{order}};\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00024}\mbox{\hyperlink{class_audio_buffer_queue_acb46b7841436b62174ddb97a642d590d}{00024}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_audio_buffer_queue_acb46b7841436b62174ddb97a642d590d}{numBuffers}}\ =\ 5;\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00033}\mbox{\hyperlink{class_audio_buffer_queue_a4c9f8b7220ff81958edb53adf86c32e7}{00033}}\ \textcolor{comment}{}\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_buffer_queue_a4c9f8b7220ff81958edb53adf86c32e7}{push}}(\textcolor{keyword}{const}\ SampleType*\ dataToPush,\ \textcolor{keywordtype}{size\_t}\ numSamples)}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00034}00034\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ jassert(numSamples\ <=\ \mbox{\hyperlink{class_audio_buffer_queue_a236d9ac1e5fff495e7193ff2d5867003}{bufferSize}});}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start1,\ size1,\ start2,\ size2;}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ abstractFifo.prepareToWrite(1,\ start1,\ size1,\ start2,\ size2);}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ jassert(size1\ <=\ 1);}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ jassert(size2\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size1\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ juce::FloatVectorOperations::copy(buffers[(\textcolor{keywordtype}{size\_t})start1].data(),\ dataToPush,\ (\textcolor{keywordtype}{int})juce::jmin(\mbox{\hyperlink{class_audio_buffer_queue_a236d9ac1e5fff495e7193ff2d5867003}{bufferSize}},\ numSamples));}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ abstractFifo.finishedWrite(size1);}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00055}\mbox{\hyperlink{class_audio_buffer_queue_ac91421bc929b22c8428ec041cdeb630a}{00055}}\ \textcolor{comment}{}\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_buffer_queue_ac91421bc929b22c8428ec041cdeb630a}{pop}}(SampleType*\ outputBuffer)}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start1,\ size1,\ start2,\ size2;}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ abstractFifo.prepareToRead(1,\ start1,\ size1,\ start2,\ size2);}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ jassert(size1\ <=\ 1);}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ jassert(size2\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size1\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ juce::FloatVectorOperations::copy(outputBuffer,\ buffers[(\textcolor{keywordtype}{size\_t})start1].data(),\ (\textcolor{keywordtype}{int})\mbox{\hyperlink{class_audio_buffer_queue_a236d9ac1e5fff495e7193ff2d5867003}{bufferSize}});}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ abstractFifo.finishedRead(size1);}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00069}00069\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00071}00071\ \ \ \ \ juce::AbstractFifo\ abstractFifo\{\ \mbox{\hyperlink{class_audio_buffer_queue_acb46b7841436b62174ddb97a642d590d}{numBuffers}}\ \};\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00072}00072\ \ \ \ \ std::array<std::array<SampleType,\ bufferSize>,\ \mbox{\hyperlink{class_audio_buffer_queue_acb46b7841436b62174ddb97a642d590d}{numBuffers}}>\ buffers;\ }
+\DoxyCodeLine{\Hypertarget{_audio_buffer_queue_8h_source_l00073}00073\ \};}
+
+\end{DoxyCode}

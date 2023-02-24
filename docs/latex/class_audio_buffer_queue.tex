@@ -1,0 +1,113 @@
+\hypertarget{class_audio_buffer_queue}{}\doxysection{Audio\+Buffer\+Queue\texorpdfstring{$<$}{<} Sample\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_audio_buffer_queue}\index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}}
+
+
+{\ttfamily \#include $<$Audio\+Buffer\+Queue.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_audio_buffer_queue_a4c9f8b7220ff81958edb53adf86c32e7}{push}} (const Sample\+Type $\ast$data\+To\+Push, size\+\_\+t num\+Samples)
+\item 
+void \mbox{\hyperlink{class_audio_buffer_queue_ac91421bc929b22c8428ec041cdeb630a}{pop}} (Sample\+Type $\ast$output\+Buffer)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{class_audio_buffer_queue_a56b5c4555b02b045154728e6e8c8782a}{order}} = 9
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{class_audio_buffer_queue_a236d9ac1e5fff495e7193ff2d5867003}{buffer\+Size}} = 1U $<$$<$ \mbox{\hyperlink{class_audio_buffer_queue_a56b5c4555b02b045154728e6e8c8782a}{order}}
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{class_audio_buffer_queue_acb46b7841436b62174ddb97a642d590d}{num\+Buffers}} = 5
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Sample\+Type$>$\newline
+class Audio\+Buffer\+Queue$<$ Sample\+Type $>$}
+A Fifo queue of buffers working with data of Sample\+Type type. 
+
+Definition at line \mbox{\hyperlink{_audio_buffer_queue_8h_source_l00018}{18}} of file \mbox{\hyperlink{_audio_buffer_queue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_audio_buffer_queue_ac91421bc929b22c8428ec041cdeb630a}\label{class_audio_buffer_queue_ac91421bc929b22c8428ec041cdeb630a}} 
+\index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!pop@{pop}}
+\index{pop@{pop}!AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}}
+\doxysubsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
+void \mbox{\hyperlink{class_audio_buffer_queue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$\+::pop (\begin{DoxyParamCaption}\item[{Sample\+Type $\ast$}]{output\+Buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Pops a buffer of data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+Buffer} & output buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_audio_buffer_queue_8h_source_l00055}{55}} of file \mbox{\hyperlink{_audio_buffer_queue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+
+\mbox{\Hypertarget{class_audio_buffer_queue_a4c9f8b7220ff81958edb53adf86c32e7}\label{class_audio_buffer_queue_a4c9f8b7220ff81958edb53adf86c32e7}} 
+\index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!push@{push}}
+\index{push@{push}!AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}}
+\doxysubsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
+void \mbox{\hyperlink{class_audio_buffer_queue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$\+::push (\begin{DoxyParamCaption}\item[{const Sample\+Type $\ast$}]{data\+To\+Push,  }\item[{size\+\_\+t}]{num\+Samples }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Pushes a buffer of data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+To\+Push} & Data to push to the buffers \\
+\hline
+{\em num\+Samples} & Number of samples \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_audio_buffer_queue_8h_source_l00033}{33}} of file \mbox{\hyperlink{_audio_buffer_queue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_audio_buffer_queue_a236d9ac1e5fff495e7193ff2d5867003}\label{class_audio_buffer_queue_a236d9ac1e5fff495e7193ff2d5867003}} 
+\index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!bufferSize@{bufferSize}}
+\index{bufferSize@{bufferSize}!AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}}
+\doxysubsubsection{\texorpdfstring{bufferSize}{bufferSize}}
+{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
+constexpr size\+\_\+t \mbox{\hyperlink{class_audio_buffer_queue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$\+::buffer\+Size = 1U $<$$<$ \mbox{\hyperlink{class_audio_buffer_queue_a56b5c4555b02b045154728e6e8c8782a}{order}}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+Buffer size 
+
+Definition at line \mbox{\hyperlink{_audio_buffer_queue_8h_source_l00023}{23}} of file \mbox{\hyperlink{_audio_buffer_queue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+
+\mbox{\Hypertarget{class_audio_buffer_queue_acb46b7841436b62174ddb97a642d590d}\label{class_audio_buffer_queue_acb46b7841436b62174ddb97a642d590d}} 
+\index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!numBuffers@{numBuffers}}
+\index{numBuffers@{numBuffers}!AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}}
+\doxysubsubsection{\texorpdfstring{numBuffers}{numBuffers}}
+{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
+constexpr size\+\_\+t \mbox{\hyperlink{class_audio_buffer_queue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$\+::num\+Buffers = 5\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+Number of buffers 
+
+Definition at line \mbox{\hyperlink{_audio_buffer_queue_8h_source_l00024}{24}} of file \mbox{\hyperlink{_audio_buffer_queue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+
+\mbox{\Hypertarget{class_audio_buffer_queue_a56b5c4555b02b045154728e6e8c8782a}\label{class_audio_buffer_queue_a56b5c4555b02b045154728e6e8c8782a}} 
+\index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!order@{order}}
+\index{order@{order}!AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}}
+\doxysubsubsection{\texorpdfstring{order}{order}}
+{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
+constexpr size\+\_\+t \mbox{\hyperlink{class_audio_buffer_queue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$\+::order = 9\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+Order of the buffer size 
+
+Definition at line \mbox{\hyperlink{_audio_buffer_queue_8h_source_l00022}{22}} of file \mbox{\hyperlink{_audio_buffer_queue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source/\mbox{\hyperlink{_audio_buffer_queue_8h}{Audio\+Buffer\+Queue.\+h}}\end{DoxyCompactItemize}
