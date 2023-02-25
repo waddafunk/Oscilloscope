@@ -17,11 +17,16 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
     // editor's size to whatever you need it to be.
     addAndMakeVisible(oscilloscopeComponent);
 
-    setSize(400, 300);
+    setSize(800, 600);
 
     auto area = getLocalBounds();
     oscilloscopeComponent.setTopLeftPosition(0, 0);
     oscilloscopeComponent.setSize(area.getWidth(), area.getHeight());
+
+    setResizable(true, true);
+    setResizeLimits(256, 256, 1920, 1080);
+    resized(); // need to be called in constructor since rescaling logic makes oscilloscope invisible on creation
+    
 }
 
 OscilloscopeAudioProcessorEditor::~OscilloscopeAudioProcessorEditor()
@@ -40,4 +45,8 @@ void OscilloscopeAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
+    auto area = getLocalBounds();
+    float x_sc = (float)area.getWidth() / oscilloscopeComponent.getWidth();
+    float y_sc = (float)area.getHeight() / oscilloscopeComponent.getHeight();
+    oscilloscopeComponent.setTransform(juce::AffineTransform::scale(x_sc, y_sc));
 }
