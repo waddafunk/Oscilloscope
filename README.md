@@ -8,3 +8,4 @@ A simple Oscilloscope Vst made with JUCE.
 
 
 # Checkout the [**Documentation**](https://waddafunk.github.io/Oscilloscope/)
+
