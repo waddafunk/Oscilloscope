@@ -44,6 +44,7 @@ public:
             juce::FloatVectorOperations::copy(buffers[(size_t)start1].data(), dataToPush, (int)juce::jmin(bufferSize, numSamples));
 
         abstractFifo.finishedWrite(size1);
+
     }
 
     //==============================================================================
@@ -54,6 +55,7 @@ public:
      */
     void pop(SampleType* outputBuffer)
     {
+
         int start1, size1, start2, size2;
         abstractFifo.prepareToRead(1, start1, size1, start2, size2);
 
@@ -64,7 +66,21 @@ public:
             juce::FloatVectorOperations::copy(outputBuffer, buffers[(size_t)start1].data(), (int)bufferSize);
 
         abstractFifo.finishedRead(size1);
+
     }
+
+    /**
+     * Empties all buffers.
+     * 
+     */
+    void flush()
+    {
+        for (auto i = 0; i < numBuffers; i++)
+        {
+            std::fill(std::begin(buffers[i]), std::end(buffers[i]), 0);
+        }
+    }
+ 
 
 private:
     //==============================================================================

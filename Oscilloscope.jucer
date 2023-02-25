@@ -5,14 +5,18 @@
               pluginFormats="buildStandalone,buildVST3">
   <MAINGROUP id="Wv5BAZ" name="Oscilloscope">
     <GROUP id="{9EF2004F-D29B-378D-4DEE-0DF26C311E1A}" name="Source">
-      <FILE id="oc9dVJ" name="ScopeDataCollector.h" compile="0" resource="0"
-            file="Source/ScopeDataCollector.h"/>
-      <FILE id="ydQOPC" name="AudioBufferQueue.h" compile="0" resource="0"
-            file="Source/AudioBufferQueue.h"/>
-      <FILE id="J6Strq" name="OscilloscopeComponent.cpp" compile="1" resource="0"
-            file="Source/OscilloscopeComponent.cpp"/>
-      <FILE id="F7VNcN" name="OscilloscopeComponent.h" compile="0" resource="0"
-            file="Source/OscilloscopeComponent.h"/>
+      <GROUP id="{98C0D305-E15F-5BE0-ADC4-AB71EAF6A2E9}" name="Oscilloscopes">
+        <FILE id="F7VNcN" name="OscilloscopeComponent.h" compile="0" resource="0"
+              file="Source/OscilloscopeComponent.h"/>
+        <FILE id="J6Strq" name="OscilloscopeComponent.cpp" compile="1" resource="0"
+              file="Source/OscilloscopeComponent.cpp"/>
+      </GROUP>
+      <GROUP id="{BAF17A05-21E2-90CC-DEC4-F1A5E49BD460}" name="Buffers">
+        <FILE id="ydQOPC" name="AudioBufferQueue.h" compile="0" resource="0"
+              file="Source/AudioBufferQueue.h"/>
+        <FILE id="oc9dVJ" name="ScopeDataCollector.h" compile="0" resource="0"
+              file="Source/ScopeDataCollector.h"/>
+      </GROUP>
       <FILE id="KLuk64" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="XIDUdZ" name="PluginProcessor.h" compile="0" resource="0"

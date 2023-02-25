@@ -10,6 +10,9 @@
 
 #pragma once
 #include "AudioBufferQueue.h"
+#include <cstdlib>
+
+namespace ranges = std::ranges;
 
 /**
  * Class handling AudioBufferQueue.
@@ -38,19 +41,36 @@ public:
 
         if (state == State::waitingForTrigger)
         {
-            while (index++ < numSamples)
+            // If no sample over treshold (silence) flush everything.
+            if (std::all_of(data, data + numSamples, [](SampleType i) {return i < triggerLevel; }))
+            {
+                audioBufferQueue.flush();
+                return;
+            }
+            // Else setup collecting stage
+            else
+            {
+                auto result = ranges::find_if(data, data + numSamples, [](SampleType i) {return i > triggerLevel; });
+                prevSample = *result;
+                numCollected = 0;
+                state = State::collecting;
+                index = result - data;
+            }
+
+            /*while (index++ < numSamples)
             {
                 auto currentSample = *data++;
 
-                if (currentSample >= triggerLevel && prevSample < triggerLevel)
+                if (abs(currentSample) >= triggerLevel && abs(prevSample) < triggerLevel)
                 {
                     numCollected = 0;
                     state = State::collecting;
                     break;
                 }
 
+
                 prevSample = currentSample;
-            }
+            }*/
         }
 
         if (state == State::collecting)
