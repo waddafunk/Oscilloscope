@@ -56,21 +56,6 @@ public:
                 state = State::collecting;
                 index = result - data;
             }
-
-            /*while (index++ < numSamples)
-            {
-                auto currentSample = *data++;
-
-                if (abs(currentSample) >= triggerLevel && abs(prevSample) < triggerLevel)
-                {
-                    numCollected = 0;
-                    state = State::collecting;
-                    break;
-                }
-
-
-                prevSample = currentSample;
-            }*/
         }
 
         if (state == State::collecting)
