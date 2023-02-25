@@ -95,6 +95,7 @@ void OscilloscopeAudioProcessor::prepareToPlay (double sampleRate, int samplesPe
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
+    this->sampleRate = sampleRate;
 }
 
 void OscilloscopeAudioProcessor::releaseResources()
@@ -164,6 +165,11 @@ void OscilloscopeAudioProcessor::setStateInformation (const void* data, int size
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+}
+
+int OscilloscopeAudioProcessor::getSampleRate()
+{
+    return this->sampleRate;
 }
 
 AudioBufferQueue<float>& OscilloscopeAudioProcessor::getAudioBufferQueue()

@@ -11,7 +11,8 @@
 
 //==============================================================================
 OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (OscilloscopeAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), oscilloscopeComponent(audioProcessor.getAudioBufferQueue())
+    : AudioProcessorEditor (&p), audioProcessor (p), 
+    oscilloscopeComponent(audioProcessor.getAudioBufferQueue(), audioProcessor.getSampleRate())
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
@@ -46,6 +47,8 @@ void OscilloscopeAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     auto area = getLocalBounds();
+
+    // rescale oscilloscope
     float x_sc = (float)area.getWidth() / oscilloscopeComponent.getWidth();
     float y_sc = (float)area.getHeight() / oscilloscopeComponent.getHeight();
     oscilloscopeComponent.setTransform(juce::AffineTransform::scale(x_sc, y_sc));
