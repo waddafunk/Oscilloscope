@@ -1,0 +1,66 @@
+\hypertarget{classScopeDataCollector}{}\doxysection{Scope\+Data\+Collector\texorpdfstring{$<$}{<} Sample\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classScopeDataCollector}\index{ScopeDataCollector$<$ SampleType $>$@{ScopeDataCollector$<$ SampleType $>$}}
+
+
+{\ttfamily \#include $<$Scope\+Data\+Collector.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classScopeDataCollector_a0c942f7455007a4f5864734ef4688e17}{Scope\+Data\+Collector}} (\mbox{\hyperlink{classAudioBufferQueue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$ \&queue\+To\+Use)
+\item 
+void \mbox{\hyperlink{classScopeDataCollector_a4b9b4a82d92efe81a0c1374483cebb8a}{process}} (const Sample\+Type $\ast$data, size\+\_\+t num\+Samples)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Sample\+Type$>$\newline
+class Scope\+Data\+Collector$<$ Sample\+Type $>$}
+Class handling \mbox{\hyperlink{classAudioBufferQueue}{Audio\+Buffer\+Queue}}.
+
+Automatically fills a buffer, pushes it to the queue and starts filling the next one. 
+
+Definition at line \mbox{\hyperlink{ScopeDataCollector_8h_source_l00023}{23}} of file \mbox{\hyperlink{ScopeDataCollector_8h_source}{Scope\+Data\+Collector.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classScopeDataCollector_a0c942f7455007a4f5864734ef4688e17}\label{classScopeDataCollector_a0c942f7455007a4f5864734ef4688e17}} 
+\index{ScopeDataCollector$<$ SampleType $>$@{ScopeDataCollector$<$ SampleType $>$}!ScopeDataCollector@{ScopeDataCollector}}
+\index{ScopeDataCollector@{ScopeDataCollector}!ScopeDataCollector$<$ SampleType $>$@{ScopeDataCollector$<$ SampleType $>$}}
+\doxysubsubsection{\texorpdfstring{ScopeDataCollector()}{ScopeDataCollector()}}
+{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
+\mbox{\hyperlink{classScopeDataCollector}{Scope\+Data\+Collector}}$<$ Sample\+Type $>$\mbox{\hyperlink{classScopeDataCollector}{\+::\+Scope\+Data\+Collector}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAudioBufferQueue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$ \&}]{queue\+To\+Use }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ScopeDataCollector_8h_source_l00027}{27}} of file \mbox{\hyperlink{ScopeDataCollector_8h_source}{Scope\+Data\+Collector.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classScopeDataCollector_a4b9b4a82d92efe81a0c1374483cebb8a}\label{classScopeDataCollector_a4b9b4a82d92efe81a0c1374483cebb8a}} 
+\index{ScopeDataCollector$<$ SampleType $>$@{ScopeDataCollector$<$ SampleType $>$}!process@{process}}
+\index{process@{process}!ScopeDataCollector$<$ SampleType $>$@{ScopeDataCollector$<$ SampleType $>$}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
+void \mbox{\hyperlink{classScopeDataCollector}{Scope\+Data\+Collector}}$<$ Sample\+Type $>$\+::process (\begin{DoxyParamCaption}\item[{const Sample\+Type $\ast$}]{data,  }\item[{size\+\_\+t}]{num\+Samples }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Processes incoming data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & pointer to a series of data. \\
+\hline
+{\em num\+Samples} & number of samples in the series. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ScopeDataCollector_8h_source_l00038}{38}} of file \mbox{\hyperlink{ScopeDataCollector_8h_source}{Scope\+Data\+Collector.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source/\mbox{\hyperlink{ScopeDataCollector_8h}{Scope\+Data\+Collector.\+h}}\end{DoxyCompactItemize}
