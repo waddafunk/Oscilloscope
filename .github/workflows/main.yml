@@ -39,7 +39,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add docs
-          git commit -m "Update docs.txt"
+          git commit -m "Update and deploy docs"
           git push
     
     - name: Deploy
