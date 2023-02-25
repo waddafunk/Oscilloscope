@@ -2,6 +2,12 @@
 
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Oscilloscope\Source\Oscilloscopes">
+      <UniqueIdentifier>{CC663BB7-897A-8D69-D4DD-268FA5DD10D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oscilloscope\Source\Buffers">
+      <UniqueIdentifier>{E154F5FB-5C43-D896-62DA-B91BE3AC704C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Oscilloscope\Source">
       <UniqueIdentifier>{C1DB196D-68AF-64A7-D7FA-D36AC0F40D6B}</UniqueIdentifier>
     </Filter>
@@ -602,7 +608,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\OscilloscopeComponent.cpp">
-      <Filter>Oscilloscope\Source</Filter>
+      <Filter>Oscilloscope\Source\Oscilloscopes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>Oscilloscope\Source</Filter>
@@ -3048,14 +3054,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\ScopeDataCollector.h">
-      <Filter>Oscilloscope\Source</Filter>
+    <ClInclude Include="..\..\Source\OscilloscopeComponent.h">
+      <Filter>Oscilloscope\Source\Oscilloscopes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AudioBufferQueue.h">
-      <Filter>Oscilloscope\Source</Filter>
+      <Filter>Oscilloscope\Source\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\OscilloscopeComponent.h">
-      <Filter>Oscilloscope\Source</Filter>
+    <ClInclude Include="..\..\Source\ScopeDataCollector.h">
+      <Filter>Oscilloscope\Source\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>Oscilloscope\Source</Filter>

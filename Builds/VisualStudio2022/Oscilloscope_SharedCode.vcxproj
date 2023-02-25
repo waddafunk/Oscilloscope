@@ -2423,9 +2423,9 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\ScopeDataCollector.h"/>
-    <ClInclude Include="..\..\Source\AudioBufferQueue.h"/>
     <ClInclude Include="..\..\Source\OscilloscopeComponent.h"/>
+    <ClInclude Include="..\..\Source\AudioBufferQueue.h"/>
+    <ClInclude Include="..\..\Source\ScopeDataCollector.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>

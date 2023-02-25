@@ -10,6 +10,8 @@
 
 #pragma once
 #include "AudioBufferQueue.h"
+#include <cstdlib>
+using namespace std;
 
 /**
  * Class handling AudioBufferQueue.
@@ -38,16 +40,24 @@ public:
 
         if (state == State::waitingForTrigger)
         {
+            // If no sample over treshold (silence) flush everything.
+            if (std::all_of(data, data + numSamples, [](SampleType i) {return i < triggerLevel; }))
+            {
+                audioBufferQueue.flush();
+                return;
+            }
+
             while (index++ < numSamples)
             {
                 auto currentSample = *data++;
 
-                if (currentSample >= triggerLevel && prevSample < triggerLevel)
+                if (abs(currentSample) >= triggerLevel && abs(prevSample) < triggerLevel)
                 {
                     numCollected = 0;
                     state = State::collecting;
                     break;
                 }
+
 
                 prevSample = currentSample;
             }
