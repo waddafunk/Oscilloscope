@@ -82,7 +82,7 @@ private:
     size_t numCollected; /**< Number of samples collected. */
     SampleType prevSample = SampleType(100); /**< Last sample collected. */
 
-    static constexpr auto triggerLevel = SampleType(0.05); /**< Level above which the oscilloscope starts drawing the waveform. */
+    static constexpr auto triggerLevel = SampleType(0.0005); /**< Level above which the oscilloscope starts drawing the waveform. */
     /**
      * States of the class.
      */

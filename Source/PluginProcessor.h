@@ -62,10 +62,13 @@ public:
 
     AudioBufferQueue<float>& getAudioBufferQueue();
 
+    juce::AudioProcessorValueTreeState* getTreeState();
+
 private:
     //==============================================================================
     AudioBufferQueue<float> audioBufferQueue;
     ScopeDataCollector<float> scopeDataCollector{ audioBufferQueue };
+    juce::AudioProcessorValueTreeState processorTreeState;
     int sampleRate;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessor)
 };

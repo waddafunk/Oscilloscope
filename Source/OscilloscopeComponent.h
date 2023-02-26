@@ -53,6 +53,16 @@ public:
     //==============================================================================
 
     /**
+     * Set to true to draw grid, false otherwise.
+     * 
+     * \param newValue value to set.
+     */
+    void setGridCheck(bool newValue)
+    {
+        this->gridCheck = newValue;
+    }
+
+    /**
      * Draws oscilloscope's grid.
      * 
      * \param g <a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a>. 
@@ -104,10 +114,18 @@ public:
         auto h = (SampleType)area.getHeight();
         auto w = (SampleType)area.getWidth();
 
-        drawGrid(g, w, h);
+        if (gridCheck)
+        {
+            drawGrid(g, w, h);
+        }
+     
         // Oscilloscope
         auto scopeRect = juce::Rectangle<SampleType>{ SampleType(0), SampleType(0), w, h };
         plot(sampleData.data(), sampleData.size(), g, scopeRect, SampleType(1), h / 2);
+
+        g.setColour(juce::Colours::dimgrey);
+        auto contour = juce::Line<float>(0, h, w, h);
+        g.drawLine(contour, 8.0f);
 
     }
 
@@ -123,8 +141,7 @@ private:
     Queue& audioBufferQueue; /**< AudioBufferQueue */
     std::array<SampleType, Queue::bufferSize> sampleData; /**< Data currently displayed */
     int sampleRate; /**< Sample rate */
-    juce::Label x_label;
-
+    bool gridCheck = false;
 
     //==============================================================================
     /**
