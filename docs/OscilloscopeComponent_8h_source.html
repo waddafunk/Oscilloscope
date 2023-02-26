@@ -99,82 +99,134 @@ $(function() {
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#ad3183785c145e9787e7af32168a5db6c">   25</a></span>    <span class="keyword">using </span><a class="code hl_class" href="classAudioBufferQueue.html">Queue</a> = <a class="code hl_class" href="classAudioBufferQueue.html">AudioBufferQueue&lt;SampleType&gt;</a>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#a1d9c11105fdbd64c428330d2cb803283">   33</a></span><span class="comment"></span>    <a class="code hl_function" href="classOscilloscopeComponent.html#a1d9c11105fdbd64c428330d2cb803283">OscilloscopeComponent</a>(<a class="code hl_class" href="classAudioBufferQueue.html">Queue</a>&amp; queueToUse)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#a8dccad1ef96eb900cb1aa6abef8880fd">   33</a></span><span class="comment"></span>    <a class="code hl_function" href="classOscilloscopeComponent.html#a8dccad1ef96eb900cb1aa6abef8880fd">OscilloscopeComponent</a>(<a class="code hl_class" href="classAudioBufferQueue.html">Queue</a>&amp; queueToUse, <span class="keywordtype">int</span> sampleRate)</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        : audioBufferQueue(queueToUse)</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    {</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        sampleData.fill(SampleType(0));</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_function" href="classOscilloscopeComponent.html#a6c2bcea9286b42540a19561270e8aacc">setFramesPerSecond</a>(30);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#a6c2bcea9286b42540a19561270e8aacc">   46</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeComponent.html#a6c2bcea9286b42540a19561270e8aacc">setFramesPerSecond</a>(<span class="keywordtype">int</span> framesPerSecond)</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        jassert(framesPerSecond &gt; 0 &amp;&amp; framesPerSecond &lt; 1000);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        startTimerHz(framesPerSecond);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#ae810631af9c6f94f3f82d62539e6eba1">   58</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeComponent.html#ae810631af9c6f94f3f82d62539e6eba1">paint</a>(juce::Graphics&amp; g)<span class="keyword"> override</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        g.fillAll(juce::Colours::black);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        g.setColour(juce::Colours::white);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keyword">auto</span> area = getLocalBounds();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">auto</span> h = (SampleType)area.getHeight();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">auto</span> w = (SampleType)area.getWidth();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="comment">// Oscilloscope</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">auto</span> scopeRect = juce::Rectangle&lt;SampleType&gt;{ SampleType(0), SampleType(0), w, h };</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        plot(sampleData.data(), sampleData.size(), g, scopeRect, SampleType(1), h / 2);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#af4ef90e7d85dd5e0b6629204502150a1">   78</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeComponent.html#af4ef90e7d85dd5e0b6629204502150a1">resized</a>()<span class="keyword"> override </span>{}</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_typedef" href="classOscilloscopeComponent.html#ad3183785c145e9787e7af32168a5db6c">Queue</a>&amp; audioBufferQueue; </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    std::array&lt;SampleType, Queue::bufferSize&gt; sampleData; </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment"></span>    <span class="keywordtype">void</span> timerCallback()<span class="keyword"> override</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        audioBufferQueue.pop(sampleData.data());</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        repaint();</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment"></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> plot(<span class="keyword">const</span> SampleType* data,</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordtype">size_t</span> numSamples,</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        juce::Graphics&amp; g,</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        juce::Rectangle&lt;SampleType&gt; rect,</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        SampleType scaler = SampleType(1),</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        SampleType offset = SampleType(0))</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    {</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keyword">auto</span> w = rect.getWidth();</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keyword">auto</span> h = rect.getHeight();</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keyword">auto</span> right = rect.getRight();</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keyword">auto</span> center = rect.getBottom() - offset;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keyword">auto</span> gain = h * scaler;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        g.setColour(juce::Colours::beige);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        this-&gt;sampleRate = sampleRate;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#a6c2bcea9286b42540a19561270e8aacc">   47</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeComponent.html#a6c2bcea9286b42540a19561270e8aacc">setFramesPerSecond</a>(<span class="keywordtype">int</span> framesPerSecond)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        jassert(framesPerSecond &gt; 0 &amp;&amp; framesPerSecond &lt; 1000);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        startTimerHz(framesPerSecond);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#a02c18cf88408875bb8108d96ef250cdf">   60</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeComponent.html#a02c18cf88408875bb8108d96ef250cdf">setGridCheck</a>(<span class="keywordtype">bool</span> newValue)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        this-&gt;gridCheck = newValue;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#aff83693f38391e6b6246a6fab439e821">   72</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeComponent.html#aff83693f38391e6b6246a6fab439e821">drawGrid</a>(juce::Graphics&amp; g, SampleType w, SampleType h)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        g.drawLine(0, h / 2, w, h / 2);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        g.drawLine(1, 0, 1, h);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; 10; i++)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordtype">float</span> xPos = i * w / 10;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordtype">float</span> yPos = i * h / 10;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            g.drawLine(xPos, h / 2 - 5, xPos, h / 2 + 5);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            g.drawLine(0, yPos, 5, yPos);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordtype">float</span> fontHeight = g.getCurrentFont().getAscent();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordtype">float</span> duration = sampleData.size() * 1000 / sampleRate;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        duration /= 10;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keyword">auto</span> xText = juce::String(duration);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        xText.append(<span class="stringliteral">&quot; ms&quot;</span>, 3);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        g.drawLine(w - 65, h - 39, w - 65, h - 39 - fontHeight);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        g.drawLine(w - 55, h - 39 - fontHeight / 2, w - 65, h - 39 - fontHeight / 2);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        g.drawLine(w - 55, h - 39, w - 55, h - 39 - fontHeight);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        g.drawSingleLineText(xText, w - 50, h - 39);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keyword">auto</span> yText = <span class="stringliteral">&quot;0.1&quot;</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        g.drawLine(w - 65, h - 19, w - 55, h - 19);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        g.drawLine(w - 60, h - 19 - fontHeight, w - 60, h - 19);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        g.drawLine(w - 65, h - 19 - fontHeight, w - 55, h - 19 - fontHeight);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        g.drawSingleLineText(yText, w - 50, h - 19);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#ae810631af9c6f94f3f82d62539e6eba1">  108</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeComponent.html#ae810631af9c6f94f3f82d62539e6eba1">paint</a>(juce::Graphics&amp; g)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        g.fillAll(juce::Colours::black);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        g.setColour(juce::Colours::white);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keyword">auto</span> area = getLocalBounds();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keyword">auto</span> h = (SampleType)area.getHeight();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keyword">auto</span> w = (SampleType)area.getWidth();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">if</span> (gridCheck)</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            <a class="code hl_function" href="classOscilloscopeComponent.html#aff83693f38391e6b6246a6fab439e821">drawGrid</a>(g, w, h);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>     </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="comment">// Oscilloscope</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keyword">auto</span> scopeRect = juce::Rectangle&lt;SampleType&gt;{ SampleType(0), SampleType(0), w, h };</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        plot(sampleData.data(), sampleData.size(), g, scopeRect, SampleType(1), h / 2);</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; numSamples; ++i)</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            g.drawLine({ juce::jmap(SampleType(i - 1), SampleType(0), SampleType(numSamples - 1), SampleType(right - w), SampleType(right)),</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                          center - gain * data[i - 1],</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                          juce::jmap(SampleType(i), SampleType(0), SampleType(numSamples - 1), SampleType(right - w), SampleType(right)),</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                          center - gain * data[i] });</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>};</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        g.setColour(juce::Colours::dimgrey);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keyword">auto</span> contour = juce::Line&lt;float&gt;(0, h, w, h);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        g.drawLine(contour, 8.0f);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="classOscilloscopeComponent.html#af4ef90e7d85dd5e0b6629204502150a1">  137</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeComponent.html#af4ef90e7d85dd5e0b6629204502150a1">resized</a>()<span class="keyword"> override </span>{}</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_typedef" href="classOscilloscopeComponent.html#ad3183785c145e9787e7af32168a5db6c">Queue</a>&amp; audioBufferQueue; </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    std::array&lt;SampleType, Queue::bufferSize&gt; sampleData; </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordtype">int</span> sampleRate; </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">bool</span> gridCheck = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment"></span>    <span class="keywordtype">void</span> timerCallback()<span class="keyword"> override</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        audioBufferQueue.pop(sampleData.data());</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        repaint();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment"></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> plot(<span class="keyword">const</span> SampleType* data,</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordtype">size_t</span> numSamples,</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        juce::Graphics&amp; g,</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        juce::Rectangle&lt;SampleType&gt; rect,</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        SampleType scaler = SampleType(1),</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        SampleType offset = SampleType(0))</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    {</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="keyword">auto</span> w = rect.getWidth();</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keyword">auto</span> h = rect.getHeight();</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keyword">auto</span> right = rect.getRight();</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="keyword">auto</span> center = rect.getBottom() - offset;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keyword">auto</span> gain = h * scaler;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        g.setColour(juce::Colours::beige);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; numSamples; ++i)</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            g.drawLine({ juce::jmap(SampleType(i - 1), SampleType(0), SampleType(numSamples - 1), SampleType(right - w), SampleType(right)),</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                          center - gain * data[i - 1],</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                          juce::jmap(SampleType(i), SampleType(0), SampleType(numSamples - 1), SampleType(right - w), SampleType(right)),</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                          center - gain * data[i] });</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    }</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>};</div>
 <div class="ttc" id="aAudioBufferQueue_8h_html"><div class="ttname"><a href="AudioBufferQueue_8h.html">AudioBufferQueue.h</a></div></div>
 <div class="ttc" id="aclassAudioBufferQueue_html"><div class="ttname"><a href="classAudioBufferQueue.html">AudioBufferQueue</a></div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00018">AudioBufferQueue.h:19</a></div></div>
 <div class="ttc" id="aclassOscilloscopeComponent_html"><div class="ttname"><a href="classOscilloscopeComponent.html">OscilloscopeComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00021">OscilloscopeComponent.h:23</a></div></div>
-<div class="ttc" id="aclassOscilloscopeComponent_html_a1d9c11105fdbd64c428330d2cb803283"><div class="ttname"><a href="classOscilloscopeComponent.html#a1d9c11105fdbd64c428330d2cb803283">OscilloscopeComponent::OscilloscopeComponent</a></div><div class="ttdeci">OscilloscopeComponent(Queue &amp;queueToUse)</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00033">OscilloscopeComponent.h:33</a></div></div>
-<div class="ttc" id="aclassOscilloscopeComponent_html_a6c2bcea9286b42540a19561270e8aacc"><div class="ttname"><a href="classOscilloscopeComponent.html#a6c2bcea9286b42540a19561270e8aacc">OscilloscopeComponent::setFramesPerSecond</a></div><div class="ttdeci">void setFramesPerSecond(int framesPerSecond)</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00046">OscilloscopeComponent.h:46</a></div></div>
+<div class="ttc" id="aclassOscilloscopeComponent_html_a02c18cf88408875bb8108d96ef250cdf"><div class="ttname"><a href="classOscilloscopeComponent.html#a02c18cf88408875bb8108d96ef250cdf">OscilloscopeComponent::setGridCheck</a></div><div class="ttdeci">void setGridCheck(bool newValue)</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00060">OscilloscopeComponent.h:60</a></div></div>
+<div class="ttc" id="aclassOscilloscopeComponent_html_a6c2bcea9286b42540a19561270e8aacc"><div class="ttname"><a href="classOscilloscopeComponent.html#a6c2bcea9286b42540a19561270e8aacc">OscilloscopeComponent::setFramesPerSecond</a></div><div class="ttdeci">void setFramesPerSecond(int framesPerSecond)</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00047">OscilloscopeComponent.h:47</a></div></div>
+<div class="ttc" id="aclassOscilloscopeComponent_html_a8dccad1ef96eb900cb1aa6abef8880fd"><div class="ttname"><a href="classOscilloscopeComponent.html#a8dccad1ef96eb900cb1aa6abef8880fd">OscilloscopeComponent::OscilloscopeComponent</a></div><div class="ttdeci">OscilloscopeComponent(Queue &amp;queueToUse, int sampleRate)</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00033">OscilloscopeComponent.h:33</a></div></div>
 <div class="ttc" id="aclassOscilloscopeComponent_html_ad3183785c145e9787e7af32168a5db6c"><div class="ttname"><a href="classOscilloscopeComponent.html#ad3183785c145e9787e7af32168a5db6c">OscilloscopeComponent::Queue</a></div><div class="ttdeci">AudioBufferQueue&lt; SampleType &gt; Queue</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00025">OscilloscopeComponent.h:25</a></div></div>
-<div class="ttc" id="aclassOscilloscopeComponent_html_ae810631af9c6f94f3f82d62539e6eba1"><div class="ttname"><a href="classOscilloscopeComponent.html#ae810631af9c6f94f3f82d62539e6eba1">OscilloscopeComponent::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;g) override</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00058">OscilloscopeComponent.h:58</a></div></div>
-<div class="ttc" id="aclassOscilloscopeComponent_html_af4ef90e7d85dd5e0b6629204502150a1"><div class="ttname"><a href="classOscilloscopeComponent.html#af4ef90e7d85dd5e0b6629204502150a1">OscilloscopeComponent::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00078">OscilloscopeComponent.h:78</a></div></div>
+<div class="ttc" id="aclassOscilloscopeComponent_html_ae810631af9c6f94f3f82d62539e6eba1"><div class="ttname"><a href="classOscilloscopeComponent.html#ae810631af9c6f94f3f82d62539e6eba1">OscilloscopeComponent::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;g) override</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00108">OscilloscopeComponent.h:108</a></div></div>
+<div class="ttc" id="aclassOscilloscopeComponent_html_af4ef90e7d85dd5e0b6629204502150a1"><div class="ttname"><a href="classOscilloscopeComponent.html#af4ef90e7d85dd5e0b6629204502150a1">OscilloscopeComponent::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00137">OscilloscopeComponent.h:137</a></div></div>
+<div class="ttc" id="aclassOscilloscopeComponent_html_aff83693f38391e6b6246a6fab439e821"><div class="ttname"><a href="classOscilloscopeComponent.html#aff83693f38391e6b6246a6fab439e821">OscilloscopeComponent::drawGrid</a></div><div class="ttdeci">void drawGrid(juce::Graphics &amp;g, SampleType w, SampleType h)</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00072">OscilloscopeComponent.h:72</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

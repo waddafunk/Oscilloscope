@@ -1,4 +1,12 @@
 var searchData=
 [
-  ['haseditor_0',['hasEditor',['../classOscilloscopeAudioProcessor.html#a4589f1ea71ecbd1c76fe1b945d60f5d6',1,'OscilloscopeAudioProcessor']]]
+  ['getaudiobufferqueue_0',['getAudioBufferQueue',['../classOscilloscopeAudioProcessor.html#acec4f44a225ac45e602af5a8b47b7b9e',1,'OscilloscopeAudioProcessor']]],
+  ['getcurrentprogram_1',['getCurrentProgram',['../classOscilloscopeAudioProcessor.html#ae629d2b9e1f8d27b8fc863b786ed3778',1,'OscilloscopeAudioProcessor']]],
+  ['getname_2',['getName',['../classOscilloscopeAudioProcessor.html#a5e5198ba007ad4d5eaee19b651aeaa03',1,'OscilloscopeAudioProcessor']]],
+  ['getnumprograms_3',['getNumPrograms',['../classOscilloscopeAudioProcessor.html#a99d89969c6682e8a288e259960a7662f',1,'OscilloscopeAudioProcessor']]],
+  ['getprogramname_4',['getProgramName',['../classOscilloscopeAudioProcessor.html#a0185ad408361b6bad5c8c4aff09a68e3',1,'OscilloscopeAudioProcessor']]],
+  ['getsamplerate_5',['getSampleRate',['../classOscilloscopeAudioProcessor.html#afbb04841fb9877e915764cd0fa4c5663',1,'OscilloscopeAudioProcessor']]],
+  ['getstateinformation_6',['getStateInformation',['../classOscilloscopeAudioProcessor.html#aad61d2bc12c73baf96e1299b07a26bd8',1,'OscilloscopeAudioProcessor']]],
+  ['gettaillengthseconds_7',['getTailLengthSeconds',['../classOscilloscopeAudioProcessor.html#a481d8bb4041d13150fcf083c8fa70810',1,'OscilloscopeAudioProcessor']]],
+  ['gettreestate_8',['getTreeState',['../classOscilloscopeAudioProcessor.html#a88406729883710df23d0b10f7bdb0f0d',1,'OscilloscopeAudioProcessor']]]
 ];

@@ -93,10 +93,14 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1d9c11105fdbd64c428330d2cb803283"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#a1d9c11105fdbd64c428330d2cb803283">OscilloscopeComponent</a> (<a class="el" href="classOscilloscopeComponent.html#ad3183785c145e9787e7af32168a5db6c">Queue</a> &amp;queueToUse)</td></tr>
-<tr class="separator:a1d9c11105fdbd64c428330d2cb803283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dccad1ef96eb900cb1aa6abef8880fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#a8dccad1ef96eb900cb1aa6abef8880fd">OscilloscopeComponent</a> (<a class="el" href="classOscilloscopeComponent.html#ad3183785c145e9787e7af32168a5db6c">Queue</a> &amp;queueToUse, int sampleRate)</td></tr>
+<tr class="separator:a8dccad1ef96eb900cb1aa6abef8880fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c2bcea9286b42540a19561270e8aacc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#a6c2bcea9286b42540a19561270e8aacc">setFramesPerSecond</a> (int framesPerSecond)</td></tr>
 <tr class="separator:a6c2bcea9286b42540a19561270e8aacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02c18cf88408875bb8108d96ef250cdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#a02c18cf88408875bb8108d96ef250cdf">setGridCheck</a> (bool newValue)</td></tr>
+<tr class="separator:a02c18cf88408875bb8108d96ef250cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff83693f38391e6b6246a6fab439e821"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#aff83693f38391e6b6246a6fab439e821">drawGrid</a> (juce::Graphics &amp;g, SampleType w, SampleType h)</td></tr>
+<tr class="separator:aff83693f38391e6b6246a6fab439e821"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae810631af9c6f94f3f82d62539e6eba1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#ae810631af9c6f94f3f82d62539e6eba1">paint</a> (juce::Graphics &amp;g) override</td></tr>
 <tr class="separator:ae810631af9c6f94f3f82d62539e6eba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4ef90e7d85dd5e0b6629204502150a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#af4ef90e7d85dd5e0b6629204502150a1">resized</a> () override</td></tr>
@@ -128,8 +132,8 @@ template&lt;typename SampleType &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1d9c11105fdbd64c428330d2cb803283" name="a1d9c11105fdbd64c428330d2cb803283"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d9c11105fdbd64c428330d2cb803283">&#9670;&#160;</a></span>OscilloscopeComponent()</h2>
+<a id="a8dccad1ef96eb900cb1aa6abef8880fd" name="a8dccad1ef96eb900cb1aa6abef8880fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dccad1ef96eb900cb1aa6abef8880fd">&#9670;&#160;</a></span>OscilloscopeComponent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -143,8 +147,18 @@ template&lt;typename SampleType &gt; </div>
           <td class="memname"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a>&lt; SampleType &gt;<a class="el" href="classOscilloscopeComponent.html">::OscilloscopeComponent</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classOscilloscopeComponent.html#ad3183785c145e9787e7af32168a5db6c">Queue</a> &amp;&#160;</td>
-          <td class="paramname"><em>queueToUse</em></td><td>)</td>
+          <td class="paramname"><em>queueToUse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sampleRate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -166,6 +180,61 @@ template&lt;typename SampleType &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aff83693f38391e6b6246a6fab439e821" name="aff83693f38391e6b6246a6fab439e821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff83693f38391e6b6246a6fab439e821">&#9670;&#160;</a></span>drawGrid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SampleType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a>&lt; SampleType &gt;::drawGrid </td>
+          <td>(</td>
+          <td class="paramtype">juce::Graphics &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SampleType&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SampleType&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Draws oscilloscope's grid.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td><a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a>. </td></tr>
+    <tr><td class="paramname">w</td><td>width. </td></tr>
+    <tr><td class="paramname">h</td><td>heigth. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00072">72</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+
+</div>
+</div>
 <a id="ae810631af9c6f94f3f82d62539e6eba1" name="ae810631af9c6f94f3f82d62539e6eba1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae810631af9c6f94f3f82d62539e6eba1">&#9670;&#160;</a></span>paint()</h2>
 
@@ -194,12 +263,12 @@ template&lt;typename SampleType &gt; </div>
 <p >Paints the component.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">g</td><td><a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a> </td></tr>
+    <tr><td class="paramname">g</td><td><a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a>. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00058">58</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00108">108</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
 
 </div>
 </div>
@@ -229,7 +298,7 @@ template&lt;typename SampleType &gt; </div>
 </div><div class="memdoc">
 <p >Called when component is resized. </p>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00078">78</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00137">137</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
 
 </div>
 </div>
@@ -266,7 +335,44 @@ template&lt;typename SampleType &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00046">46</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00047">47</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+
+</div>
+</div>
+<a id="a02c18cf88408875bb8108d96ef250cdf" name="a02c18cf88408875bb8108d96ef250cdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02c18cf88408875bb8108d96ef250cdf">&#9670;&#160;</a></span>setGridCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SampleType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a>&lt; SampleType &gt;::setGridCheck </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>newValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Set to true to draw grid, false otherwise.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newValue</td><td>value to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00060">60</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
 
 </div>
 </div>

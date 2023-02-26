@@ -18,9 +18,13 @@ using \mbox{\hyperlink{classOscilloscopeComponent_ad3183785c145e9787e7af32168a5d
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classOscilloscopeComponent_a1d9c11105fdbd64c428330d2cb803283}{Oscilloscope\+Component}} (\mbox{\hyperlink{classOscilloscopeComponent_ad3183785c145e9787e7af32168a5db6c}{Queue}} \&queue\+To\+Use)
+\mbox{\hyperlink{classOscilloscopeComponent_a8dccad1ef96eb900cb1aa6abef8880fd}{Oscilloscope\+Component}} (\mbox{\hyperlink{classOscilloscopeComponent_ad3183785c145e9787e7af32168a5db6c}{Queue}} \&queue\+To\+Use, int sample\+Rate)
 \item 
 void \mbox{\hyperlink{classOscilloscopeComponent_a6c2bcea9286b42540a19561270e8aacc}{set\+Frames\+Per\+Second}} (int frames\+Per\+Second)
+\item 
+void \mbox{\hyperlink{classOscilloscopeComponent_a02c18cf88408875bb8108d96ef250cdf}{set\+Grid\+Check}} (bool new\+Value)
+\item 
+void \mbox{\hyperlink{classOscilloscopeComponent_aff83693f38391e6b6246a6fab439e821}{draw\+Grid}} (juce\+::\+Graphics \&g, Sample\+Type w, Sample\+Type h)
 \item 
 void \mbox{\hyperlink{classOscilloscopeComponent_ae810631af9c6f94f3f82d62539e6eba1}{paint}} (juce\+::\+Graphics \&g) override
 \item 
@@ -54,12 +58,12 @@ Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00025}{25}}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classOscilloscopeComponent_a1d9c11105fdbd64c428330d2cb803283}\label{classOscilloscopeComponent_a1d9c11105fdbd64c428330d2cb803283}} 
+\mbox{\Hypertarget{classOscilloscopeComponent_a8dccad1ef96eb900cb1aa6abef8880fd}\label{classOscilloscopeComponent_a8dccad1ef96eb900cb1aa6abef8880fd}} 
 \index{OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}!OscilloscopeComponent@{OscilloscopeComponent}}
 \index{OscilloscopeComponent@{OscilloscopeComponent}!OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}}
 \doxysubsubsection{\texorpdfstring{OscilloscopeComponent()}{OscilloscopeComponent()}}
 {\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
-\mbox{\hyperlink{classOscilloscopeComponent}{Oscilloscope\+Component}}$<$ Sample\+Type $>$\mbox{\hyperlink{classOscilloscopeComponent}{\+::\+Oscilloscope\+Component}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOscilloscopeComponent_ad3183785c145e9787e7af32168a5db6c}{Queue}} \&}]{queue\+To\+Use }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classOscilloscopeComponent}{Oscilloscope\+Component}}$<$ Sample\+Type $>$\mbox{\hyperlink{classOscilloscopeComponent}{\+::\+Oscilloscope\+Component}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOscilloscopeComponent_ad3183785c145e9787e7af32168a5db6c}{Queue}} \&}]{queue\+To\+Use,  }\item[{int}]{sample\+Rate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Constructor.
 
@@ -75,6 +79,28 @@ Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00033}{33}}
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classOscilloscopeComponent_aff83693f38391e6b6246a6fab439e821}\label{classOscilloscopeComponent_aff83693f38391e6b6246a6fab439e821}} 
+\index{OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}!drawGrid@{drawGrid}}
+\index{drawGrid@{drawGrid}!OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}}
+\doxysubsubsection{\texorpdfstring{drawGrid()}{drawGrid()}}
+{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
+void \mbox{\hyperlink{classOscilloscopeComponent}{Oscilloscope\+Component}}$<$ Sample\+Type $>$\+::draw\+Grid (\begin{DoxyParamCaption}\item[{juce\+::\+Graphics \&}]{g,  }\item[{Sample\+Type}]{w,  }\item[{Sample\+Type}]{h }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Draws oscilloscope\textquotesingle{}s grid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & \href{https://docs.juce.com/master/classGraphics.html}{\texttt{ JUCE Graphics }}. \\
+\hline
+{\em w} & width. \\
+\hline
+{\em h} & heigth. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00072}{72}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+
 \mbox{\Hypertarget{classOscilloscopeComponent_ae810631af9c6f94f3f82d62539e6eba1}\label{classOscilloscopeComponent_ae810631af9c6f94f3f82d62539e6eba1}} 
 \index{OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}!paint@{paint}}
 \index{paint@{paint}!OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}}
@@ -86,12 +112,12 @@ Paints the component.
 
 
 \begin{DoxyParams}{Parameters}
-{\em g} & \href{https://docs.juce.com/master/classGraphics.html}{\texttt{ JUCE Graphics }} \\
+{\em g} & \href{https://docs.juce.com/master/classGraphics.html}{\texttt{ JUCE Graphics }}. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00058}{58}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00108}{108}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
 
 \mbox{\Hypertarget{classOscilloscopeComponent_af4ef90e7d85dd5e0b6629204502150a1}\label{classOscilloscopeComponent_af4ef90e7d85dd5e0b6629204502150a1}} 
 \index{OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}!resized@{resized}}
@@ -102,7 +128,7 @@ void \mbox{\hyperlink{classOscilloscopeComponent}{Oscilloscope\+Component}}$<$ S
 
 Called when component is resized. 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00078}{78}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00137}{137}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
 
 \mbox{\Hypertarget{classOscilloscopeComponent_a6c2bcea9286b42540a19561270e8aacc}\label{classOscilloscopeComponent_a6c2bcea9286b42540a19561270e8aacc}} 
 \index{OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}!setFramesPerSecond@{setFramesPerSecond}}
@@ -120,7 +146,25 @@ Sets frames per seconds.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00046}{46}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00047}{47}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+
+\mbox{\Hypertarget{classOscilloscopeComponent_a02c18cf88408875bb8108d96ef250cdf}\label{classOscilloscopeComponent_a02c18cf88408875bb8108d96ef250cdf}} 
+\index{OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}!setGridCheck@{setGridCheck}}
+\index{setGridCheck@{setGridCheck}!OscilloscopeComponent$<$ SampleType $>$@{OscilloscopeComponent$<$ SampleType $>$}}
+\doxysubsubsection{\texorpdfstring{setGridCheck()}{setGridCheck()}}
+{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
+void \mbox{\hyperlink{classOscilloscopeComponent}{Oscilloscope\+Component}}$<$ Sample\+Type $>$\+::set\+Grid\+Check (\begin{DoxyParamCaption}\item[{bool}]{new\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set to true to draw grid, false otherwise.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Value} & value to set. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00060}{60}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
 
 
 

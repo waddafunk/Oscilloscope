@@ -1,14 +1,10 @@
 var searchData=
 [
-  ['paint_0',['paint',['../classOscilloscopeComponent.html#ae810631af9c6f94f3f82d62539e6eba1',1,'OscilloscopeComponent::paint()'],['../classOscilloscopeAudioProcessorEditor.html#a23575ad8b290e1ff518fab0cd51dabe7',1,'OscilloscopeAudioProcessorEditor::paint()']]],
-  ['plugineditor_2ecpp_1',['PluginEditor.cpp',['../PluginEditor_8cpp.html',1,'']]],
-  ['plugineditor_2eh_2',['PluginEditor.h',['../PluginEditor_8h.html',1,'']]],
-  ['pluginprocessor_2ecpp_3',['PluginProcessor.cpp',['../PluginProcessor_8cpp.html',1,'']]],
-  ['pluginprocessor_2eh_4',['PluginProcessor.h',['../PluginProcessor_8h.html',1,'']]],
-  ['pop_5',['pop',['../classAudioBufferQueue.html#ac91421bc929b22c8428ec041cdeb630a',1,'AudioBufferQueue']]],
-  ['preparetoplay_6',['prepareToPlay',['../classOscilloscopeAudioProcessor.html#aaddde8072db24578da2fc8436e5318be',1,'OscilloscopeAudioProcessor']]],
-  ['process_7',['process',['../classScopeDataCollector.html#a4b9b4a82d92efe81a0c1374483cebb8a',1,'ScopeDataCollector']]],
-  ['processblock_8',['processBlock',['../classOscilloscopeAudioProcessor.html#a410b185b1dbca9cb0e4d43ce83b37fac',1,'OscilloscopeAudioProcessor']]],
-  ['producesmidi_9',['producesMidi',['../classOscilloscopeAudioProcessor.html#a5caceb2cbee403e1de19cd49421b0704',1,'OscilloscopeAudioProcessor']]],
-  ['push_10',['push',['../classAudioBufferQueue.html#a4c9f8b7220ff81958edb53adf86c32e7',1,'AudioBufferQueue']]]
+  ['order_0',['order',['../classAudioBufferQueue.html#a56b5c4555b02b045154728e6e8c8782a',1,'AudioBufferQueue']]],
+  ['oscilloscopeaudioprocessor_1',['OscilloscopeAudioProcessor',['../classOscilloscopeAudioProcessor.html',1,'OscilloscopeAudioProcessor'],['../classOscilloscopeAudioProcessor.html#a7c4a32cb63e3149cb70f4d416b14eee4',1,'OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()']]],
+  ['oscilloscopeaudioprocessoreditor_2',['OscilloscopeAudioProcessorEditor',['../classOscilloscopeAudioProcessorEditor.html',1,'OscilloscopeAudioProcessorEditor'],['../classOscilloscopeAudioProcessorEditor.html#abd81a115d8bb055f20820a533e3ffc67',1,'OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor()']]],
+  ['oscilloscopecomponent_3',['OscilloscopeComponent',['../classOscilloscopeComponent.html',1,'OscilloscopeComponent&lt; SampleType &gt;'],['../classOscilloscopeComponent.html#a8dccad1ef96eb900cb1aa6abef8880fd',1,'OscilloscopeComponent::OscilloscopeComponent()']]],
+  ['oscilloscopecomponent_2ecpp_4',['OscilloscopeComponent.cpp',['../OscilloscopeComponent_8cpp.html',1,'']]],
+  ['oscilloscopecomponent_2eh_5',['OscilloscopeComponent.h',['../OscilloscopeComponent_8h.html',1,'']]],
+  ['oscilloscopecomponent_3c_20float_20_3e_6',['OscilloscopeComponent&lt; float &gt;',['../classOscilloscopeComponent.html',1,'']]]
 ];

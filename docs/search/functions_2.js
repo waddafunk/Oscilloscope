@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['flush_0',['flush',['../classAudioBufferQueue.html#a8898a019dbda0d2696a11bd414675101',1,'AudioBufferQueue']]]
+  ['drawgrid_0',['drawGrid',['../classOscilloscopeComponent.html#aff83693f38391e6b6246a6fab439e821',1,'OscilloscopeComponent']]]
 ];
