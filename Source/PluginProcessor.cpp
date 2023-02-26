@@ -19,9 +19,12 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ), 
 #endif
+    processorTreeState(*this, nullptr, "PARAMETERS",
+    { std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), })
 {
+
 }
 
 OscilloscopeAudioProcessor::~OscilloscopeAudioProcessor()
@@ -95,6 +98,7 @@ void OscilloscopeAudioProcessor::prepareToPlay (double sampleRate, int samplesPe
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
+    this->sampleRate = sampleRate;
 }
 
 void OscilloscopeAudioProcessor::releaseResources()
@@ -158,17 +162,44 @@ void OscilloscopeAudioProcessor::getStateInformation (juce::MemoryBlock& destDat
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+
+    // Serialize the XmlElement object to a MemoryBlock
+    copyXmlToBinary(*processorTreeState.state.createXml().get(), destData);
 }
 
 void OscilloscopeAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+    // Create an XmlElement object to hold the state
+    // Deserialize the XmlElement object from the MemoryBlock
+    // Deserialize the binary data into an XmlElement
+    std::unique_ptr<juce::XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
+    if (xmlState.get() != nullptr)
+    {
+        // Get the child element of the XmlElement and create a ValueTree from it
+        juce::ValueTree stateTree = juce::ValueTree::fromXml(*xmlState);
+
+        // Restore the state of the AudioProcessorValueTreeState object from the ValueTree
+        processorTreeState.replaceState(stateTree);
+    }
+    xmlState.reset();
+    
+}
+
+int OscilloscopeAudioProcessor::getSampleRate()
+{
+    return this->sampleRate;
 }
 
 AudioBufferQueue<float>& OscilloscopeAudioProcessor::getAudioBufferQueue()
 {
     return this->audioBufferQueue;
+}
+
+juce::AudioProcessorValueTreeState* OscilloscopeAudioProcessor::getTreeState()
+{
+    return &this->processorTreeState;
 }
 
 //==============================================================================

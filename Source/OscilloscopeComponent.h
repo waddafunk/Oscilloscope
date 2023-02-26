@@ -30,11 +30,12 @@ public:
      * 
      * \param queueToUse AudioBufferQueue to use
      */
-    OscilloscopeComponent(Queue& queueToUse)
+    OscilloscopeComponent(Queue& queueToUse, int sampleRate)
         : audioBufferQueue(queueToUse)
     {
         sampleData.fill(SampleType(0));
         setFramesPerSecond(30);
+        this->sampleRate = sampleRate;
     }
 
     //==============================================================================
@@ -50,10 +51,59 @@ public:
     }
 
     //==============================================================================
+
+    /**
+     * Set to true to draw grid, false otherwise.
+     * 
+     * \param newValue value to set.
+     */
+    void setGridCheck(bool newValue)
+    {
+        this->gridCheck = newValue;
+    }
+
+    /**
+     * Draws oscilloscope's grid.
+     * 
+     * \param g <a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a>. 
+     * \param w width.
+     * \param h heigth.
+     */
+    void drawGrid(juce::Graphics& g, SampleType w, SampleType h)
+    {
+        g.drawLine(0, h / 2, w, h / 2);
+        g.drawLine(1, 0, 1, h);
+
+        for (size_t i = 0; i < 10; i++)
+        {
+            float xPos = i * w / 10;
+            float yPos = i * h / 10;
+            g.drawLine(xPos, h / 2 - 5, xPos, h / 2 + 5);
+            g.drawLine(0, yPos, 5, yPos);
+        }
+
+        float fontHeight = g.getCurrentFont().getAscent();
+        float duration = sampleData.size() * 1000 / sampleRate;
+        duration /= 10;
+        auto xText = juce::String(duration);
+        xText.append(" ms", 3);
+
+        g.drawLine(w - 65, h - 39, w - 65, h - 39 - fontHeight);
+        g.drawLine(w - 55, h - 39 - fontHeight / 2, w - 65, h - 39 - fontHeight / 2);
+        g.drawLine(w - 55, h - 39, w - 55, h - 39 - fontHeight);
+        g.drawSingleLineText(xText, w - 50, h - 39);
+
+        auto yText = "0.1";
+        g.drawLine(w - 65, h - 19, w - 55, h - 19);
+        g.drawLine(w - 60, h - 19 - fontHeight, w - 60, h - 19);
+        g.drawLine(w - 65, h - 19 - fontHeight, w - 55, h - 19 - fontHeight);
+        g.drawSingleLineText(yText, w - 50, h - 19);
+    }
+
     /**
      * Paints the component.
      * 
-     * \param g <a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a> 
+     * \param g <a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a>. 
      */
     void paint(juce::Graphics& g) override
     {
@@ -64,9 +114,18 @@ public:
         auto h = (SampleType)area.getHeight();
         auto w = (SampleType)area.getWidth();
 
+        if (gridCheck)
+        {
+            drawGrid(g, w, h);
+        }
+     
         // Oscilloscope
         auto scopeRect = juce::Rectangle<SampleType>{ SampleType(0), SampleType(0), w, h };
         plot(sampleData.data(), sampleData.size(), g, scopeRect, SampleType(1), h / 2);
+
+        g.setColour(juce::Colours::dimgrey);
+        auto contour = juce::Line<float>(0, h, w, h);
+        g.drawLine(contour, 8.0f);
 
     }
 
@@ -81,7 +140,8 @@ private:
     //==============================================================================
     Queue& audioBufferQueue; /**< AudioBufferQueue */
     std::array<SampleType, Queue::bufferSize> sampleData; /**< Data currently displayed */
-
+    int sampleRate; /**< Sample rate */
+    bool gridCheck = false;
 
     //==============================================================================
     /**

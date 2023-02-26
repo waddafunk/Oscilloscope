@@ -30,6 +30,7 @@ private:
     // access the processor object that created it.
     OscilloscopeAudioProcessor& audioProcessor;
     OscilloscopeComponent<float> oscilloscopeComponent;
-
+    juce::ToggleButton drawGrid;
+    juce::AudioProcessorValueTreeState::ButtonAttachment* gridAttachment;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessorEditor)
 };

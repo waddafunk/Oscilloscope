@@ -58,11 +58,17 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    int getSampleRate();
+
     AudioBufferQueue<float>& getAudioBufferQueue();
+
+    juce::AudioProcessorValueTreeState* getTreeState();
 
 private:
     //==============================================================================
     AudioBufferQueue<float> audioBufferQueue;
     ScopeDataCollector<float> scopeDataCollector{ audioBufferQueue };
+    juce::AudioProcessorValueTreeState processorTreeState;
+    int sampleRate;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessor)
 };
