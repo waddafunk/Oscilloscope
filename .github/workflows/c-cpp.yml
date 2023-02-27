@@ -16,7 +16,7 @@ jobs:
     - name: cd folder
       run: cd ./Builds/LinuxMakefile
     - name: make
-      run: make Makefile
+      run: make clean
     - name: make check
       run: make check
     - name: make distcheck
