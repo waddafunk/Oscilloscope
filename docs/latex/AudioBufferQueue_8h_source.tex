@@ -20,57 +20,60 @@
 \DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00019}00019 \{}
 \DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00020}00020 \textcolor{keyword}{public}:}
 \DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00021}00021     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00022}\mbox{\hyperlink{classAudioBufferQueue_a56b5c4555b02b045154728e6e8c8782a}{00022}}     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classAudioBufferQueue_a56b5c4555b02b045154728e6e8c8782a}{order}} = 9; }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00023}\mbox{\hyperlink{classAudioBufferQueue_a236d9ac1e5fff495e7193ff2d5867003}{00023}}     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classAudioBufferQueue_a236d9ac1e5fff495e7193ff2d5867003}{bufferSize}} = 1U << \mbox{\hyperlink{classAudioBufferQueue_a56b5c4555b02b045154728e6e8c8782a}{order}}; }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00024}\mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{00024}}     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{numBuffers}} = 5; }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00026}00026     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00033}\mbox{\hyperlink{classAudioBufferQueue_a4c9f8b7220ff81958edb53adf86c32e7}{00033}} \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{classAudioBufferQueue_a4c9f8b7220ff81958edb53adf86c32e7}{push}}(\textcolor{keyword}{const} SampleType* dataToPush, \textcolor{keywordtype}{size\_t} numSamples)}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00034}00034     \{}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00035}00035         jassert(numSamples <= \mbox{\hyperlink{classAudioBufferQueue_a236d9ac1e5fff495e7193ff2d5867003}{bufferSize}});}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00036}00036 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00037}00037         \textcolor{keywordtype}{int} start1, size1, start2, size2;}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00038}00038         abstractFifo.prepareToWrite(1, start1, size1, start2, size2);}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00040}00040         jassert(size1 <= 1);}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00041}00041         jassert(size2 == 0);}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00042}00042 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00043}00043         \textcolor{keywordflow}{if} (size1 > 0)}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00044}00044             juce::FloatVectorOperations::copy(buffers[(\textcolor{keywordtype}{size\_t})start1].data(), dataToPush, (\textcolor{keywordtype}{int})juce::jmin(\mbox{\hyperlink{classAudioBufferQueue_a236d9ac1e5fff495e7193ff2d5867003}{bufferSize}}, numSamples));}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00045}00045 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00046}00046         abstractFifo.finishedWrite(size1);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00022}\mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{00022}}     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{numBuffers}} = 5; }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00024}00024     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00032}\mbox{\hyperlink{classAudioBufferQueue_a4c9f8b7220ff81958edb53adf86c32e7}{00032}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAudioBufferQueue_a4c9f8b7220ff81958edb53adf86c32e7}{push}}(\textcolor{keyword}{const} SampleType* dataToPush, \textcolor{keywordtype}{size\_t} numSamples)}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00033}00033     \{}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00034}00034         jassert(numSamples <= \mbox{\hyperlink{classAudioBufferQueue_a33820484d5386240571250c8c31ca049}{bufferSize}});}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00036}00036         \textcolor{keywordtype}{int} start1, size1 = 0, start2, size2;}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00037}00037         abstractFifo.prepareToWrite(1, start1, size1, start2, size2);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00039}00039         jassert(size1 <= 1);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00040}00040         jassert(size2 == 0);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00042}00042         \textcolor{keywordflow}{if} (size1 > 0)}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00043}00043         \{}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00044}00044             buffers[(size\_t)start1].resize(numSamples);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00045}00045             juce::FloatVectorOperations::copy(buffers[(\textcolor{keywordtype}{size\_t})start1].data(), dataToPush, numSamples);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00046}00046         \}}
 \DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00048}00048     \}}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00050}00050     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00056}\mbox{\hyperlink{classAudioBufferQueue_ac91421bc929b22c8428ec041cdeb630a}{00056}} \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{classAudioBufferQueue_ac91421bc929b22c8428ec041cdeb630a}{pop}}(SampleType* outputBuffer)}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00057}00057     \{}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00058}00058 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00059}00059         \textcolor{keywordtype}{int} start1, size1, start2, size2;}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00060}00060         abstractFifo.prepareToRead(1, start1, size1, start2, size2);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00049}00049         abstractFifo.finishedWrite(size1);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00051}00051     \}}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00053}00053     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00059}\mbox{\hyperlink{classAudioBufferQueue_ac91421bc929b22c8428ec041cdeb630a}{00059}} \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{classAudioBufferQueue_ac91421bc929b22c8428ec041cdeb630a}{pop}}(SampleType* outputBuffer)}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00060}00060     \{}
 \DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00061}00061 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00062}00062         jassert(size1 <= 1);}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00063}00063         jassert(size2 == 0);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00062}00062         \textcolor{keywordtype}{int} start1, size1, start2, size2;}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00063}00063         abstractFifo.prepareToRead(1, start1, size1, start2, size2);}
 \DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00064}00064 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00065}00065         \textcolor{keywordflow}{if} (size1 > 0)}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00066}00066             juce::FloatVectorOperations::copy(outputBuffer, buffers[(\textcolor{keywordtype}{size\_t})start1].data(), (\textcolor{keywordtype}{int})\mbox{\hyperlink{classAudioBufferQueue_a236d9ac1e5fff495e7193ff2d5867003}{bufferSize}});}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00065}00065         jassert(size1 <= 1);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00066}00066         jassert(size2 == 0);}
 \DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00067}00067 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00068}00068         abstractFifo.finishedRead(size1);}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00069}00069 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00070}00070     \}}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00071}00071 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00076}\mbox{\hyperlink{classAudioBufferQueue_a8898a019dbda0d2696a11bd414675101}{00076}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAudioBufferQueue_a8898a019dbda0d2696a11bd414675101}{flush}}()}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00077}00077     \{}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00078}00078         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = 0; i < \mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{numBuffers}}; i++)}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00079}00079         \{}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00080}00080             std::fill(std::begin(buffers[i]), std::end(buffers[i]), 0);}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00081}00081         \}}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00082}00082     \}}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00083}00083  }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00084}00084 }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00085}00085 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00086}00086     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00087}00087     juce::AbstractFifo abstractFifo\{ \mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{numBuffers}} \}; }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00088}00088     std::array<std::array<SampleType, bufferSize>, \mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{numBuffers}}> buffers; }
-\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00089}00089 \};}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00068}00068         \textcolor{keywordflow}{if} (size1 > 0)}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00069}00069             juce::FloatVectorOperations::copy(outputBuffer, buffers[(\textcolor{keywordtype}{size\_t})start1].data(), (\textcolor{keywordtype}{int})buffers[(\textcolor{keywordtype}{size\_t})start1].size());}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00071}00071         abstractFifo.finishedRead(size1);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00073}00073     \}}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00079}\mbox{\hyperlink{classAudioBufferQueue_a8898a019dbda0d2696a11bd414675101}{00079}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAudioBufferQueue_a8898a019dbda0d2696a11bd414675101}{flush}}()}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00080}00080     \{}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00081}00081         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = 0; i < \mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{numBuffers}}; i++)}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00082}00082         \{}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00083}00083             std::fill(std::begin(buffers[i]), std::end(buffers[i]), 0);}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00084}00084         \}}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00086}00086  }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00087}\mbox{\hyperlink{classAudioBufferQueue_a33820484d5386240571250c8c31ca049}{00087}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classAudioBufferQueue_a33820484d5386240571250c8c31ca049}{bufferSize}} = 5000; }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00088}00088 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00089}00089     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00090}00090     juce::AbstractFifo abstractFifo\{ \mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{numBuffers}} \}; }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00091}00091     std::array<std::vector<SampleType>, \mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{numBuffers}}> buffers; }
+\DoxyCodeLine{\Hypertarget{AudioBufferQueue_8h_source_l00092}00092 \};}
 
 \end{DoxyCode}

@@ -95,65 +95,67 @@ $(function() {
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#a56b5c4555b02b045154728e6e8c8782a">   22</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classAudioBufferQueue.html#a56b5c4555b02b045154728e6e8c8782a">order</a> = 9; </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#a236d9ac1e5fff495e7193ff2d5867003">   23</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classAudioBufferQueue.html#a236d9ac1e5fff495e7193ff2d5867003">bufferSize</a> = 1U &lt;&lt; <a class="code hl_variable" href="classAudioBufferQueue.html#a56b5c4555b02b045154728e6e8c8782a">order</a>; </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">   24</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">numBuffers</a> = 5; </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#a4c9f8b7220ff81958edb53adf86c32e7">   33</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioBufferQueue.html#a4c9f8b7220ff81958edb53adf86c32e7">push</a>(<span class="keyword">const</span> SampleType* dataToPush, <span class="keywordtype">size_t</span> numSamples)</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        jassert(numSamples &lt;= <a class="code hl_variable" href="classAudioBufferQueue.html#a236d9ac1e5fff495e7193ff2d5867003">bufferSize</a>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">int</span> start1, size1, start2, size2;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        abstractFifo.prepareToWrite(1, start1, size1, start2, size2);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        jassert(size1 &lt;= 1);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        jassert(size2 == 0);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">if</span> (size1 &gt; 0)</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            juce::FloatVectorOperations::copy(buffers[(<span class="keywordtype">size_t</span>)start1].data(), dataToPush, (<span class="keywordtype">int</span>)juce::jmin(<a class="code hl_variable" href="classAudioBufferQueue.html#a236d9ac1e5fff495e7193ff2d5867003">bufferSize</a>, numSamples));</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        abstractFifo.finishedWrite(size1);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">   22</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">numBuffers</a> = 5; </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#a4c9f8b7220ff81958edb53adf86c32e7">   32</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioBufferQueue.html#a4c9f8b7220ff81958edb53adf86c32e7">push</a>(<span class="keyword">const</span> SampleType* dataToPush, <span class="keywordtype">size_t</span> numSamples)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        jassert(numSamples &lt;= <a class="code hl_variable" href="classAudioBufferQueue.html#a33820484d5386240571250c8c31ca049">bufferSize</a>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">int</span> start1, size1 = 0, start2, size2;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        abstractFifo.prepareToWrite(1, start1, size1, start2, size2);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        jassert(size1 &lt;= 1);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        jassert(size2 == 0);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">if</span> (size1 &gt; 0)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            buffers[(size_t)start1].resize(numSamples);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            juce::FloatVectorOperations::copy(buffers[(<span class="keywordtype">size_t</span>)start1].data(), dataToPush, numSamples);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        }</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#ac91421bc929b22c8428ec041cdeb630a">   56</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioBufferQueue.html#ac91421bc929b22c8428ec041cdeb630a">pop</a>(SampleType* outputBuffer)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">int</span> start1, size1, start2, size2;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        abstractFifo.prepareToRead(1, start1, size1, start2, size2);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        abstractFifo.finishedWrite(size1);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#ac91421bc929b22c8428ec041cdeb630a">   59</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioBufferQueue.html#ac91421bc929b22c8428ec041cdeb630a">pop</a>(SampleType* outputBuffer)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        jassert(size1 &lt;= 1);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        jassert(size2 == 0);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">int</span> start1, size1, start2, size2;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        abstractFifo.prepareToRead(1, start1, size1, start2, size2);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">if</span> (size1 &gt; 0)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            juce::FloatVectorOperations::copy(outputBuffer, buffers[(<span class="keywordtype">size_t</span>)start1].data(), (<span class="keywordtype">int</span>)<a class="code hl_variable" href="classAudioBufferQueue.html#a236d9ac1e5fff495e7193ff2d5867003">bufferSize</a>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        jassert(size1 &lt;= 1);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        jassert(size2 == 0);</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        abstractFifo.finishedRead(size1);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#a8898a019dbda0d2696a11bd414675101">   76</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioBufferQueue.html#a8898a019dbda0d2696a11bd414675101">flush</a>()</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; <a class="code hl_variable" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">numBuffers</a>; i++)</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            std::fill(std::begin(buffers[i]), std::end(buffers[i]), 0);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        }</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    juce::AbstractFifo abstractFifo{ <a class="code hl_variable" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">numBuffers</a> }; </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    std::array&lt;std::array&lt;SampleType, bufferSize&gt;, <a class="code hl_variable" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">numBuffers</a>&gt; buffers; </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">if</span> (size1 &gt; 0)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            juce::FloatVectorOperations::copy(outputBuffer, buffers[(<span class="keywordtype">size_t</span>)start1].data(), (<span class="keywordtype">int</span>)buffers[(<span class="keywordtype">size_t</span>)start1].size());</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        abstractFifo.finishedRead(size1);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#a8898a019dbda0d2696a11bd414675101">   79</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAudioBufferQueue.html#a8898a019dbda0d2696a11bd414675101">flush</a>()</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; <a class="code hl_variable" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">numBuffers</a>; i++)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            std::fill(std::begin(buffers[i]), std::end(buffers[i]), 0);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classAudioBufferQueue.html#a33820484d5386240571250c8c31ca049">   87</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classAudioBufferQueue.html#a33820484d5386240571250c8c31ca049">bufferSize</a> = 5000; </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    juce::AbstractFifo abstractFifo{ <a class="code hl_variable" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">numBuffers</a> }; </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    std::array&lt;std::vector&lt;SampleType&gt;, <a class="code hl_variable" href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">numBuffers</a>&gt; buffers; </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>};</div>
 <div class="ttc" id="aclassAudioBufferQueue_html"><div class="ttname"><a href="classAudioBufferQueue.html">AudioBufferQueue</a></div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00018">AudioBufferQueue.h:19</a></div></div>
-<div class="ttc" id="aclassAudioBufferQueue_html_a236d9ac1e5fff495e7193ff2d5867003"><div class="ttname"><a href="classAudioBufferQueue.html#a236d9ac1e5fff495e7193ff2d5867003">AudioBufferQueue::bufferSize</a></div><div class="ttdeci">static constexpr size_t bufferSize</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00023">AudioBufferQueue.h:23</a></div></div>
-<div class="ttc" id="aclassAudioBufferQueue_html_a4c9f8b7220ff81958edb53adf86c32e7"><div class="ttname"><a href="classAudioBufferQueue.html#a4c9f8b7220ff81958edb53adf86c32e7">AudioBufferQueue::push</a></div><div class="ttdeci">void push(const SampleType *dataToPush, size_t numSamples)</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00033">AudioBufferQueue.h:33</a></div></div>
-<div class="ttc" id="aclassAudioBufferQueue_html_a56b5c4555b02b045154728e6e8c8782a"><div class="ttname"><a href="classAudioBufferQueue.html#a56b5c4555b02b045154728e6e8c8782a">AudioBufferQueue::order</a></div><div class="ttdeci">static constexpr size_t order</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00022">AudioBufferQueue.h:22</a></div></div>
-<div class="ttc" id="aclassAudioBufferQueue_html_a8898a019dbda0d2696a11bd414675101"><div class="ttname"><a href="classAudioBufferQueue.html#a8898a019dbda0d2696a11bd414675101">AudioBufferQueue::flush</a></div><div class="ttdeci">void flush()</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00076">AudioBufferQueue.h:76</a></div></div>
-<div class="ttc" id="aclassAudioBufferQueue_html_ac91421bc929b22c8428ec041cdeb630a"><div class="ttname"><a href="classAudioBufferQueue.html#ac91421bc929b22c8428ec041cdeb630a">AudioBufferQueue::pop</a></div><div class="ttdeci">void pop(SampleType *outputBuffer)</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00056">AudioBufferQueue.h:56</a></div></div>
-<div class="ttc" id="aclassAudioBufferQueue_html_acb46b7841436b62174ddb97a642d590d"><div class="ttname"><a href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">AudioBufferQueue::numBuffers</a></div><div class="ttdeci">static constexpr size_t numBuffers</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00024">AudioBufferQueue.h:24</a></div></div>
+<div class="ttc" id="aclassAudioBufferQueue_html_a33820484d5386240571250c8c31ca049"><div class="ttname"><a href="classAudioBufferQueue.html#a33820484d5386240571250c8c31ca049">AudioBufferQueue::bufferSize</a></div><div class="ttdeci">size_t bufferSize</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00087">AudioBufferQueue.h:87</a></div></div>
+<div class="ttc" id="aclassAudioBufferQueue_html_a4c9f8b7220ff81958edb53adf86c32e7"><div class="ttname"><a href="classAudioBufferQueue.html#a4c9f8b7220ff81958edb53adf86c32e7">AudioBufferQueue::push</a></div><div class="ttdeci">void push(const SampleType *dataToPush, size_t numSamples)</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00032">AudioBufferQueue.h:32</a></div></div>
+<div class="ttc" id="aclassAudioBufferQueue_html_a8898a019dbda0d2696a11bd414675101"><div class="ttname"><a href="classAudioBufferQueue.html#a8898a019dbda0d2696a11bd414675101">AudioBufferQueue::flush</a></div><div class="ttdeci">void flush()</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00079">AudioBufferQueue.h:79</a></div></div>
+<div class="ttc" id="aclassAudioBufferQueue_html_ac91421bc929b22c8428ec041cdeb630a"><div class="ttname"><a href="classAudioBufferQueue.html#ac91421bc929b22c8428ec041cdeb630a">AudioBufferQueue::pop</a></div><div class="ttdeci">void pop(SampleType *outputBuffer)</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00059">AudioBufferQueue.h:59</a></div></div>
+<div class="ttc" id="aclassAudioBufferQueue_html_acb46b7841436b62174ddb97a642d590d"><div class="ttname"><a href="classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d">AudioBufferQueue::numBuffers</a></div><div class="ttdeci">static constexpr size_t numBuffers</div><div class="ttdef"><b>Definition:</b> <a href="AudioBufferQueue_8h_source.html#l00022">AudioBufferQueue.h:22</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
