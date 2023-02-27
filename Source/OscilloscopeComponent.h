@@ -33,9 +33,10 @@ public:
     OscilloscopeComponent(Queue& queueToUse, int sampleRate)
         : audioBufferQueue(queueToUse)
     {
-        sampleData.fill(SampleType(0));
         setFramesPerSecond(30);
         this->sampleRate = sampleRate;
+        sampleData.resize(queueToUse.bufferSize);
+        std::fill(sampleData.begin(), sampleData.end(), 0);
     }
 
     //==============================================================================
@@ -71,6 +72,8 @@ public:
      */
     void drawGrid(juce::Graphics& g, SampleType w, SampleType h)
     {
+        g.setColour(juce::Colours::red);
+        g.setOpacity(0.6);
         g.drawLine(0, h / 2, w, h / 2);
         g.drawLine(1, 0, 1, h);
 
@@ -78,8 +81,8 @@ public:
         {
             float xPos = i * w / 10;
             float yPos = i * h / 10;
-            g.drawLine(xPos, h / 2 - 5, xPos, h / 2 + 5);
-            g.drawLine(0, yPos, 5, yPos);
+            g.drawLine(xPos, h / 2 - 8, xPos, h / 2 + 8);
+            g.drawLine(0, yPos, 8, yPos);
         }
 
         float fontHeight = g.getCurrentFont().getAscent();
@@ -139,7 +142,7 @@ public:
 private:
     //==============================================================================
     Queue& audioBufferQueue; /**< AudioBufferQueue */
-    std::array<SampleType, Queue::bufferSize> sampleData; /**< Data currently displayed */
+    std::vector<SampleType> sampleData; /**< Data currently displayed */
     int sampleRate; /**< Sample rate */
     bool gridCheck = false;
 

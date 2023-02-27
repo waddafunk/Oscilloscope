@@ -20,7 +20,7 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
     addAndMakeVisible(drawGrid);
     drawGrid.setButtonText("Grid");
     
-    setSize(800, 600);
+    setSize(1400, 700);
 
     auto area = getLocalBounds();
     drawGrid.setSize(100, 20);

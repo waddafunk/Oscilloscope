@@ -26,7 +26,9 @@ public:
     //==============================================================================
     ScopeDataCollector(AudioBufferQueue<SampleType>& queueToUse)
         : audioBufferQueue(queueToUse)
-    {}
+    {
+        buffer.resize(queueToUse.bufferSize);
+    }
 
     //==============================================================================
     /**
@@ -69,7 +71,7 @@ public:
                     audioBufferQueue.push(buffer.data(), buffer.size());
                     state = State::waitingForTrigger;
                     prevSample = SampleType(100);
-                    buffer.fill(0);
+                    std::fill(buffer.begin(), buffer.end(), 0);
                     if (index < numSamples)
                     {
                         numCollected = numSamples - index;
@@ -85,7 +87,7 @@ public:
 private:
     //==============================================================================
     AudioBufferQueue<SampleType>& audioBufferQueue; /**< AudioBufferQueue */
-    std::array<SampleType, AudioBufferQueue<SampleType>::bufferSize> buffer; /**< Buffer to fill and push to audioBufferQueue */
+    std::vector<SampleType> buffer; /**< Buffer to fill and push to audioBufferQueue */
     size_t numCollected; /**< Number of samples collected. */
     SampleType prevSample = SampleType(100); /**< Last sample collected. */
 
