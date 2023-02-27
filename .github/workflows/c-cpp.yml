@@ -16,7 +16,7 @@ jobs:
     - name: cd folder
       run: cd ./Builds/LinuxMakefile
     - name: install deps
-      run: apt-get install build-essential
+      run: sudo apt-get install build-essential
     - name: make
       run: make CONFIG=Release Makefile
     - name: make check
