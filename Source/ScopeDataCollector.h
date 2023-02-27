@@ -69,6 +69,13 @@ public:
                     audioBufferQueue.push(buffer.data(), buffer.size());
                     state = State::waitingForTrigger;
                     prevSample = SampleType(100);
+                    buffer.fill(0);
+                    if (index < numSamples)
+                    {
+                        numCollected = numSamples - index;
+                        std::copy(data, data + numCollected, buffer.begin());
+                    }
+                    
                     break;
                 }
             }
