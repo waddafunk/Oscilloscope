@@ -16,8 +16,11 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
+
     addAndMakeVisible(oscilloscopeComponent);
     addAndMakeVisible(drawGrid);
+    addAndMakeVisible(strategySelector);
+    addAndMakeVisible(bufferLength);
     drawGrid.setButtonText("Grid");
     
     setSize(1400, 700);
@@ -34,11 +37,25 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
 
     // Get a pointer to the AudioParameterBool
     //auto* myToggleParam = dynamic_cast<juce::AudioParameterBool*>(processor.getParameters().getUnchecked(0));
-    auto drawGridValue = audioProcessor.getTreeState()->getParameter("drawGrid");
+    auto drawGridValue = audioProcessor.getTreeState()->getParameter("drawGrid")->getValue();
     drawGrid.setToggleState(drawGridValue, juce::sendNotification);
 
     // Attach the ToggleButton to the AudioParameterBool
     gridAttachment = new juce::AudioProcessorValueTreeState::ButtonAttachment(*audioProcessor.getTreeState(), juce::String("drawGrid"), drawGrid);
+
+    strategySelector.setTopLeftPosition(area.getWidth() / 2 - 200, area.getHeight() - 25);
+    strategySelector.setSize(400, 20);
+    strategySelector.addItem("auto", 1);
+    strategySelector.addItem("pro", 2);
+    strategySelector.setSelectedId(1, juce::sendNotification);
+    
+    bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
+    bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
+    auto bufferLengthValue = audioProcessor.getTreeState()->getParameter("bufferLength")->getValue();
+    bufferLength.setValue((double) bufferLengthValue, juce::sendNotification);
+    bufferLengthAttachment = new juce::AudioProcessorValueTreeState::SliderAttachment(*audioProcessor.getTreeState(), juce::String("bufferLength"), bufferLength);
+    bufferLength.setTopLeftPosition(1000, area.getHeight() - 25);
+    bufferLength.setSize(350, 20);
 
     setResizable(true, true);
     setResizeLimits(256, 256, 1920, 1080);
@@ -49,6 +66,7 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
 OscilloscopeAudioProcessorEditor::~OscilloscopeAudioProcessorEditor()
 {
     delete gridAttachment;
+    delete bufferLengthAttachment;
 }
 
 //==============================================================================
@@ -73,3 +91,4 @@ void OscilloscopeAudioProcessorEditor::resized()
     drawGrid.setTransform(juce::AffineTransform::translation(0, yDiff));
     
 }
+

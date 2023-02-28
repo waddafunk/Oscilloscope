@@ -22,6 +22,17 @@ public:
     static constexpr size_t numBuffers = 5; /**< Number of buffers */
 
     //==============================================================================
+    /**
+     * Changes buffers size.
+     * 
+     * \param bufferSize new buffer size.
+     */
+    void setBufferSize(int bufferSize)
+    {
+        for ( int i = 0; i < numBuffers; i++)
+            buffers[i].resize(bufferSize);
+        this->bufferSize = bufferSize;
+    }
 
     /**
      * Pushes a buffer of data.
@@ -41,7 +52,6 @@ public:
 
         if (size1 > 0)
         {
-            buffers[(size_t)start1].resize(numSamples);
             juce::FloatVectorOperations::copy(buffers[(size_t)start1].data(), dataToPush, numSamples);
         }
 

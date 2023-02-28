@@ -20,7 +20,7 @@ namespace ranges = std::ranges;
  * Automatically fills a buffer, pushes it to the queue and starts filling the next one. 
  */
 template <typename SampleType>
-class ScopeDataCollector
+class ScopeDataCollector : public juce::AudioProcessorValueTreeState::Listener
 {
 public:
     //==============================================================================
@@ -28,6 +28,11 @@ public:
         : audioBufferQueue(queueToUse)
     {
         buffer.resize(queueToUse.bufferSize);
+    }
+
+    void resizeBuffer()
+    {
+        buffer.resize(audioBufferQueue.bufferSize);
     }
 
     //==============================================================================
@@ -88,7 +93,7 @@ private:
     //==============================================================================
     AudioBufferQueue<SampleType>& audioBufferQueue; /**< AudioBufferQueue */
     std::vector<SampleType> buffer; /**< Buffer to fill and push to audioBufferQueue */
-    size_t numCollected; /**< Number of samples collected. */
+    size_t numCollected = 0; /**< Number of samples collected. */
     SampleType prevSample = SampleType(100); /**< Last sample collected. */
 
     static constexpr auto triggerLevel = SampleType(0.0005); /**< Level above which the oscilloscope starts drawing the waveform. */
@@ -96,4 +101,17 @@ private:
      * States of the class.
      */
     enum class State { waitingForTrigger, collecting } state{ State::waitingForTrigger };
+
+    /**
+     * Resizes buffer when parameter changes in the valueTree.
+     * 
+     * \param parameterID parameter id
+     * \param newValue new value
+     */
+    void parameterChanged(const juce::String& parameterID, float newValue) override
+    {
+        audioBufferQueue.setBufferSize((int)newValue);
+        resizeBuffer();
+    }
+
 };

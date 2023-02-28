@@ -25,12 +25,16 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
 
+    
+
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
+
     OscilloscopeAudioProcessor& audioProcessor;
     OscilloscopeComponent<float> oscilloscopeComponent;
     juce::ToggleButton drawGrid;
     juce::AudioProcessorValueTreeState::ButtonAttachment* gridAttachment;
+    juce::AudioProcessorValueTreeState::SliderAttachment* bufferLengthAttachment;
+    juce::ComboBox strategySelector;
+    juce::Slider bufferLength;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessorEditor)
 };

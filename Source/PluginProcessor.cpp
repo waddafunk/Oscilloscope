@@ -22,9 +22,12 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
                        ), 
 #endif
     processorTreeState(*this, nullptr, "PARAMETERS",
-    { std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), })
+    { 
+            std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), 
+            std::make_unique<juce::AudioParameterInt>("bufferLength", "Scope Length", 2000, 3 * 44100, 5000),  
+    })
 {
-
+    processorTreeState.addParameterListener("bufferLength", &scopeDataCollector);
 }
 
 OscilloscopeAudioProcessor::~OscilloscopeAudioProcessor()
