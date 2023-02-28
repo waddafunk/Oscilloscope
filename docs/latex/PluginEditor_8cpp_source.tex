@@ -16,66 +16,79 @@
 \DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00012}00012 \textcolor{comment}{//==============================================================================}}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00013}\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_abd81a115d8bb055f20820a533e3ffc67}{00013}} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_abd81a115d8bb055f20820a533e3ffc67}{OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor}} (\mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\& p)}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00014}00014     : AudioProcessorEditor (\&p), audioProcessor (p), }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00015}00015     oscilloscopeComponent(audioProcessor.getAudioBufferQueue(), audioProcessor.getSampleRate())}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00015}00015     oscilloscopeComponent(audioProcessor, audioProcessor.getSampleRate())}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00016}00016 \{}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00017}00017     \textcolor{comment}{// Make sure that before the constructor has finished, you've set the}}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00018}00018     \textcolor{comment}{// editor's size to whatever you need it to be.}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00019}00019     addAndMakeVisible(oscilloscopeComponent);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00020}00020     addAndMakeVisible(drawGrid);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00021}00021     drawGrid.setButtonText(\textcolor{stringliteral}{"{}Grid"{}});}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00022}00022     }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00023}00023     setSize(1400, 700);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00024}00024 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00025}00025     \textcolor{keyword}{auto} area = getLocalBounds();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00026}00026     drawGrid.setSize(100, 20);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00027}00027     oscilloscopeComponent.setTopLeftPosition(0, 0);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00028}00028     oscilloscopeComponent.setSize(area.getWidth(), area.getHeight() -\/ 30);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00029}00029     drawGrid.setTopLeftPosition(10, area.getHeight() -\/ 25);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00030}00030     drawGrid.onStateChange = [\textcolor{keyword}{this}]() \{}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00031}00031         \textcolor{keyword}{auto} draw = drawGrid.getToggleState();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00032}00032         oscilloscopeComponent.\mbox{\hyperlink{classOscilloscopeComponent_a02c18cf88408875bb8108d96ef250cdf}{setGridCheck}}(draw);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00033}00033     \};}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00034}00034 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00035}00035     \textcolor{comment}{// Get a pointer to the AudioParameterBool}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00036}00036     \textcolor{comment}{//auto* myToggleParam = dynamic\_cast<juce::AudioParameterBool*>(processor.getParameters().getUnchecked(0));}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00037}00037     \textcolor{keyword}{auto} drawGridValue = audioProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>getParameter(\textcolor{stringliteral}{"{}drawGrid"{}});}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00038}00038     drawGrid.setToggleState(drawGridValue, juce::sendNotification);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00040}00040     \textcolor{comment}{// Attach the ToggleButton to the AudioParameterBool}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00041}00041     gridAttachment = \textcolor{keyword}{new} juce::AudioProcessorValueTreeState::ButtonAttachment(*audioProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}(), juce::String(\textcolor{stringliteral}{"{}drawGrid"{}}), drawGrid);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00042}00042 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00043}00043     setResizable(\textcolor{keyword}{true}, \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00044}00044     setResizeLimits(256, 256, 1920, 1080);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00045}00045     \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a0104937177acfe678f1bd373ed9bd7f1}{resized}}(); \textcolor{comment}{// need to be called in constructor since rescaling logic makes oscilloscope invisible on creation}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00046}00046     }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00047}00047 \}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00048}00048 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00049}\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_aafec2e98cebcef5ac499aba85077717b}{00049}} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_aafec2e98cebcef5ac499aba85077717b}{OscilloscopeAudioProcessorEditor::\string~OscilloscopeAudioProcessorEditor}}()}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00050}00050 \{}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00051}00051     \textcolor{keyword}{delete} gridAttachment;}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00052}00052 \}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00054}00054 \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00055}\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a23575ad8b290e1ff518fab0cd51dabe7}{00055}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a23575ad8b290e1ff518fab0cd51dabe7}{OscilloscopeAudioProcessorEditor::paint}} (juce::Graphics\& g)}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00056}00056 \{}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00057}00057     \textcolor{comment}{// (Our component is opaque, so we must completely fill the background with a solid colour)}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00058}00058     g.fillAll (juce::Colour(95, 2, 31).darker(0.8));}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00059}00059 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00060}00060 \}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00061}00061 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00062}\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a0104937177acfe678f1bd373ed9bd7f1}{00062}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a0104937177acfe678f1bd373ed9bd7f1}{OscilloscopeAudioProcessorEditor::resized}}()}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00063}00063 \{}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00064}00064     \textcolor{comment}{// This is generally where you'll want to lay out the positions of any}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00065}00065     \textcolor{comment}{// subcomponents in your editor..}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00066}00066     \textcolor{keyword}{auto} area = getLocalBounds();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00067}00067     \textcolor{keywordtype}{float} yDiff = (float)(area.getHeight() -\/ 30) -\/ oscilloscopeComponent.getHeight();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00068}00068 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00069}00069     \textcolor{comment}{// rescale oscilloscope}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00070}00070     \textcolor{keywordtype}{float} x\_sc = (float)area.getWidth() / oscilloscopeComponent.getWidth();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00071}00071     \textcolor{keywordtype}{float} y\_sc = (float)(area.getHeight() -\/ 30) / oscilloscopeComponent.getHeight();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00072}00072     oscilloscopeComponent.setTransform(juce::AffineTransform::scale(x\_sc, y\_sc));}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00073}00073     drawGrid.setTransform(juce::AffineTransform::translation(0, yDiff));}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00074}00074     }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00075}00075 \}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00020}00020     addAndMakeVisible(oscilloscopeComponent);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00021}00021     addAndMakeVisible(drawGrid);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00022}00022     addAndMakeVisible(bufferLength);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00023}00023     drawGrid.setButtonText(\textcolor{stringliteral}{"{}Grid"{}});}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00024}00024     }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00025}00025     setSize(1400, 700);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00027}00027     \textcolor{keyword}{auto} area = getLocalBounds();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00028}00028     drawGrid.setSize(100, 20);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00029}00029     oscilloscopeComponent.setTopLeftPosition(0, 0);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00030}00030     oscilloscopeComponent.setSize(area.getWidth(), area.getHeight() -\/ 30);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00031}00031     drawGrid.setTopLeftPosition(10, area.getHeight() -\/ 25);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00032}00032     drawGrid.onStateChange = [\textcolor{keyword}{this}]() \{}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00033}00033         \textcolor{keyword}{auto} draw = drawGrid.getToggleState();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00034}00034         oscilloscopeComponent.\mbox{\hyperlink{classOscilloscopeComponent_a80e62cd1278d38f666aa55cf58fc9acb}{setGridCheck}}(draw);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00035}00035     \};}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00037}00037     \textcolor{comment}{// Get a pointer to the AudioParameterBool}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00038}00038     \textcolor{comment}{//auto* myToggleParam = dynamic\_cast<juce::AudioParameterBool*>(processor.getParameters().getUnchecked(0));}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00039}00039     \textcolor{keyword}{auto} drawGridValue = audioProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>getParameter(\textcolor{stringliteral}{"{}drawGrid"{}})-\/>getValue();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00040}00040     drawGrid.setToggleState(drawGridValue, juce::sendNotification);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00042}00042     \textcolor{comment}{// Attach the ToggleButton to the AudioParameterBool}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00043}00043     gridAttachment = \textcolor{keyword}{new} juce::AudioProcessorValueTreeState::ButtonAttachment(*audioProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}(), juce::String(\textcolor{stringliteral}{"{}drawGrid"{}}), drawGrid);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00045}00045     bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00046}00046     bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, \textcolor{keyword}{true}, 0, 0);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00047}00047     \textcolor{keyword}{auto} bufferLengthValue = audioProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>getParameter(\textcolor{stringliteral}{"{}bufferLength"{}})-\/>getValue();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00048}00048     bufferLength.setValue((\textcolor{keywordtype}{double})bufferLengthValue, juce::sendNotification);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00049}00049     bufferLengthAttachment = \textcolor{keyword}{new} juce::AudioProcessorValueTreeState::SliderAttachment(*audioProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}(), juce::String(\textcolor{stringliteral}{"{}bufferLength"{}}), bufferLength);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00050}00050     bufferLength.setTopLeftPosition(1000, area.getHeight() -\/ 25);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00051}00051     bufferLength.setSize(350, 20);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00052}00052     }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00053}00053     setResizable(\textcolor{keyword}{true}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00054}00054     setResizeLimits(256, 256, 1920, 1080);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00055}00055     \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a0104937177acfe678f1bd373ed9bd7f1}{resized}}(); \textcolor{comment}{// need to be called in constructor since rescaling logic makes oscilloscope invisible on creation}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00056}00056     }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00057}00057 \}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00059}\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_aafec2e98cebcef5ac499aba85077717b}{00059}} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_aafec2e98cebcef5ac499aba85077717b}{OscilloscopeAudioProcessorEditor::\string~OscilloscopeAudioProcessorEditor}}()}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00060}00060 \{}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00061}00061     \textcolor{keyword}{delete} gridAttachment;}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00062}00062     \textcolor{keyword}{delete} bufferLengthAttachment;}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00063}00063 \}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00065}00065 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00066}\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a23575ad8b290e1ff518fab0cd51dabe7}{00066}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a23575ad8b290e1ff518fab0cd51dabe7}{OscilloscopeAudioProcessorEditor::paint}} (juce::Graphics\& g)}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00067}00067 \{}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00068}00068     \textcolor{comment}{// (Our component is opaque, so we must completely fill the background with a solid colour)}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00069}00069     g.fillAll (juce::Colour(95, 2, 31).darker(0.8));}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00071}00071 \}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00073}\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a0104937177acfe678f1bd373ed9bd7f1}{00073}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a0104937177acfe678f1bd373ed9bd7f1}{OscilloscopeAudioProcessorEditor::resized}}()}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00074}00074 \{}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00075}00075     \textcolor{comment}{// This is generally where you'll want to lay out the positions of any}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00076}00076     \textcolor{comment}{// subcomponents in your editor..}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00077}00077     \textcolor{keyword}{auto} area = getLocalBounds();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00078}00078     \textcolor{keywordtype}{float} yDiff = (float)(area.getHeight() -\/ 30) -\/ oscilloscopeComponent.getHeight();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00080}00080     \textcolor{comment}{// rescale oscilloscope}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00081}00081     \textcolor{keywordtype}{float} x\_sc = (float)area.getWidth() / oscilloscopeComponent.getWidth();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00082}00082     \textcolor{keywordtype}{float} y\_sc = (float)(area.getHeight() -\/ 30) / oscilloscopeComponent.getHeight();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00083}00083     oscilloscopeComponent.setTransform(juce::AffineTransform::scale(x\_sc, y\_sc));}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00084}00084     drawGrid.setTransform(juce::AffineTransform::translation(0, yDiff));}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00085}00085     }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00086}00086 \}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8cpp_source_l00088}00088 }
 
 \end{DoxyCode}

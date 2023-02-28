@@ -72,7 +72,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classAudioBufferQueue-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">AudioBufferQueue&lt; SampleType &gt; Class Template Reference</div></div>
@@ -83,17 +82,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a01bd8b54e0b87599a4c46cc134211101"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioBufferQueue.html#a01bd8b54e0b87599a4c46cc134211101">AudioBufferQueue</a> (size_t newBufferSize=(size_t) 5000)</td></tr>
+<tr class="separator:a01bd8b54e0b87599a4c46cc134211101"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c9f8b7220ff81958edb53adf86c32e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioBufferQueue.html#a4c9f8b7220ff81958edb53adf86c32e7">push</a> (const SampleType *dataToPush, size_t numSamples)</td></tr>
 <tr class="separator:a4c9f8b7220ff81958edb53adf86c32e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac91421bc929b22c8428ec041cdeb630a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioBufferQueue.html#ac91421bc929b22c8428ec041cdeb630a">pop</a> (SampleType *outputBuffer)</td></tr>
 <tr class="separator:ac91421bc929b22c8428ec041cdeb630a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8898a019dbda0d2696a11bd414675101"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioBufferQueue.html#a8898a019dbda0d2696a11bd414675101">flush</a> ()</td></tr>
 <tr class="separator:a8898a019dbda0d2696a11bd414675101"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a33820484d5386240571250c8c31ca049"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioBufferQueue.html#a33820484d5386240571250c8c31ca049">bufferSize</a> = 5000</td></tr>
-<tr class="separator:a33820484d5386240571250c8c31ca049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1582df2e1e0375dcb7a5860e67e094d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioBufferQueue.html#ad1582df2e1e0375dcb7a5860e67e094d">getBufferSize</a> ()</td></tr>
+<tr class="separator:ad1582df2e1e0375dcb7a5860e67e094d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -105,7 +103,45 @@ Static Public Attributes</h2></td></tr>
 class AudioBufferQueue&lt; SampleType &gt;</div><p >A Fifo queue of buffers working with data of SampleType type. </p>
 
 <p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00018">18</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a01bd8b54e0b87599a4c46cc134211101" name="a01bd8b54e0b87599a4c46cc134211101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01bd8b54e0b87599a4c46cc134211101">&#9670;&#160;</a></span>AudioBufferQueue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SampleType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAudioBufferQueue.html">AudioBufferQueue</a>&lt; SampleType &gt;<a class="el" href="classAudioBufferQueue.html">::AudioBufferQueue</a> </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>newBufferSize</em> = <code>(size_t)5000</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Constructor.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newBufferSize</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00031">31</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8898a019dbda0d2696a11bd414675101" name="a8898a019dbda0d2696a11bd414675101"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8898a019dbda0d2696a11bd414675101">&#9670;&#160;</a></span>flush()</h2>
 
@@ -132,7 +168,38 @@ template&lt;typename SampleType &gt; </div>
 </div><div class="memdoc">
 <p >Empties all buffers. </p>
 
-<p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00079">79</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00091">91</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
+
+</div>
+</div>
+<a id="ad1582df2e1e0375dcb7a5860e67e094d" name="ad1582df2e1e0375dcb7a5860e67e094d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1582df2e1e0375dcb7a5860e67e094d">&#9670;&#160;</a></span>getBufferSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SampleType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classAudioBufferQueue.html">AudioBufferQueue</a>&lt; SampleType &gt;::getBufferSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Get buffer size.</p>
+<dl class="section return"><dt>Returns</dt><dd>Buffer size. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00104">104</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
 
 </div>
 </div>
@@ -169,7 +236,7 @@ template&lt;typename SampleType &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00059">59</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00071">71</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
 
 </div>
 </div>
@@ -217,30 +284,11 @@ template&lt;typename SampleType &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00032">32</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00045">45</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a33820484d5386240571250c8c31ca049" name="a33820484d5386240571250c8c31ca049"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33820484d5386240571250c8c31ca049">&#9670;&#160;</a></span>bufferSize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename SampleType &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t <a class="el" href="classAudioBufferQueue.html">AudioBufferQueue</a>&lt; SampleType &gt;::bufferSize = 5000</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Buffer size </p>
-
-<p class="definition">Definition at line <a class="el" href="AudioBufferQueue_8h_source.html#l00087">87</a> of file <a class="el" href="AudioBufferQueue_8h_source.html">AudioBufferQueue.h</a>.</p>
-
-</div>
-</div>
 <a id="acb46b7841436b62174ddb97a642d590d" name="acb46b7841436b62174ddb97a642d590d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acb46b7841436b62174ddb97a642d590d">&#9670;&#160;</a></span>numBuffers</h2>
 

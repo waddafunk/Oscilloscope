@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 80.321281
+%%BoundingBox: 0 0 500 128.205124
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,7 +19,7 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 6.225000 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 3.900000 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
@@ -173,7 +173,7 @@
 
 boxfont setfont
 1 boundaspect scale
-(OscilloscopeComponent< SampleType >) cw
+(OscilloscopeComponent) cw
 (juce::Component) cw
 (juce::Timer) cw
 /boxwidth boxwidth marginwidth 2 mul add def
@@ -187,7 +187,7 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (OscilloscopeComponent< SampleType >) 0.500000 0.000000 box
+ (OscilloscopeComponent) 0.500000 0.000000 box
  (juce::Component) 0.000000 1.000000 box
  (juce::Timer) 1.000000 1.000000 box
 

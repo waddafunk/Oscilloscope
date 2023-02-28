@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['buffersize_0',['bufferSize',['../classAudioBufferQueue.html#a33820484d5386240571250c8c31ca049',1,'AudioBufferQueue']]]
+  ['numbuffers_0',['numBuffers',['../classAudioBufferQueue.html#acb46b7841436b62174ddb97a642d590d',1,'AudioBufferQueue']]]
 ];

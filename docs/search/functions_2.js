@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['drawgrid_0',['drawGrid',['../classOscilloscopeComponent.html#aff83693f38391e6b6246a6fab439e821',1,'OscilloscopeComponent']]]
+  ['drawgrid_0',['drawGrid',['../classOscilloscopeComponent.html#a0d3352f4713d20d05063ee65158f98ea',1,'OscilloscopeComponent']]]
 ];

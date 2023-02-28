@@ -15,135 +15,136 @@
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00011}00011 \textcolor{preprocessor}{\#pragma once}}
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <JuceHeader.h>}}
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{AudioBufferQueue_8h}{AudioBufferQueue.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00020}00020 \textcolor{keyword}{template} <\textcolor{keyword}{typename} SampleType>}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{PluginProcessor_8h}{PluginProcessor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00015}00015 }
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00021}\mbox{\hyperlink{classOscilloscopeComponent}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{classOscilloscopeComponent}{OscilloscopeComponent}} : \textcolor{keyword}{public} juce::Component,}
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00022}00022     \textcolor{keyword}{private} juce::Timer}
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00023}00023 \{}
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00024}00024 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00025}\mbox{\hyperlink{classOscilloscopeComponent_ad3183785c145e9787e7af32168a5db6c}{00025}}     \textcolor{keyword}{using }\mbox{\hyperlink{classAudioBufferQueue}{Queue}} = \mbox{\hyperlink{classAudioBufferQueue}{AudioBufferQueue<SampleType>}};}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00026}00026 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00027}00027     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00033}\mbox{\hyperlink{classOscilloscopeComponent_a8dccad1ef96eb900cb1aa6abef8880fd}{00033}} \textcolor{comment}{}    \mbox{\hyperlink{classOscilloscopeComponent_a8dccad1ef96eb900cb1aa6abef8880fd}{OscilloscopeComponent}}(\mbox{\hyperlink{classAudioBufferQueue}{Queue}}\& queueToUse, \textcolor{keywordtype}{int} sampleRate)}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00034}00034         : audioBufferQueue(queueToUse)}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00035}00035     \{}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00036}00036         \mbox{\hyperlink{classOscilloscopeComponent_a6c2bcea9286b42540a19561270e8aacc}{setFramesPerSecond}}(30);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00037}00037         this-\/>sampleRate = sampleRate;}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00038}00038         sampleData.resize(queueToUse.\mbox{\hyperlink{classAudioBufferQueue_a33820484d5386240571250c8c31ca049}{bufferSize}});}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00039}00039         std::fill(sampleData.begin(), sampleData.end(), 0);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00040}00040     \}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00041}00041 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00042}00042     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00048}\mbox{\hyperlink{classOscilloscopeComponent_a6c2bcea9286b42540a19561270e8aacc}{00048}} \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_a6c2bcea9286b42540a19561270e8aacc}{setFramesPerSecond}}(\textcolor{keywordtype}{int} framesPerSecond)}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00049}00049     \{}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00050}00050         jassert(framesPerSecond > 0 \&\& framesPerSecond < 1000);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00051}00051         startTimerHz(framesPerSecond);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00052}00052     \}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00054}00054     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00055}00055 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00061}\mbox{\hyperlink{classOscilloscopeComponent_a02c18cf88408875bb8108d96ef250cdf}{00061}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_a02c18cf88408875bb8108d96ef250cdf}{setGridCheck}}(\textcolor{keywordtype}{bool} newValue)}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00062}00062     \{}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00063}00063         this-\/>gridCheck = newValue;}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00064}00064     \}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00065}00065 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00073}\mbox{\hyperlink{classOscilloscopeComponent_aff83693f38391e6b6246a6fab439e821}{00073}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_aff83693f38391e6b6246a6fab439e821}{drawGrid}}(juce::Graphics\& g, SampleType w, SampleType h)}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00074}00074     \{}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00075}00075         g.setColour(juce::Colours::red);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00076}00076         g.setOpacity(0.6);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00077}00077         g.drawLine(0, h / 2, w, h / 2);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00078}00078         g.drawLine(1, 0, 1, h);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00079}00079 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00080}00080         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < 10; i++)}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00081}00081         \{}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00082}00082             \textcolor{keywordtype}{float} xPos = i * w / 10;}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00083}00083             \textcolor{keywordtype}{float} yPos = i * h / 10;}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00084}00084             g.drawLine(xPos, h / 2 -\/ 8, xPos, h / 2 + 8);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00085}00085             g.drawLine(0, yPos, 8, yPos);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00086}00086         \}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00087}00087 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00088}00088         \textcolor{keywordtype}{float} fontHeight = g.getCurrentFont().getAscent();}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00089}00089         \textcolor{keywordtype}{float} duration = sampleData.size() * 1000 / sampleRate;}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00090}00090         duration /= 10;}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00091}00091         \textcolor{keyword}{auto} xText = juce::String(duration);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00092}00092         xText.append(\textcolor{stringliteral}{"{} ms"{}}, 3);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00093}00093 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00094}00094         g.drawLine(w -\/ 65, h -\/ 39, w -\/ 65, h -\/ 39 -\/ fontHeight);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00095}00095         g.drawLine(w -\/ 55, h -\/ 39 -\/ fontHeight / 2, w -\/ 65, h -\/ 39 -\/ fontHeight / 2);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00096}00096         g.drawLine(w -\/ 55, h -\/ 39, w -\/ 55, h -\/ 39 -\/ fontHeight);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00097}00097         g.drawSingleLineText(xText, w -\/ 50, h -\/ 39);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00098}00098 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00099}00099         \textcolor{keyword}{auto} yText = \textcolor{stringliteral}{"{}0.1"{}};}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00100}00100         g.drawLine(w -\/ 65, h -\/ 19, w -\/ 55, h -\/ 19);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00101}00101         g.drawLine(w -\/ 60, h -\/ 19 -\/ fontHeight, w -\/ 60, h -\/ 19);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00102}00102         g.drawLine(w -\/ 65, h -\/ 19 -\/ fontHeight, w -\/ 55, h -\/ 19 -\/ fontHeight);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00103}00103         g.drawSingleLineText(yText, w -\/ 50, h -\/ 19);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00104}00104     \}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00105}00105 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00111}\mbox{\hyperlink{classOscilloscopeComponent_ae810631af9c6f94f3f82d62539e6eba1}{00111}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_ae810631af9c6f94f3f82d62539e6eba1}{paint}}(juce::Graphics\& g)\textcolor{keyword}{ override}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00112}00112 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00113}00113         g.fillAll(juce::Colours::black);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00114}00114         g.setColour(juce::Colours::white);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00115}00115 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00116}00116         \textcolor{keyword}{auto} area = getLocalBounds();}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00117}00117         \textcolor{keyword}{auto} h = (SampleType)area.getHeight();}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00118}00118         \textcolor{keyword}{auto} w = (SampleType)area.getWidth();}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00119}00119 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00120}00120         \textcolor{keywordflow}{if} (gridCheck)}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00121}00121         \{}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00122}00122             \mbox{\hyperlink{classOscilloscopeComponent_aff83693f38391e6b6246a6fab439e821}{drawGrid}}(g, w, h);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00123}00123         \}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00124}00124      }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00125}00125         \textcolor{comment}{// Oscilloscope}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00126}00126         \textcolor{keyword}{auto} scopeRect = juce::Rectangle<SampleType>\{ SampleType(0), SampleType(0), w, h \};}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00127}00127         plot(sampleData.data(), sampleData.size(), g, scopeRect, SampleType(1), h / 2);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00128}00128 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00129}00129         g.setColour(juce::Colours::dimgrey);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00130}00130         \textcolor{keyword}{auto} contour = juce::Line<float>(0, h, w, h);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00131}00131         g.drawLine(contour, 8.0f);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00132}00132 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00133}00133     \}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00134}00134 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00135}00135     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00140}\mbox{\hyperlink{classOscilloscopeComponent_af4ef90e7d85dd5e0b6629204502150a1}{00140}} \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_af4ef90e7d85dd5e0b6629204502150a1}{resized}}()\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00026}00026     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00032}\mbox{\hyperlink{classOscilloscopeComponent_a3b8013e5ef4b2d5acf1f0aafd81c461a}{00032}} \textcolor{comment}{}    \mbox{\hyperlink{classOscilloscopeComponent_a3b8013e5ef4b2d5acf1f0aafd81c461a}{OscilloscopeComponent}}(\mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\& aProcessor, \textcolor{keywordtype}{int} sampleRate) :}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00033}00033         audioProcessor(aProcessor)}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00034}00034     \{}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00035}00035         \mbox{\hyperlink{classOscilloscopeComponent_a6065ccad27a73563416d278f502abea7}{setFramesPerSecond}}(30);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00036}00036         this-\/>sampleRate = sampleRate;}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00037}00037         sampleData.resize(audioProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_ae2af712fdcae4b9410ccfce206f6c864}{getAudioBufferQueue}}()-\/>getBufferSize());}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00038}00038         std::fill(sampleData.begin(), sampleData.end(), 0);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00039}00039     \}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00041}00041     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00047}\mbox{\hyperlink{classOscilloscopeComponent_a6065ccad27a73563416d278f502abea7}{00047}} \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_a6065ccad27a73563416d278f502abea7}{setFramesPerSecond}}(\textcolor{keywordtype}{int} framesPerSecond)}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00048}00048     \{}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00049}00049         jassert(framesPerSecond > 0 \&\& framesPerSecond < 1000);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00050}00050         startTimerHz(framesPerSecond);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00051}00051     \}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00053}00053     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00060}\mbox{\hyperlink{classOscilloscopeComponent_a80e62cd1278d38f666aa55cf58fc9acb}{00060}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_a80e62cd1278d38f666aa55cf58fc9acb}{setGridCheck}}(\textcolor{keywordtype}{bool} newValue)}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00061}00061     \{}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00062}00062         this-\/>gridCheck = newValue;}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00063}00063     \}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00072}\mbox{\hyperlink{classOscilloscopeComponent_a0d3352f4713d20d05063ee65158f98ea}{00072}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_a0d3352f4713d20d05063ee65158f98ea}{drawGrid}}(juce::Graphics\& g, \textcolor{keywordtype}{float} w, \textcolor{keywordtype}{float} h)}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00073}00073     \{}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00074}00074         g.setColour(juce::Colours::ghostwhite);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00075}00075         g.setOpacity(0.8);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00076}00076         g.drawLine(0, h / 2, w, h / 2);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00077}00077         g.drawLine(1, 0, 1, h);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00079}00079         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < 10; i++)}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00080}00080         \{}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00081}00081             \textcolor{keywordtype}{float} xPos = i * w / 10;}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00082}00082             \textcolor{keywordtype}{float} yPos = i * h / 10;}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00083}00083             g.drawLine(xPos, h / 2 -\/ 8, xPos, h / 2 + 8);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00084}00084             g.drawLine(0, yPos, 8, yPos);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00085}00085         \}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00087}00087         \textcolor{keywordtype}{float} fontHeight = g.getCurrentFont().getAscent();}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00088}00088         \textcolor{keywordtype}{float} duration = sampleData.size() * 1000 / sampleRate;}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00089}00089         duration /= 10;}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00090}00090         \textcolor{keyword}{auto} xText = juce::String(duration);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00091}00091         xText.append(\textcolor{stringliteral}{"{} ms"{}}, 3);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00093}00093         g.drawLine(w -\/ 65, h -\/ 39, w -\/ 65, h -\/ 39 -\/ fontHeight);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00094}00094         g.drawLine(w -\/ 55, h -\/ 39 -\/ fontHeight / 2, w -\/ 65, h -\/ 39 -\/ fontHeight / 2);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00095}00095         g.drawLine(w -\/ 55, h -\/ 39, w -\/ 55, h -\/ 39 -\/ fontHeight);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00096}00096         g.drawSingleLineText(xText, w -\/ 50, h -\/ 39);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00098}00098         \textcolor{keyword}{auto} yText = \textcolor{stringliteral}{"{}0.1"{}};}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00099}00099         g.drawLine(w -\/ 65, h -\/ 19, w -\/ 55, h -\/ 19);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00100}00100         g.drawLine(w -\/ 60, h -\/ 19 -\/ fontHeight, w -\/ 60, h -\/ 19);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00101}00101         g.drawLine(w -\/ 65, h -\/ 19 -\/ fontHeight, w -\/ 55, h -\/ 19 -\/ fontHeight);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00102}00102         g.drawSingleLineText(yText, w -\/ 50, h -\/ 19);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00103}00103     \}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00110}\mbox{\hyperlink{classOscilloscopeComponent_a066d0bc1299d9f197e1ec2113bf14f4a}{00110}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_a066d0bc1299d9f197e1ec2113bf14f4a}{paint}}(juce::Graphics\& g)\textcolor{keyword}{ override}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00111}00111 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00112}00112         g.fillAll(juce::Colours::black);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00113}00113         g.setColour(juce::Colours::white);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00115}00115         \textcolor{keyword}{auto} area = getLocalBounds();}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00116}00116         \textcolor{keyword}{auto} h = (float)area.getHeight();}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00117}00117         \textcolor{keyword}{auto} w = (float)area.getWidth();}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00119}00119         \textcolor{keywordflow}{if} (gridCheck)}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00120}00120         \{}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00121}00121             \mbox{\hyperlink{classOscilloscopeComponent_a0d3352f4713d20d05063ee65158f98ea}{drawGrid}}(g, w, h);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00122}00122         \}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00123}00123      }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00124}00124         \textcolor{comment}{// Oscilloscope}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00125}00125         \textcolor{keyword}{auto} scopeRect = juce::Rectangle<float>\{ float(0), float(0), w, h \};}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00126}00126         plot(sampleData.data(), sampleData.size(), g, scopeRect, \textcolor{keywordtype}{float}(1), h / 2);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00128}00128         g.setColour(juce::Colours::dimgrey);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00129}00129         \textcolor{keyword}{auto} contour = juce::Line<float>(0, h, w, h);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00130}00130         g.drawLine(contour, 8.0f);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00132}00132     \}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00134}00134     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00139}\mbox{\hyperlink{classOscilloscopeComponent_a84b64d18a9406080807a4b7850a92858}{00139}} \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeComponent_a84b64d18a9406080807a4b7850a92858}{resized}}()\textcolor{keyword}{ override }\{\};}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00140}00140 }
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00141}00141 }
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00142}00142 \textcolor{keyword}{private}:}
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00143}00143     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00144}00144     \mbox{\hyperlink{classOscilloscopeComponent_ad3183785c145e9787e7af32168a5db6c}{Queue}}\& audioBufferQueue; }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00145}00145     std::vector<SampleType> sampleData; }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00144}00144     \mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\& audioProcessor;}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00145}00145     std::vector<float> sampleData; }
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00146}00146     \textcolor{keywordtype}{int} sampleRate; }
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00147}00147     \textcolor{keywordtype}{bool} gridCheck = \textcolor{keyword}{false};}
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00148}00148 }
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00149}00149     \textcolor{comment}{//==============================================================================}}
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00156}00156 \textcolor{comment}{}    \textcolor{keywordtype}{void} timerCallback()\textcolor{keyword}{ override}}
 \DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00157}00157 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00158}00158         audioBufferQueue.pop(sampleData.data());}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00159}00159         repaint();}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00160}00160     \}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00161}00161 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00162}00162     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00173}00173 \textcolor{comment}{}    \textcolor{keyword}{static} \textcolor{keywordtype}{void} plot(\textcolor{keyword}{const} SampleType* data,}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00174}00174         \textcolor{keywordtype}{size\_t} numSamples,}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00175}00175         juce::Graphics\& g,}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00176}00176         juce::Rectangle<SampleType> rect,}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00177}00177         SampleType scaler = SampleType(1),}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00178}00178         SampleType offset = SampleType(0))}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00179}00179     \{}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00180}00180         \textcolor{keyword}{auto} w = rect.getWidth();}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00181}00181         \textcolor{keyword}{auto} h = rect.getHeight();}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00182}00182         \textcolor{keyword}{auto} right = rect.getRight();}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00183}00183 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00184}00184         \textcolor{keyword}{auto} center = rect.getBottom() -\/ offset;}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00185}00185         \textcolor{keyword}{auto} gain = h * scaler;}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00186}00186 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00187}00187         g.setColour(juce::Colours::beige);}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00188}00188 }
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00189}00189         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < numSamples; ++i)}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00190}00190             g.drawLine(\{ juce::jmap(SampleType(i -\/ 1), SampleType(0), SampleType(numSamples -\/ 1), SampleType(right -\/ w), SampleType(right)),}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00191}00191                           center -\/ gain * data[i -\/ 1],}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00192}00192                           juce::jmap(SampleType(i), SampleType(0), SampleType(numSamples -\/ 1), SampleType(right -\/ w), SampleType(right)),}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00193}00193                           center -\/ gain * data[i] \});}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00194}00194     \}}
-\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00195}00195 \};}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00158}00158         sampleData.resize(audioProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_ae2af712fdcae4b9410ccfce206f6c864}{getAudioBufferQueue}}()-\/>getBufferSize());}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00159}00159         audioProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_ae2af712fdcae4b9410ccfce206f6c864}{getAudioBufferQueue}}()-\/>pop(sampleData.data());}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00160}00160         repaint();}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00161}00161     \}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00163}00163     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00174}00174 \textcolor{comment}{}    \textcolor{keyword}{static} \textcolor{keywordtype}{void} plot(\textcolor{keyword}{const} \textcolor{keywordtype}{float}* data,}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00175}00175         \textcolor{keywordtype}{size\_t} numSamples,}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00176}00176         juce::Graphics\& g,}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00177}00177         juce::Rectangle<float> rect,}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00178}00178         \textcolor{keywordtype}{float} scaler = \textcolor{keywordtype}{float}(1),}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00179}00179         \textcolor{keywordtype}{float} offset = \textcolor{keywordtype}{float}(0))}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00180}00180     \{}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00181}00181         \textcolor{keyword}{auto} w = rect.getWidth();}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00182}00182         \textcolor{keyword}{auto} h = rect.getHeight();}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00183}00183         \textcolor{keyword}{auto} right = rect.getRight();}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00185}00185         \textcolor{keyword}{auto} center = rect.getBottom() -\/ offset;}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00186}00186         \textcolor{keyword}{auto} gain = h * scaler;}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00188}00188         g.setColour(juce::Colours::beige);}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00189}00189 }
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00190}00190         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < numSamples; ++i)}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00191}00191             g.drawLine(\{ juce::jmap(float(i -\/ 1), float(0), float(numSamples -\/ 1), float(right -\/ w), float(right)),}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00192}00192                           center -\/ gain * data[i -\/ 1],}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00193}00193                           juce::jmap(float(i), float(0), float(numSamples -\/ 1), float(right -\/ w), float(right)),}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00194}00194                           center -\/ gain * data[i] \});}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00195}00195     \}}
+\DoxyCodeLine{\Hypertarget{OscilloscopeComponent_8h_source_l00196}00196 \};}
 
 \end{DoxyCode}
