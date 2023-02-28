@@ -27,11 +27,11 @@ public:
      * 
      * \param bufferSize new buffer size.
      */
-    void setBufferSize(int bufferSize)
+    void setBufferSize(int newBufferSize)
     {
         for ( int i = 0; i < numBuffers; i++)
-            buffers[i].resize(bufferSize);
-        this->bufferSize = bufferSize;
+            buffers[i].resize(newBufferSize);
+        this->bufferSize = newBufferSize;
     }
 
     /**

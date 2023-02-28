@@ -112,6 +112,9 @@ private:
     {
         audioBufferQueue.setBufferSize((int)newValue);
         resizeBuffer();
+        state = State::waitingForTrigger;
+        audioBufferQueue.flush();
+        std::fill(std::begin(buffer), std::end(buffer), 0);
     }
 
 };

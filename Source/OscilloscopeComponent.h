@@ -58,6 +58,7 @@ public:
     void resizeBuffer()
     {
         sampleData.resize(audioBufferQueue.bufferSize);
+        std::fill(sampleData.begin(), sampleData.end(), 0);
     }
 
 
