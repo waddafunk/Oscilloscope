@@ -27,7 +27,7 @@ public:
     ScopeDataCollector(AudioBufferQueue<SampleType>& queueToUse)
         : audioBufferQueue(queueToUse)
     {
-        buffer.resize(queueToUse.bufferSize);
+        buffer.resize(queueToUse.getBufferSize());
     }
 
     //==============================================================================

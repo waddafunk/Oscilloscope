@@ -22,9 +22,15 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
                        ), 
 #endif
     processorTreeState(*this, nullptr, "PARAMETERS",
-    { std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), })
+    { 
+        std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), 
+        std::make_unique<juce::AudioParameterInt>("bufferLength", "Scope Length", 2000, 44100, 5000),
+    })
 {
-
+    size_t bufferSize = 5000;
+    audioBufferQueue.reset(new AudioBufferQueue<float>(bufferSize));
+    scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
+    processorTreeState.addParameterListener("bufferLength", this);
 }
 
 OscilloscopeAudioProcessor::~OscilloscopeAudioProcessor()
@@ -142,7 +148,7 @@ void OscilloscopeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     for (int i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear(i, 0, buffer.getNumSamples());
 
-    scopeDataCollector.process(buffer.getReadPointer(0), (size_t)buffer.getNumSamples());
+    scopeDataCollector->process(buffer.getReadPointer(0), (size_t)buffer.getNumSamples());
 }
 
 //==============================================================================
@@ -192,14 +198,20 @@ int OscilloscopeAudioProcessor::getSampleRate()
     return this->sampleRate;
 }
 
-AudioBufferQueue<float>& OscilloscopeAudioProcessor::getAudioBufferQueue()
+AudioBufferQueue<float>* OscilloscopeAudioProcessor::getAudioBufferQueue()
 {
-    return this->audioBufferQueue;
+    return this->audioBufferQueue.get();
 }
 
 juce::AudioProcessorValueTreeState* OscilloscopeAudioProcessor::getTreeState()
 {
     return &this->processorTreeState;
+}
+
+void OscilloscopeAudioProcessor::parameterChanged(const juce::String& parameterID, float newValue)
+{
+    audioBufferQueue.reset(new AudioBufferQueue<float>(newValue));
+    scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
 }
 
 //==============================================================================

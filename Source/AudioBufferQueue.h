@@ -24,6 +24,19 @@ public:
     //==============================================================================
 
     /**
+     * Constructor.
+     * 
+     * \param newBufferSize Buffer size.
+     */
+    AudioBufferQueue(size_t newBufferSize = (size_t)5000)
+    {
+        this->bufferSize = newBufferSize;
+        for (size_t i = 0; i < numBuffers; i++)
+        {
+            buffers[i].resize(newBufferSize);
+        }
+    }
+    /**
      * Pushes a buffer of data.
      * 
      * \param dataToPush Data to push to the buffers
@@ -41,7 +54,6 @@ public:
 
         if (size1 > 0)
         {
-            buffers[(size_t)start1].resize(numSamples);
             juce::FloatVectorOperations::copy(buffers[(size_t)start1].data(), dataToPush, numSamples);
         }
 
@@ -83,10 +95,20 @@ public:
             std::fill(std::begin(buffers[i]), std::end(buffers[i]), 0);
         }
     }
+
+    /**
+     * Get buffer size.
+     * 
+     * \return Buffer size.
+     */
+    size_t getBufferSize()
+    {
+        return bufferSize;
+    }
  
-    size_t bufferSize = 5000; /**< Buffer size */
 private:
     //==============================================================================
     juce::AbstractFifo abstractFifo{ numBuffers }; /**<a href = "https://docs.juce.com/master/classAbstractFifo.html">Abstract Fifo< / a> */
     std::array<std::vector<SampleType>, numBuffers> buffers; /**< Array of buffers */
+    size_t bufferSize; /**< Buffer size */
 };

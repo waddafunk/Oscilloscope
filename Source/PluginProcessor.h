@@ -15,7 +15,7 @@
 //==============================================================================
 /**
 */
-class OscilloscopeAudioProcessor  : public juce::AudioProcessor
+class OscilloscopeAudioProcessor  : public juce::AudioProcessor, public juce::AudioProcessorValueTreeState::Listener
                             #if JucePlugin_Enable_ARA
                              , public juce::AudioProcessorARAExtension
                             #endif
@@ -60,14 +60,15 @@ public:
 
     int getSampleRate();
 
-    AudioBufferQueue<float>& getAudioBufferQueue();
+    AudioBufferQueue<float>* getAudioBufferQueue();
 
     juce::AudioProcessorValueTreeState* getTreeState();
 
 private:
+    void parameterChanged(const juce::String& parameterID, float newValue);
     //==============================================================================
-    AudioBufferQueue<float> audioBufferQueue;
-    ScopeDataCollector<float> scopeDataCollector{ audioBufferQueue };
+    std::unique_ptr<AudioBufferQueue<float>> audioBufferQueue;
+    std::unique_ptr <ScopeDataCollector<float>> scopeDataCollector;
     juce::AudioProcessorValueTreeState processorTreeState;
     int sampleRate;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessor)
