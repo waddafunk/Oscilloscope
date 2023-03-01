@@ -25,7 +25,7 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
     { 
         std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), 
         std::make_unique<juce::AudioParameterInt>("bufferLength", "Scope Length", 2000, 22050, 5000),
-    }), editorSize(juce::Identifier("editorSize"))
+    })
 {
 
     size_t bufferSize = 5000;
@@ -224,18 +224,18 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 
 int OscilloscopeAudioProcessor::getEditorWidth()
 {
-    auto size = editorSize.getOrCreateChildWithName("lastSize", nullptr);
+    auto size = processorTreeState.state.getOrCreateChildWithName("lastSize", nullptr);
     return size.getProperty("width", EDITOR_INITIAL_WIDTH);
 }
 int OscilloscopeAudioProcessor::getEditorHeight()
 {
-    auto size = editorSize.getOrCreateChildWithName("lastSize", nullptr);
+    auto size = processorTreeState.state.getOrCreateChildWithName("lastSize", nullptr);
     return size.getProperty("height", EDITOR_INITIAL_HEIGHT);
 }
 
 void OscilloscopeAudioProcessor::storeEditorSize(int width, int height)
 {
-    auto size = editorSize.getOrCreateChildWithName("lastSize", nullptr);
+    auto size = processorTreeState.state.getOrCreateChildWithName("lastSize", nullptr);
     size.setProperty("width", width, nullptr);
     size.setProperty("height", height, nullptr);
 }
