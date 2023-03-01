@@ -81,7 +81,7 @@ void OscilloscopeAudioProcessorEditor::resized()
     oscilloscopeComponent->setTransform(juce::AffineTransform::scale(x_sc, y_sc));
     drawGrid.setTransform(juce::AffineTransform::translation(0, yDiff));
 
-    audioProcessor.setEditorSize(getWidth(), getHeight());
+    audioProcessor.storeEditorSize(getWidth(), getHeight());
     
 }
 

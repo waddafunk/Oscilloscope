@@ -67,9 +67,26 @@ public:
 
     juce::AudioProcessorValueTreeState* getTreeState();
 
+    /**
+     * Get editor width.
+     * 
+     * \return Editor width.
+     */
     int getEditorWidth();
+    /**
+     * Get editor height.
+     * 
+     * \return Editor height.
+     */
     int getEditorHeight();
-    void setEditorSize(int width, int height);
+    /**
+     * Store editor size in order to be able to recover it from the @param editorSize ValueTree.
+     * This is done in order to make the editor size persistent.
+     * 
+     * \param width Editor width.
+     * \param height Editor height.
+     */
+    void storeEditorSize(int width, int height);
 
 private:
     void parameterChanged(const juce::String& parameterID, float newValue);
@@ -77,6 +94,11 @@ private:
     std::unique_ptr<AudioBufferQueue<float>> audioBufferQueue;
     std::unique_ptr <ScopeDataCollector<float>> scopeDataCollector;
     juce::AudioProcessorValueTreeState processorTreeState;
+    /**
+     * ValueTree storing editor's size information. The parameters stored in this ValueTree
+     *  will not be exported in the plugin's state and cannot be automated by the external
+     * DAW, differently from the parameters of @param processorTreeState. 
+     */
     juce::ValueTree editorSize;
     int sampleRate;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessor)

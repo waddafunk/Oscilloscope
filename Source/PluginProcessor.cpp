@@ -233,7 +233,7 @@ int OscilloscopeAudioProcessor::getEditorHeight()
     return size.getProperty("height", EDITOR_INITIAL_HEIGHT);
 }
 
-void OscilloscopeAudioProcessor::setEditorSize(int width, int height)
+void OscilloscopeAudioProcessor::storeEditorSize(int width, int height)
 {
     auto size = editorSize.getOrCreateChildWithName("lastSize", nullptr);
     size.setProperty("width", width, nullptr);
