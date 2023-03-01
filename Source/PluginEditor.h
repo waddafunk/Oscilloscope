@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "OscilloscopeComponent.h"
+#include"UntriggeredOscilloscope.h"
 
 //==============================================================================
 /**
@@ -29,7 +30,7 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     OscilloscopeAudioProcessor& audioProcessor;
-    OscilloscopeComponent oscilloscopeComponent;
+    std::unique_ptr<OscilloscopeComponent> oscilloscopeComponent;
     juce::ToggleButton drawGrid;
     juce::Slider bufferLength;
     juce::AudioProcessorValueTreeState::SliderAttachment* bufferLengthAttachment;

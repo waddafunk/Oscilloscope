@@ -11,13 +11,13 @@
 
 //==============================================================================
 OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (OscilloscopeAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), 
-    oscilloscopeComponent(audioProcessor, audioProcessor.getSampleRate())
+    : AudioProcessorEditor (&p), audioProcessor (p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
+    oscilloscopeComponent.reset(new UntriggeredOscilloscope(audioProcessor, audioProcessor.getSampleRate()));
 
-    addAndMakeVisible(oscilloscopeComponent);
+    addAndMakeVisible(oscilloscopeComponent.get());
     addAndMakeVisible(drawGrid);
     addAndMakeVisible(bufferLength);
     drawGrid.setButtonText("Grid");
@@ -26,12 +26,12 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
 
     auto area = getLocalBounds();
     drawGrid.setSize(100, 20);
-    oscilloscopeComponent.setTopLeftPosition(0, 0);
-    oscilloscopeComponent.setSize(area.getWidth(), area.getHeight() - 30);
+    oscilloscopeComponent->setTopLeftPosition(0, 0);
+    oscilloscopeComponent->setSize(area.getWidth(), area.getHeight() - 30);
     drawGrid.setTopLeftPosition(10, area.getHeight() - 25);
     drawGrid.onStateChange = [this]() {
         auto draw = drawGrid.getToggleState();
-        oscilloscopeComponent.setGridCheck(draw);
+        oscilloscopeComponent->setGridCheck(draw);
     };
 
     // Get a pointer to the AudioParameterBool
@@ -75,12 +75,12 @@ void OscilloscopeAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     auto area = getLocalBounds();
-    float yDiff = (float)(area.getHeight() - 30) - oscilloscopeComponent.getHeight();
+    float yDiff = (float)(area.getHeight() - 30) - oscilloscopeComponent->getHeight();
 
     // rescale oscilloscope
-    float x_sc = (float)area.getWidth() / oscilloscopeComponent.getWidth();
-    float y_sc = (float)(area.getHeight() - 30) / oscilloscopeComponent.getHeight();
-    oscilloscopeComponent.setTransform(juce::AffineTransform::scale(x_sc, y_sc));
+    float x_sc = (float)area.getWidth() / oscilloscopeComponent->getWidth();
+    float y_sc = (float)(area.getHeight() - 30) / oscilloscopeComponent->getHeight();
+    oscilloscopeComponent->setTransform(juce::AffineTransform::scale(x_sc, y_sc));
     drawGrid.setTransform(juce::AffineTransform::translation(0, yDiff));
     
 }

@@ -7,6 +7,14 @@
   <MAINGROUP id="Wv5BAZ" name="Oscilloscope">
     <GROUP id="{9EF2004F-D29B-378D-4DEE-0DF26C311E1A}" name="Source">
       <GROUP id="{98C0D305-E15F-5BE0-ADC4-AB71EAF6A2E9}" name="Oscilloscopes">
+        <FILE id="qasOIa" name="UntriggeredOscilloscope.cpp" compile="1" resource="0"
+              file="Source/UntriggeredOscilloscope.cpp"/>
+        <FILE id="YFBd5x" name="UntriggeredOscilloscope.h" compile="0" resource="0"
+              file="Source/UntriggeredOscilloscope.h"/>
+        <FILE id="QjvZey" name="TriggeredOscilloscope.cpp" compile="1" resource="0"
+              file="Source/TriggeredOscilloscope.cpp"/>
+        <FILE id="TA6Zec" name="TriggeredOscilloscope.h" compile="0" resource="0"
+              file="Source/TriggeredOscilloscope.h"/>
         <FILE id="F7VNcN" name="OscilloscopeComponent.h" compile="0" resource="0"
               file="Source/OscilloscopeComponent.h"/>
         <FILE id="J6Strq" name="OscilloscopeComponent.cpp" compile="1" resource="0"
