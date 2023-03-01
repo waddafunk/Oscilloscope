@@ -22,7 +22,7 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
     addAndMakeVisible(bufferLength);
     drawGrid.setButtonText("Grid");
     
-    setSize(1400, 700);
+    setSize(audioProcessor.getEditorWidth(), audioProcessor.getEditorHeight());
 
     auto area = getLocalBounds();
     drawGrid.setSize(100, 20);
@@ -36,16 +36,12 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
 
     // Get a pointer to the AudioParameterBool
     //auto* myToggleParam = dynamic_cast<juce::AudioParameterBool*>(processor.getParameters().getUnchecked(0));
-    auto drawGridValue = audioProcessor.getTreeState()->getParameter("drawGrid")->getValue();
-    drawGrid.setToggleState(drawGridValue, juce::sendNotification);
 
     // Attach the ToggleButton to the AudioParameterBool
     gridAttachment = new juce::AudioProcessorValueTreeState::ButtonAttachment(*audioProcessor.getTreeState(), juce::String("drawGrid"), drawGrid);
 
     bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
     bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
-    auto bufferLengthValue = audioProcessor.getTreeState()->getParameter("bufferLength")->getValue();
-    bufferLength.setValue((double)bufferLengthValue, juce::sendNotification);
     bufferLengthAttachment = new juce::AudioProcessorValueTreeState::SliderAttachment(*audioProcessor.getTreeState(), juce::String("bufferLength"), bufferLength);
     bufferLength.setTopLeftPosition(1000, area.getHeight() - 25);
     bufferLength.setSize(350, 20);
@@ -75,13 +71,17 @@ void OscilloscopeAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     auto area = getLocalBounds();
-    float yDiff = (float)(area.getHeight() - 30) - oscilloscopeComponent->getHeight();
+    int height = area.getHeight();
+    int width = area.getWidth();
+    float yDiff = (float)(height - 30) - oscilloscopeComponent->getHeight();
 
     // rescale oscilloscope
-    float x_sc = (float)area.getWidth() / oscilloscopeComponent->getWidth();
-    float y_sc = (float)(area.getHeight() - 30) / oscilloscopeComponent->getHeight();
+    float x_sc = (float)width / oscilloscopeComponent->getWidth();
+    float y_sc = (float)(height - 30) / oscilloscopeComponent->getHeight();
     oscilloscopeComponent->setTransform(juce::AffineTransform::scale(x_sc, y_sc));
     drawGrid.setTransform(juce::AffineTransform::translation(0, yDiff));
+
+    audioProcessor.setEditorSize(getWidth(), getHeight());
     
 }
 

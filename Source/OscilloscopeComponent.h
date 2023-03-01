@@ -163,7 +163,9 @@ private:
 protected:
     //==============================================================================
     /**
-     * Plots the waveform.
+     * Plots the waveform. This method is implemented in the subclasses in order to
+     * avoid having a check on the selected draw modality of the waveform every time 
+     * it is plotted. 
      * 
      * \param data Samples to plot
      * \param numSamples Number of samples

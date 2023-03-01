@@ -12,6 +12,9 @@
 #include "ScopeDataCollector.h"
 #include "AudioBufferQueue.h"
 
+constexpr int EDITOR_INITIAL_WIDTH = 1400;
+constexpr int EDITOR_INITIAL_HEIGHT = 700;
+
 //==============================================================================
 /**
 */
@@ -64,12 +67,17 @@ public:
 
     juce::AudioProcessorValueTreeState* getTreeState();
 
+    int getEditorWidth();
+    int getEditorHeight();
+    void setEditorSize(int width, int height);
+
 private:
     void parameterChanged(const juce::String& parameterID, float newValue);
     //==============================================================================
     std::unique_ptr<AudioBufferQueue<float>> audioBufferQueue;
     std::unique_ptr <ScopeDataCollector<float>> scopeDataCollector;
     juce::AudioProcessorValueTreeState processorTreeState;
+    juce::ValueTree editorSize;
     int sampleRate;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessor)
 };
