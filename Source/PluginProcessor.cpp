@@ -29,9 +29,8 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
 {
 
     size_t bufferSize = 5000;
-    audioBufferQueue.reset(new AudioBufferQueue<float>(bufferSize));
+    audioBufferQueue.reset(new AudioBufferQueue<float>(44100, getEditorRefreshRate()));
     scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
-    processorTreeState.addParameterListener("bufferLength", this);
 }
 
 OscilloscopeAudioProcessor::~OscilloscopeAudioProcessor()
@@ -106,6 +105,8 @@ void OscilloscopeAudioProcessor::prepareToPlay (double sampleRate, int samplesPe
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     this->sampleRate = sampleRate;
+    audioBufferQueue.reset(new AudioBufferQueue<float>(sampleRate, getEditorRefreshRate()));
+    scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
 }
 
 void OscilloscopeAudioProcessor::releaseResources()
@@ -236,6 +237,6 @@ void OscilloscopeAudioProcessor::storeEditorSize(int width, int height)
 
 int OscilloscopeAudioProcessor::getEditorRefreshRate()
 {
-    auto size = processorTreeState.state.getOrCreateChildWithName("editorRefreshRate", nullptr);
-    return size.getProperty("height", EDITOR_INITIAL_HEIGHT);
+    auto rate = processorTreeState.state.getOrCreateChildWithName("editorRefreshRate", nullptr);
+    return rate.getProperty("height", EDITOR_INITIAL_RATE);
 }

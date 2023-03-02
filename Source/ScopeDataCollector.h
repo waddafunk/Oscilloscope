@@ -43,11 +43,17 @@ public:
 
         if (state == State::waitingForTrigger)
         {
-            // If no sample over treshold (silence) flush everything.
+            // If no sample over treshold push silence.
             if (std::all_of(data, data + numSamples, [](SampleType i) {return i < triggerLevel; }))
             {
-                audioBufferQueue.flush();
-                return;
+                int numBuffersToPush = numSamples / buffer.size();
+                int numSamplesExceeding = numSamples % buffer.size();
+                std::fill(buffer.begin(), buffer.end(), 0);
+                for (size_t i = 0; i < numBuffersToPush; i++)
+                {
+                    audioBufferQueue.push(buffer.data(), buffer.size());
+                }
+                numCollected = numSamplesExceeding;
             }
             // Else setup collecting stage
             else
