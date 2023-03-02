@@ -12,6 +12,7 @@
 #include <JuceHeader.h>
 #include "AudioBufferQueue.h"
 #include "PluginProcessor.h"
+# include "InitVariables.h"
 
 /**
  * Oscilloscope graphical component for SampleType type data.
@@ -34,12 +35,18 @@ public:
     {
         setFramesPerSecond(framesPerSecond);
         this->sampleRate = sampleRate;
-        double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize();
         displayLength = *aProcessor.getTreeState()->getRawParameterValue("bufferLength");
-        sampleData.resize(displayLength);
+        ratio = displayLength / EDITOR_INITIAL_WIDTH();
+        displayLength /= ratio;
+        double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize() / ratio;
+        sampleData.resize(EDITOR_INITIAL_WIDTH());
+        newData.resize(sampleData.size());
         newlyPopped.resize(dataLength);
+        notInterpolatedData.resize(audioProcessor.getAudioBufferQueue()->getBufferSize());
         std::fill(sampleData.begin(), sampleData.end(), 0);
         std::fill(newlyPopped.begin(), newlyPopped.end(), 0);
+        std::fill(notInterpolatedData.begin(), notInterpolatedData.end(), 0);
+        std::fill(newData.begin(), newData.end(), 0);
         aProcessor.getTreeState()->addParameterListener("bufferLength", this);
     }
 
@@ -90,7 +97,7 @@ public:
         }
 
         float fontHeight = g.getCurrentFont().getAscent();
-        float duration = sampleData.size() * static_cast<float>(1000) / sampleRate;
+        float duration = *audioProcessor.getTreeState()->getRawParameterValue("bufferLength") * static_cast<float>(1000) / sampleRate;
         duration /= 10;
         auto xText = juce::String(duration);
         xText.append(" ms", 3);
@@ -150,8 +157,12 @@ private:
     int displayLength;
     std::vector<float> sampleData; /**< Data currently displayed */
     std::vector<float> newlyPopped; /**< Last popped array */
+    std::vector<float> notInterpolatedData;
+    std::vector<float> newData;
     int sampleRate; /**< Sample rate */
     bool gridCheck = false;
+    int ratio = 1;
+    juce::Interpolators::Linear interpolator;
 
     /**
      * Updates the buffer length when the parameter is modified.
@@ -161,8 +172,13 @@ private:
      */
     void parameterChanged(const juce::String& parameterID, float newValue) override
     {
-        displayLength = newValue;
+        ratio = newValue / EDITOR_INITIAL_WIDTH();
+        displayLength = newValue / ratio;
         sampleData.resize(displayLength);
+        newData.resize(sampleData.size());
+        int queueSize = audioProcessor.getAudioBufferQueue()->getBufferSize();
+        double dataLength = queueSize / ratio;
+        newlyPopped.resize(dataLength);
     }
 
     //==============================================================================
@@ -174,10 +190,10 @@ private:
      */
     void timerCallback() override
     {
-        audioProcessor.getAudioBufferQueue()->pop(newlyPopped.data());
-        std::vector<float> newData;
-        int queueSize = audioProcessor.getAudioBufferQueue()->getBufferSize();
-        newData.resize(sampleData.size());
+        audioProcessor.getAudioBufferQueue()->pop(notInterpolatedData.data());
+        interpolator.reset();
+        int queueSize = newlyPopped.size();
+        interpolator.process(ratio, notInterpolatedData.data(), newlyPopped.data(), queueSize);
         std::copy(sampleData.data() + queueSize, sampleData.data() + sampleData.size(), newData.begin());
         std::copy(newlyPopped.data(), newlyPopped.data() + queueSize, newData.begin() + sampleData.size() - queueSize);
         sampleData = newData;
