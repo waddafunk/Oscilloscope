@@ -9,12 +9,9 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "InitVariables.h"
 #include "ScopeDataCollector.h"
 #include "AudioBufferQueue.h"
-
-constexpr int EDITOR_INITIAL_WIDTH = 1400;
-constexpr int EDITOR_INITIAL_HEIGHT = 700;
-constexpr int EDITOR_INITIAL_RATE = 30;
 
 //==============================================================================
 /**

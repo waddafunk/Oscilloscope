@@ -11,7 +11,7 @@
 #include "UntriggeredOscilloscope.h"
 
 UntriggeredOscilloscope::UntriggeredOscilloscope(OscilloscopeAudioProcessor& aProcessor, int sampleRate)
-    :OscilloscopeComponent(aProcessor, sampleRate)
+    :OscilloscopeComponent(aProcessor, sampleRate, aProcessor.getEditorRefreshRate())
 {
 }
 

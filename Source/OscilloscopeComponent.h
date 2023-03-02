@@ -18,7 +18,7 @@
  * 
  * Inherits from <a href="https://docs.juce.com/master/classComponent.html">JUCE Component</a> and <a href="https://docs.juce.com/master/classTimer.html">JUCE timer</a> 
  */
-class OscilloscopeComponent : public juce::Component,
+class OscilloscopeComponent : public juce::Component, private juce::AudioProcessorValueTreeState::Listener,
     private juce::Timer
 {
 public:
@@ -29,17 +29,18 @@ public:
      * 
      * \param queueToUse AudioBufferQueue to use
      */
-    OscilloscopeComponent(OscilloscopeAudioProcessor& aProcessor, int sampleRate) :
+    OscilloscopeComponent(OscilloscopeAudioProcessor& aProcessor, int sampleRate, int framesPerSecond) :
         audioProcessor(aProcessor)
     {
-        setFramesPerSecond(30);
+        setFramesPerSecond(framesPerSecond);
         this->sampleRate = sampleRate;
-        double numPixels = getLocalBounds().getWidth();
         double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize();
-        double ratio = numPixels / dataLength;
-        notInterpolatedData.resize(dataLength);
+        displayLength = *aProcessor.getTreeState()->getRawParameterValue("bufferLength");
+        sampleData.resize(displayLength);
+        newlyPopped.resize(dataLength);
         std::fill(sampleData.begin(), sampleData.end(), 0);
-        std::fill(notInterpolatedData.begin(), notInterpolatedData.end(), 0);
+        std::fill(newlyPopped.begin(), newlyPopped.end(), 0);
+        aProcessor.getTreeState()->addParameterListener("bufferLength", this);
     }
 
     //==============================================================================
@@ -89,7 +90,7 @@ public:
         }
 
         float fontHeight = g.getCurrentFont().getAscent();
-        float duration = audioProcessor.getAudioBufferQueue()->getBufferSize() * 1000 / sampleRate;
+        float duration = sampleData.size() * static_cast<float>(1000) / sampleRate;
         duration /= 10;
         auto xText = juce::String(duration);
         xText.append(" ms", 3);
@@ -146,11 +147,23 @@ public:
 private:
     //==============================================================================
     OscilloscopeAudioProcessor& audioProcessor;
+    int displayLength;
     std::vector<float> sampleData; /**< Data currently displayed */
-    std::vector<float> notInterpolatedData;
+    std::vector<float> newlyPopped; /**< Last popped array */
     int sampleRate; /**< Sample rate */
     bool gridCheck = false;
-    juce::Interpolators::Linear interpolator;
+
+    /**
+     * Updates the buffer length when the parameter is modified.
+     * 
+     * \param parameterID Parameter ID (always "bufferLength).
+     * \param newValue New value.
+     */
+    void parameterChanged(const juce::String& parameterID, float newValue) override
+    {
+        displayLength = newValue;
+        sampleData.resize(displayLength);
+    }
 
     //==============================================================================
     /**
@@ -161,14 +174,13 @@ private:
      */
     void timerCallback() override
     {
-        audioProcessor.getAudioBufferQueue()->pop(notInterpolatedData.data());
-        notInterpolatedData.resize(audioProcessor.getAudioBufferQueue()->getBufferSize());
-        double numPixels = getLocalBounds().getWidth();
-        double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize();
-        double ratio = dataLength / numPixels;
-        sampleData.resize(numPixels);
-        interpolator.reset();
-        interpolator.process(ratio, notInterpolatedData.data(), sampleData.data(), sampleData.size());
+        audioProcessor.getAudioBufferQueue()->pop(newlyPopped.data());
+        std::vector<float> newData;
+        int queueSize = audioProcessor.getAudioBufferQueue()->getBufferSize();
+        newData.resize(sampleData.size());
+        std::copy(sampleData.data() + queueSize, sampleData.data() + sampleData.size(), newData.begin());
+        std::copy(newlyPopped.data(), newlyPopped.data() + queueSize, newData.begin() + sampleData.size() - queueSize);
+        sampleData = newData;
         repaint();
     }
 

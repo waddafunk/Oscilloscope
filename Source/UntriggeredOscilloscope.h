@@ -12,6 +12,10 @@
 #include<JuceHeader.h>
 #include"OscilloscopeComponent.h"
 
+/**
+ * Untriggered oscilloscope. Displays data continuously updating with no control 
+ * over trigger point and phase.
+ */
 class UntriggeredOscilloscope : public OscilloscopeComponent
 {
 public:

@@ -105,7 +105,7 @@ void OscilloscopeAudioProcessor::prepareToPlay (double sampleRate, int samplesPe
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     this->sampleRate = sampleRate;
-    audioBufferQueue.reset(new AudioBufferQueue<float>(sampleRate, getEditorRefreshRate()));
+    audioBufferQueue.reset(new AudioBufferQueue<float>(sampleRate, getEditorRefreshRate(), samplesPerBlock));
     scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
 }
 
@@ -220,12 +220,12 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 int OscilloscopeAudioProcessor::getEditorWidth()
 {
     auto size = processorTreeState.state.getOrCreateChildWithName("lastSize", nullptr);
-    return size.getProperty("width", EDITOR_INITIAL_WIDTH);
+    return size.getProperty("width", EDITOR_INITIAL_WIDTH());
 }
 int OscilloscopeAudioProcessor::getEditorHeight()
 {
     auto size = processorTreeState.state.getOrCreateChildWithName("lastSize", nullptr);
-    return size.getProperty("height", EDITOR_INITIAL_HEIGHT);
+    return size.getProperty("height", EDITOR_INITIAL_HEIGHT());
 }
 
 void OscilloscopeAudioProcessor::storeEditorSize(int width, int height)
@@ -238,5 +238,5 @@ void OscilloscopeAudioProcessor::storeEditorSize(int width, int height)
 int OscilloscopeAudioProcessor::getEditorRefreshRate()
 {
     auto rate = processorTreeState.state.getOrCreateChildWithName("editorRefreshRate", nullptr);
-    return rate.getProperty("height", EDITOR_INITIAL_RATE);
+    return rate.getProperty("height", EDITOR_INITIAL_RATE());
 }
