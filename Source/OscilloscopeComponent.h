@@ -34,8 +34,12 @@ public:
     {
         setFramesPerSecond(30);
         this->sampleRate = sampleRate;
-        sampleData.resize(audioProcessor.getAudioBufferQueue()->getBufferSize());
+        double numPixels = getLocalBounds().getWidth();
+        double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize();
+        double ratio = numPixels / dataLength;
+        notInterpolatedData.resize(dataLength);
         std::fill(sampleData.begin(), sampleData.end(), 0);
+        std::fill(notInterpolatedData.begin(), notInterpolatedData.end(), 0);
     }
 
     //==============================================================================
@@ -85,7 +89,7 @@ public:
         }
 
         float fontHeight = g.getCurrentFont().getAscent();
-        float duration = sampleData.size() * 1000 / sampleRate;
+        float duration = audioProcessor.getAudioBufferQueue()->getBufferSize() * 1000 / sampleRate;
         duration /= 10;
         auto xText = juce::String(duration);
         xText.append(" ms", 3);
@@ -136,15 +140,17 @@ public:
      * Called when component is resized.
      * 
      */
-    void resized() override {};
+    void resized() override { };
 
 
 private:
     //==============================================================================
     OscilloscopeAudioProcessor& audioProcessor;
     std::vector<float> sampleData; /**< Data currently displayed */
+    std::vector<float> notInterpolatedData;
     int sampleRate; /**< Sample rate */
     bool gridCheck = false;
+    juce::Interpolators::Linear interpolator;
 
     //==============================================================================
     /**
@@ -155,8 +161,14 @@ private:
      */
     void timerCallback() override
     {
-        sampleData.resize(audioProcessor.getAudioBufferQueue()->getBufferSize());
-        audioProcessor.getAudioBufferQueue()->pop(sampleData.data());
+        audioProcessor.getAudioBufferQueue()->pop(notInterpolatedData.data());
+        notInterpolatedData.resize(audioProcessor.getAudioBufferQueue()->getBufferSize());
+        double numPixels = getLocalBounds().getWidth();
+        double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize();
+        double ratio = dataLength / numPixels;
+        sampleData.resize(numPixels);
+        interpolator.reset();
+        interpolator.process(ratio, notInterpolatedData.data(), sampleData.data(), sampleData.size());
         repaint();
     }
 

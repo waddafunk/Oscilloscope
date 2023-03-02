@@ -14,11 +14,12 @@
 
 constexpr int EDITOR_INITIAL_WIDTH = 1400;
 constexpr int EDITOR_INITIAL_HEIGHT = 700;
+constexpr int EDITOR_INITIAL_RATE = 30;
 
 //==============================================================================
 /**
 */
-class OscilloscopeAudioProcessor  : public juce::AudioProcessor, public juce::AudioProcessorValueTreeState::Listener
+class OscilloscopeAudioProcessor  : public juce::AudioProcessor
                             #if JucePlugin_Enable_ARA
                              , public juce::AudioProcessorARAExtension
                             #endif
@@ -87,6 +88,13 @@ public:
      * \param height Editor height.
      */
     void storeEditorSize(int width, int height);
+
+    /**
+     * Get the stored refresh rate.
+     * 
+     * \return Stored editors' refresh rate.
+     */
+    int getEditorRefreshRate();
 
 private:
     void parameterChanged(const juce::String& parameterID, float newValue);

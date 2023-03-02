@@ -209,12 +209,6 @@ juce::AudioProcessorValueTreeState* OscilloscopeAudioProcessor::getTreeState()
     return &this->processorTreeState;
 }
 
-void OscilloscopeAudioProcessor::parameterChanged(const juce::String& parameterID, float newValue)
-{
-    audioBufferQueue.reset(new AudioBufferQueue<float>(newValue));
-    scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
-}
-
 //==============================================================================
 // This creates new instances of the plugin..
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
@@ -238,4 +232,10 @@ void OscilloscopeAudioProcessor::storeEditorSize(int width, int height)
     auto size = processorTreeState.state.getOrCreateChildWithName("lastSize", nullptr);
     size.setProperty("width", width, nullptr);
     size.setProperty("height", height, nullptr);
+}
+
+int OscilloscopeAudioProcessor::getEditorRefreshRate()
+{
+    auto size = processorTreeState.state.getOrCreateChildWithName("editorRefreshRate", nullptr);
+    return size.getProperty("height", EDITOR_INITIAL_HEIGHT);
 }

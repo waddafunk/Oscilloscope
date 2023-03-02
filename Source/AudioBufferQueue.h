@@ -28,9 +28,9 @@ public:
      * 
      * \param newBufferSize Buffer size.
      */
-    AudioBufferQueue(size_t newBufferSize = (size_t)5000)
+    AudioBufferQueue(int hostRate = 44100, int editorRefreshRate = 30)
     {
-        this->bufferSize = newBufferSize;
+        this->bufferSize = hostRate / editorRefreshRate;
         for (size_t i = 0; i < numBuffers; i++)
         {
             buffers[i].resize(newBufferSize);
