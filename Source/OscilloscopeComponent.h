@@ -35,7 +35,7 @@ public:
     {
         setFramesPerSecond(framesPerSecond);
         this->sampleRate = sampleRate;
-        displayLength = *aProcessor.getTreeState()->getRawParameterValue("bufferLength");
+        displayLength = (int)(*aProcessor.getTreeState()->getRawParameterValue("bufferLength") * aProcessor.getSampleRate());
         ratio = (double)displayLength / (double)EDITOR_INITIAL_WIDTH();
         displayLength /= ratio;
         double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize() / ratio;
@@ -97,21 +97,21 @@ public:
         }
 
         float fontHeight = g.getCurrentFont().getAscent();
-        float duration = *audioProcessor.getTreeState()->getRawParameterValue("bufferLength") * static_cast<float>(1000) / (float)sampleRate;
+        float duration = *audioProcessor.getTreeState()->getRawParameterValue("bufferLength") * static_cast<float>(10000);
         duration /= 10;
         auto xText = juce::String(duration, 2);
         xText.append(" ms", 3);
 
+        g.drawLine(w - 95, h - 39, w - 95, h - 39 - fontHeight);
+        g.drawLine(w - 85, h - 39 - fontHeight / 2, w - 95, h - 39 - fontHeight / 2);
         g.drawLine(w - 85, h - 39, w - 85, h - 39 - fontHeight);
-        g.drawLine(w - 75, h - 39 - fontHeight / 2, w - 85, h - 39 - fontHeight / 2);
-        g.drawLine(w - 75, h - 39, w - 75, h - 39 - fontHeight);
-        g.drawSingleLineText(xText, w - 70, h - 39);
+        g.drawSingleLineText(xText, w - 80, h - 39);
 
         auto yText = "0.1";
-        g.drawLine(w - 85, h - 19, w - 75, h - 19);
-        g.drawLine(w - 80, h - 19 - fontHeight, w - 80, h - 19);
-        g.drawLine(w - 85, h - 19 - fontHeight, w - 75, h - 19 - fontHeight);
-        g.drawSingleLineText(yText, w - 70, h - 19);
+        g.drawLine(w - 95, h - 19, w - 85, h - 19);
+        g.drawLine(w - 90, h - 19 - fontHeight, w - 90, h - 19);
+        g.drawLine(w - 95, h - 19 - fontHeight, w - 85, h - 19 - fontHeight);
+        g.drawSingleLineText(yText, w - 80, h - 19);
     }
 
     /**
@@ -172,8 +172,8 @@ private:
      */
     void parameterChanged(const juce::String& parameterID, float newValue) override
     {
-        ratio = newValue / EDITOR_INITIAL_WIDTH();
-        displayLength = newValue / ratio;
+        ratio = newValue * audioProcessor.getSampleRate() / EDITOR_INITIAL_WIDTH();
+        displayLength = newValue * audioProcessor.getSampleRate() / ratio;
         sampleData.resize(displayLength);
         newData.resize(sampleData.size());
         int queueSize = audioProcessor.getAudioBufferQueue()->getBufferSize();

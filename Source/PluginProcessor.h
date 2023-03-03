@@ -99,6 +99,6 @@ private:
     std::unique_ptr<AudioBufferQueue<float>> audioBufferQueue;
     std::unique_ptr <ScopeDataCollector<float>> scopeDataCollector;
     juce::AudioProcessorValueTreeState processorTreeState;
-    int sampleRate;
+    int sampleRate = 44100;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessor)
 };
