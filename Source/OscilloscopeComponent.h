@@ -36,7 +36,7 @@ public:
         setFramesPerSecond(framesPerSecond);
         this->sampleRate = sampleRate;
         displayLength = *aProcessor.getTreeState()->getRawParameterValue("bufferLength");
-        ratio = displayLength / EDITOR_INITIAL_WIDTH();
+        ratio = (double)displayLength / (double)EDITOR_INITIAL_WIDTH();
         displayLength /= ratio;
         double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize() / ratio;
         sampleData.resize(EDITOR_INITIAL_WIDTH());
@@ -97,21 +97,21 @@ public:
         }
 
         float fontHeight = g.getCurrentFont().getAscent();
-        float duration = *audioProcessor.getTreeState()->getRawParameterValue("bufferLength") * static_cast<float>(1000) / sampleRate;
+        float duration = *audioProcessor.getTreeState()->getRawParameterValue("bufferLength") * static_cast<float>(1000) / (float)sampleRate;
         duration /= 10;
-        auto xText = juce::String(duration);
+        auto xText = juce::String(duration, 2);
         xText.append(" ms", 3);
 
-        g.drawLine(w - 65, h - 39, w - 65, h - 39 - fontHeight);
-        g.drawLine(w - 55, h - 39 - fontHeight / 2, w - 65, h - 39 - fontHeight / 2);
-        g.drawLine(w - 55, h - 39, w - 55, h - 39 - fontHeight);
-        g.drawSingleLineText(xText, w - 50, h - 39);
+        g.drawLine(w - 85, h - 39, w - 85, h - 39 - fontHeight);
+        g.drawLine(w - 75, h - 39 - fontHeight / 2, w - 85, h - 39 - fontHeight / 2);
+        g.drawLine(w - 75, h - 39, w - 75, h - 39 - fontHeight);
+        g.drawSingleLineText(xText, w - 70, h - 39);
 
         auto yText = "0.1";
-        g.drawLine(w - 65, h - 19, w - 55, h - 19);
-        g.drawLine(w - 60, h - 19 - fontHeight, w - 60, h - 19);
-        g.drawLine(w - 65, h - 19 - fontHeight, w - 55, h - 19 - fontHeight);
-        g.drawSingleLineText(yText, w - 50, h - 19);
+        g.drawLine(w - 85, h - 19, w - 75, h - 19);
+        g.drawLine(w - 80, h - 19 - fontHeight, w - 80, h - 19);
+        g.drawLine(w - 85, h - 19 - fontHeight, w - 75, h - 19 - fontHeight);
+        g.drawSingleLineText(yText, w - 70, h - 19);
     }
 
     /**
@@ -161,7 +161,7 @@ private:
     std::vector<float> newData;
     int sampleRate; /**< Sample rate */
     bool gridCheck = false;
-    int ratio = 1;
+    double ratio = 1.;
     juce::Interpolators::Linear interpolator;
 
     /**
