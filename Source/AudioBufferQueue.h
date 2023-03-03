@@ -27,7 +27,7 @@ public:
      */
     AudioBufferQueue(int hostRate = 44100, int editorFramesPerSecond = 30, int numSamplesPerBlock = 441)
     {
-        this->bufferSize = hostRate / editorFramesPerSecond;
+        this->bufferSize = hostRate / editorFramesPerSecond; // number of samples per frame
         int capacity = numSamplesPerBlock * 2;
         numBuffers = std::max((int)(capacity / bufferSize + 1), (int)5);
         abstractFifo.reset(new juce::AbstractFifo(numBuffers));

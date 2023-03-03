@@ -27,8 +27,6 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
         std::make_unique<juce::AudioParameterFloat>("bufferLength", "Scope Length", 0.05, 1, 0.2),
     })
 {
-
-    size_t bufferSize = 5000;
     audioBufferQueue.reset(new AudioBufferQueue<float>(44100, getEditorRefreshRate()));
     scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
 }

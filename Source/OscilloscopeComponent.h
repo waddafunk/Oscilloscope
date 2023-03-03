@@ -48,6 +48,7 @@ public:
         std::fill(notInterpolatedData.begin(), notInterpolatedData.end(), 0);
         std::fill(newData.begin(), newData.end(), 0);
         aProcessor.getTreeState()->addParameterListener("bufferLength", this);
+        interpolator.reset();
     }
 
     //==============================================================================
@@ -191,7 +192,6 @@ private:
     void timerCallback() override
     {
         audioProcessor.getAudioBufferQueue()->pop(notInterpolatedData.data());
-        interpolator.reset();
         int queueSize = newlyPopped.size();
         interpolator.process(ratio, notInterpolatedData.data(), newlyPopped.data(), queueSize);
         std::copy(sampleData.data() + queueSize, sampleData.data() + sampleData.size(), newData.begin());

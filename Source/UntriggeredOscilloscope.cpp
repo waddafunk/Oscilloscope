@@ -27,8 +27,10 @@ void UntriggeredOscilloscope::plot(const float* data, size_t numSamples, juce::G
     g.setColour(juce::Colours::beige);
 
     for (size_t i = 1; i < numSamples; ++i)
+    {
         g.drawLine({ juce::jmap(float(i - 1), float(0), float(numSamples - 1), float(right - w), float(right)),
                       center - gain * data[i - 1],
                       juce::jmap(float(i), float(0), float(numSamples - 1), float(right - w), float(right)),
                       center - gain * data[i] });
+    }
 }
