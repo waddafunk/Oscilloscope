@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7eoscilloscopeaudioprocessor_0',['~OscilloscopeAudioProcessor',['../classOscilloscopeAudioProcessor.html#ac91f457b88ad25f7d03644dbbdca12d8',1,'OscilloscopeAudioProcessor']]],
-  ['_7eoscilloscopeaudioprocessoreditor_1',['~OscilloscopeAudioProcessorEditor',['../classOscilloscopeAudioProcessorEditor.html#aafec2e98cebcef5ac499aba85077717b',1,'OscilloscopeAudioProcessorEditor']]]
+  ['untriggeredoscilloscope_0',['UntriggeredOscilloscope',['../classUntriggeredOscilloscope.html#a6a3aef3d96f3ec5a08d288bb8a45f6d5',1,'UntriggeredOscilloscope']]]
 ];

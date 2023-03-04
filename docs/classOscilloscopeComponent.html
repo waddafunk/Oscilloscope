@@ -72,8 +72,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classOscilloscopeComponent-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">OscilloscopeComponent Class Reference</div></div>
+  <div class="headertitle"><div class="title">OscilloscopeComponent Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -82,13 +83,16 @@ $(function() {
 Inheritance diagram for OscilloscopeComponent:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classOscilloscopeComponent.png" alt=""/>
- </div></div>
+  <img src="classOscilloscopeComponent.png" usemap="#OscilloscopeComponent_map" alt=""/>
+  <map id="OscilloscopeComponent_map" name="OscilloscopeComponent_map">
+<area href="classUntriggeredOscilloscope.html" alt="UntriggeredOscilloscope" shape="rect" coords="281,112,552,136"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3b8013e5ef4b2d5acf1f0aafd81c461a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#a3b8013e5ef4b2d5acf1f0aafd81c461a">OscilloscopeComponent</a> (<a class="el" href="classOscilloscopeAudioProcessor.html">OscilloscopeAudioProcessor</a> &amp;aProcessor, int sampleRate)</td></tr>
-<tr class="separator:a3b8013e5ef4b2d5acf1f0aafd81c461a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee1470a825285738d1348a622ebc57d1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#aee1470a825285738d1348a622ebc57d1">OscilloscopeComponent</a> (<a class="el" href="classOscilloscopeAudioProcessor.html">OscilloscopeAudioProcessor</a> &amp;aProcessor, int sampleRate, int framesPerSecond)</td></tr>
+<tr class="separator:aee1470a825285738d1348a622ebc57d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6065ccad27a73563416d278f502abea7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#a6065ccad27a73563416d278f502abea7">setFramesPerSecond</a> (int framesPerSecond)</td></tr>
 <tr class="separator:a6065ccad27a73563416d278f502abea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80e62cd1278d38f666aa55cf58fc9acb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#a80e62cd1278d38f666aa55cf58fc9acb">setGridCheck</a> (bool newValue)</td></tr>
@@ -99,15 +103,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a066d0bc1299d9f197e1ec2113bf14f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84b64d18a9406080807a4b7850a92858"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#a84b64d18a9406080807a4b7850a92858">resized</a> () override</td></tr>
 <tr class="separator:a84b64d18a9406080807a4b7850a92858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ab8cfa1924a853d7348f48f548afcd9f8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeComponent.html#ab8cfa1924a853d7348f48f548afcd9f8">plot</a> (const float *data, size_t numSamples, juce::Graphics &amp;g, juce::Rectangle&lt; float &gt; rect, float scaler=float(1), float offset=float(0))=0</td></tr>
+<tr class="separator:ab8cfa1924a853d7348f48f548afcd9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Oscilloscope graphical component for SampleType type data.</p>
 <p >Inherits from <a href="https://docs.juce.com/master/classComponent.html">JUCE Component</a> and <a href="https://docs.juce.com/master/classTimer.html">JUCE timer</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00021">21</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00022">22</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3b8013e5ef4b2d5acf1f0aafd81c461a" name="a3b8013e5ef4b2d5acf1f0aafd81c461a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b8013e5ef4b2d5acf1f0aafd81c461a">&#9670;&#160;</a></span>OscilloscopeComponent()</h2>
+<a id="aee1470a825285738d1348a622ebc57d1" name="aee1470a825285738d1348a622ebc57d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee1470a825285738d1348a622ebc57d1">&#9670;&#160;</a></span>OscilloscopeComponent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,7 +134,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>sampleRate</em>&#160;</td>
+          <td class="paramname"><em>sampleRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>framesPerSecond</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -147,7 +162,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00032">32</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00033">33</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
 
 </div>
 </div>
@@ -201,7 +216,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00072">72</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00085">85</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
 
 </div>
 </div>
@@ -236,7 +251,81 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00110">110</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00123">123</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+
+</div>
+</div>
+<a id="ab8cfa1924a853d7348f48f548afcd9f8" name="ab8cfa1924a853d7348f48f548afcd9f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8cfa1924a853d7348f48f548afcd9f8">&#9670;&#160;</a></span>plot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void OscilloscopeComponent::plot </td>
+          <td>(</td>
+          <td class="paramtype">const float *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>numSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">juce::Graphics &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">juce::Rectangle&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>scaler</em> = <code>float(1)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>offset</em> = <code>float(0)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Plots the waveform. This method is implemented in the subclasses in order to avoid having a check on the selected draw modality of the waveform every time it is plotted.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Samples to plot </td></tr>
+    <tr><td class="paramname">numSamples</td><td>Number of samples </td></tr>
+    <tr><td class="paramname">g</td><td><a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a> </td></tr>
+    <tr><td class="paramname">rect</td><td><a href="https://docs.juce.com/master/classRectangle.html">JUCE Rectangle </a> </td></tr>
+    <tr><td class="paramname">scaler</td><td>Scale factor. </td></tr>
+    <tr><td class="paramname">offset</td><td>Y-axis offset. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classUntriggeredOscilloscope.html#aee2ec401d9995b81ac259e622fa4d4e5">UntriggeredOscilloscope</a>.</p>
 
 </div>
 </div>
@@ -264,7 +353,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p >Called when component is resized. </p>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00139">139</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00152">152</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
 
 </div>
 </div>
@@ -299,7 +388,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00047">47</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00060">60</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
 
 </div>
 </div>
@@ -334,7 +423,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00060">60</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="OscilloscopeComponent_8h_source.html#l00073">73</a> of file <a class="el" href="OscilloscopeComponent_8h_source.html">OscilloscopeComponent.h</a>.</p>
 
 </div>
 </div>

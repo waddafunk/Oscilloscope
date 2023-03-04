@@ -25,90 +25,90 @@
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00021}00021                      \#endif}
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00022}00022                        ), }
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00023}00023 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00024}00024     processorTreeState(*\textcolor{keyword}{this}, \textcolor{keyword}{nullptr}, \textcolor{stringliteral}{"{}PARAMETERS"{}},}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00024}00024     processorTreeState(*\textcolor{keyword}{this}, \textcolor{keyword}{nullptr}, juce::Identifier(\textcolor{stringliteral}{"{}PARAMETERS"{}}),}
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00025}00025     \{ }
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00026}00026         std::make\_unique<juce::AudioParameterBool>(\textcolor{stringliteral}{"{}drawGrid"{}}, \textcolor{stringliteral}{"{}Draw Grid"{}}, \textcolor{keyword}{false}), }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00027}00027         std::make\_unique<juce::AudioParameterInt>(\textcolor{stringliteral}{"{}bufferLength"{}}, \textcolor{stringliteral}{"{}Scope Length"{}}, 2000, 44100, 5000),}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00027}00027         std::make\_unique<juce::AudioParameterFloat>(\textcolor{stringliteral}{"{}bufferLength"{}}, \textcolor{stringliteral}{"{}Scope Length"{}}, 0.05, 1, 0.2),}
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00028}00028     \})}
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00029}00029 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00030}00030     \textcolor{keywordtype}{size\_t} bufferSize = 5000;}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00031}00031     audioBufferQueue.reset(\textcolor{keyword}{new} \mbox{\hyperlink{classAudioBufferQueue}{AudioBufferQueue<float>}}(bufferSize));}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00032}00032     scopeDataCollector.reset(\textcolor{keyword}{new} \mbox{\hyperlink{classScopeDataCollector}{ScopeDataCollector}}(*audioBufferQueue.get()));}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00033}00033     processorTreeState.addParameterListener(\textcolor{stringliteral}{"{}bufferLength"{}}, \textcolor{keyword}{this});}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00034}00034 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00035}00035 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00036}\mbox{\hyperlink{classOscilloscopeAudioProcessor_ac91f457b88ad25f7d03644dbbdca12d8}{00036}} \mbox{\hyperlink{classOscilloscopeAudioProcessor_ac91f457b88ad25f7d03644dbbdca12d8}{OscilloscopeAudioProcessor::\string~OscilloscopeAudioProcessor}}()}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00037}00037 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00038}00038 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00040}00040 \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00041}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a5e5198ba007ad4d5eaee19b651aeaa03}{00041}} \textcolor{keyword}{const} juce::String \mbox{\hyperlink{classOscilloscopeAudioProcessor_a5e5198ba007ad4d5eaee19b651aeaa03}{OscilloscopeAudioProcessor::getName}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00042}00042 \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00043}00043     \textcolor{keywordflow}{return} JucePlugin\_Name;}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00044}00044 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00045}00045 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00046}\mbox{\hyperlink{classOscilloscopeAudioProcessor_ab11f6c2eb50d20cb58f7bd72ad80c95e}{00046}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOscilloscopeAudioProcessor_ab11f6c2eb50d20cb58f7bd72ad80c95e}{OscilloscopeAudioProcessor::acceptsMidi}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00047}00047 \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00048}00048 \textcolor{preprocessor}{   \#if JucePlugin\_WantsMidiInput}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00049}00049     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00050}00050 \textcolor{preprocessor}{   \#else}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00051}00051     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00052}00052 \textcolor{preprocessor}{   \#endif}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00053}00053 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00054}00054 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00055}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a5caceb2cbee403e1de19cd49421b0704}{00055}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a5caceb2cbee403e1de19cd49421b0704}{OscilloscopeAudioProcessor::producesMidi}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00056}00056 \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00057}00057 \textcolor{preprocessor}{   \#if JucePlugin\_ProducesMidiOutput}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00058}00058     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00059}00059 \textcolor{preprocessor}{   \#else}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00060}00060     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00061}00061 \textcolor{preprocessor}{   \#endif}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00062}00062 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00063}00063 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00064}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a607485a92684296c89fa7ad74bfc86d5}{00064}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a607485a92684296c89fa7ad74bfc86d5}{OscilloscopeAudioProcessor::isMidiEffect}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00065}00065 \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00066}00066 \textcolor{preprocessor}{   \#if JucePlugin\_IsMidiEffect}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00067}00067     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00068}00068 \textcolor{preprocessor}{   \#else}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00069}00069     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00070}00070 \textcolor{preprocessor}{   \#endif}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00071}00071 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00072}00072 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00073}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a481d8bb4041d13150fcf083c8fa70810}{00073}} \textcolor{keywordtype}{double} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a481d8bb4041d13150fcf083c8fa70810}{OscilloscopeAudioProcessor::getTailLengthSeconds}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00074}00074 \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00075}00075     \textcolor{keywordflow}{return} 0.0;}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00076}00076 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00077}00077 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00078}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a99d89969c6682e8a288e259960a7662f}{00078}} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a99d89969c6682e8a288e259960a7662f}{OscilloscopeAudioProcessor::getNumPrograms}}()}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00079}00079 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00080}00080     \textcolor{keywordflow}{return} 1;   \textcolor{comment}{// NB: some hosts don't cope very well if you tell them there are 0 programs,}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00081}00081                 \textcolor{comment}{// so this should be at least 1, even if you're not really implementing programs.}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00082}00082 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00083}00083 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00084}\mbox{\hyperlink{classOscilloscopeAudioProcessor_ae629d2b9e1f8d27b8fc863b786ed3778}{00084}} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeAudioProcessor_ae629d2b9e1f8d27b8fc863b786ed3778}{OscilloscopeAudioProcessor::getCurrentProgram}}()}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00085}00085 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00086}00086     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00087}00087 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00088}00088 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00089}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a4f133094a6fccfe12ca035f37bf56c37}{00089}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a4f133094a6fccfe12ca035f37bf56c37}{OscilloscopeAudioProcessor::setCurrentProgram}} (\textcolor{keywordtype}{int} index)}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00090}00090 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00091}00091 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00092}00092 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00093}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a0185ad408361b6bad5c8c4aff09a68e3}{00093}} \textcolor{keyword}{const} juce::String \mbox{\hyperlink{classOscilloscopeAudioProcessor_a0185ad408361b6bad5c8c4aff09a68e3}{OscilloscopeAudioProcessor::getProgramName}} (\textcolor{keywordtype}{int} index)}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00094}00094 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00095}00095     \textcolor{keywordflow}{return} \{\};}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00096}00096 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00097}00097 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00098}\mbox{\hyperlink{classOscilloscopeAudioProcessor_af3a2a1f6201e8cd2ffbcb01bfa727f5e}{00098}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessor_af3a2a1f6201e8cd2ffbcb01bfa727f5e}{OscilloscopeAudioProcessor::changeProgramName}} (\textcolor{keywordtype}{int} index, \textcolor{keyword}{const} juce::String\& newName)}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00099}00099 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00100}00100 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00101}00101 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00102}00102 \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00103}\mbox{\hyperlink{classOscilloscopeAudioProcessor_aaddde8072db24578da2fc8436e5318be}{00103}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessor_aaddde8072db24578da2fc8436e5318be}{OscilloscopeAudioProcessor::prepareToPlay}} (\textcolor{keywordtype}{double} sampleRate, \textcolor{keywordtype}{int} samplesPerBlock)}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00104}00104 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00105}00105     \textcolor{comment}{// Use this method as the place to do any pre-\/playback}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00106}00106     \textcolor{comment}{// initialisation that you need..}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00107}00107     this-\/>sampleRate = sampleRate;}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00030}00030     audioBufferQueue.reset(\textcolor{keyword}{new} \mbox{\hyperlink{classAudioBufferQueue}{AudioBufferQueue<float>}}(44100, getEditorRefreshRate()));}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00031}00031     scopeDataCollector.reset(\textcolor{keyword}{new} \mbox{\hyperlink{classScopeDataCollector}{ScopeDataCollector}}(*audioBufferQueue.get()));}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00032}00032 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00034}\mbox{\hyperlink{classOscilloscopeAudioProcessor_ac91f457b88ad25f7d03644dbbdca12d8}{00034}} \mbox{\hyperlink{classOscilloscopeAudioProcessor_ac91f457b88ad25f7d03644dbbdca12d8}{OscilloscopeAudioProcessor::\string~OscilloscopeAudioProcessor}}()}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00036}00036 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00038}00038 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00039}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a5e5198ba007ad4d5eaee19b651aeaa03}{00039}} \textcolor{keyword}{const} juce::String \mbox{\hyperlink{classOscilloscopeAudioProcessor_a5e5198ba007ad4d5eaee19b651aeaa03}{OscilloscopeAudioProcessor::getName}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00040}00040 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00041}00041     \textcolor{keywordflow}{return} JucePlugin\_Name;}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00042}00042 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00044}\mbox{\hyperlink{classOscilloscopeAudioProcessor_ab11f6c2eb50d20cb58f7bd72ad80c95e}{00044}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOscilloscopeAudioProcessor_ab11f6c2eb50d20cb58f7bd72ad80c95e}{OscilloscopeAudioProcessor::acceptsMidi}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00045}00045 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00046}00046 \textcolor{preprocessor}{   \#if JucePlugin\_WantsMidiInput}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00047}00047     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00048}00048 \textcolor{preprocessor}{   \#else}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00049}00049     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00050}00050 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00053}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a5caceb2cbee403e1de19cd49421b0704}{00053}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a5caceb2cbee403e1de19cd49421b0704}{OscilloscopeAudioProcessor::producesMidi}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00054}00054 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00055}00055 \textcolor{preprocessor}{   \#if JucePlugin\_ProducesMidiOutput}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00056}00056     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00057}00057 \textcolor{preprocessor}{   \#else}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00058}00058     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00059}00059 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00060}00060 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00062}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a607485a92684296c89fa7ad74bfc86d5}{00062}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a607485a92684296c89fa7ad74bfc86d5}{OscilloscopeAudioProcessor::isMidiEffect}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00063}00063 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00064}00064 \textcolor{preprocessor}{   \#if JucePlugin\_IsMidiEffect}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00065}00065     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00066}00066 \textcolor{preprocessor}{   \#else}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00067}00067     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00068}00068 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00069}00069 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00071}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a481d8bb4041d13150fcf083c8fa70810}{00071}} \textcolor{keywordtype}{double} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a481d8bb4041d13150fcf083c8fa70810}{OscilloscopeAudioProcessor::getTailLengthSeconds}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00072}00072 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00073}00073     \textcolor{keywordflow}{return} 0.0;}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00074}00074 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00076}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a99d89969c6682e8a288e259960a7662f}{00076}} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a99d89969c6682e8a288e259960a7662f}{OscilloscopeAudioProcessor::getNumPrograms}}()}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00077}00077 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00078}00078     \textcolor{keywordflow}{return} 1;   \textcolor{comment}{// NB: some hosts don't cope very well if you tell them there are 0 programs,}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00079}00079                 \textcolor{comment}{// so this should be at least 1, even if you're not really implementing programs.}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00080}00080 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00082}\mbox{\hyperlink{classOscilloscopeAudioProcessor_ae629d2b9e1f8d27b8fc863b786ed3778}{00082}} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeAudioProcessor_ae629d2b9e1f8d27b8fc863b786ed3778}{OscilloscopeAudioProcessor::getCurrentProgram}}()}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00083}00083 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00084}00084     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00085}00085 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00087}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a4f133094a6fccfe12ca035f37bf56c37}{00087}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a4f133094a6fccfe12ca035f37bf56c37}{OscilloscopeAudioProcessor::setCurrentProgram}} (\textcolor{keywordtype}{int} index)}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00088}00088 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00089}00089 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00091}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a0185ad408361b6bad5c8c4aff09a68e3}{00091}} \textcolor{keyword}{const} juce::String \mbox{\hyperlink{classOscilloscopeAudioProcessor_a0185ad408361b6bad5c8c4aff09a68e3}{OscilloscopeAudioProcessor::getProgramName}} (\textcolor{keywordtype}{int} index)}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00092}00092 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00093}00093     \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00094}00094 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00096}\mbox{\hyperlink{classOscilloscopeAudioProcessor_af3a2a1f6201e8cd2ffbcb01bfa727f5e}{00096}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessor_af3a2a1f6201e8cd2ffbcb01bfa727f5e}{OscilloscopeAudioProcessor::changeProgramName}} (\textcolor{keywordtype}{int} index, \textcolor{keyword}{const} juce::String\& newName)}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00097}00097 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00098}00098 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00100}00100 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00101}\mbox{\hyperlink{classOscilloscopeAudioProcessor_aaddde8072db24578da2fc8436e5318be}{00101}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessor_aaddde8072db24578da2fc8436e5318be}{OscilloscopeAudioProcessor::prepareToPlay}} (\textcolor{keywordtype}{double} sampleRate, \textcolor{keywordtype}{int} samplesPerBlock)}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00102}00102 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00103}00103     \textcolor{comment}{// Use this method as the place to do any pre-\/playback}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00104}00104     \textcolor{comment}{// initialisation that you need..}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00105}00105     this-\/>sampleRate = sampleRate;}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00106}00106     audioBufferQueue.reset(\textcolor{keyword}{new} \mbox{\hyperlink{classAudioBufferQueue}{AudioBufferQueue<float>}}(sampleRate, \mbox{\hyperlink{classOscilloscopeAudioProcessor_a2251fac84c94c91c7f4c4300d22a6314}{getEditorRefreshRate}}(), samplesPerBlock));}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00107}00107     scopeDataCollector.reset(\textcolor{keyword}{new} \mbox{\hyperlink{classScopeDataCollector}{ScopeDataCollector}}(*audioBufferQueue.get()));}
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00108}00108 \}}
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00109}00109 }
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00110}\mbox{\hyperlink{classOscilloscopeAudioProcessor_ac347fa3e8e36d09f24caacc7806d70ac}{00110}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessor_ac347fa3e8e36d09f24caacc7806d70ac}{OscilloscopeAudioProcessor::releaseResources}}()}
@@ -212,17 +212,35 @@
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00208}00208     \textcolor{keywordflow}{return} \&this-\/>processorTreeState;}
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00209}00209 \}}
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00210}00210 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00211}00211 \textcolor{keywordtype}{void} OscilloscopeAudioProcessor::parameterChanged(\textcolor{keyword}{const} juce::String\& parameterID, \textcolor{keywordtype}{float} newValue)}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00212}00212 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00213}00213     audioBufferQueue.reset(\textcolor{keyword}{new} \mbox{\hyperlink{classAudioBufferQueue}{AudioBufferQueue<float>}}(newValue));}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00214}00214     scopeDataCollector.reset(\textcolor{keyword}{new} \mbox{\hyperlink{classScopeDataCollector}{ScopeDataCollector}}(*audioBufferQueue.get()));}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00215}00215 \}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00216}00216 }
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00217}00217 \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00218}00218 \textcolor{comment}{// This creates new instances of the plugin..}}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00219}\mbox{\hyperlink{PluginProcessor_8cpp_a62f69a86baff96d3ee5c287e100adc66}{00219}} juce::AudioProcessor* JUCE\_CALLTYPE \mbox{\hyperlink{PluginProcessor_8cpp_a62f69a86baff96d3ee5c287e100adc66}{createPluginFilter}}()}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00220}00220 \{}
-\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00221}00221     \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}();}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00211}00211 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00212}00212 \textcolor{comment}{// This creates new instances of the plugin..}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00213}\mbox{\hyperlink{PluginProcessor_8cpp_a62f69a86baff96d3ee5c287e100adc66}{00213}} juce::AudioProcessor* JUCE\_CALLTYPE \mbox{\hyperlink{PluginProcessor_8cpp_a62f69a86baff96d3ee5c287e100adc66}{createPluginFilter}}()}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00214}00214 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00215}00215     \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}();}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00216}00216 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00218}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a3f7ef6102262a42fe22ad2d44040fa55}{00218}} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a3f7ef6102262a42fe22ad2d44040fa55}{OscilloscopeAudioProcessor::getEditorWidth}}()}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00219}00219 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00220}00220     \textcolor{keyword}{auto} size = processorTreeState.state.getOrCreateChildWithName(\textcolor{stringliteral}{"{}lastSize"{}}, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00221}00221     \textcolor{keywordflow}{return} size.getProperty(\textcolor{stringliteral}{"{}width"{}}, EDITOR\_INITIAL\_WIDTH());}
 \DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00222}00222 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00223}\mbox{\hyperlink{classOscilloscopeAudioProcessor_aa1f2e403937db924b87f1a3d071df115}{00223}} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeAudioProcessor_aa1f2e403937db924b87f1a3d071df115}{OscilloscopeAudioProcessor::getEditorHeight}}()}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00224}00224 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00225}00225     \textcolor{keyword}{auto} size = processorTreeState.state.getOrCreateChildWithName(\textcolor{stringliteral}{"{}lastSize"{}}, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00226}00226     \textcolor{keywordflow}{return} size.getProperty(\textcolor{stringliteral}{"{}height"{}}, EDITOR\_INITIAL\_HEIGHT());}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00227}00227 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00229}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a531da223719ecb551640cc654ca7d0c3}{00229}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a531da223719ecb551640cc654ca7d0c3}{OscilloscopeAudioProcessor::storeEditorSize}}(\textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height)}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00230}00230 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00231}00231     \textcolor{keyword}{auto} size = processorTreeState.state.getOrCreateChildWithName(\textcolor{stringliteral}{"{}lastSize"{}}, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00232}00232     size.setProperty(\textcolor{stringliteral}{"{}width"{}}, width, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00233}00233     size.setProperty(\textcolor{stringliteral}{"{}height"{}}, height, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00234}00234 \}}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00236}\mbox{\hyperlink{classOscilloscopeAudioProcessor_a2251fac84c94c91c7f4c4300d22a6314}{00236}} \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeAudioProcessor_a2251fac84c94c91c7f4c4300d22a6314}{OscilloscopeAudioProcessor::getEditorRefreshRate}}()}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00237}00237 \{}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00238}00238     \textcolor{keyword}{auto} rate = processorTreeState.state.getOrCreateChildWithName(\textcolor{stringliteral}{"{}editorRefreshRate"{}}, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00239}00239     \textcolor{keywordflow}{return} rate.getProperty(\textcolor{stringliteral}{"{}height"{}}, EDITOR\_INITIAL\_RATE());}
+\DoxyCodeLine{\Hypertarget{PluginProcessor_8cpp_source_l00240}00240 \}}
 
 \end{DoxyCode}

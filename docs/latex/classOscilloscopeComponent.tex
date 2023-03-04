@@ -7,13 +7,13 @@
 Inheritance diagram for Oscilloscope\+Component\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classOscilloscopeComponent}
+\includegraphics[height=2.007169cm]{classOscilloscopeComponent}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classOscilloscopeComponent_a3b8013e5ef4b2d5acf1f0aafd81c461a}{Oscilloscope\+Component}} (\mbox{\hyperlink{classOscilloscopeAudioProcessor}{Oscilloscope\+Audio\+Processor}} \&a\+Processor, int sample\+Rate)
+\mbox{\hyperlink{classOscilloscopeComponent_aee1470a825285738d1348a622ebc57d1}{Oscilloscope\+Component}} (\mbox{\hyperlink{classOscilloscopeAudioProcessor}{Oscilloscope\+Audio\+Processor}} \&a\+Processor, int sample\+Rate, int frames\+Per\+Second)
 \item 
 void \mbox{\hyperlink{classOscilloscopeComponent_a6065ccad27a73563416d278f502abea7}{set\+Frames\+Per\+Second}} (int frames\+Per\+Second)
 \item 
@@ -25,6 +25,11 @@ void \mbox{\hyperlink{classOscilloscopeComponent_a066d0bc1299d9f197e1ec2113bf14f
 \item 
 void \mbox{\hyperlink{classOscilloscopeComponent_a84b64d18a9406080807a4b7850a92858}{resized}} () override
 \end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classOscilloscopeComponent_ab8cfa1924a853d7348f48f548afcd9f8}{plot}} (const float $\ast$data, size\+\_\+t num\+Samples, juce\+::\+Graphics \&g, juce\+::\+Rectangle$<$ float $>$ rect, float scaler=float(1), float offset=float(0))=0
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -32,16 +37,16 @@ Oscilloscope graphical component for Sample\+Type type data.
 
 Inherits from \href{https://docs.juce.com/master/classComponent.html}{\texttt{ JUCE Component}} and \href{https://docs.juce.com/master/classTimer.html}{\texttt{ JUCE timer}} 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00021}{21}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00022}{22}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
 
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classOscilloscopeComponent_a3b8013e5ef4b2d5acf1f0aafd81c461a}\label{classOscilloscopeComponent_a3b8013e5ef4b2d5acf1f0aafd81c461a}} 
+\mbox{\Hypertarget{classOscilloscopeComponent_aee1470a825285738d1348a622ebc57d1}\label{classOscilloscopeComponent_aee1470a825285738d1348a622ebc57d1}} 
 \index{OscilloscopeComponent@{OscilloscopeComponent}!OscilloscopeComponent@{OscilloscopeComponent}}
 \index{OscilloscopeComponent@{OscilloscopeComponent}!OscilloscopeComponent@{OscilloscopeComponent}}
 \doxysubsubsection{\texorpdfstring{OscilloscopeComponent()}{OscilloscopeComponent()}}
-{\footnotesize\ttfamily Oscilloscope\+Component\+::\+Oscilloscope\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOscilloscopeAudioProcessor}{Oscilloscope\+Audio\+Processor}} \&}]{a\+Processor,  }\item[{int}]{sample\+Rate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Oscilloscope\+Component\+::\+Oscilloscope\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOscilloscopeAudioProcessor}{Oscilloscope\+Audio\+Processor}} \&}]{a\+Processor,  }\item[{int}]{sample\+Rate,  }\item[{int}]{frames\+Per\+Second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Constructor.
 
@@ -52,7 +57,7 @@ Constructor.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00032}{32}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00033}{33}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
 
 
 
@@ -76,7 +81,7 @@ Draws oscilloscope\textquotesingle{}s grid.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00072}{72}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00085}{85}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
 
 \mbox{\Hypertarget{classOscilloscopeComponent_a066d0bc1299d9f197e1ec2113bf14f4a}\label{classOscilloscopeComponent_a066d0bc1299d9f197e1ec2113bf14f4a}} 
 \index{OscilloscopeComponent@{OscilloscopeComponent}!paint@{paint}}
@@ -93,7 +98,34 @@ Paints the component.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00110}{110}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00123}{123}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+
+\mbox{\Hypertarget{classOscilloscopeComponent_ab8cfa1924a853d7348f48f548afcd9f8}\label{classOscilloscopeComponent_ab8cfa1924a853d7348f48f548afcd9f8}} 
+\index{OscilloscopeComponent@{OscilloscopeComponent}!plot@{plot}}
+\index{plot@{plot}!OscilloscopeComponent@{OscilloscopeComponent}}
+\doxysubsubsection{\texorpdfstring{plot()}{plot()}}
+{\footnotesize\ttfamily virtual void Oscilloscope\+Component\+::plot (\begin{DoxyParamCaption}\item[{const float $\ast$}]{data,  }\item[{size\+\_\+t}]{num\+Samples,  }\item[{juce\+::\+Graphics \&}]{g,  }\item[{juce\+::\+Rectangle$<$ float $>$}]{rect,  }\item[{float}]{scaler = {\ttfamily float(1)},  }\item[{float}]{offset = {\ttfamily float(0)} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+Plots the waveform. This method is implemented in the subclasses in order to avoid having a check on the selected draw modality of the waveform every time it is plotted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Samples to plot \\
+\hline
+{\em num\+Samples} & Number of samples \\
+\hline
+{\em g} & \href{https://docs.juce.com/master/classGraphics.html}{\texttt{ JUCE Graphics }} \\
+\hline
+{\em rect} & \href{https://docs.juce.com/master/classRectangle.html}{\texttt{ JUCE Rectangle }} \\
+\hline
+{\em scaler} & Scale factor. \\
+\hline
+{\em offset} & Y-\/axis offset. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classUntriggeredOscilloscope_aee2ec401d9995b81ac259e622fa4d4e5}{Untriggered\+Oscilloscope}}.
 
 \mbox{\Hypertarget{classOscilloscopeComponent_a84b64d18a9406080807a4b7850a92858}\label{classOscilloscopeComponent_a84b64d18a9406080807a4b7850a92858}} 
 \index{OscilloscopeComponent@{OscilloscopeComponent}!resized@{resized}}
@@ -103,7 +135,7 @@ Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00110}{110}
 
 Called when component is resized. 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00139}{139}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00152}{152}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
 
 \mbox{\Hypertarget{classOscilloscopeComponent_a6065ccad27a73563416d278f502abea7}\label{classOscilloscopeComponent_a6065ccad27a73563416d278f502abea7}} 
 \index{OscilloscopeComponent@{OscilloscopeComponent}!setFramesPerSecond@{setFramesPerSecond}}
@@ -120,7 +152,7 @@ Sets frames per seconds.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00047}{47}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00060}{60}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
 
 \mbox{\Hypertarget{classOscilloscopeComponent_a80e62cd1278d38f666aa55cf58fc9acb}\label{classOscilloscopeComponent_a80e62cd1278d38f666aa55cf58fc9acb}} 
 \index{OscilloscopeComponent@{OscilloscopeComponent}!setGridCheck@{setGridCheck}}
@@ -137,7 +169,7 @@ Set to true to draw grid, false otherwise.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00060}{60}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
+Definition at line \mbox{\hyperlink{OscilloscopeComponent_8h_source_l00073}{73}} of file \mbox{\hyperlink{OscilloscopeComponent_8h_source}{Oscilloscope\+Component.\+h}}.
 
 
 

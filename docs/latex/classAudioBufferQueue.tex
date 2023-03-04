@@ -7,7 +7,7 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classAudioBufferQueue_a01bd8b54e0b87599a4c46cc134211101}{Audio\+Buffer\+Queue}} (size\+\_\+t new\+Buffer\+Size=(size\+\_\+t) 5000)
+\mbox{\hyperlink{classAudioBufferQueue_a669278157368ed71ae2de401dea637fd}{Audio\+Buffer\+Queue}} (int host\+Rate=44100, int editor\+Frames\+Per\+Second=30, int num\+Samples\+Per\+Block=441)
 \item 
 void \mbox{\hyperlink{classAudioBufferQueue_a4c9f8b7220ff81958edb53adf86c32e7}{push}} (const Sample\+Type $\ast$data\+To\+Push, size\+\_\+t num\+Samples)
 \item 
@@ -16,11 +16,6 @@ void \mbox{\hyperlink{classAudioBufferQueue_ac91421bc929b22c8428ec041cdeb630a}{p
 void \mbox{\hyperlink{classAudioBufferQueue_a8898a019dbda0d2696a11bd414675101}{flush}} ()
 \item 
 size\+\_\+t \mbox{\hyperlink{classAudioBufferQueue_ad1582df2e1e0375dcb7a5860e67e094d}{get\+Buffer\+Size}} ()
-\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-static constexpr size\+\_\+t \mbox{\hyperlink{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}{num\+Buffers}} = 5
 \end{DoxyCompactItemize}
 
 
@@ -34,12 +29,12 @@ Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00018}{18}} of f
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classAudioBufferQueue_a01bd8b54e0b87599a4c46cc134211101}\label{classAudioBufferQueue_a01bd8b54e0b87599a4c46cc134211101}} 
+\mbox{\Hypertarget{classAudioBufferQueue_a669278157368ed71ae2de401dea637fd}\label{classAudioBufferQueue_a669278157368ed71ae2de401dea637fd}} 
 \index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!AudioBufferQueue@{AudioBufferQueue}}
 \index{AudioBufferQueue@{AudioBufferQueue}!AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}}
 \doxysubsubsection{\texorpdfstring{AudioBufferQueue()}{AudioBufferQueue()}}
 {\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
-\mbox{\hyperlink{classAudioBufferQueue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$\mbox{\hyperlink{classAudioBufferQueue}{\+::\+Audio\+Buffer\+Queue}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{new\+Buffer\+Size = {\ttfamily (size\+\_\+t)5000} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classAudioBufferQueue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$\mbox{\hyperlink{classAudioBufferQueue}{\+::\+Audio\+Buffer\+Queue}} (\begin{DoxyParamCaption}\item[{int}]{host\+Rate = {\ttfamily 44100},  }\item[{int}]{editor\+Frames\+Per\+Second = {\ttfamily 30},  }\item[{int}]{num\+Samples\+Per\+Block = {\ttfamily 441} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Constructor.
 
@@ -50,7 +45,7 @@ Constructor.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00031}{31}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00028}{28}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
 
 
 
@@ -64,7 +59,7 @@ void \mbox{\hyperlink{classAudioBufferQueue}{Audio\+Buffer\+Queue}}$<$ Sample\+T
 
 Empties all buffers. 
 
-Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00091}{91}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00092}{92}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
 
 \mbox{\Hypertarget{classAudioBufferQueue_ad1582df2e1e0375dcb7a5860e67e094d}\label{classAudioBufferQueue_ad1582df2e1e0375dcb7a5860e67e094d}} 
 \index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!getBufferSize@{getBufferSize}}
@@ -80,7 +75,7 @@ Buffer size.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00104}{104}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00105}{105}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
 
 \mbox{\Hypertarget{classAudioBufferQueue_ac91421bc929b22c8428ec041cdeb630a}\label{classAudioBufferQueue_ac91421bc929b22c8428ec041cdeb630a}} 
 \index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!pop@{pop}}
@@ -98,7 +93,7 @@ Pops a buffer of data.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00071}{71}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00072}{72}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
 
 \mbox{\Hypertarget{classAudioBufferQueue_a4c9f8b7220ff81958edb53adf86c32e7}\label{classAudioBufferQueue_a4c9f8b7220ff81958edb53adf86c32e7}} 
 \index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!push@{push}}
@@ -118,21 +113,7 @@ Pushes a buffer of data.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00045}{45}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
-
-
-
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}\label{classAudioBufferQueue_acb46b7841436b62174ddb97a642d590d}} 
-\index{AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}!numBuffers@{numBuffers}}
-\index{numBuffers@{numBuffers}!AudioBufferQueue$<$ SampleType $>$@{AudioBufferQueue$<$ SampleType $>$}}
-\doxysubsubsection{\texorpdfstring{numBuffers}{numBuffers}}
-{\footnotesize\ttfamily template$<$typename Sample\+Type $>$ \\
-constexpr size\+\_\+t \mbox{\hyperlink{classAudioBufferQueue}{Audio\+Buffer\+Queue}}$<$ Sample\+Type $>$\+::num\+Buffers = 5\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
-
-Number of buffers 
-
-Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00022}{22}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
+Definition at line \mbox{\hyperlink{AudioBufferQueue_8h_source_l00046}{46}} of file \mbox{\hyperlink{AudioBufferQueue_8h_source}{Audio\+Buffer\+Queue.\+h}}.
 
 
 

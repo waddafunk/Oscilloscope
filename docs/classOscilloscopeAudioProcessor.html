@@ -133,10 +133,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae2af712fdcae4b9410ccfce206f6c864"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88406729883710df23d0b10f7bdb0f0d"><td class="memItemLeft" align="right" valign="top">juce::AudioProcessorValueTreeState *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeAudioProcessor.html#a88406729883710df23d0b10f7bdb0f0d">getTreeState</a> ()</td></tr>
 <tr class="separator:a88406729883710df23d0b10f7bdb0f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f7ef6102262a42fe22ad2d44040fa55"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeAudioProcessor.html#a3f7ef6102262a42fe22ad2d44040fa55">getEditorWidth</a> ()</td></tr>
+<tr class="separator:a3f7ef6102262a42fe22ad2d44040fa55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f2e403937db924b87f1a3d071df115"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeAudioProcessor.html#aa1f2e403937db924b87f1a3d071df115">getEditorHeight</a> ()</td></tr>
+<tr class="separator:aa1f2e403937db924b87f1a3d071df115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a531da223719ecb551640cc654ca7d0c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeAudioProcessor.html#a531da223719ecb551640cc654ca7d0c3">storeEditorSize</a> (int width, int height)</td></tr>
+<tr class="separator:a531da223719ecb551640cc654ca7d0c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2251fac84c94c91c7f4c4300d22a6314"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOscilloscopeAudioProcessor.html#a2251fac84c94c91c7f4c4300d22a6314">getEditorRefreshRate</a> ()</td></tr>
+<tr class="separator:a2251fac84c94c91c7f4c4300d22a6314"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8h_source.html#l00018">18</a> of file <a class="el" href="PluginProcessor_8h_source.html">PluginProcessor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8h_source.html#l00019">19</a> of file <a class="el" href="PluginProcessor_8h_source.html">PluginProcessor.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7c4a32cb63e3149cb70f4d416b14eee4" name="a7c4a32cb63e3149cb70f4d416b14eee4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c4a32cb63e3149cb70f4d416b14eee4">&#9670;&#160;</a></span>OscilloscopeAudioProcessor()</h2>
@@ -180,7 +188,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00036">36</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00034">34</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -208,7 +216,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00046">46</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00044">44</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -246,7 +254,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00098">98</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00096">96</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -319,7 +327,70 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00084">84</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00082">82</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa1f2e403937db924b87f1a3d071df115" name="aa1f2e403937db924b87f1a3d071df115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f2e403937db924b87f1a3d071df115">&#9670;&#160;</a></span>getEditorHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OscilloscopeAudioProcessor::getEditorHeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Get editor height.</p>
+<dl class="section return"><dt>Returns</dt><dd>Editor height. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00223">223</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2251fac84c94c91c7f4c4300d22a6314" name="a2251fac84c94c91c7f4c4300d22a6314"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2251fac84c94c91c7f4c4300d22a6314">&#9670;&#160;</a></span>getEditorRefreshRate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OscilloscopeAudioProcessor::getEditorRefreshRate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Get the stored refresh rate.</p>
+<dl class="section return"><dt>Returns</dt><dd>Stored editors' refresh rate. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00236">236</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3f7ef6102262a42fe22ad2d44040fa55" name="a3f7ef6102262a42fe22ad2d44040fa55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7ef6102262a42fe22ad2d44040fa55">&#9670;&#160;</a></span>getEditorWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OscilloscopeAudioProcessor::getEditorWidth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Get editor width.</p>
+<dl class="section return"><dt>Returns</dt><dd>Editor width. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00218">218</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -346,7 +417,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00041">41</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00039">39</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -373,7 +444,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00078">78</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00076">76</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -401,7 +472,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00093">93</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00091">91</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -475,7 +546,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00073">73</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00071">71</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -576,7 +647,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00064">64</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00062">62</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -614,7 +685,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00103">103</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00101">101</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -679,7 +750,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00055">55</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00053">53</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -734,7 +805,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00089">89</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00087">87</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -773,6 +844,44 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00176">176</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a531da223719ecb551640cc654ca7d0c3" name="a531da223719ecb551640cc654ca7d0c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a531da223719ecb551640cc654ca7d0c3">&#9670;&#160;</a></span>storeEditorSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OscilloscopeAudioProcessor::storeEditorSize </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Store editor size in order to be able to recover it from the</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">processorTreeState</td><td>ValueTree. This is done in order to make the editor size persistent.</td></tr>
+    <tr><td class="paramname">width</td><td>Editor width. </td></tr>
+    <tr><td class="paramname">height</td><td>Editor height. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00229">229</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>

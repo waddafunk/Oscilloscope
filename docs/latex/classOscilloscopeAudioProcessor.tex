@@ -58,13 +58,21 @@ int \mbox{\hyperlink{classOscilloscopeAudioProcessor_afbb04841fb9877e915764cd0fa
 \mbox{\hyperlink{classAudioBufferQueue}{Audio\+Buffer\+Queue}}$<$ float $>$ $\ast$ \mbox{\hyperlink{classOscilloscopeAudioProcessor_ae2af712fdcae4b9410ccfce206f6c864}{get\+Audio\+Buffer\+Queue}} ()
 \item 
 juce\+::\+Audio\+Processor\+Value\+Tree\+State $\ast$ \mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{get\+Tree\+State}} ()
+\item 
+int \mbox{\hyperlink{classOscilloscopeAudioProcessor_a3f7ef6102262a42fe22ad2d44040fa55}{get\+Editor\+Width}} ()
+\item 
+int \mbox{\hyperlink{classOscilloscopeAudioProcessor_aa1f2e403937db924b87f1a3d071df115}{get\+Editor\+Height}} ()
+\item 
+void \mbox{\hyperlink{classOscilloscopeAudioProcessor_a531da223719ecb551640cc654ca7d0c3}{store\+Editor\+Size}} (int width, int height)
+\item 
+int \mbox{\hyperlink{classOscilloscopeAudioProcessor_a2251fac84c94c91c7f4c4300d22a6314}{get\+Editor\+Refresh\+Rate}} ()
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8h_source_l00018}{18}} of file \mbox{\hyperlink{PluginProcessor_8h_source}{Plugin\+Processor.\+h}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8h_source_l00019}{19}} of file \mbox{\hyperlink{PluginProcessor_8h_source}{Plugin\+Processor.\+h}}.
 
 
 
@@ -87,7 +95,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00013}{13}} of 
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 
 
@@ -100,7 +108,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00036}{36}} of 
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_af3a2a1f6201e8cd2ffbcb01bfa727f5e}\label{classOscilloscopeAudioProcessor_af3a2a1f6201e8cd2ffbcb01bfa727f5e}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!changeProgramName@{changeProgramName}}
@@ -110,7 +118,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00046}{46}} of 
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_a0f03ca47f57998ee6f1ccbbea87253f2}\label{classOscilloscopeAudioProcessor_a0f03ca47f57998ee6f1ccbbea87253f2}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!createEditor@{createEditor}}
@@ -140,7 +148,52 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00201}{201}} of
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+
+\mbox{\Hypertarget{classOscilloscopeAudioProcessor_aa1f2e403937db924b87f1a3d071df115}\label{classOscilloscopeAudioProcessor_aa1f2e403937db924b87f1a3d071df115}} 
+\index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!getEditorHeight@{getEditorHeight}}
+\index{getEditorHeight@{getEditorHeight}!OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}}
+\doxysubsubsection{\texorpdfstring{getEditorHeight()}{getEditorHeight()}}
+{\footnotesize\ttfamily int Oscilloscope\+Audio\+Processor\+::get\+Editor\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get editor height.
+
+\begin{DoxyReturn}{Returns}
+Editor height. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00223}{223}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+
+\mbox{\Hypertarget{classOscilloscopeAudioProcessor_a2251fac84c94c91c7f4c4300d22a6314}\label{classOscilloscopeAudioProcessor_a2251fac84c94c91c7f4c4300d22a6314}} 
+\index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!getEditorRefreshRate@{getEditorRefreshRate}}
+\index{getEditorRefreshRate@{getEditorRefreshRate}!OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}}
+\doxysubsubsection{\texorpdfstring{getEditorRefreshRate()}{getEditorRefreshRate()}}
+{\footnotesize\ttfamily int Oscilloscope\+Audio\+Processor\+::get\+Editor\+Refresh\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the stored refresh rate.
+
+\begin{DoxyReturn}{Returns}
+Stored editors\textquotesingle{} refresh rate. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00236}{236}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+
+\mbox{\Hypertarget{classOscilloscopeAudioProcessor_a3f7ef6102262a42fe22ad2d44040fa55}\label{classOscilloscopeAudioProcessor_a3f7ef6102262a42fe22ad2d44040fa55}} 
+\index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!getEditorWidth@{getEditorWidth}}
+\index{getEditorWidth@{getEditorWidth}!OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}}
+\doxysubsubsection{\texorpdfstring{getEditorWidth()}{getEditorWidth()}}
+{\footnotesize\ttfamily int Oscilloscope\+Audio\+Processor\+::get\+Editor\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get editor width.
+
+\begin{DoxyReturn}{Returns}
+Editor width. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_a5e5198ba007ad4d5eaee19b651aeaa03}\label{classOscilloscopeAudioProcessor_a5e5198ba007ad4d5eaee19b651aeaa03}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!getName@{getName}}
@@ -150,7 +203,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00084}{84}} of 
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_a99d89969c6682e8a288e259960a7662f}\label{classOscilloscopeAudioProcessor_a99d89969c6682e8a288e259960a7662f}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!getNumPrograms@{getNumPrograms}}
@@ -160,7 +213,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00041}{41}} of 
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_a0185ad408361b6bad5c8c4aff09a68e3}\label{classOscilloscopeAudioProcessor_a0185ad408361b6bad5c8c4aff09a68e3}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!getProgramName@{getProgramName}}
@@ -170,7 +223,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00078}{78}} of 
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_afbb04841fb9877e915764cd0fa4c5663}\label{classOscilloscopeAudioProcessor_afbb04841fb9877e915764cd0fa4c5663}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!getSampleRate@{getSampleRate}}
@@ -200,7 +253,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00166}{166}} of
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}\label{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!getTreeState@{getTreeState}}
@@ -240,7 +293,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00117}{117}} of
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_aaddde8072db24578da2fc8436e5318be}\label{classOscilloscopeAudioProcessor_aaddde8072db24578da2fc8436e5318be}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!prepareToPlay@{prepareToPlay}}
@@ -250,7 +303,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00064}{64}} of 
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_a410b185b1dbca9cb0e4d43ce83b37fac}\label{classOscilloscopeAudioProcessor_a410b185b1dbca9cb0e4d43ce83b37fac}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!processBlock@{processBlock}}
@@ -270,7 +323,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00142}{142}} of
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_ac347fa3e8e36d09f24caacc7806d70ac}\label{classOscilloscopeAudioProcessor_ac347fa3e8e36d09f24caacc7806d70ac}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!releaseResources@{releaseResources}}
@@ -290,7 +343,7 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00110}{110}} of
 
 
 
-Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 \mbox{\Hypertarget{classOscilloscopeAudioProcessor_a61d2275be79cd69f3ff6480c074c163c}\label{classOscilloscopeAudioProcessor_a61d2275be79cd69f3ff6480c074c163c}} 
 \index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!setStateInformation@{setStateInformation}}
@@ -301,6 +354,25 @@ Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00089}{89}} of 
 
 
 Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
+
+\mbox{\Hypertarget{classOscilloscopeAudioProcessor_a531da223719ecb551640cc654ca7d0c3}\label{classOscilloscopeAudioProcessor_a531da223719ecb551640cc654ca7d0c3}} 
+\index{OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}!storeEditorSize@{storeEditorSize}}
+\index{storeEditorSize@{storeEditorSize}!OscilloscopeAudioProcessor@{OscilloscopeAudioProcessor}}
+\doxysubsubsection{\texorpdfstring{storeEditorSize()}{storeEditorSize()}}
+{\footnotesize\ttfamily void Oscilloscope\+Audio\+Processor\+::store\+Editor\+Size (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+Store editor size in order to be able to recover it from the
+\begin{DoxyParams}{Parameters}
+{\em processor\+Tree\+State} & Value\+Tree. This is done in order to make the editor size persistent.\\
+\hline
+{\em width} & Editor width. \\
+\hline
+{\em height} & Editor height. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{PluginProcessor_8cpp_source_l00229}{229}} of file \mbox{\hyperlink{PluginProcessor_8cpp_source}{Plugin\+Processor.\+cpp}}.
 
 
 

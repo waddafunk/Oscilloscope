@@ -1,0 +1,80 @@
+\hypertarget{classUntriggeredOscilloscope}{}\doxysection{Untriggered\+Oscilloscope Class Reference}
+\label{classUntriggeredOscilloscope}\index{UntriggeredOscilloscope@{UntriggeredOscilloscope}}
+
+
+{\ttfamily \#include $<$Untriggered\+Oscilloscope.\+h$>$}
+
+Inheritance diagram for Untriggered\+Oscilloscope\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.007169cm]{classUntriggeredOscilloscope}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUntriggeredOscilloscope_a6a3aef3d96f3ec5a08d288bb8a45f6d5}{Untriggered\+Oscilloscope}} (\mbox{\hyperlink{classOscilloscopeAudioProcessor}{Oscilloscope\+Audio\+Processor}} \&a\+Processor, int sample\+Rate)
+\item 
+void \mbox{\hyperlink{classUntriggeredOscilloscope_aee2ec401d9995b81ac259e622fa4d4e5}{plot}} (const float $\ast$data, size\+\_\+t num\+Samples, juce\+::\+Graphics \&g, juce\+::\+Rectangle$<$ float $>$ rect, float scaler=float(1), float offset=float(0)) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Untriggered oscilloscope. Displays data continuously updating with no control over trigger point and phase. 
+
+Definition at line \mbox{\hyperlink{UntriggeredOscilloscope_8h_source_l00019}{19}} of file \mbox{\hyperlink{UntriggeredOscilloscope_8h_source}{Untriggered\+Oscilloscope.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUntriggeredOscilloscope_a6a3aef3d96f3ec5a08d288bb8a45f6d5}\label{classUntriggeredOscilloscope_a6a3aef3d96f3ec5a08d288bb8a45f6d5}} 
+\index{UntriggeredOscilloscope@{UntriggeredOscilloscope}!UntriggeredOscilloscope@{UntriggeredOscilloscope}}
+\index{UntriggeredOscilloscope@{UntriggeredOscilloscope}!UntriggeredOscilloscope@{UntriggeredOscilloscope}}
+\doxysubsubsection{\texorpdfstring{UntriggeredOscilloscope()}{UntriggeredOscilloscope()}}
+{\footnotesize\ttfamily Untriggered\+Oscilloscope\+::\+Untriggered\+Oscilloscope (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOscilloscopeAudioProcessor}{Oscilloscope\+Audio\+Processor}} \&}]{a\+Processor,  }\item[{int}]{sample\+Rate }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UntriggeredOscilloscope_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{UntriggeredOscilloscope_8cpp_source}{Untriggered\+Oscilloscope.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUntriggeredOscilloscope_aee2ec401d9995b81ac259e622fa4d4e5}\label{classUntriggeredOscilloscope_aee2ec401d9995b81ac259e622fa4d4e5}} 
+\index{UntriggeredOscilloscope@{UntriggeredOscilloscope}!plot@{plot}}
+\index{plot@{plot}!UntriggeredOscilloscope@{UntriggeredOscilloscope}}
+\doxysubsubsection{\texorpdfstring{plot()}{plot()}}
+{\footnotesize\ttfamily void Untriggered\+Oscilloscope\+::plot (\begin{DoxyParamCaption}\item[{const float $\ast$}]{data,  }\item[{size\+\_\+t}]{num\+Samples,  }\item[{juce\+::\+Graphics \&}]{g,  }\item[{juce\+::\+Rectangle$<$ float $>$}]{rect,  }\item[{float}]{scaler = {\ttfamily float(1)},  }\item[{float}]{offset = {\ttfamily float(0)} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Plots the waveform. This method is implemented in the subclasses in order to avoid having a check on the selected draw modality of the waveform every time it is plotted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Samples to plot \\
+\hline
+{\em num\+Samples} & Number of samples \\
+\hline
+{\em g} & \href{https://docs.juce.com/master/classGraphics.html}{\texttt{ JUCE Graphics }} \\
+\hline
+{\em rect} & \href{https://docs.juce.com/master/classRectangle.html}{\texttt{ JUCE Rectangle }} \\
+\hline
+{\em scaler} & Scale factor. \\
+\hline
+{\em offset} & Y-\/axis offset. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classOscilloscopeComponent_ab8cfa1924a853d7348f48f548afcd9f8}{Oscilloscope\+Component}}.
+
+
+
+Definition at line \mbox{\hyperlink{UntriggeredOscilloscope_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{UntriggeredOscilloscope_8cpp_source}{Untriggered\+Oscilloscope.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\mbox{\hyperlink{UntriggeredOscilloscope_8h}{Untriggered\+Oscilloscope.\+h}}\item 
+Source/\mbox{\hyperlink{UntriggeredOscilloscope_8cpp}{Untriggered\+Oscilloscope.\+cpp}}\end{DoxyCompactItemize}

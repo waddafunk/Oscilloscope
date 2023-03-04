@@ -90,90 +90,94 @@ $(function() {
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">//==============================================================================</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classOscilloscopeAudioProcessorEditor.html#abd81a115d8bb055f20820a533e3ffc67">   13</a></span><a class="code hl_function" href="classOscilloscopeAudioProcessorEditor.html#abd81a115d8bb055f20820a533e3ffc67">OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor</a> (<a class="code hl_class" href="classOscilloscopeAudioProcessor.html">OscilloscopeAudioProcessor</a>&amp; p)</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    : AudioProcessorEditor (&amp;p), audioProcessor (p), </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    oscilloscopeComponent(audioProcessor, audioProcessor.getSampleRate())</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// Make sure that before the constructor has finished, you&#39;ve set the</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// editor&#39;s size to whatever you need it to be.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    : AudioProcessorEditor (&amp;p), audioProcessor (p)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// Make sure that before the constructor has finished, you&#39;ve set the</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// editor&#39;s size to whatever you need it to be.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    oscilloscopeComponent.reset(<span class="keyword">new</span> <a class="code hl_class" href="classUntriggeredOscilloscope.html">UntriggeredOscilloscope</a>(audioProcessor, audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#afbb04841fb9877e915764cd0fa4c5663">getSampleRate</a>()));</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    addAndMakeVisible(oscilloscopeComponent);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    addAndMakeVisible(oscilloscopeComponent.get());</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    addAndMakeVisible(drawGrid);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    addAndMakeVisible(bufferLength);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    drawGrid.setButtonText(<span class="stringliteral">&quot;Grid&quot;</span>);</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    setSize(1400, 700);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    setSize(audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#a3f7ef6102262a42fe22ad2d44040fa55">getEditorWidth</a>(), audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#aa1f2e403937db924b87f1a3d071df115">getEditorHeight</a>());</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">auto</span> area = getLocalBounds();</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    drawGrid.setSize(100, 20);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    oscilloscopeComponent.setTopLeftPosition(0, 0);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    oscilloscopeComponent.setSize(area.getWidth(), area.getHeight() - 30);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    oscilloscopeComponent-&gt;setTopLeftPosition(0, 0);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    oscilloscopeComponent-&gt;setSize(area.getWidth(), area.getHeight() - 30);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    drawGrid.setTopLeftPosition(10, area.getHeight() - 25);</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    drawGrid.onStateChange = [<span class="keyword">this</span>]() {</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">auto</span> draw = drawGrid.getToggleState();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        oscilloscopeComponent.<a class="code hl_function" href="classOscilloscopeComponent.html#a80e62cd1278d38f666aa55cf58fc9acb">setGridCheck</a>(draw);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        oscilloscopeComponent-&gt;setGridCheck(draw);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    };</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// Get a pointer to the AudioParameterBool</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">//auto* myToggleParam = dynamic_cast&lt;juce::AudioParameterBool*&gt;(processor.getParameters().getUnchecked(0));</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">auto</span> drawGridValue = audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#a88406729883710df23d0b10f7bdb0f0d">getTreeState</a>()-&gt;getParameter(<span class="stringliteral">&quot;drawGrid&quot;</span>)-&gt;getValue();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    drawGrid.setToggleState(drawGridValue, juce::sendNotification);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// Attach the ToggleButton to the AudioParameterBool</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    gridAttachment = <span class="keyword">new</span> juce::AudioProcessorValueTreeState::ButtonAttachment(*audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#a88406729883710df23d0b10f7bdb0f0d">getTreeState</a>(), juce::String(<span class="stringliteral">&quot;drawGrid&quot;</span>), drawGrid);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, <span class="keyword">true</span>, 0, 0);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">auto</span> bufferLengthValue = audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#a88406729883710df23d0b10f7bdb0f0d">getTreeState</a>()-&gt;getParameter(<span class="stringliteral">&quot;bufferLength&quot;</span>)-&gt;getValue();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    bufferLength.setValue((<span class="keywordtype">double</span>)bufferLengthValue, juce::sendNotification);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    bufferLengthAttachment = <span class="keyword">new</span> juce::AudioProcessorValueTreeState::SliderAttachment(*audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#a88406729883710df23d0b10f7bdb0f0d">getTreeState</a>(), juce::String(<span class="stringliteral">&quot;bufferLength&quot;</span>), bufferLength);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    bufferLength.setTopLeftPosition(1000, area.getHeight() - 25);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    bufferLength.setSize(350, 20);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// Attach the ToggleButton to the AudioParameterBool</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    gridAttachment = <span class="keyword">new</span> juce::AudioProcessorValueTreeState::ButtonAttachment(*audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#a88406729883710df23d0b10f7bdb0f0d">getTreeState</a>(), juce::String(<span class="stringliteral">&quot;drawGrid&quot;</span>), drawGrid);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, <span class="keyword">true</span>, 0, 0);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    bufferLengthAttachment = <span class="keyword">new</span> juce::AudioProcessorValueTreeState::SliderAttachment(*audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#a88406729883710df23d0b10f7bdb0f0d">getTreeState</a>(), juce::String(<span class="stringliteral">&quot;bufferLength&quot;</span>), bufferLength);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    bufferLength.setTopLeftPosition(1000, area.getHeight() - 25);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    bufferLength.setSize(350, 20);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    setResizable(<span class="keyword">true</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    setResizeLimits(256, 256, 1920, 1080);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_function" href="classOscilloscopeAudioProcessorEditor.html#a0104937177acfe678f1bd373ed9bd7f1">resized</a>(); <span class="comment">// need to be called in constructor since rescaling logic makes oscilloscope invisible on creation</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    setResizable(<span class="keyword">true</span>, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    setResizeLimits(256, 256, 1920, 1080);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_function" href="classOscilloscopeAudioProcessorEditor.html#a0104937177acfe678f1bd373ed9bd7f1">resized</a>(); <span class="comment">// need to be called in constructor since rescaling logic makes oscilloscope invisible on creation</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classOscilloscopeAudioProcessorEditor.html#aafec2e98cebcef5ac499aba85077717b">   59</a></span><a class="code hl_function" href="classOscilloscopeAudioProcessorEditor.html#aafec2e98cebcef5ac499aba85077717b">OscilloscopeAudioProcessorEditor::~OscilloscopeAudioProcessorEditor</a>()</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>{</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">delete</span> gridAttachment;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">delete</span> bufferLengthAttachment;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">//==============================================================================</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classOscilloscopeAudioProcessorEditor.html#a23575ad8b290e1ff518fab0cd51dabe7">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeAudioProcessorEditor.html#a23575ad8b290e1ff518fab0cd51dabe7">OscilloscopeAudioProcessorEditor::paint</a> (juce::Graphics&amp; g)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>{</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// (Our component is opaque, so we must completely fill the background with a solid colour)</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    g.fillAll (juce::Colour(95, 2, 31).darker(0.8));</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classOscilloscopeAudioProcessorEditor.html#a0104937177acfe678f1bd373ed9bd7f1">   73</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeAudioProcessorEditor.html#a0104937177acfe678f1bd373ed9bd7f1">OscilloscopeAudioProcessorEditor::resized</a>()</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// This is generally where you&#39;ll want to lay out the positions of any</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// subcomponents in your editor..</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">auto</span> area = getLocalBounds();</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">float</span> yDiff = (float)(area.getHeight() - 30) - oscilloscopeComponent.getHeight();</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// rescale oscilloscope</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">float</span> x_sc = (float)area.getWidth() / oscilloscopeComponent.getWidth();</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">float</span> y_sc = (float)(area.getHeight() - 30) / oscilloscopeComponent.getHeight();</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    oscilloscopeComponent.setTransform(juce::AffineTransform::scale(x_sc, y_sc));</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    drawGrid.setTransform(juce::AffineTransform::translation(0, yDiff));</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classOscilloscopeAudioProcessorEditor.html#aafec2e98cebcef5ac499aba85077717b">   55</a></span><a class="code hl_function" href="classOscilloscopeAudioProcessorEditor.html#aafec2e98cebcef5ac499aba85077717b">OscilloscopeAudioProcessorEditor::~OscilloscopeAudioProcessorEditor</a>()</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">delete</span> gridAttachment;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">delete</span> bufferLengthAttachment;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classOscilloscopeAudioProcessorEditor.html#a23575ad8b290e1ff518fab0cd51dabe7">   62</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeAudioProcessorEditor.html#a23575ad8b290e1ff518fab0cd51dabe7">OscilloscopeAudioProcessorEditor::paint</a> (juce::Graphics&amp; g)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// (Our component is opaque, so we must completely fill the background with a solid colour)</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    g.fillAll (juce::Colour(95, 2, 31).darker(0.8));</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classOscilloscopeAudioProcessorEditor.html#a0104937177acfe678f1bd373ed9bd7f1">   69</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classOscilloscopeAudioProcessorEditor.html#a0104937177acfe678f1bd373ed9bd7f1">OscilloscopeAudioProcessorEditor::resized</a>()</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// This is generally where you&#39;ll want to lay out the positions of any</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// subcomponents in your editor..</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">auto</span> area = getLocalBounds();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">int</span> height = area.getHeight();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">int</span> width = area.getWidth();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">float</span> yDiff = (float)(height - 30) - oscilloscopeComponent-&gt;getHeight();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// rescale oscilloscope</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">float</span> x_sc = (float)width / oscilloscopeComponent-&gt;getWidth();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">float</span> y_sc = (float)(height - 30) / oscilloscopeComponent-&gt;getHeight();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    oscilloscopeComponent-&gt;setTransform(juce::AffineTransform::scale(x_sc, y_sc));</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    drawGrid.setTransform(juce::AffineTransform::translation(0, yDiff));</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    audioProcessor.<a class="code hl_function" href="classOscilloscopeAudioProcessor.html#a531da223719ecb551640cc654ca7d0c3">storeEditorSize</a>(getWidth(), getHeight());</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="ttc" id="aPluginEditor_8h_html"><div class="ttname"><a href="PluginEditor_8h.html">PluginEditor.h</a></div></div>
 <div class="ttc" id="aPluginProcessor_8h_html"><div class="ttname"><a href="PluginProcessor_8h.html">PluginProcessor.h</a></div></div>
-<div class="ttc" id="aclassOscilloscopeAudioProcessorEditor_html_a0104937177acfe678f1bd373ed9bd7f1"><div class="ttname"><a href="classOscilloscopeAudioProcessorEditor.html#a0104937177acfe678f1bd373ed9bd7f1">OscilloscopeAudioProcessorEditor::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdef"><b>Definition:</b> <a href="PluginEditor_8cpp_source.html#l00073">PluginEditor.cpp:73</a></div></div>
-<div class="ttc" id="aclassOscilloscopeAudioProcessorEditor_html_a23575ad8b290e1ff518fab0cd51dabe7"><div class="ttname"><a href="classOscilloscopeAudioProcessorEditor.html#a23575ad8b290e1ff518fab0cd51dabe7">OscilloscopeAudioProcessorEditor::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;) override</div><div class="ttdef"><b>Definition:</b> <a href="PluginEditor_8cpp_source.html#l00066">PluginEditor.cpp:66</a></div></div>
-<div class="ttc" id="aclassOscilloscopeAudioProcessorEditor_html_aafec2e98cebcef5ac499aba85077717b"><div class="ttname"><a href="classOscilloscopeAudioProcessorEditor.html#aafec2e98cebcef5ac499aba85077717b">OscilloscopeAudioProcessorEditor::~OscilloscopeAudioProcessorEditor</a></div><div class="ttdeci">~OscilloscopeAudioProcessorEditor() override</div><div class="ttdef"><b>Definition:</b> <a href="PluginEditor_8cpp_source.html#l00059">PluginEditor.cpp:59</a></div></div>
+<div class="ttc" id="aclassOscilloscopeAudioProcessorEditor_html_a0104937177acfe678f1bd373ed9bd7f1"><div class="ttname"><a href="classOscilloscopeAudioProcessorEditor.html#a0104937177acfe678f1bd373ed9bd7f1">OscilloscopeAudioProcessorEditor::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdef"><b>Definition:</b> <a href="PluginEditor_8cpp_source.html#l00069">PluginEditor.cpp:69</a></div></div>
+<div class="ttc" id="aclassOscilloscopeAudioProcessorEditor_html_a23575ad8b290e1ff518fab0cd51dabe7"><div class="ttname"><a href="classOscilloscopeAudioProcessorEditor.html#a23575ad8b290e1ff518fab0cd51dabe7">OscilloscopeAudioProcessorEditor::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;) override</div><div class="ttdef"><b>Definition:</b> <a href="PluginEditor_8cpp_source.html#l00062">PluginEditor.cpp:62</a></div></div>
+<div class="ttc" id="aclassOscilloscopeAudioProcessorEditor_html_aafec2e98cebcef5ac499aba85077717b"><div class="ttname"><a href="classOscilloscopeAudioProcessorEditor.html#aafec2e98cebcef5ac499aba85077717b">OscilloscopeAudioProcessorEditor::~OscilloscopeAudioProcessorEditor</a></div><div class="ttdeci">~OscilloscopeAudioProcessorEditor() override</div><div class="ttdef"><b>Definition:</b> <a href="PluginEditor_8cpp_source.html#l00055">PluginEditor.cpp:55</a></div></div>
 <div class="ttc" id="aclassOscilloscopeAudioProcessorEditor_html_abd81a115d8bb055f20820a533e3ffc67"><div class="ttname"><a href="classOscilloscopeAudioProcessorEditor.html#abd81a115d8bb055f20820a533e3ffc67">OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor</a></div><div class="ttdeci">OscilloscopeAudioProcessorEditor(OscilloscopeAudioProcessor &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="PluginEditor_8cpp_source.html#l00013">PluginEditor.cpp:13</a></div></div>
-<div class="ttc" id="aclassOscilloscopeAudioProcessor_html"><div class="ttname"><a href="classOscilloscopeAudioProcessor.html">OscilloscopeAudioProcessor</a></div><div class="ttdef"><b>Definition:</b> <a href="PluginProcessor_8h_source.html#l00018">PluginProcessor.h:22</a></div></div>
+<div class="ttc" id="aclassOscilloscopeAudioProcessor_html"><div class="ttname"><a href="classOscilloscopeAudioProcessor.html">OscilloscopeAudioProcessor</a></div><div class="ttdef"><b>Definition:</b> <a href="PluginProcessor_8h_source.html#l00019">PluginProcessor.h:23</a></div></div>
+<div class="ttc" id="aclassOscilloscopeAudioProcessor_html_a3f7ef6102262a42fe22ad2d44040fa55"><div class="ttname"><a href="classOscilloscopeAudioProcessor.html#a3f7ef6102262a42fe22ad2d44040fa55">OscilloscopeAudioProcessor::getEditorWidth</a></div><div class="ttdeci">int getEditorWidth()</div><div class="ttdef"><b>Definition:</b> <a href="PluginProcessor_8cpp_source.html#l00218">PluginProcessor.cpp:218</a></div></div>
+<div class="ttc" id="aclassOscilloscopeAudioProcessor_html_a531da223719ecb551640cc654ca7d0c3"><div class="ttname"><a href="classOscilloscopeAudioProcessor.html#a531da223719ecb551640cc654ca7d0c3">OscilloscopeAudioProcessor::storeEditorSize</a></div><div class="ttdeci">void storeEditorSize(int width, int height)</div><div class="ttdef"><b>Definition:</b> <a href="PluginProcessor_8cpp_source.html#l00229">PluginProcessor.cpp:229</a></div></div>
 <div class="ttc" id="aclassOscilloscopeAudioProcessor_html_a88406729883710df23d0b10f7bdb0f0d"><div class="ttname"><a href="classOscilloscopeAudioProcessor.html#a88406729883710df23d0b10f7bdb0f0d">OscilloscopeAudioProcessor::getTreeState</a></div><div class="ttdeci">juce::AudioProcessorValueTreeState * getTreeState()</div><div class="ttdef"><b>Definition:</b> <a href="PluginProcessor_8cpp_source.html#l00206">PluginProcessor.cpp:206</a></div></div>
-<div class="ttc" id="aclassOscilloscopeComponent_html_a80e62cd1278d38f666aa55cf58fc9acb"><div class="ttname"><a href="classOscilloscopeComponent.html#a80e62cd1278d38f666aa55cf58fc9acb">OscilloscopeComponent::setGridCheck</a></div><div class="ttdeci">void setGridCheck(bool newValue)</div><div class="ttdef"><b>Definition:</b> <a href="OscilloscopeComponent_8h_source.html#l00060">OscilloscopeComponent.h:60</a></div></div>
+<div class="ttc" id="aclassOscilloscopeAudioProcessor_html_aa1f2e403937db924b87f1a3d071df115"><div class="ttname"><a href="classOscilloscopeAudioProcessor.html#aa1f2e403937db924b87f1a3d071df115">OscilloscopeAudioProcessor::getEditorHeight</a></div><div class="ttdeci">int getEditorHeight()</div><div class="ttdef"><b>Definition:</b> <a href="PluginProcessor_8cpp_source.html#l00223">PluginProcessor.cpp:223</a></div></div>
+<div class="ttc" id="aclassOscilloscopeAudioProcessor_html_afbb04841fb9877e915764cd0fa4c5663"><div class="ttname"><a href="classOscilloscopeAudioProcessor.html#afbb04841fb9877e915764cd0fa4c5663">OscilloscopeAudioProcessor::getSampleRate</a></div><div class="ttdeci">int getSampleRate()</div><div class="ttdef"><b>Definition:</b> <a href="PluginProcessor_8cpp_source.html#l00196">PluginProcessor.cpp:196</a></div></div>
+<div class="ttc" id="aclassUntriggeredOscilloscope_html"><div class="ttname"><a href="classUntriggeredOscilloscope.html">UntriggeredOscilloscope</a></div><div class="ttdef"><b>Definition:</b> <a href="UntriggeredOscilloscope_8h_source.html#l00019">UntriggeredOscilloscope.h:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
