@@ -12,13 +12,14 @@
 #include <JuceHeader.h>
 #include "AudioBufferQueue.h"
 #include "PluginProcessor.h"
+# include "InitVariables.h"
 
 /**
  * Oscilloscope graphical component for SampleType type data.
  * 
  * Inherits from <a href="https://docs.juce.com/master/classComponent.html">JUCE Component</a> and <a href="https://docs.juce.com/master/classTimer.html">JUCE timer</a> 
  */
-class OscilloscopeComponent : public juce::Component,
+class OscilloscopeComponent : public juce::Component, private juce::AudioProcessorValueTreeState::Listener,
     private juce::Timer
 {
 public:
@@ -29,13 +30,25 @@ public:
      * 
      * \param queueToUse AudioBufferQueue to use
      */
-    OscilloscopeComponent(OscilloscopeAudioProcessor& aProcessor, int sampleRate) :
+    OscilloscopeComponent(OscilloscopeAudioProcessor& aProcessor, int sampleRate, int framesPerSecond) :
         audioProcessor(aProcessor)
     {
-        setFramesPerSecond(30);
+        setFramesPerSecond(framesPerSecond);
         this->sampleRate = sampleRate;
-        sampleData.resize(audioProcessor.getAudioBufferQueue()->getBufferSize());
+        displayLength = (int)(*aProcessor.getTreeState()->getRawParameterValue("bufferLength") * aProcessor.getSampleRate());
+        ratio = (double)displayLength / (double)EDITOR_INITIAL_WIDTH();
+        displayLength /= ratio;
+        double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize() / ratio;
+        sampleData.resize(EDITOR_INITIAL_WIDTH());
+        newData.resize(sampleData.size());
+        newlyPopped.resize(dataLength);
+        notInterpolatedData.resize(audioProcessor.getAudioBufferQueue()->getBufferSize());
         std::fill(sampleData.begin(), sampleData.end(), 0);
+        std::fill(newlyPopped.begin(), newlyPopped.end(), 0);
+        std::fill(notInterpolatedData.begin(), notInterpolatedData.end(), 0);
+        std::fill(newData.begin(), newData.end(), 0);
+        aProcessor.getTreeState()->addParameterListener("bufferLength", this);
+        interpolator.reset();
     }
 
     //==============================================================================
@@ -85,21 +98,21 @@ public:
         }
 
         float fontHeight = g.getCurrentFont().getAscent();
-        float duration = sampleData.size() * 1000 / sampleRate;
+        float duration = *audioProcessor.getTreeState()->getRawParameterValue("bufferLength") * static_cast<float>(10000);
         duration /= 10;
-        auto xText = juce::String(duration);
+        auto xText = juce::String(duration, 2);
         xText.append(" ms", 3);
 
-        g.drawLine(w - 65, h - 39, w - 65, h - 39 - fontHeight);
-        g.drawLine(w - 55, h - 39 - fontHeight / 2, w - 65, h - 39 - fontHeight / 2);
-        g.drawLine(w - 55, h - 39, w - 55, h - 39 - fontHeight);
-        g.drawSingleLineText(xText, w - 50, h - 39);
+        g.drawLine(w - 95, h - 39, w - 95, h - 39 - fontHeight);
+        g.drawLine(w - 85, h - 39 - fontHeight / 2, w - 95, h - 39 - fontHeight / 2);
+        g.drawLine(w - 85, h - 39, w - 85, h - 39 - fontHeight);
+        g.drawSingleLineText(xText, w - 80, h - 39);
 
         auto yText = "0.1";
-        g.drawLine(w - 65, h - 19, w - 55, h - 19);
-        g.drawLine(w - 60, h - 19 - fontHeight, w - 60, h - 19);
-        g.drawLine(w - 65, h - 19 - fontHeight, w - 55, h - 19 - fontHeight);
-        g.drawSingleLineText(yText, w - 50, h - 19);
+        g.drawLine(w - 95, h - 19, w - 85, h - 19);
+        g.drawLine(w - 90, h - 19 - fontHeight, w - 90, h - 19);
+        g.drawLine(w - 95, h - 19 - fontHeight, w - 85, h - 19 - fontHeight);
+        g.drawSingleLineText(yText, w - 80, h - 19);
     }
 
     /**
@@ -136,15 +149,38 @@ public:
      * Called when component is resized.
      * 
      */
-    void resized() override {};
+    void resized() override { };
 
 
 private:
     //==============================================================================
     OscilloscopeAudioProcessor& audioProcessor;
+    int displayLength;
     std::vector<float> sampleData; /**< Data currently displayed */
+    std::vector<float> newlyPopped; /**< Last popped array */
+    std::vector<float> notInterpolatedData;
+    std::vector<float> newData;
     int sampleRate; /**< Sample rate */
     bool gridCheck = false;
+    double ratio = 1.;
+    juce::Interpolators::Linear interpolator;
+
+    /**
+     * Updates the buffer length when the parameter is modified.
+     * 
+     * \param parameterID Parameter ID (always "bufferLength).
+     * \param newValue New value.
+     */
+    void parameterChanged(const juce::String& parameterID, float newValue) override
+    {
+        ratio = newValue * audioProcessor.getSampleRate() / EDITOR_INITIAL_WIDTH();
+        displayLength = newValue * audioProcessor.getSampleRate() / ratio;
+        sampleData.resize(displayLength);
+        newData.resize(sampleData.size());
+        int queueSize = audioProcessor.getAudioBufferQueue()->getBufferSize();
+        double dataLength = queueSize / ratio;
+        newlyPopped.resize(dataLength);
+    }
 
     //==============================================================================
     /**
@@ -155,14 +191,21 @@ private:
      */
     void timerCallback() override
     {
-        sampleData.resize(audioProcessor.getAudioBufferQueue()->getBufferSize());
-        audioProcessor.getAudioBufferQueue()->pop(sampleData.data());
+        audioProcessor.getAudioBufferQueue()->pop(notInterpolatedData.data());
+        int queueSize = newlyPopped.size();
+        interpolator.process(ratio, notInterpolatedData.data(), newlyPopped.data(), queueSize);
+        std::copy(sampleData.data() + queueSize, sampleData.data() + sampleData.size(), newData.begin());
+        std::copy(newlyPopped.data(), newlyPopped.data() + queueSize, newData.begin() + sampleData.size() - queueSize);
+        sampleData = newData;
         repaint();
     }
 
+protected:
     //==============================================================================
     /**
-     * Plots the waveform.
+     * Plots the waveform. This method is implemented in the subclasses in order to
+     * avoid having a check on the selected draw modality of the waveform every time 
+     * it is plotted. 
      * 
      * \param data Samples to plot
      * \param numSamples Number of samples
@@ -171,26 +214,10 @@ private:
      * \param scaler Scale factor.
      * \param offset Y-axis offset.
      */
-    static void plot(const float* data,
+    virtual void plot(const float* data,
         size_t numSamples,
         juce::Graphics& g,
         juce::Rectangle<float> rect,
         float scaler = float(1),
-        float offset = float(0))
-    {
-        auto w = rect.getWidth();
-        auto h = rect.getHeight();
-        auto right = rect.getRight();
-
-        auto center = rect.getBottom() - offset;
-        auto gain = h * scaler;
-
-        g.setColour(juce::Colours::beige);
-
-        for (size_t i = 1; i < numSamples; ++i)
-            g.drawLine({ juce::jmap(float(i - 1), float(0), float(numSamples - 1), float(right - w), float(right)),
-                          center - gain * data[i - 1],
-                          juce::jmap(float(i), float(0), float(numSamples - 1), float(right - w), float(right)),
-                          center - gain * data[i] });
-    }
+        float offset = float(0)) = 0;
 };

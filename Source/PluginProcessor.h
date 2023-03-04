@@ -9,13 +9,14 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "InitVariables.h"
 #include "ScopeDataCollector.h"
 #include "AudioBufferQueue.h"
 
 //==============================================================================
 /**
 */
-class OscilloscopeAudioProcessor  : public juce::AudioProcessor, public juce::AudioProcessorValueTreeState::Listener
+class OscilloscopeAudioProcessor  : public juce::AudioProcessor
                             #if JucePlugin_Enable_ARA
                              , public juce::AudioProcessorARAExtension
                             #endif
@@ -64,12 +65,40 @@ public:
 
     juce::AudioProcessorValueTreeState* getTreeState();
 
+    /**
+     * Get editor width.
+     * 
+     * \return Editor width.
+     */
+    int getEditorWidth();
+    /**
+     * Get editor height.
+     * 
+     * \return Editor height.
+     */
+    int getEditorHeight();
+    /**
+     * Store editor size in order to be able to recover it from the @param processorTreeState ValueTree.
+     * This is done in order to make the editor size persistent.
+     * 
+     * \param width Editor width.
+     * \param height Editor height.
+     */
+    void storeEditorSize(int width, int height);
+
+    /**
+     * Get the stored refresh rate.
+     * 
+     * \return Stored editors' refresh rate.
+     */
+    int getEditorRefreshRate();
+
 private:
     void parameterChanged(const juce::String& parameterID, float newValue);
     //==============================================================================
     std::unique_ptr<AudioBufferQueue<float>> audioBufferQueue;
     std::unique_ptr <ScopeDataCollector<float>> scopeDataCollector;
     juce::AudioProcessorValueTreeState processorTreeState;
-    int sampleRate;
+    int sampleRate = 44100;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessor)
 };

@@ -19,21 +19,22 @@ class AudioBufferQueue
 {
 public:
     //==============================================================================
-    static constexpr size_t numBuffers = 5; /**< Number of buffers */
-
-    //==============================================================================
 
     /**
      * Constructor.
      * 
      * \param newBufferSize Buffer size.
      */
-    AudioBufferQueue(size_t newBufferSize = (size_t)5000)
+    AudioBufferQueue(int hostRate = 44100, int editorFramesPerSecond = 30, int numSamplesPerBlock = 441)
     {
-        this->bufferSize = newBufferSize;
+        this->bufferSize = hostRate / editorFramesPerSecond; // number of samples per frame
+        int capacity = numSamplesPerBlock * 2;
+        numBuffers = std::max((int)(capacity / bufferSize + 1), (int)5);
+        abstractFifo.reset(new juce::AbstractFifo(numBuffers));
+        buffers.resize(numBuffers);
         for (size_t i = 0; i < numBuffers; i++)
         {
-            buffers[i].resize(newBufferSize);
+            buffers[i].resize(bufferSize);
         }
     }
     /**
@@ -47,7 +48,7 @@ public:
         jassert(numSamples <= bufferSize);
 
         int start1, size1 = 0, start2, size2;
-        abstractFifo.prepareToWrite(1, start1, size1, start2, size2);
+        abstractFifo->prepareToWrite(1, start1, size1, start2, size2);
 
         jassert(size1 <= 1);
         jassert(size2 == 0);
@@ -58,7 +59,7 @@ public:
         }
 
 
-        abstractFifo.finishedWrite(size1);
+        abstractFifo->finishedWrite(size1);
 
     }
 
@@ -72,7 +73,7 @@ public:
     {
 
         int start1, size1, start2, size2;
-        abstractFifo.prepareToRead(1, start1, size1, start2, size2);
+        abstractFifo->prepareToRead(1, start1, size1, start2, size2);
 
         jassert(size1 <= 1);
         jassert(size2 == 0);
@@ -80,7 +81,7 @@ public:
         if (size1 > 0)
             juce::FloatVectorOperations::copy(outputBuffer, buffers[(size_t)start1].data(), (int)buffers[(size_t)start1].size());
 
-        abstractFifo.finishedRead(size1);
+        abstractFifo->finishedRead(size1);
 
     }
 
@@ -108,7 +109,8 @@ public:
  
 private:
     //==============================================================================
-    juce::AbstractFifo abstractFifo{ numBuffers }; /**<a href = "https://docs.juce.com/master/classAbstractFifo.html">Abstract Fifo< / a> */
-    std::array<std::vector<SampleType>, numBuffers> buffers; /**< Array of buffers */
+    size_t numBuffers = 5; /**< Number of buffers */
+    std::unique_ptr<juce::AbstractFifo> abstractFifo; /**<a href = "https://docs.juce.com/master/classAbstractFifo.html">Abstract Fifo< / a> */
+    std::vector<std::vector<SampleType>> buffers; /**< Array of buffers */
     size_t bufferSize; /**< Buffer size */
 };

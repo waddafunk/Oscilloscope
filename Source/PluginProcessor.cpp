@@ -21,16 +21,14 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
                      #endif
                        ), 
 #endif
-    processorTreeState(*this, nullptr, "PARAMETERS",
+    processorTreeState(*this, nullptr, juce::Identifier("PARAMETERS"),
     { 
         std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), 
-        std::make_unique<juce::AudioParameterInt>("bufferLength", "Scope Length", 2000, 44100, 5000),
+        std::make_unique<juce::AudioParameterFloat>("bufferLength", "Scope Length", 0.05, 1, 0.2),
     })
 {
-    size_t bufferSize = 5000;
-    audioBufferQueue.reset(new AudioBufferQueue<float>(bufferSize));
+    audioBufferQueue.reset(new AudioBufferQueue<float>(44100, getEditorRefreshRate()));
     scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
-    processorTreeState.addParameterListener("bufferLength", this);
 }
 
 OscilloscopeAudioProcessor::~OscilloscopeAudioProcessor()
@@ -105,6 +103,8 @@ void OscilloscopeAudioProcessor::prepareToPlay (double sampleRate, int samplesPe
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     this->sampleRate = sampleRate;
+    audioBufferQueue.reset(new AudioBufferQueue<float>(sampleRate, getEditorRefreshRate(), samplesPerBlock));
+    scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
 }
 
 void OscilloscopeAudioProcessor::releaseResources()
@@ -208,15 +208,33 @@ juce::AudioProcessorValueTreeState* OscilloscopeAudioProcessor::getTreeState()
     return &this->processorTreeState;
 }
 
-void OscilloscopeAudioProcessor::parameterChanged(const juce::String& parameterID, float newValue)
-{
-    audioBufferQueue.reset(new AudioBufferQueue<float>(newValue));
-    scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
-}
-
 //==============================================================================
 // This creates new instances of the plugin..
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new OscilloscopeAudioProcessor();
+}
+
+int OscilloscopeAudioProcessor::getEditorWidth()
+{
+    auto size = processorTreeState.state.getOrCreateChildWithName("lastSize", nullptr);
+    return size.getProperty("width", EDITOR_INITIAL_WIDTH());
+}
+int OscilloscopeAudioProcessor::getEditorHeight()
+{
+    auto size = processorTreeState.state.getOrCreateChildWithName("lastSize", nullptr);
+    return size.getProperty("height", EDITOR_INITIAL_HEIGHT());
+}
+
+void OscilloscopeAudioProcessor::storeEditorSize(int width, int height)
+{
+    auto size = processorTreeState.state.getOrCreateChildWithName("lastSize", nullptr);
+    size.setProperty("width", width, nullptr);
+    size.setProperty("height", height, nullptr);
+}
+
+int OscilloscopeAudioProcessor::getEditorRefreshRate()
+{
+    auto rate = processorTreeState.state.getOrCreateChildWithName("editorRefreshRate", nullptr);
+    return rate.getProperty("height", EDITOR_INITIAL_RATE());
 }

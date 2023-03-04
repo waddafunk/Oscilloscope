@@ -28,6 +28,8 @@ public:
         : audioBufferQueue(queueToUse)
     {
         buffer.resize(queueToUse.getBufferSize());
+        bufferSize = buffer.size();
+        numCollected = 0;
     }
 
     //==============================================================================
@@ -41,22 +43,38 @@ public:
     {
         size_t index = 0;
 
+        int numBuffersToPush = numSamples / bufferSize;
+        int numSamplesExceeding = numSamples % bufferSize;
+        int numEmptyBuffers = 0;
+        int additionalSamples = 0;
+
         if (state == State::waitingForTrigger)
         {
-            // If no sample over treshold (silence) flush everything.
+            std::fill(buffer.begin(), buffer.end(), 0);
+            // If no sample over treshold push silence.
             if (std::all_of(data, data + numSamples, [](SampleType i) {return i < triggerLevel; }))
             {
-                audioBufferQueue.flush();
-                return;
+                for (size_t i = 0; i < numBuffersToPush; i++)
+                {
+                    audioBufferQueue.push(buffer.data(), bufferSize);
+                }
+                numCollected = numSamplesExceeding;
             }
             // Else setup collecting stage
             else
             {
                 auto result = ranges::find_if(data, data + numSamples, [](SampleType i) {return i > triggerLevel; });
                 prevSample = *result;
-                numCollected = 0;
                 state = State::collecting;
-                index = result - data;
+                int firstSample = result - data;
+                numEmptyBuffers = firstSample / bufferSize;
+                additionalSamples = firstSample % bufferSize;
+                for (size_t i = 0; i < numEmptyBuffers; i++)
+                {
+                    audioBufferQueue.push(buffer.data(), bufferSize);
+                }
+                numCollected = additionalSamples;
+                index = firstSample;
             }
         }
 
@@ -69,16 +87,7 @@ public:
                 if (numCollected == buffer.size())
                 {
                     audioBufferQueue.push(buffer.data(), buffer.size());
-                    state = State::waitingForTrigger;
-                    prevSample = SampleType(100);
-                    std::fill(buffer.begin(), buffer.end(), 0);
-                    if (index < numSamples)
-                    {
-                        numCollected = numSamples - index;
-                        std::copy(data, data + numCollected, buffer.begin());
-                    }
-                    
-                    break;
+                    numCollected = 0;
                 }
             }
         }
@@ -88,10 +97,11 @@ private:
     //==============================================================================
     AudioBufferQueue<SampleType>& audioBufferQueue; /**< AudioBufferQueue */
     std::vector<SampleType> buffer; /**< Buffer to fill and push to audioBufferQueue */
+    int bufferSize; /**< Size of @param buffer */
     size_t numCollected; /**< Number of samples collected. */
     SampleType prevSample = SampleType(100); /**< Last sample collected. */
 
-    static constexpr auto triggerLevel = SampleType(0.0005); /**< Level above which the oscilloscope starts drawing the waveform. */
+    static constexpr auto triggerLevel = SampleType(0); /**< Level above which the oscilloscope starts drawing the waveform. */
     /**
      * States of the class.
      */

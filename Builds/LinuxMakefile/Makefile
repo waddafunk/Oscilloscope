@@ -108,6 +108,8 @@ OBJECTS_STANDALONE_PLUGIN := \
   $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o \
 
 OBJECTS_SHARED_CODE := \
+  $(JUCE_OBJDIR)/UntriggeredOscilloscope_dd3b22ee.o \
+  $(JUCE_OBJDIR)/TriggeredOscilloscope_cd4c3e67.o \
   $(JUCE_OBJDIR)/OscilloscopeComponent_5234ea0f.o \
   $(JUCE_OBJDIR)/PluginProcessor_a059e380.o \
   $(JUCE_OBJDIR)/PluginEditor_94d4fb09.o \
@@ -174,6 +176,16 @@ $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o: ../../Juc
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling include_juce_audio_plugin_client_Standalone.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_STANDALONE_PLUGIN) $(JUCE_CFLAGS_STANDALONE_PLUGIN) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/UntriggeredOscilloscope_dd3b22ee.o: ../../Source/UntriggeredOscilloscope.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling UntriggeredOscilloscope.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/TriggeredOscilloscope_cd4c3e67.o: ../../Source/TriggeredOscilloscope.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling TriggeredOscilloscope.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/OscilloscopeComponent_5234ea0f.o: ../../Source/OscilloscopeComponent.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
