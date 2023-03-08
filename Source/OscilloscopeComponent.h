@@ -30,26 +30,7 @@ public:
      * 
      * \param queueToUse AudioBufferQueue to use
      */
-    OscilloscopeComponent(OscilloscopeAudioProcessor& aProcessor, int sampleRate, int framesPerSecond) :
-        audioProcessor(aProcessor)
-    {
-        setFramesPerSecond(framesPerSecond);
-        this->sampleRate = sampleRate;
-        displayLength = (int)(*aProcessor.getTreeState()->getRawParameterValue("bufferLength") * aProcessor.getSampleRate());
-        ratio = (double)displayLength / (double)EDITOR_INITIAL_WIDTH();
-        displayLength /= ratio;
-        double dataLength = audioProcessor.getAudioBufferQueue()->getBufferSize() / ratio;
-        sampleData.resize(EDITOR_INITIAL_WIDTH());
-        newData.resize(sampleData.size());
-        newlyPopped.resize(dataLength);
-        notInterpolatedData.resize(audioProcessor.getAudioBufferQueue()->getBufferSize());
-        std::fill(sampleData.begin(), sampleData.end(), 0);
-        std::fill(newlyPopped.begin(), newlyPopped.end(), 0);
-        std::fill(notInterpolatedData.begin(), notInterpolatedData.end(), 0);
-        std::fill(newData.begin(), newData.end(), 0);
-        aProcessor.getTreeState()->addParameterListener("bufferLength", this);
-        interpolator.reset();
-    }
+    OscilloscopeComponent(OscilloscopeAudioProcessor& aProcessor, int sampleRate, int framesPerSecond);
 
     //==============================================================================
     /**
@@ -57,11 +38,7 @@ public:
      * 
      * \param framesPerSecond Frames per second
      */
-    void setFramesPerSecond(int framesPerSecond)
-    {
-        jassert(framesPerSecond > 0 && framesPerSecond < 1000);
-        startTimerHz(framesPerSecond);
-    }
+    void setFramesPerSecond(int framesPerSecond);
 
     //==============================================================================
 
@@ -70,10 +47,7 @@ public:
      * 
      * \param newValue value to set.
      */
-    void setGridCheck(bool newValue)
-    {
-        this->gridCheck = newValue;
-    }
+    void setGridCheck(bool newValue);
 
     /**
      * Draws oscilloscope's grid.
@@ -82,74 +56,21 @@ public:
      * \param w width.
      * \param h heigth.
      */
-    void drawGrid(juce::Graphics& g, float w, float h)
-    {
-        g.setColour(juce::Colours::ghostwhite);
-        g.setOpacity(0.8);
-        g.drawLine(0, h / 2, w, h / 2);
-        g.drawLine(1, 0, 1, h);
-
-        for (size_t i = 0; i < 10; i++)
-        {
-            float xPos = i * w / 10;
-            float yPos = i * h / 10;
-            g.drawLine(xPos, h / 2 - 8, xPos, h / 2 + 8);
-            g.drawLine(0, yPos, 8, yPos);
-        }
-
-        float fontHeight = g.getCurrentFont().getAscent();
-        float duration = *audioProcessor.getTreeState()->getRawParameterValue("bufferLength") * static_cast<float>(10000);
-        duration /= 10;
-        auto xText = juce::String(duration, 2);
-        xText.append(" ms", 3);
-
-        g.drawLine(w - 95, h - 39, w - 95, h - 39 - fontHeight);
-        g.drawLine(w - 85, h - 39 - fontHeight / 2, w - 95, h - 39 - fontHeight / 2);
-        g.drawLine(w - 85, h - 39, w - 85, h - 39 - fontHeight);
-        g.drawSingleLineText(xText, w - 80, h - 39);
-
-        auto yText = "0.1";
-        g.drawLine(w - 95, h - 19, w - 85, h - 19);
-        g.drawLine(w - 90, h - 19 - fontHeight, w - 90, h - 19);
-        g.drawLine(w - 95, h - 19 - fontHeight, w - 85, h - 19 - fontHeight);
-        g.drawSingleLineText(yText, w - 80, h - 19);
-    }
+    void drawGrid(juce::Graphics& g, float w, float h);
 
     /**
      * Paints the component.
      * 
      * \param g <a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a>. 
      */
-    void paint(juce::Graphics& g) override
-    {
-        g.fillAll(juce::Colours::black);
-        g.setColour(juce::Colours::white);
-
-        auto area = getLocalBounds();
-        auto h = (float)area.getHeight();
-        auto w = (float)area.getWidth();
-
-        if (gridCheck)
-        {
-            drawGrid(g, w, h);
-        }
-     
-        // Oscilloscope
-        auto scopeRect = juce::Rectangle<float>{ float(0), float(0), w, h };
-        plot(sampleData.data(), sampleData.size(), g, scopeRect, float(1), h / 2);
-
-        g.setColour(juce::Colours::dimgrey);
-        auto contour = juce::Line<float>(0, h, w, h);
-        g.drawLine(contour, 8.0f);
-
-    }
+    void paint(juce::Graphics& g) override;
 
     //==============================================================================
     /**
      * Called when component is resized.
      * 
      */
-    void resized() override { };
+    void resized() override;
 
 
 private:
@@ -171,16 +92,7 @@ private:
      * \param parameterID Parameter ID (always "bufferLength).
      * \param newValue New value.
      */
-    void parameterChanged(const juce::String& parameterID, float newValue) override
-    {
-        ratio = newValue * audioProcessor.getSampleRate() / EDITOR_INITIAL_WIDTH();
-        displayLength = newValue * audioProcessor.getSampleRate() / ratio;
-        sampleData.resize(displayLength);
-        newData.resize(sampleData.size());
-        int queueSize = audioProcessor.getAudioBufferQueue()->getBufferSize();
-        double dataLength = queueSize / ratio;
-        newlyPopped.resize(dataLength);
-    }
+    void parameterChanged(const juce::String& parameterID, float newValue) override;
 
     //==============================================================================
     /**
@@ -189,16 +101,7 @@ private:
      * @see <a href="https://docs.juce.com/master/classTimer.html">JUCE Timer </a>
      * 
      */
-    void timerCallback() override
-    {
-        audioProcessor.getAudioBufferQueue()->pop(notInterpolatedData.data());
-        int queueSize = newlyPopped.size();
-        interpolator.process(ratio, notInterpolatedData.data(), newlyPopped.data(), queueSize);
-        std::copy(sampleData.data() + queueSize, sampleData.data() + sampleData.size(), newData.begin());
-        std::copy(newlyPopped.data(), newlyPopped.data() + queueSize, newData.begin() + sampleData.size() - queueSize);
-        sampleData = newData;
-        repaint();
-    }
+    void timerCallback() override;
 
 protected:
     //==============================================================================
