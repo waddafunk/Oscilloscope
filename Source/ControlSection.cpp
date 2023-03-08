@@ -19,13 +19,8 @@ ControlSection::ControlSection()
     addAndMakeVisible(bufferLength);
     drawGrid.setButtonText("Grid");
 
-    drawGrid.setSize(100, 20);
-    drawGrid.setTopLeftPosition(10, getHeight() / 2 );
-
     bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
     bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
-    bufferLength.setTopLeftPosition(800, getHeight() / 2 );
-    bufferLength.setSize(350, 20);
 }
 
 ControlSection::~ControlSection()
@@ -90,8 +85,10 @@ void ControlSection::paint (juce::Graphics& g)
 
 void ControlSection::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+    drawGrid.setSize(getWidth() / 5., getHeight() * 3. / 4.);
+    drawGrid.setTopLeftPosition(10, getHeight() / 8.);
+    bufferLength.setSize(getWidth() * 2 / 5, getHeight() * 3. / 4.);
+    bufferLength.setTopLeftPosition(getWidth() * 11. / 20., getHeight() / 8.);
 }
 
 ControlSection::Attachments ControlSection::resolveAttachment(juce::String attachmentName)
