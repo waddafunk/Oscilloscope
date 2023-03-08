@@ -18,33 +18,26 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
     oscilloscopeComponent.reset(new UntriggeredOscilloscope(audioProcessor, audioProcessor.getSampleRate()));
 
     addAndMakeVisible(oscilloscopeComponent.get());
-    addAndMakeVisible(drawGrid);
-    addAndMakeVisible(bufferLength);
-    drawGrid.setButtonText("Grid");
+    addAndMakeVisible(controlSection);
     
     setSize(audioProcessor.getEditorWidth(), audioProcessor.getEditorHeight());
 
     auto area = getLocalBounds();
-    drawGrid.setSize(100, 20);
+    
     oscilloscopeComponent->setTopLeftPosition(0, 0);
     oscilloscopeComponent->setSize(area.getWidth(), area.getHeight() - 30);
-    drawGrid.setTopLeftPosition(10, area.getHeight() - 25);
-    drawGrid.onStateChange = [this]() {
-        auto draw = drawGrid.getToggleState();
+    controlSection.setDrawGridStateChange([this]() {
+        auto draw = controlSection.getDrawGrid();
         oscilloscopeComponent->setGridCheck(draw);
-    };
+    } );
 
-    // Get a pointer to the AudioParameterBool
-    //auto* myToggleParam = dynamic_cast<juce::AudioParameterBool*>(processor.getParameters().getUnchecked(0));
-
+    controlSection.setTopLeftPosition(0, area.getHeight() - 30);
+    controlSection.setSize(area.getWidth(), 30);
     // Attach the ToggleButton to the AudioParameterBool
-    gridAttachment.reset( new juce::AudioProcessorValueTreeState::ButtonAttachment(*audioProcessor.getTreeState(), juce::String("drawGrid"), drawGrid) );
-
-    bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
-    bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
-    bufferLengthAttachment.reset( new juce::AudioProcessorValueTreeState::SliderAttachment(*audioProcessor.getTreeState(), juce::String("bufferLength"), bufferLength) );
-    bufferLength.setTopLeftPosition(1000, area.getHeight() - 25);
-    bufferLength.setSize(350, 20);
+    std::vector<juce::String> attachmentNames;
+    attachmentNames.push_back("drawGrid");
+    attachmentNames.push_back("bufferLength");
+    controlSection.setMultipleAttachments(attachmentNames, *audioProcessor.getTreeState());
     
     setResizable(true, true);
     setResizeLimits(256, 256, 1920, 1080);
@@ -71,14 +64,19 @@ void OscilloscopeAudioProcessorEditor::resized()
     auto area = getLocalBounds();
     int height = area.getHeight();
     int width = area.getWidth();
-    float yDiff = (float)(height - 30) - oscilloscopeComponent->getHeight();
 
     // rescale oscilloscope
     float x_sc = (float)width / oscilloscopeComponent->getWidth();
     float y_sc = (float)(height - 30) / oscilloscopeComponent->getHeight();
     oscilloscopeComponent->setTransform(juce::AffineTransform::scale(x_sc, y_sc));
-    drawGrid.setTransform(juce::AffineTransform::translation(0, yDiff));
 
+    // translate & rescale control section
+    float yDiff = (float)(height - 30) - oscilloscopeComponent->getHeight();
+    y_sc = 30. / controlSection.getHeight();
+    controlSection.setTransform(juce::AffineTransform::translation(0, yDiff));
+    //controlSection.setTransform(juce::AffineTransform::scale(x_sc, y_sc));
+
+    // store new size
     audioProcessor.storeEditorSize(getWidth(), getHeight());
     
 }

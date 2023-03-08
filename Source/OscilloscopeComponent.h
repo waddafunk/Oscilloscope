@@ -158,8 +158,8 @@ private:
     int displayLength;
     std::vector<float> sampleData; /**< Data currently displayed */
     std::vector<float> newlyPopped; /**< Last popped array */
-    std::vector<float> notInterpolatedData;
-    std::vector<float> newData;
+    std::vector<float> notInterpolatedData; /** < Raw new data*/
+    std::vector<float> newData; /** < Interpolated new data*/
     int sampleRate; /**< Sample rate */
     bool gridCheck = false;
     double ratio = 1.;

@@ -6,21 +6,31 @@
               pluginManufacturerCode="Wdfk" cppLanguageStandard="latest">
   <MAINGROUP id="Wv5BAZ" name="Oscilloscope">
     <GROUP id="{9EF2004F-D29B-378D-4DEE-0DF26C311E1A}" name="Source">
-      <FILE id="ga1csY" name="InitVariables.h" compile="0" resource="0" file="Source/InitVariables.h"/>
-      <GROUP id="{98C0D305-E15F-5BE0-ADC4-AB71EAF6A2E9}" name="Oscilloscopes">
-        <FILE id="qasOIa" name="UntriggeredOscilloscope.cpp" compile="1" resource="0"
-              file="Source/UntriggeredOscilloscope.cpp"/>
-        <FILE id="YFBd5x" name="UntriggeredOscilloscope.h" compile="0" resource="0"
-              file="Source/UntriggeredOscilloscope.h"/>
-        <FILE id="QjvZey" name="TriggeredOscilloscope.cpp" compile="1" resource="0"
-              file="Source/TriggeredOscilloscope.cpp"/>
-        <FILE id="TA6Zec" name="TriggeredOscilloscope.h" compile="0" resource="0"
-              file="Source/TriggeredOscilloscope.h"/>
-        <FILE id="F7VNcN" name="OscilloscopeComponent.h" compile="0" resource="0"
-              file="Source/OscilloscopeComponent.h"/>
-        <FILE id="J6Strq" name="OscilloscopeComponent.cpp" compile="1" resource="0"
-              file="Source/OscilloscopeComponent.cpp"/>
+      <GROUP id="{B69566AC-BCCC-0FDC-1EE5-C383194583A0}" name="GUI">
+        <FILE id="ZHTBBl" name="ColorPalette.h" compile="0" resource="0" file="Source/ColorPalette.h"/>
+        <FILE id="J1jp35" name="ControlSection.cpp" compile="1" resource="0"
+              file="Source/ControlSection.cpp"/>
+        <FILE id="RSv2ur" name="ControlSection.h" compile="0" resource="0"
+              file="Source/ControlSection.h"/>
+        <FILE id="zk3cwC" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+        <FILE id="U0MfER" name="PluginEditor.cpp" compile="1" resource="0"
+              file="Source/PluginEditor.cpp"/>
+        <GROUP id="{98C0D305-E15F-5BE0-ADC4-AB71EAF6A2E9}" name="Oscilloscopes">
+          <FILE id="qasOIa" name="UntriggeredOscilloscope.cpp" compile="1" resource="0"
+                file="Source/UntriggeredOscilloscope.cpp"/>
+          <FILE id="YFBd5x" name="UntriggeredOscilloscope.h" compile="0" resource="0"
+                file="Source/UntriggeredOscilloscope.h"/>
+          <FILE id="QjvZey" name="TriggeredOscilloscope.cpp" compile="1" resource="0"
+                file="Source/TriggeredOscilloscope.cpp"/>
+          <FILE id="TA6Zec" name="TriggeredOscilloscope.h" compile="0" resource="0"
+                file="Source/TriggeredOscilloscope.h"/>
+          <FILE id="F7VNcN" name="OscilloscopeComponent.h" compile="0" resource="0"
+                file="Source/OscilloscopeComponent.h"/>
+          <FILE id="J6Strq" name="OscilloscopeComponent.cpp" compile="1" resource="0"
+                file="Source/OscilloscopeComponent.cpp"/>
+        </GROUP>
       </GROUP>
+      <FILE id="ga1csY" name="InitVariables.h" compile="0" resource="0" file="Source/InitVariables.h"/>
       <GROUP id="{BAF17A05-21E2-90CC-DEC4-F1A5E49BD460}" name="Buffers">
         <FILE id="ydQOPC" name="AudioBufferQueue.h" compile="0" resource="0"
               file="Source/AudioBufferQueue.h"/>
@@ -31,9 +41,6 @@
             file="Source/PluginProcessor.cpp"/>
       <FILE id="XIDUdZ" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
-      <FILE id="U0MfER" name="PluginEditor.cpp" compile="1" resource="0"
-            file="Source/PluginEditor.cpp"/>
-      <FILE id="zk3cwC" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
