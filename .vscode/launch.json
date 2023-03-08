@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "(lldb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Oscilloscope",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "MIMode": "lldb",
+            "logging": {
+                "moduleLoad": true
+            },
+            "additionalSOLibSearchPath": "${workspaceFolder}/Source"
+        }
+    ]
+}

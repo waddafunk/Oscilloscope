@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/run/media/covariant/DATA/GitHub/Oscilloscope/Source",
+            "binaryPath": "/run/media/covariant/DATA/GitHub/Oscilloscope/Builds/LinuxMakefile/build/Oscilloscope",
+            "binaryArgs": []
+        },
+    ]
+}
