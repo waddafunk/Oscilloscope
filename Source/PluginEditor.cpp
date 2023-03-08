@@ -38,11 +38,11 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
     //auto* myToggleParam = dynamic_cast<juce::AudioParameterBool*>(processor.getParameters().getUnchecked(0));
 
     // Attach the ToggleButton to the AudioParameterBool
-    gridAttachment = new juce::AudioProcessorValueTreeState::ButtonAttachment(*audioProcessor.getTreeState(), juce::String("drawGrid"), drawGrid);
+    gridAttachment.reset( new juce::AudioProcessorValueTreeState::ButtonAttachment(*audioProcessor.getTreeState(), juce::String("drawGrid"), drawGrid) );
 
     bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
     bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
-    bufferLengthAttachment = new juce::AudioProcessorValueTreeState::SliderAttachment(*audioProcessor.getTreeState(), juce::String("bufferLength"), bufferLength);
+    bufferLengthAttachment.reset( new juce::AudioProcessorValueTreeState::SliderAttachment(*audioProcessor.getTreeState(), juce::String("bufferLength"), bufferLength) );
     bufferLength.setTopLeftPosition(1000, area.getHeight() - 25);
     bufferLength.setSize(350, 20);
     
@@ -54,8 +54,6 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
 
 OscilloscopeAudioProcessorEditor::~OscilloscopeAudioProcessorEditor()
 {
-    delete gridAttachment;
-    delete bufferLengthAttachment;
 }
 
 //==============================================================================

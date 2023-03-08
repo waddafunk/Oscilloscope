@@ -33,7 +33,7 @@ private:
     std::unique_ptr<OscilloscopeComponent> oscilloscopeComponent;
     juce::ToggleButton drawGrid;
     juce::Slider bufferLength;
-    juce::AudioProcessorValueTreeState::SliderAttachment* bufferLengthAttachment;
-    juce::AudioProcessorValueTreeState::ButtonAttachment* gridAttachment;
+    std::unique_ptr <juce::AudioProcessorValueTreeState::SliderAttachment> bufferLengthAttachment;
+    std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> gridAttachment;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessorEditor)
 };
