@@ -47,9 +47,9 @@
   <EXPORTFORMATS>
     <VS2022 targetFolder="Builds/VisualStudio2022">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="Oscilloscope"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="Oscilloscope" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="Oscilloscope" enablePluginBinaryCopyStep="1"
-                       vst3BinaryLocation="D:\VstPlugins\Oscilloscope"/>
+                       vst3BinaryLocation="D:\VstPlugins\Oscilloscope" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
