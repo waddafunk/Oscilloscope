@@ -33,6 +33,7 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
     std::vector<juce::String> attachmentNames;
     attachmentNames.push_back("drawGrid");
     attachmentNames.push_back("bufferLength");
+    attachmentNames.push_back("isProfessional");
     controlSection.setMultipleAttachments(attachmentNames, *audioProcessor.getTreeState());
     
     // set resize options
@@ -49,8 +50,6 @@ OscilloscopeAudioProcessorEditor::~OscilloscopeAudioProcessorEditor()
 //==============================================================================
 void OscilloscopeAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (juce::Colour(95, 2, 31).darker(0.8));
 
 }
 
@@ -60,7 +59,7 @@ void OscilloscopeAudioProcessorEditor::resized()
     auto area = getLocalBounds();
     int height = area.getHeight();
     int width = area.getWidth();
-    int margin = int(float(area.getHeight()) * 15. / 16.);
+    int margin = int(float(area.getHeight()) * 12. / 13.);
 
     // resize components
     oscilloscopeComponent->setTopLeftPosition(0, 0);

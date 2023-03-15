@@ -26,6 +26,10 @@
               file="Source/GUI/ControlSection.cpp"/>
         <FILE id="gAGmEE" name="ControlSection.h" compile="0" resource="0"
               file="Source/GUI/ControlSection.h"/>
+        <FILE id="IjacWq" name="GuiTransformer.cpp" compile="1" resource="0"
+              file="Source/GUI/GuiTransformer.cpp"/>
+        <FILE id="MjiiM4" name="GuiTransformer.h" compile="0" resource="0"
+              file="Source/GUI/GuiTransformer.h"/>
         <FILE id="H0254O" name="PluginEditor.cpp" compile="1" resource="0"
               file="Source/GUI/PluginEditor.cpp"/>
         <FILE id="PyNtNf" name="PluginEditor.h" compile="0" resource="0" file="Source/GUI/PluginEditor.h"/>
@@ -72,7 +76,7 @@
         <CONFIGURATION isDebug="1" name="Debug" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes"
                        libraryPath="../../JuceLibraryCode"/>
         <CONFIGURATION isDebug="0" name="Release" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes"
-                       libraryPath="../../JuceLibraryCode"/>
+                       libraryPath="../../JuceLibraryCode" linkTimeOptimisation="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="D:\JUCE\modules"/>

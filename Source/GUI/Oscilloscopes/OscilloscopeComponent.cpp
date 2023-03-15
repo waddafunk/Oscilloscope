@@ -93,10 +93,6 @@ void OscilloscopeComponent::paint(juce::Graphics& g)
     auto scopeRect = juce::Rectangle<float>{ float(0), float(0), w, h };
     plot(sampleData.data(), sampleData.size(), g, scopeRect, float(1), h / 2);
 
-    g.setColour(juce::Colours::dimgrey);
-    auto contour = juce::Line<float>(0, h, w, h);
-    g.drawLine(contour, 8.0f);
-
 }
 
 void OscilloscopeComponent::resized()

@@ -11,8 +11,9 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "OscilloscopeComponent.h"
-#include"UntriggeredOscilloscope.h"
+#include "UntriggeredOscilloscope.h"
 #include "ControlSection.h"
+#include "GuiTransformer.h"
 
 //==============================================================================
 /**
@@ -33,5 +34,6 @@ private:
     OscilloscopeAudioProcessor& audioProcessor;
     ControlSection controlSection;
     std::unique_ptr<OscilloscopeComponent> oscilloscopeComponent;
+    std::unique_ptr<GuiTransformer> guiTransformer;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessorEditor)
 };

@@ -92,9 +92,9 @@ ifeq ($(CONFIG),Release)
   JUCE_CPPFLAGS_SHARED_CODE :=  "-DJUCE_SHARED_CODE=1"
   JUCE_TARGET_SHARED_CODE := Oscilloscope.a
 
-  JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -fPIC -O3 $(CFLAGS)
+  JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -fPIC -O3 -flto $(CFLAGS)
   JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++20 $(CXXFLAGS)
-  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L../../JuceLibraryCode $(shell $(PKG_CONFIG) --libs alsa freetype2 libcurl) -fvisibility=hidden -lrt -ldl -lpthread $(LDFLAGS)
+  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L../../JuceLibraryCode $(shell $(PKG_CONFIG) --libs alsa freetype2 libcurl) -fvisibility=hidden -flto -lrt -ldl -lpthread $(LDFLAGS)
 
   CLEANCMD = rm -rf $(JUCE_OUTDIR)/$(TARGET) $(JUCE_OBJDIR)
 endif
@@ -112,6 +112,7 @@ OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/TriggeredOscilloscope_5730ea48.o \
   $(JUCE_OBJDIR)/UntriggeredOscilloscope_80a45a8f.o \
   $(JUCE_OBJDIR)/ControlSection_b97a5c5.o \
+  $(JUCE_OBJDIR)/GuiTransformer_d9e02cdb.o \
   $(JUCE_OBJDIR)/PluginEditor_fed3277d.o \
   $(JUCE_OBJDIR)/PluginProcessor_a059e380.o \
   $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o \
@@ -196,6 +197,11 @@ $(JUCE_OBJDIR)/UntriggeredOscilloscope_80a45a8f.o: ../../Source/GUI/Oscilloscope
 $(JUCE_OBJDIR)/ControlSection_b97a5c5.o: ../../Source/GUI/ControlSection.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling ControlSection.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/GuiTransformer_d9e02cdb.o: ../../Source/GUI/GuiTransformer.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling GuiTransformer.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/PluginEditor_fed3277d.o: ../../Source/GUI/PluginEditor.cpp

@@ -63,6 +63,7 @@ private:
     {
         BufferLength,
         DrawGrid,
+        IsProfessional,
         Default
     };
     /**
@@ -71,7 +72,15 @@ private:
     const std::map<juce::String, ControlSection::Attachments> attachmentsMap{
         { "drawGrid", ControlSection::Attachments::DrawGrid },
         { "bufferLength", ControlSection::Attachments::BufferLength },
+        { "isProfessional", ControlSection::Attachments::IsProfessional },
     };
+
+    /**
+     * Area where the oscilloscope toggle button is placed.
+     * 
+     */
+    juce::Rectangle<int> toggleOscilloscopeArea; 
+
     /**
      * Returns the proper attachment if a correct name is passed, Attachments::Default otherwise..
      * 
@@ -79,9 +88,12 @@ private:
      * \return proper Attachments value.
      */
     Attachments resolveAttachment(juce::String attachmentName);
+
     juce::ToggleButton drawGrid;
     juce::Slider bufferLength;
     std::unique_ptr <juce::AudioProcessorValueTreeState::SliderAttachment> bufferLengthAttachment;
     std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> gridAttachment;
+    juce::ToggleButton toggleOscilloscope;
+    juce::Label toggleText;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ControlSection)
 };

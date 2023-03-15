@@ -25,6 +25,7 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
     { 
         std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), 
         std::make_unique<juce::AudioParameterFloat>("bufferLength", "Scope Length", 0.05, 1, 0.2),
+        std::make_unique<juce::AudioParameterBool>("isProfessional", "Professional View", false),
     })
 {
     audioBufferQueue.reset(new AudioBufferQueue<float>(44100, getEditorRefreshRate()));

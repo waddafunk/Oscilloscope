@@ -15,6 +15,15 @@
 
 ControlSection::ControlSection()
 {
+    addAndMakeVisible(toggleOscilloscope);
+    addAndMakeVisible(toggleText);
+    toggleText.setJustificationType(juce::Justification::centred);
+    toggleText.setText("Pro", juce::dontSendNotification);
+    toggleOscilloscope.setMouseCursor(juce::MouseCursor::PointingHandCursor);
+    toggleOscilloscope.setAlpha(0);
+    toggleOscilloscope.setAlwaysOnTop(true);
+    //toggleOscilloscope.setColour(juce::Colours::white.withMultipliedSaturation(0));
+
     addAndMakeVisible(drawGrid);
     addAndMakeVisible(bufferLength);
     drawGrid.setButtonText("Grid");
@@ -55,6 +64,13 @@ void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProce
                 );
                 break;
             }
+        case (ControlSection::Attachments::IsProfessional):
+            {
+                gridAttachment.reset(
+                    new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, toggleOscilloscope)
+                );
+                break;
+            }
         default:
             {
                 break;
@@ -81,10 +97,19 @@ void ControlSection::paint (juce::Graphics& g)
 
     g.fillAll (CONTROLSECTIONCOLOR()); 
 
+    g.setColour(juce::Colours::dimgrey);
+    auto contour = juce::Line<float>(0, 0, getWidth(), 0);
+    g.drawLine(contour, 8.0f);
+
+    g.fillRect(toggleOscilloscopeArea);
+
 }
 
 void ControlSection::resized()
 {
+    toggleOscilloscopeArea = juce::Rectangle<int>(getWidth() / 2 - getWidth() / 40, 0, getWidth() / 20, getHeight() / 3);
+    toggleOscilloscope.setBounds(toggleOscilloscopeArea);
+    toggleText.setBounds(toggleOscilloscopeArea);
     drawGrid.setSize(getWidth() / 5., getHeight() * 3. / 4.);
     drawGrid.setTopLeftPosition(10, getHeight() / 8.);
     bufferLength.setSize(getWidth() * 2 / 5, getHeight() * 3. / 4.);
