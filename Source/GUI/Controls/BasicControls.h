@@ -18,11 +18,16 @@
 class BasicControls  : public juce::Component
 {
 public:
-    BasicControls();
-    ~BasicControls() override;
+  BasicControls();
+  ~BasicControls() override;
+  
+  void paint (juce::Graphics&) override;
+  void resized() override;
 
-    void paint (juce::Graphics&) override;
-    void resized() override;
+  juce::ToggleButton drawGrid;
+  juce::Slider bufferLength;
+  std::unique_ptr <juce::AudioProcessorValueTreeState::SliderAttachment> bufferLengthAttachment;
+  std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> gridAttachment;
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicControls)

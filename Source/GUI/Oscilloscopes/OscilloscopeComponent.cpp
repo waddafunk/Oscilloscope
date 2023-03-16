@@ -37,11 +37,6 @@ void OscilloscopeComponent::setFramesPerSecond(int framesPerSecond)
     startTimerHz(framesPerSecond);
 }
 
-void OscilloscopeComponent::setGridCheck(bool newValue)
-{
-    this->gridCheck = newValue;
-}
-
 void OscilloscopeComponent::drawGrid(juce::Graphics& g, float w, float h)
 {
     g.setColour(juce::Colours::ghostwhite);
@@ -84,7 +79,7 @@ void OscilloscopeComponent::paint(juce::Graphics& g)
     auto h = (float)area.getHeight();
     auto w = (float)area.getWidth();
 
-    if (gridCheck)
+    if (audioProcessor.getTreeState()->getParameterAsValue("drawGrid").getValue())
     {
         drawGrid(g, w, h);
     }

@@ -43,13 +43,6 @@ public:
     //==============================================================================
 
     /**
-     * Set to true to draw grid, false otherwise.
-     * 
-     * \param newValue value to set.
-     */
-    void setGridCheck(bool newValue);
-
-    /**
      * Draws oscilloscope's grid.
      * 
      * \param g <a href="https://docs.juce.com/master/classGraphics.html">JUCE Graphics </a>. 
@@ -82,7 +75,6 @@ private:
     std::vector<float> notInterpolatedData; /** < Raw new data*/
     std::vector<float> newData; /** < Interpolated new data*/
     int sampleRate; /**< Sample rate */
-    bool gridCheck = false;
     double ratio = 1.;
     juce::Interpolators::Linear interpolator;
 

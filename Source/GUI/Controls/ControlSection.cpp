@@ -17,32 +17,19 @@ ControlSection::ControlSection()
 {
     addAndMakeVisible(toggleOscilloscope);
     addAndMakeVisible(toggleText);
+    addAndMakeVisible(basicControls);
+
+    //basicControls.setAlwaysOnTop(true);
+
     toggleText.setJustificationType(juce::Justification::centred);
     toggleText.setText("Pro", juce::dontSendNotification);
     toggleOscilloscope.setMouseCursor(juce::MouseCursor::PointingHandCursor);
     toggleOscilloscope.setAlpha(0);
     toggleOscilloscope.setAlwaysOnTop(true);
-
-    addAndMakeVisible(drawGrid);
-    addAndMakeVisible(bufferLength);
-    drawGrid.setButtonText("Grid");
-
-    bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
-    bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
 }
 
 ControlSection::~ControlSection()
 {
-}
-
-bool ControlSection::getDrawGrid()
-{
-    return drawGrid.getToggleState();
-}
-
-void ControlSection::setDrawGridStateChange(std::function<void()> drawGridLambda)
-{
-    drawGrid.onStateChange = drawGridLambda;
 }
 
 void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProcessorValueTreeState& processorTreeState)
@@ -51,21 +38,21 @@ void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProce
     {
         case (ControlSection::Attachments::BufferLength):
             {
-                bufferLengthAttachment.reset(
-                    new juce::AudioProcessorValueTreeState::SliderAttachment(processorTreeState, attachmentName, bufferLength)
+                basicControls.bufferLengthAttachment.reset(
+                    new juce::AudioProcessorValueTreeState::SliderAttachment(processorTreeState, attachmentName, basicControls.bufferLength)
                 );
                 break;
             }
         case (ControlSection::Attachments::DrawGrid):
             {
-                gridAttachment.reset(
-                    new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, drawGrid)
+                basicControls.gridAttachment.reset(
+                    new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, basicControls.drawGrid)
                 );
                 break;
             }
         case (ControlSection::Attachments::IsProfessional):
             {
-                gridAttachment.reset(
+                isProfessionalAttachment.reset(
                     new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, toggleOscilloscope)
                 );
                 break;
@@ -87,12 +74,6 @@ void ControlSection::setMultipleAttachments(std::vector<juce::String> attachment
 
 void ControlSection::paint (juce::Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
 
     g.fillAll (CONTROLSECTIONCOLOR()); 
 
@@ -109,10 +90,9 @@ void ControlSection::resized()
     toggleOscilloscopeArea = juce::Rectangle<int>(getWidth() / 2 - getWidth() / 40, 0, getWidth() / 20, std::min(getHeight() / 3, 20));
     toggleOscilloscope.setBounds(toggleOscilloscopeArea);
     toggleText.setBounds(toggleOscilloscopeArea);
-    drawGrid.setSize(getWidth() / 5., getHeight() * 3. / 4.);
-    drawGrid.setTopLeftPosition(10, getHeight() / 8.);
-    bufferLength.setSize(getWidth() * 2 / 5, getHeight() * 3. / 4.);
-    bufferLength.setTopLeftPosition(getWidth() * 11. / 20., getHeight() / 8.);
+
+    basicControls.setTopLeftPosition(0, 0);
+    basicControls.setSize(getWidth(), getHeight());
 }
 
 ControlSection::Attachments ControlSection::resolveAttachment(juce::String attachmentName)

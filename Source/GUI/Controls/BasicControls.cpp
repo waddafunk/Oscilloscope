@@ -14,8 +14,14 @@
 //==============================================================================
 BasicControls::BasicControls()
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
+
+  addAndMakeVisible(drawGrid);
+  addAndMakeVisible(bufferLength);
+
+  drawGrid.setButtonText("Grid");
+
+  bufferLength.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
+  bufferLength.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
 
 }
 
@@ -25,27 +31,15 @@ BasicControls::~BasicControls()
 
 void BasicControls::paint (juce::Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (juce::Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("BasicControls", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
 }
 
 void BasicControls::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+  
+  drawGrid.setSize(getWidth() / 5., getHeight() * 3. / 4.);
+  drawGrid.setTopLeftPosition(10, getHeight() / 8.);
+
+  bufferLength.setSize(getWidth() * 2 / 5, getHeight() * 3. / 4.);
+  bufferLength.setTopLeftPosition(getWidth() * 11. / 20., getHeight() / 8.);
 
 }

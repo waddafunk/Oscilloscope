@@ -30,6 +30,8 @@ public:
  * \param transitionDuration Duration of the transition in seconds.
  * \param expandLambdaFunction Lambda function to call when expanding ControlSection.
  * \param contractLambdaFunction Lambda function to call when contracting ControlSection.
+ * \param expandStartedLambdaFunction Lambda function to call when ControlSection expansion starts. 
+ * \param contractStartedLambdaFunction Lambda function to call when ControlSection contraction starts. 
  * \param expandEndedLambdaFunction Lambda function to call when ControlSection expansion ends. 
  * \param contractEndedLambdaFunction Lambda function to call when ControlSection contraction ends.
  */
