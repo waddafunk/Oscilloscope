@@ -43,7 +43,7 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
   
   // set editor size
   setSize(audioProcessor.getEditorWidth(), audioProcessor.getEditorHeight());
-  
+
   // set control section attachments
   std::vector<juce::String> attachmentNames;
   attachmentNames.push_back("drawGrid");
@@ -69,6 +69,7 @@ void OscilloscopeAudioProcessorEditor::paint (juce::Graphics& g)
 
 void OscilloscopeAudioProcessorEditor::resized()
 {
+    
     // get bounds
     auto area = getLocalBounds();
     int height = area.getHeight();
@@ -139,15 +140,27 @@ void OscilloscopeAudioProcessorEditor::contractCallback()
 void OscilloscopeAudioProcessorEditor::contractionEndedCallback()
 {
   
+  // reset horizontal control sections counter and text
+  controlSection.resetNumHorizontalSections();
+
   // reset component bounds
   this->resized();
+  controlSection.resized();
+  controlSection.resetButtonText();
 
 }
 
 void OscilloscopeAudioProcessorEditor::expansionStartedCallback()
 {
+
+  // reset horizontal control sections counter and text
+  controlSection.resetNumHorizontalSections();
+  controlSection.resetButtonText();
+
+  
   // reset component bounds
   this->resized();
+
 }
 
 void OscilloscopeAudioProcessorEditor::contractionStartedCallback()

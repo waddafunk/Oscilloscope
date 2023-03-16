@@ -72,6 +72,22 @@ void GuiTransformer::timerCallback()
 
 void GuiTransformer::parameterChanged(const juce::String &parameterID, float newValue)
 {
+
   isProfessional = bool(newValue);
+
+  if (isProfessional)
+  {
+
+    expandStartedLambda();
+  
+  }
+  else
+  {
+  
+    contractStartedLambda();
+  
+  }
+
   startTimerHz(EDITOR_INITIAL_RATE());
+
 }

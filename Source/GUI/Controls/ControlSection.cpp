@@ -22,10 +22,13 @@ ControlSection::ControlSection()
     //basicControls.setAlwaysOnTop(true);
 
     toggleText.setJustificationType(juce::Justification::centred);
-    toggleText.setText("Pro", juce::dontSendNotification);
+    toggleText.setFont(juce::Font(18, 1));
+    toggleText.setText("+", juce::dontSendNotification);
     toggleOscilloscope.setMouseCursor(juce::MouseCursor::PointingHandCursor);
     toggleOscilloscope.setAlpha(0);
     toggleOscilloscope.setAlwaysOnTop(true);
+
+    numHorizontalSections = 1;
 }
 
 ControlSection::~ControlSection()
@@ -55,6 +58,7 @@ void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProce
                 isProfessionalAttachment.reset(
                     new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, toggleOscilloscope)
                 );
+                resetNumHorizontalSections();
                 break;
             }
         default:
@@ -72,27 +76,54 @@ void ControlSection::setMultipleAttachments(std::vector<juce::String> attachment
     }
 }
 
-void ControlSection::paint (juce::Graphics& g)
+void ControlSection::resetNumHorizontalSections()
+{
+    if (toggleOscilloscope.getToggleState())
+    {
+        numHorizontalSections = 2;
+    }
+    else
+    {
+        numHorizontalSections = 1;
+    }
+}
+
+void ControlSection::resetButtonText()
+{
+    if (toggleOscilloscope.getToggleState())
+    {
+        toggleText.setText("-", juce::dontSendNotification);
+    }
+    else
+    {
+        toggleText.setText("+", juce::dontSendNotification);
+    }
+}
+
+void ControlSection::paint(juce::Graphics &g)
 {
 
     g.fillAll (CONTROLSECTIONCOLOR()); 
 
-    g.setColour(juce::Colours::dimgrey);
-    auto contour = juce::Line<float>(0, 0, getWidth(), 0);
-    g.drawLine(contour, 8.0f);
+    g.setColour(GUITOGGLERCOLOUR());
 
-    g.fillRect(toggleOscilloscopeArea);
+    g.drawRect(toggleOscilloscopeArea);
 
 }
 
 void ControlSection::resized()
 {
-    toggleOscilloscopeArea = juce::Rectangle<int>(getWidth() / 2 - getWidth() / 40, 0, getWidth() / 20, std::min(getHeight() / 3, 20));
+    toggleOscilloscopeArea = juce::Rectangle<int>(
+        getWidth() / 2 - 10, 
+        10, 
+        20, 
+        20
+    );
     toggleOscilloscope.setBounds(toggleOscilloscopeArea);
     toggleText.setBounds(toggleOscilloscopeArea);
 
     basicControls.setTopLeftPosition(0, 0);
-    basicControls.setSize(getWidth(), getHeight());
+    basicControls.setSize(getWidth(), getHeight() / numHorizontalSections);
 }
 
 ControlSection::Attachments ControlSection::resolveAttachment(juce::String attachmentName)

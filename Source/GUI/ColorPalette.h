@@ -11,4 +11,6 @@
 #pragma once
 #include <JuceHeader.h>
 
-static juce::Colour CONTROLSECTIONCOLOR() { return juce::Colour(95, 2, 31).darker(0.8); };
+static juce::Colour CONTROLSECTIONCOLOR() { return juce::Colour(3, 187, 133); };
+
+static juce::Colour GUITOGGLERCOLOUR() { return juce::Colours::ghostwhite.withAlpha(float(0.4)); };

@@ -40,6 +40,16 @@ public:
      */
     void setMultipleAttachments(std::vector<juce::String> attachmentNames, juce::AudioProcessorValueTreeState& processorTreeState);
 
+    /**
+     * Resets @param numHorizontalSections in order to reflect the number
+     * of horizontal control sections to display (i.e. 1 if not professional view
+     * wor 2 if professional view)
+     * 
+     */
+    void resetNumHorizontalSections();
+
+    void resetButtonText();
+
     void paint (juce::Graphics&) override;
     void resized() override;
 
@@ -84,6 +94,8 @@ private:
   juce::ToggleButton toggleOscilloscope;
   juce::Label toggleText;
   std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> isProfessionalAttachment;
+
+  int numHorizontalSections;
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ControlSection)
-  
+
 };
