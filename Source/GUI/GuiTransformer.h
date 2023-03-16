@@ -38,6 +38,8 @@ public:
    float transitionDuration, 
    std::function<void()> expandLambdaFunction,
    std::function<void()> contractLambdaFunction,
+   std::function<void()> expandStartedLambdaFunction,
+   std::function<void()> contractStartedLambdaFunction,
    std::function<void()> expandEndedLambdaFunction,
    std::function<void()> contractEndedLambdaFunction
    );
@@ -81,7 +83,17 @@ public:
     * Callback triggered when controlSection is contracting.
     * 
     */
-   std::function<void()> contractLambda;
+   std::function<void()> contractLambda;  
+   /**
+    * Callback triggered when controlSection has started expanding.
+    * 
+    */
+   std::function<void()> expandStartedLambda;
+   /**
+    * Callback triggered when controlSection has started contracting.
+    * 
+    */
+   std::function<void()> contractStartedLambda;
    /**
     * Callback triggered when controlSection has finished expanding.
     * 

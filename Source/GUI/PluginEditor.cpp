@@ -30,6 +30,8 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
       GUI_EXPAND_ANIMATION_DURATION(),
       [this] () { this->expandCallback(); },
       [this] () { this->contractCallback(); },
+      [this] () { this->expansionStartedCallback(); },
+      [this] () { this->contractionStartedCallback(); },
       [this] () { this->expansionEndedCallback(); },
       [this] () { this->contractionEndedCallback(); }
     ));
@@ -144,4 +146,16 @@ void OscilloscopeAudioProcessorEditor::contractionEndedCallback()
   // reset component bounds
   this->resized();
 
+}
+
+void OscilloscopeAudioProcessorEditor::expansionStartedCallback()
+{
+  // reset component bounds
+  this->resized();
+}
+
+void OscilloscopeAudioProcessorEditor::contractionStartedCallback()
+{
+  // reset component bounds
+  this->resized();
 }

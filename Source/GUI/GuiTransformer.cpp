@@ -15,21 +15,25 @@ GuiTransformer::GuiTransformer(
    float transitionDuration, 
    std::function<void()> expandLambdaFunction,
    std::function<void()> contractLambdaFunction,
+   std::function<void()> expandStartedLambdaFunction,
+   std::function<void()> contractStartedLambdaFunction,
    std::function<void()> expandEndedLambdaFunction,
    std::function<void()> contractEndedLambdaFunction
   )
 {
   this->transitionDuration = transitionDuration;
 
-  isProfessional = false;
+  isProfessional = aProcessor.getTreeState()->getParameterAsValue("isProfessional").getValue();
 
   aProcessor.getTreeState()->addParameterListener("isProfessional", this);
 
   framesRemaining = float(EDITOR_INITIAL_RATE()) * transitionDuration;
   
   expandLambda = expandLambdaFunction; 
+  expandStartedLambda = expandStartedLambdaFunction;
   expandEndedLambda = expandEndedLambdaFunction;
   contractLambda = contractLambdaFunction;
+  contractStartedLambda = contractStartedLambdaFunction;
   contractEndedLambda = contractEndedLambdaFunction;
 
 }

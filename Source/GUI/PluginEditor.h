@@ -41,6 +41,8 @@ private:
     void expansionEndedCallback();
     void contractCallback();
     void contractionEndedCallback();
+    void expansionStartedCallback();
+    void contractionStartedCallback();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessorEditor)
 };

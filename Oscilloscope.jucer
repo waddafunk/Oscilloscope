@@ -7,6 +7,17 @@
   <MAINGROUP id="Wv5BAZ" name="Oscilloscope">
     <GROUP id="{9EF2004F-D29B-378D-4DEE-0DF26C311E1A}" name="Source">
       <GROUP id="{A58A2E85-099E-4558-6535-67D47647D806}" name="GUI">
+        <GROUP id="{C8C78B9C-E867-C2CD-D55B-AB4540D34E1D}" name="Controls">
+          <FILE id="BBMHzE" name="ProControls.cpp" compile="1" resource="0" file="Source/GUI/Controls/ProControls.cpp"/>
+          <FILE id="ib1uB2" name="ProControls.h" compile="0" resource="0" file="Source/GUI/Controls/ProControls.h"/>
+          <FILE id="VWOg41" name="BasicControls.cpp" compile="1" resource="0"
+                file="Source/GUI/Controls/BasicControls.cpp"/>
+          <FILE id="VCdHOq" name="BasicControls.h" compile="0" resource="0" file="Source/GUI/Controls/BasicControls.h"/>
+          <FILE id="jfaiUC" name="ControlSection.cpp" compile="1" resource="0"
+                file="Source/GUI/Controls/ControlSection.cpp"/>
+          <FILE id="wVJ8MX" name="ControlSection.h" compile="0" resource="0"
+                file="Source/GUI/Controls/ControlSection.h"/>
+        </GROUP>
         <GROUP id="{B1C59797-A252-7052-5A36-B75F04FE0B99}" name="Oscilloscopes">
           <FILE id="UG1gLz" name="OscilloscopeComponent.cpp" compile="1" resource="0"
                 file="Source/GUI/Oscilloscopes/OscilloscopeComponent.cpp"/>
@@ -22,10 +33,6 @@
                 file="Source/GUI/Oscilloscopes/UntriggeredOscilloscope.h"/>
         </GROUP>
         <FILE id="O1MH1R" name="ColorPalette.h" compile="0" resource="0" file="Source/GUI/ColorPalette.h"/>
-        <FILE id="XUK95L" name="ControlSection.cpp" compile="1" resource="0"
-              file="Source/GUI/ControlSection.cpp"/>
-        <FILE id="gAGmEE" name="ControlSection.h" compile="0" resource="0"
-              file="Source/GUI/ControlSection.h"/>
         <FILE id="IjacWq" name="GuiTransformer.cpp" compile="1" resource="0"
               file="Source/GUI/GuiTransformer.cpp"/>
         <FILE id="MjiiM4" name="GuiTransformer.h" compile="0" resource="0"
@@ -51,9 +58,9 @@
   <EXPORTFORMATS>
     <VS2022 targetFolder="Builds/VisualStudio2022">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="Oscilloscope" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="Oscilloscope" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="Oscilloscope" enablePluginBinaryCopyStep="1"
-                       vst3BinaryLocation="D:\VstPlugins\Oscilloscope" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes"/>
+                       vst3BinaryLocation="D:\VstPlugins\Oscilloscope" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
@@ -73,9 +80,9 @@
     </VS2022>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes"
+        <CONFIGURATION isDebug="1" name="Debug" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"
                        libraryPath="../../JuceLibraryCode"/>
-        <CONFIGURATION isDebug="0" name="Release" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes"
+        <CONFIGURATION isDebug="0" name="Release" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"
                        libraryPath="../../JuceLibraryCode" linkTimeOptimisation="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
