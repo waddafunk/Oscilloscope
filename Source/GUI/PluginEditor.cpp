@@ -13,9 +13,26 @@
 OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (OscilloscopeAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
+    // set correct oscilloscopeComponent height
+    if (audioProcessor.getTreeState()->getParameterAsValue("isProfessional").getValue())
+    {
+      margin_multiplier = GUI_EXPANDED_MARGIN_MULTIPLIER();
+    }
+    else
+    {
+      margin_multiplier = GUI_CONTRACTED_MARGIN_MULTIPLIER();
+    }
+
+    // reset oscilloscopeComponent and guiTransformer pointers
     oscilloscopeComponent.reset(new UntriggeredOscilloscope(audioProcessor, audioProcessor.getSampleRate()));
+    guiTransformer.reset(new GuiTransformer(
+      audioProcessor,
+      GUI_EXPAND_ANIMATION_DURATION(),
+      [this] () { this->expandCallback(); },
+      [this] () { this->contractCallback(); },
+      [this] () { this->expansionEndedCallback(); },
+      [this] () { this->contractionEndedCallback(); }
+    ));
 
     // add and make visible components
     addAndMakeVisible(oscilloscopeComponent.get());
@@ -39,7 +56,6 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
     // set resize options
     setResizable(true, true);
     setResizeLimits(256, 256, 1920, 1080);
-    resized(); // need to be called in constructor since rescaling logic makes oscilloscope invisible on creation
     
 }
 
@@ -58,8 +74,8 @@ void OscilloscopeAudioProcessorEditor::resized()
     // get bounds
     auto area = getLocalBounds();
     int height = area.getHeight();
-    int width = area.getWidth();
-    int margin = int(float(area.getHeight()) * 12. / 13.);
+    int width = area.getWidth(); 
+    int margin = int(float(area.getHeight()) * margin_multiplier);
 
     // resize components
     oscilloscopeComponent->setTopLeftPosition(0, 0);
@@ -72,4 +88,60 @@ void OscilloscopeAudioProcessorEditor::resized()
     
 }
 
+void OscilloscopeAudioProcessorEditor::expandCallback()
+{
+  
+  if (this->margin_multiplier > GUI_EXPANDED_MARGIN_MULTIPLIER())
+  {
+    // increase by a fraction of the difference in pixels such that it takes the correct amount of frames
+    float difference = GUI_CONTRACTED_MARGIN_MULTIPLIER() - GUI_EXPANDED_MARGIN_MULTIPLIER();
+    float totalFrames = float(EDITOR_INITIAL_RATE()) * GUI_EXPAND_ANIMATION_DURATION();
+    float increment = difference / totalFrames;
+    this->margin_multiplier = this->margin_multiplier - increment;
+  } 
+  else
+  {
+    // set it to correct value
+    this->margin_multiplier = GUI_EXPANDED_MARGIN_MULTIPLIER();
+  }
+  
+  // reset component bounds
+  this->resized();
 
+}
+
+void OscilloscopeAudioProcessorEditor::expansionEndedCallback()
+{
+  // reset component bounds
+  this->resized(); 
+}
+
+void OscilloscopeAudioProcessorEditor::contractCallback()
+{
+  
+  if (this->margin_multiplier < GUI_CONTRACTED_MARGIN_MULTIPLIER())
+  {
+    // increase by a fraction of the difference in pixels such that it takes the correct amount of frames
+    float difference = GUI_CONTRACTED_MARGIN_MULTIPLIER() - GUI_EXPANDED_MARGIN_MULTIPLIER();;
+    float totalFrames = float(EDITOR_INITIAL_RATE()) * GUI_EXPAND_ANIMATION_DURATION();
+    float increment = difference / totalFrames;
+    this->margin_multiplier = this->margin_multiplier + increment;
+  } 
+  else
+  {
+    // set it to correct value
+    this->margin_multiplier = GUI_CONTRACTED_MARGIN_MULTIPLIER();
+  }
+  
+  // reset component bounds
+  this->resized();
+
+}
+
+void OscilloscopeAudioProcessorEditor::contractionEndedCallback()
+{
+  
+  // reset component bounds
+  this->resized();
+
+}

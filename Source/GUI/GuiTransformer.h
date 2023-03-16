@@ -26,12 +26,21 @@ public:
 /**
  * Construct a new Gui Transformer object
  * 
+ * \param aProcessor PluginProcessor reference.
  * \param transitionDuration Duration of the transition in seconds.
- * \param lambdaTriggers Vector containing lambda to trigger until 
- * @param framesRemaining is > 0 in first position and lamda to trigger
- * when it hits 0 in second poistion.
+ * \param expandLambdaFunction Lambda function to call when expanding ControlSection.
+ * \param contractLambdaFunction Lambda function to call when contracting ControlSection.
+ * \param expandEndedLambdaFunction Lambda function to call when ControlSection expansion ends. 
+ * \param contractEndedLambdaFunction Lambda function to call when ControlSection contraction ends.
  */
-  GuiTransformer(OscilloscopeAudioProcessor& aProcessor, int transitionDuration, std::array<std::function<void()>, 4> lambdaTriggers);
+  GuiTransformer(
+   OscilloscopeAudioProcessor& aProcessor, 
+   float transitionDuration, 
+   std::function<void()> expandLambdaFunction,
+   std::function<void()> contractLambdaFunction,
+   std::function<void()> expandEndedLambdaFunction,
+   std::function<void()> contractEndedLambdaFunction
+   );
   ~GuiTransformer();
 
   private:
@@ -46,7 +55,7 @@ public:
    * Duration of the transition in seconds;
    * 
    */
-  int transitionDuration;
+  float transitionDuration;
 
   /**
    * Timer callback. Will be called @ frame rate for 
@@ -85,15 +94,11 @@ public:
    std::function<void()> contractEndedLambda;
 
    /**
-    * Current callback to call.
+    * Boolean storing whether the ControlSection is professional
+    * or not.
     * 
     */
-   std::function<void()>& currentLambda;
-   /**
-    * Current callback to call on animation end.
-    * 
-    */
-   std::function<void()>& currentEndedLambda;
+   bool isProfessional;
 };
 
 

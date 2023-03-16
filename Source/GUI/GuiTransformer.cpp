@@ -10,19 +10,27 @@
 
 #include "GuiTransformer.h"
 
-GuiTransformer::GuiTransformer(OscilloscopeAudioProcessor& aProcessor, int transitionDuration, std::array<std::function<void()>, 4> lambdaTriggers)
-: currentLambda(lambdaTriggers[0]), currentEndedLambda(lambdaTriggers[1])
+GuiTransformer::GuiTransformer(
+   OscilloscopeAudioProcessor& aProcessor, 
+   float transitionDuration, 
+   std::function<void()> expandLambdaFunction,
+   std::function<void()> contractLambdaFunction,
+   std::function<void()> expandEndedLambdaFunction,
+   std::function<void()> contractEndedLambdaFunction
+  )
 {
   this->transitionDuration = transitionDuration;
 
+  isProfessional = false;
+
   aProcessor.getTreeState()->addParameterListener("isProfessional", this);
 
-  framesRemaining = EDITOR_INITIAL_RATE() * transitionDuration;
+  framesRemaining = float(EDITOR_INITIAL_RATE()) * transitionDuration;
   
-  expandLambda = lambdaTriggers[0]; 
-  expandEndedLambda = lambdaTriggers[1];
-  contractLambda = lambdaTriggers[2];
-  contractEndedLambda = lambdaTriggers[3];
+  expandLambda = expandLambdaFunction; 
+  expandEndedLambda = expandEndedLambdaFunction;
+  contractLambda = contractLambdaFunction;
+  contractEndedLambda = contractEndedLambdaFunction;
 
 }
 
@@ -34,30 +42,32 @@ void GuiTransformer::timerCallback()
 {
   if (framesRemaining-- > 0)
   {
-    currentLambda();
+    if (isProfessional)
+    {
+      expandLambda();
+    }
+    else
+    {
+      contractLambda();
+    }
   }
   else
   {
-    currentEndedLambda();
-    framesRemaining = EDITOR_INITIAL_RATE() * transitionDuration;
+    if (isProfessional)
+    {
+      expandEndedLambda();
+    }
+    else
+    {
+      contractEndedLambda();
+    }
+    framesRemaining = float(EDITOR_INITIAL_RATE()) * transitionDuration;
     stopTimer();
   }
 }
 
 void GuiTransformer::parameterChanged(const juce::String &parameterID, float newValue)
 {
-  bool isProfessional = bool(newValue);
-
-  if (isProfessional)
-  {
-    currentLambda = expandLambda;
-    currentEndedLambda = expandEndedLambda;
-  }
-  else
-  {
-    currentLambda = contractLambda;
-    currentEndedLambda = contractEndedLambda;
-  }
-
+  isProfessional = bool(newValue);
   startTimerHz(EDITOR_INITIAL_RATE());
 }

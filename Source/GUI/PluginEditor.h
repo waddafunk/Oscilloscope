@@ -35,5 +35,12 @@ private:
     ControlSection controlSection;
     std::unique_ptr<OscilloscopeComponent> oscilloscopeComponent;
     std::unique_ptr<GuiTransformer> guiTransformer;
+
+    float margin_multiplier;
+    void expandCallback();
+    void expansionEndedCallback();
+    void contractCallback();
+    void contractionEndedCallback();
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessorEditor)
 };

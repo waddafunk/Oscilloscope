@@ -22,7 +22,6 @@ ControlSection::ControlSection()
     toggleOscilloscope.setMouseCursor(juce::MouseCursor::PointingHandCursor);
     toggleOscilloscope.setAlpha(0);
     toggleOscilloscope.setAlwaysOnTop(true);
-    //toggleOscilloscope.setColour(juce::Colours::white.withMultipliedSaturation(0));
 
     addAndMakeVisible(drawGrid);
     addAndMakeVisible(bufferLength);
@@ -107,7 +106,7 @@ void ControlSection::paint (juce::Graphics& g)
 
 void ControlSection::resized()
 {
-    toggleOscilloscopeArea = juce::Rectangle<int>(getWidth() / 2 - getWidth() / 40, 0, getWidth() / 20, getHeight() / 3);
+    toggleOscilloscopeArea = juce::Rectangle<int>(getWidth() / 2 - getWidth() / 40, 0, getWidth() / 20, std::min(getHeight() / 3, 20));
     toggleOscilloscope.setBounds(toggleOscilloscopeArea);
     toggleText.setBounds(toggleOscilloscopeArea);
     drawGrid.setSize(getWidth() / 5., getHeight() * 3. / 4.);
