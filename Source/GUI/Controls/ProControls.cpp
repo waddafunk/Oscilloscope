@@ -14,8 +14,15 @@
 //==============================================================================
 ProControls::ProControls()
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
+    addAndMakeVisible(triggerButton);
+    addAndMakeVisible(slopeButton);
+    addAndMakeVisible(triggerLevel);
+
+    triggerButton.setButtonText("Trigger");
+    slopeButton.setButtonText("Slope");
+
+    triggerLevel.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    triggerLevel.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
 
 }
 
@@ -25,27 +32,18 @@ ProControls::~ProControls()
 
 void ProControls::paint (juce::Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (juce::Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("ProControls", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
 }
 
 void ProControls::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+  
+  triggerButton.setSize(getWidth() / 5., getHeight() * 3. / 4.);
+  triggerButton.setTopLeftPosition(10, getHeight() / 8.);
+
+  slopeButton.setSize(getWidth() / 5., getHeight() * 3. / 4.);
+  slopeButton.setTopLeftPosition(10 + getWidth() * 2. / 5., getHeight() / 8.);
+
+  triggerLevel.setSize(getWidth() / 4, getHeight() * 3. / 4.);
+  triggerLevel.setTopLeftPosition(getWidth() * 3. / 5., getHeight() / 8.);
 
 }

@@ -24,6 +24,13 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
 
+    juce::ToggleButton triggerButton;
+    juce::ToggleButton slopeButton;
+    juce::Slider triggerLevel;
+    std::unique_ptr <juce::AudioProcessorValueTreeState::SliderAttachment> triggerLevelAttachment;
+    std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> triggerButtonAttachment;
+    std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> slopeButtonAttachment;
+    
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ProControls)
 };

@@ -18,6 +18,7 @@ ControlSection::ControlSection()
     addAndMakeVisible(toggleOscilloscope);
     addAndMakeVisible(toggleText);
     addAndMakeVisible(basicControls);
+    addAndMakeVisible(proControls);
 
     //basicControls.setAlwaysOnTop(true);
 
@@ -59,6 +60,27 @@ void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProce
                     new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, toggleOscilloscope)
                 );
                 resetNumHorizontalSections();
+                break;
+            }
+        case (ControlSection::Attachments::IsTriggered):
+            {
+                proControls.triggerButtonAttachment.reset(
+                    new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, proControls.triggerButton)
+                );
+                break;
+            }
+        case (ControlSection::Attachments::TriggerLevel):
+            {
+                proControls.triggerLevelAttachment.reset(
+                    new juce::AudioProcessorValueTreeState::SliderAttachment(processorTreeState, attachmentName, proControls.triggerLevel)
+                );
+                break;
+            }
+        case (ControlSection::Attachments::SlopeButtonTriggered):
+            {
+                proControls.slopeButtonAttachment.reset(
+                    new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, proControls.slopeButton)
+                );
                 break;
             }
         default:
@@ -122,8 +144,12 @@ void ControlSection::resized()
     toggleOscilloscope.setBounds(toggleOscilloscopeArea);
     toggleText.setBounds(toggleOscilloscopeArea);
 
+    int basicControlHeight = getHeight() / numHorizontalSections;
     basicControls.setTopLeftPosition(0, 0);
-    basicControls.setSize(getWidth(), getHeight() / numHorizontalSections);
+    basicControls.setSize(getWidth(), basicControlHeight);
+
+    proControls.setTopLeftPosition(0, basicControlHeight);
+    proControls.setSize(getWidth(), getHeight() - basicControlHeight);
 }
 
 ControlSection::Attachments ControlSection::resolveAttachment(juce::String attachmentName)

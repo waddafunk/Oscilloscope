@@ -49,6 +49,9 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
   attachmentNames.push_back("drawGrid");
   attachmentNames.push_back("bufferLength");
   attachmentNames.push_back("isProfessional");
+  attachmentNames.push_back("isTriggered");
+  attachmentNames.push_back("slopeButtonTriggered");
+  attachmentNames.push_back("triggerLevel");
   controlSection.setMultipleAttachments(attachmentNames, *audioProcessor.getTreeState());
   
   // set resize options

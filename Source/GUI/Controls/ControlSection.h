@@ -14,6 +14,7 @@
 #include "ColorPalette.h"
 #include "InitVariables.h"
 #include "BasicControls.h"
+#include "ProControls.h"
 
 //==============================================================================
 /**
@@ -63,6 +64,9 @@ private:
       BufferLength,
       DrawGrid,
       IsProfessional,
+      IsTriggered,
+      TriggerLevel,
+      SlopeButtonTriggered,
       Default
   };
 
@@ -74,6 +78,10 @@ private:
       { "drawGrid", ControlSection::Attachments::DrawGrid },
       { "bufferLength", ControlSection::Attachments::BufferLength },
       { "isProfessional", ControlSection::Attachments::IsProfessional },
+      { "isTriggered", ControlSection::Attachments::IsTriggered },
+      { "triggerLevel", ControlSection::Attachments::TriggerLevel },
+      { "slopeButtonTriggered", ControlSection::Attachments::SlopeButtonTriggered },
+
   };
 
   /**
@@ -85,6 +93,7 @@ private:
   Attachments resolveAttachment(juce::String attachmentName);  
 
   BasicControls basicControls;
+  ProControls proControls;
 
   /**
    * Area where the oscilloscope toggle button is placed.
