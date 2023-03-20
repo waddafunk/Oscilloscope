@@ -28,10 +28,18 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
         std::make_unique<juce::AudioParameterBool>("isProfessional", "Professional View", false),
         std::make_unique<juce::AudioParameterBool>("isTriggered", "Trigger", false),
         std::make_unique<juce::AudioParameterBool>("slopeButtonTriggered", "Slope", false),
+        std::make_unique<juce::AudioParameterBool>("autoTriggered", "Auto", false),
         std::make_unique<juce::AudioParameterFloat>("triggerLevel", "Scope Length", 0.05, 1, 0.2),
+        std::make_unique<juce::AudioParameterFloat>("refreshTime", "Refresh Time", 0.05, 1, 0.2),
+        std::make_unique<juce::AudioParameterBool>("muteOutput", "Mute", false),
 
     })
 {
+    if (juce::SystemStats::getOperatingSystemType() == juce::SystemStats::OperatingSystemType::Android)
+    {
+        processorTreeState.getParameter("muteOutput")->setValueNotifyingHost(true);
+    }
+
     audioBufferQueue.reset(new AudioBufferQueue<float>(44100, getEditorRefreshRate()));
     scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
 }
@@ -154,6 +162,12 @@ void OscilloscopeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
         buffer.clear(i, 0, buffer.getNumSamples());
 
     scopeDataCollector->process(buffer.getReadPointer(0), (size_t)buffer.getNumSamples());
+
+    if (processorTreeState.getParameterAsValue("muteOutput").getValue())
+    {
+        buffer.applyGain(0);
+    }
+    
 }
 
 //==============================================================================

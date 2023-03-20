@@ -25,9 +25,11 @@ public:
   void resized() override;
 
   juce::ToggleButton drawGrid;
+  juce::ToggleButton muteOutput;
   juce::Slider bufferLength;
   std::unique_ptr <juce::AudioProcessorValueTreeState::SliderAttachment> bufferLengthAttachment;
   std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> gridAttachment;
+  std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> muteOutputAttachment;
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicControls)

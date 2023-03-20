@@ -15,13 +15,13 @@
 
 ControlSection::ControlSection()
 {
+    // make objects visible
     addAndMakeVisible(toggleOscilloscope);
     addAndMakeVisible(toggleText);
     addAndMakeVisible(basicControls);
     addAndMakeVisible(proControls);
 
-    //basicControls.setAlwaysOnTop(true);
-
+    // set ControlSection expander button
     toggleText.setJustificationType(juce::Justification::centred);
     toggleText.setFont(juce::Font(18, 1));
     toggleText.setText("+", juce::dontSendNotification);
@@ -29,6 +29,7 @@ ControlSection::ControlSection()
     toggleOscilloscope.setAlpha(0);
     toggleOscilloscope.setAlwaysOnTop(true);
 
+    // set number of sections shown
     numHorizontalSections = 1;
 }
 
@@ -38,6 +39,7 @@ ControlSection::~ControlSection()
 
 void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProcessorValueTreeState& processorTreeState)
 {
+    // resolve attachment name and map it to correct attachment
     switch (resolveAttachment(attachmentName))
     {
         case (ControlSection::Attachments::BufferLength):
@@ -83,6 +85,27 @@ void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProce
                 );
                 break;
             }
+        case (ControlSection::Attachments::IsAutoTriggered):
+            {
+                proControls.autoTriggerButtonAttachment.reset(
+                    new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, proControls.autoTriggerButton)
+                );
+                break;
+            }
+        case (ControlSection::Attachments::RefreshTime):
+            {
+                proControls.refreshTimeAttachment.reset(
+                    new juce::AudioProcessorValueTreeState::SliderAttachment(processorTreeState, attachmentName, proControls.refreshTime)
+                );
+                break;
+            }
+        case (ControlSection::Attachments::MuteOutput):
+            {
+                basicControls.muteOutputAttachment.reset(
+                    new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, basicControls.muteOutput)
+                );
+                break;
+            }
         default:
             {
                 break;
@@ -92,6 +115,7 @@ void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProce
 
 void ControlSection::setMultipleAttachments(std::vector<juce::String> attachmentNames, juce::AudioProcessorValueTreeState& processorTreeState)
 {
+    // call setAttachment for each attachment in attachmentNames
     for (int i = 0; i < attachmentNames.size(); i++)
     {
         setAttachment(attachmentNames[i], processorTreeState);
@@ -100,6 +124,7 @@ void ControlSection::setMultipleAttachments(std::vector<juce::String> attachment
 
 void ControlSection::resetNumHorizontalSections()
 {
+    // check state and set variable
     if (toggleOscilloscope.getToggleState())
     {
         numHorizontalSections = 2;
@@ -112,6 +137,7 @@ void ControlSection::resetNumHorizontalSections()
 
 void ControlSection::resetButtonText()
 {
+    // check state and set text
     if (toggleOscilloscope.getToggleState())
     {
         toggleText.setText("-", juce::dontSendNotification);
@@ -125,16 +151,18 @@ void ControlSection::resetButtonText()
 void ControlSection::paint(juce::Graphics &g)
 {
 
+    // fill background
     g.fillAll (CONTROLSECTIONCOLOR()); 
 
+    // draw toggle ControlSection expander contour
     g.setColour(GUITOGGLERCOLOUR());
-
     g.drawRect(toggleOscilloscopeArea);
 
 }
 
 void ControlSection::resized()
 {
+    // set ControlSection expander area
     toggleOscilloscopeArea = juce::Rectangle<int>(
         getWidth() / 2 - 10, 
         10, 
@@ -144,16 +172,19 @@ void ControlSection::resized()
     toggleOscilloscope.setBounds(toggleOscilloscopeArea);
     toggleText.setBounds(toggleOscilloscopeArea);
 
+    // set basicControls position and size
     int basicControlHeight = getHeight() / numHorizontalSections;
     basicControls.setTopLeftPosition(0, 0);
     basicControls.setSize(getWidth(), basicControlHeight);
 
+    // set proControls position and size
     proControls.setTopLeftPosition(0, basicControlHeight);
     proControls.setSize(getWidth(), getHeight() - basicControlHeight);
 }
 
 ControlSection::Attachments ControlSection::resolveAttachment(juce::String attachmentName)
 {
+    // map string to Attachment enum
     auto itr = attachmentsMap.find(attachmentName);
     if (itr != attachmentsMap.end()) {
         return itr->second;

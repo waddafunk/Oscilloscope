@@ -52,8 +52,12 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
   attachmentNames.push_back("isTriggered");
   attachmentNames.push_back("slopeButtonTriggered");
   attachmentNames.push_back("triggerLevel");
+  attachmentNames.push_back("autoTriggered");
+  attachmentNames.push_back("refreshTime");
+  attachmentNames.push_back("muteOutput");
   controlSection.setMultipleAttachments(attachmentNames, *audioProcessor.getTreeState());
-  
+
+
   // set resize options
   setResizable(true, true);
   setResizeLimits(256, 256, 1920, 1080);
@@ -149,7 +153,6 @@ void OscilloscopeAudioProcessorEditor::contractionEndedCallback()
   // reset component bounds
   this->resized();
   controlSection.resized();
-  controlSection.resetButtonText();
 
 }
 
@@ -160,14 +163,10 @@ void OscilloscopeAudioProcessorEditor::expansionStartedCallback()
   controlSection.resetNumHorizontalSections();
   controlSection.resetButtonText();
 
-  
-  // reset component bounds
-  this->resized();
 
 }
 
 void OscilloscopeAudioProcessorEditor::contractionStartedCallback()
 {
-  // reset component bounds
-  this->resized();
+  controlSection.resetButtonText();
 }

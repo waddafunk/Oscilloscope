@@ -12,8 +12,6 @@
 #include "AudioBufferQueue.h"
 #include <cstdlib>
 
-namespace ranges = std::ranges;
-
 /**
  * Class handling AudioBufferQueue.
  * 
@@ -63,7 +61,11 @@ public:
             // Else setup collecting stage
             else
             {
-                auto result = ranges::find_if(data, data + numSamples, [](SampleType i) {return i > triggerLevel; });
+                auto result = data;
+                while(*result < triggerLevel)
+                {
+                    result++;
+                }
                 prevSample = *result;
                 state = State::collecting;
                 int firstSample = result - data;
@@ -102,6 +104,7 @@ private:
     SampleType prevSample = SampleType(100); /**< Last sample collected. */
 
     static constexpr auto triggerLevel = SampleType(0); /**< Level above which the oscilloscope starts drawing the waveform. */
+    
     /**
      * States of the class.
      */

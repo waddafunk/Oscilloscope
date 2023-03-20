@@ -67,6 +67,9 @@ private:
       IsTriggered,
       TriggerLevel,
       SlopeButtonTriggered,
+      IsAutoTriggered,
+      RefreshTime,
+      MuteOutput,
       Default
   };
 
@@ -75,12 +78,15 @@ private:
    * Mapping from attachments' names to Attachments enum class.
    */
   const std::map<juce::String, ControlSection::Attachments> attachmentsMap{
-      { "drawGrid", ControlSection::Attachments::DrawGrid },
-      { "bufferLength", ControlSection::Attachments::BufferLength },
-      { "isProfessional", ControlSection::Attachments::IsProfessional },
-      { "isTriggered", ControlSection::Attachments::IsTriggered },
-      { "triggerLevel", ControlSection::Attachments::TriggerLevel },
-      { "slopeButtonTriggered", ControlSection::Attachments::SlopeButtonTriggered },
+    { "drawGrid", ControlSection::Attachments::DrawGrid },
+    { "bufferLength", ControlSection::Attachments::BufferLength },
+    { "isProfessional", ControlSection::Attachments::IsProfessional },
+    { "isTriggered", ControlSection::Attachments::IsTriggered },
+    { "triggerLevel", ControlSection::Attachments::TriggerLevel },
+    { "slopeButtonTriggered", ControlSection::Attachments::SlopeButtonTriggered },
+    { "autoTriggered", ControlSection::Attachments::IsAutoTriggered },
+    { "refreshTime", ControlSection::Attachments::RefreshTime },
+    { "muteOutput", ControlSection::Attachments::MuteOutput },
 
   };
 
@@ -92,7 +98,16 @@ private:
    */ 
   Attachments resolveAttachment(juce::String attachmentName);  
 
+  /**
+   * Basic controls, always shown.
+   * 
+   */
   BasicControls basicControls;
+  
+  /**
+   * Pro controls, shown only when ControlSection is expanded.
+   * 
+   */
   ProControls proControls;
 
   /**
@@ -100,10 +115,16 @@ private:
    * 
    */
   juce::Rectangle<int> toggleOscilloscopeArea; 
+
+  // GUI expander elements
   juce::ToggleButton toggleOscilloscope;
   juce::Label toggleText;
   std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> isProfessionalAttachment;
 
+  /**
+   * Number of sections shown (1 or 2).
+   * 
+   */
   int numHorizontalSections;
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ControlSection)
 
