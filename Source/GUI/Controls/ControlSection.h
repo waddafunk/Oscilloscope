@@ -68,7 +68,7 @@ private:
       TriggerLevel,
       SlopeButtonTriggered,
       IsAutoTriggered,
-      RefreshTime,
+      DecayTime,
       MuteOutput,
       Default
   };
@@ -85,7 +85,7 @@ private:
     { "triggerLevel", ControlSection::Attachments::TriggerLevel },
     { "slopeButtonTriggered", ControlSection::Attachments::SlopeButtonTriggered },
     { "autoTriggered", ControlSection::Attachments::IsAutoTriggered },
-    { "refreshTime", ControlSection::Attachments::RefreshTime },
+    { "decayTime", ControlSection::Attachments::DecayTime },
     { "muteOutput", ControlSection::Attachments::MuteOutput },
 
   };

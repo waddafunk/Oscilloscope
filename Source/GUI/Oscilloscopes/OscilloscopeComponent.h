@@ -15,9 +15,10 @@
 # include "InitVariables.h"
 
 /**
- * Oscilloscope graphical component for SampleType type data.
+ * Oscilloscope graphical component.
  * 
- * Inherits from <a href="https://docs.juce.com/master/classComponent.html">JUCE Component</a> and <a href="https://docs.juce.com/master/classTimer.html">JUCE timer</a> 
+ * Inherits from <a href="https://docs.juce.com/master/classComponent.html">JUCE Component</a> 
+ * and <a href="https://docs.juce.com/master/classTimer.html">JUCE timer</a> 
  */
 class OscilloscopeComponent : public juce::Component, private juce::AudioProcessorValueTreeState::Listener,
     private juce::Timer
@@ -65,16 +66,17 @@ public:
      */
     void resized() override;
 
+protected:
+  int sampleRate; /**< Sample rate */
+  std::vector<float> sampleData; /**< Data currently displayed */
+  OscilloscopeAudioProcessor& audioProcessor;
 
 private:
     //==============================================================================
-    OscilloscopeAudioProcessor& audioProcessor;
     int displayLength;
-    std::vector<float> sampleData; /**< Data currently displayed */
     std::vector<float> newlyPopped; /**< Last popped array */
     std::vector<float> notInterpolatedData; /** < Raw new data*/
     std::vector<float> newData; /** < Interpolated new data*/
-    int sampleRate; /**< Sample rate */
     double ratio = 1.;
     juce::Interpolators::Linear interpolator;
 
@@ -95,7 +97,6 @@ private:
      */
     void timerCallback() override;
 
-protected:
     //==============================================================================
     /**
      * Plots the waveform. This method is implemented in the subclasses in order to
@@ -109,10 +110,17 @@ protected:
      * \param scaler Scale factor.
      * \param offset Y-axis offset.
      */
-    virtual void plot(const float* data,
-        size_t numSamples,
+    virtual void plot(
         juce::Graphics& g,
         juce::Rectangle<float> rect,
         float scaler = float(1),
         float offset = float(0)) = 0;
+
+    /**
+     * This callback will be called in @ref timerCallback and is left
+     * to be implemented in the subclasses to handle subclass-specific
+     * operations. 
+     * 
+     */
+    virtual void subclassSpecificCallback() = 0;
 };

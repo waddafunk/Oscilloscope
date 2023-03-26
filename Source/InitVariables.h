@@ -57,3 +57,10 @@ static constexpr float GUI_CONTRACTED_MARGIN_MULTIPLIER() { return 12. / 13.; }
  * \return constexpr float Factor to multiply to PluginEditor's heigth.
  */
 static constexpr float GUI_EXPANDED_MARGIN_MULTIPLIER() { return 10.5 / 13.; }
+
+/**
+ * Max decay time of TriggeredOscilloscope.
+ * 
+ * \return constexpr float Max decay time of TriggeredOscilloscope.
+ */
+static constexpr float OSCILLOSCOPE_MAX_DECAY_TIME() { return 10; }

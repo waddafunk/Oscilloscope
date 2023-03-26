@@ -18,17 +18,21 @@ ProControls::ProControls()
     addAndMakeVisible(triggerButton);
     addAndMakeVisible(slopeButton);
     addAndMakeVisible(triggerLevel);
-    addAndMakeVisible(autoTriggerButton);
     addAndMakeVisible(refreshTime);
+
+    // add autoTrigger
+    addChildComponent(autoTriggerButton);
 
     // set buttons' text
     triggerButton.setButtonText("Trigger");
     autoTriggerButton.setButtonText("Auto");
     slopeButton.setButtonText("Slope");
 
-    // set group id to trigger buttons
-    triggerButton.setRadioGroupId(RadioButtonIds::TriggerButtons);
-    autoTriggerButton.setRadioGroupId(RadioButtonIds::TriggerButtons);
+    // show autoTrigger only if triggered
+    triggerButton.onClick = [this](){
+      bool isTriggered = triggerButton.getToggleState();
+      autoTriggerButton.setVisible(isTriggered);
+    };
 
     // set sliders style
     triggerLevel.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);

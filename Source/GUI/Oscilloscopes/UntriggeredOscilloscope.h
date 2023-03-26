@@ -11,6 +11,8 @@
 #pragma once
 #include<JuceHeader.h>
 #include"OscilloscopeComponent.h"
+#include "ColorPalette.h"
+
 
 /**
  * Untriggered oscilloscope. Displays data continuously updating with no control 
@@ -18,13 +20,16 @@
  */
 class UntriggeredOscilloscope : public OscilloscopeComponent
 {
-public:
-UntriggeredOscilloscope(OscilloscopeAudioProcessor& aProcessor, int sampleRate);
+  public:
+  UntriggeredOscilloscope(OscilloscopeAudioProcessor& aProcessor, int sampleRate);
 
-void plot(const float* data,
-    size_t numSamples,
-    juce::Graphics& g,
-    juce::Rectangle<float> rect,
-    float scaler = float(1),
-    float offset = float(0)) override;
+  private:
+  void plot(
+      juce::Graphics& g,
+      juce::Rectangle<float> rect,
+      float scaler = float(1),
+      float offset = float(0)) override;
+
+  void subclassSpecificCallback() override;
+
 };

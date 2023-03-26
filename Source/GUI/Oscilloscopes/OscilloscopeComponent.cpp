@@ -86,7 +86,7 @@ void OscilloscopeComponent::paint(juce::Graphics& g)
 
     // Oscilloscope
     auto scopeRect = juce::Rectangle<float>{ float(0), float(0), w, h };
-    plot(sampleData.data(), sampleData.size(), g, scopeRect, float(1), h / 2);
+    plot(g, scopeRect, float(1), h / 2);
 
 }
 
@@ -113,5 +113,6 @@ void OscilloscopeComponent::timerCallback()
     std::copy(sampleData.data() + queueSize, sampleData.data() + sampleData.size(), newData.begin());
     std::copy(newlyPopped.data(), newlyPopped.data() + queueSize, newData.begin() + sampleData.size() - queueSize);
     sampleData = newData;
+    subclassSpecificCallback();
     repaint();
 }

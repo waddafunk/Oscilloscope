@@ -86,10 +86,6 @@ public:
     std::unique_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> slopeButtonAttachment;
     
 private:
-    enum RadioButtonIds
-    {
-        TriggerButtons = 1001
-    };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ProControls)
 };

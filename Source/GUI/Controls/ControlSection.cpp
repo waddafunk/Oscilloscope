@@ -69,6 +69,9 @@ void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProce
                 proControls.triggerButtonAttachment.reset(
                     new juce::AudioProcessorValueTreeState::ButtonAttachment(processorTreeState, attachmentName, proControls.triggerButton)
                 );
+
+                // Set auto trigger visible if trigger selected
+                proControls.autoTriggerButton.setVisible(proControls.triggerButton.getToggleState());
                 break;
             }
         case (ControlSection::Attachments::TriggerLevel):
@@ -92,7 +95,7 @@ void ControlSection::setAttachment(juce::String attachmentName, juce::AudioProce
                 );
                 break;
             }
-        case (ControlSection::Attachments::RefreshTime):
+        case (ControlSection::Attachments::DecayTime):
             {
                 proControls.refreshTimeAttachment.reset(
                     new juce::AudioProcessorValueTreeState::SliderAttachment(processorTreeState, attachmentName, proControls.refreshTime)

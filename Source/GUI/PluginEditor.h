@@ -12,6 +12,7 @@
 #include "PluginProcessor.h"
 #include "OscilloscopeComponent.h"
 #include "UntriggeredOscilloscope.h"
+#include "TriggeredOscilloscope.h"
 #include "ControlSection.h"
 #include "GuiTransformer.h"
 

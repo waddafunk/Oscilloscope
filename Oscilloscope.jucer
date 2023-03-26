@@ -19,6 +19,9 @@
                 file="Source/GUI/Controls/ControlSection.h"/>
         </GROUP>
         <GROUP id="{B1C59797-A252-7052-5A36-B75F04FE0B99}" name="Oscilloscopes">
+          <FILE id="SIazOG" name="DecayCounter.cpp" compile="1" resource="0"
+                file="Source/GUI/Oscilloscopes/DecayCounter.cpp"/>
+          <FILE id="QATyGy" name="DecayCounter.h" compile="0" resource="0" file="Source/GUI/Oscilloscopes/DecayCounter.h"/>
           <FILE id="UG1gLz" name="OscilloscopeComponent.cpp" compile="1" resource="0"
                 file="Source/GUI/Oscilloscopes/OscilloscopeComponent.cpp"/>
           <FILE id="ctc9Y5" name="OscilloscopeComponent.h" compile="0" resource="0"
@@ -27,6 +30,10 @@
                 file="Source/GUI/Oscilloscopes/TriggeredOscilloscope.cpp"/>
           <FILE id="GcBavh" name="TriggeredOscilloscope.h" compile="0" resource="0"
                 file="Source/GUI/Oscilloscopes/TriggeredOscilloscope.h"/>
+          <FILE id="fV8gVZ" name="TriggerListener.cpp" compile="1" resource="0"
+                file="Source/GUI/Oscilloscopes/TriggerListener.cpp"/>
+          <FILE id="ngWmLC" name="TriggerListener.h" compile="0" resource="0"
+                file="Source/GUI/Oscilloscopes/TriggerListener.h"/>
           <FILE id="KQBAar" name="UntriggeredOscilloscope.cpp" compile="1" resource="0"
                 file="Source/GUI/Oscilloscopes/UntriggeredOscilloscope.cpp"/>
           <FILE id="y0uYxu" name="UntriggeredOscilloscope.h" compile="0" resource="0"

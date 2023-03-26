@@ -23,14 +23,15 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
 #endif
     processorTreeState(*this, nullptr, juce::Identifier("PARAMETERS"),
     { 
+        
         std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), 
         std::make_unique<juce::AudioParameterFloat>("bufferLength", "Scope Length", 0.05, 1, 0.2),
         std::make_unique<juce::AudioParameterBool>("isProfessional", "Professional View", false),
         std::make_unique<juce::AudioParameterBool>("isTriggered", "Trigger", false),
         std::make_unique<juce::AudioParameterBool>("slopeButtonTriggered", "Slope", false),
         std::make_unique<juce::AudioParameterBool>("autoTriggered", "Auto", false),
-        std::make_unique<juce::AudioParameterFloat>("triggerLevel", "Scope Length", 0.05, 1, 0.2),
-        std::make_unique<juce::AudioParameterFloat>("refreshTime", "Refresh Time", 0.05, 1, 0.2),
+        std::make_unique<juce::AudioParameterFloat>("triggerLevel", "Trigger Level", 0.05, 1, 0.2),
+        std::make_unique<juce::AudioParameterFloat>("decayTime", "Decay Time", 0.05, 1, 0.2),
         std::make_unique<juce::AudioParameterBool>("muteOutput", "Mute", false),
 
     })

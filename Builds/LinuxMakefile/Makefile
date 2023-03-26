@@ -111,8 +111,10 @@ OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/ProControls_70e8a87.o \
   $(JUCE_OBJDIR)/BasicControls_c0f17ac8.o \
   $(JUCE_OBJDIR)/ControlSection_d3fb864e.o \
+  $(JUCE_OBJDIR)/DecayCounter_8ff436a.o \
   $(JUCE_OBJDIR)/OscilloscopeComponent_dc1995f0.o \
   $(JUCE_OBJDIR)/TriggeredOscilloscope_5730ea48.o \
+  $(JUCE_OBJDIR)/TriggerListener_ca26d8e.o \
   $(JUCE_OBJDIR)/UntriggeredOscilloscope_80a45a8f.o \
   $(JUCE_OBJDIR)/GuiTransformer_d9e02cdb.o \
   $(JUCE_OBJDIR)/PluginEditor_fed3277d.o \
@@ -196,6 +198,11 @@ $(JUCE_OBJDIR)/ControlSection_d3fb864e.o: ../../Source/GUI/Controls/ControlSecti
 	@echo "Compiling ControlSection.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
+$(JUCE_OBJDIR)/DecayCounter_8ff436a.o: ../../Source/GUI/Oscilloscopes/DecayCounter.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling DecayCounter.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
 $(JUCE_OBJDIR)/OscilloscopeComponent_dc1995f0.o: ../../Source/GUI/Oscilloscopes/OscilloscopeComponent.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling OscilloscopeComponent.cpp"
@@ -204,6 +211,11 @@ $(JUCE_OBJDIR)/OscilloscopeComponent_dc1995f0.o: ../../Source/GUI/Oscilloscopes/
 $(JUCE_OBJDIR)/TriggeredOscilloscope_5730ea48.o: ../../Source/GUI/Oscilloscopes/TriggeredOscilloscope.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling TriggeredOscilloscope.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/TriggerListener_ca26d8e.o: ../../Source/GUI/Oscilloscopes/TriggerListener.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling TriggerListener.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/UntriggeredOscilloscope_80a45a8f.o: ../../Source/GUI/Oscilloscopes/UntriggeredOscilloscope.cpp
