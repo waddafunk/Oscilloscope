@@ -5,6 +5,8 @@
 
 JuceLibraryCode
 Builds/VisualStudio2022
+Builds/LinuxMakefile/build
+Builds/Android
 
 # User-specific files
 *.rsuser

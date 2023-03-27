@@ -15,8 +15,11 @@ UntriggeredOscilloscope::UntriggeredOscilloscope(OscilloscopeAudioProcessor& aPr
 {
 }
 
-void UntriggeredOscilloscope::plot(const float* data, size_t numSamples, juce::Graphics& g, juce::Rectangle<float> rect, float scaler, float offset)
+void UntriggeredOscilloscope::plot(juce::Graphics& g, juce::Rectangle<float> rect, float scaler, float offset)
 {
+    auto data = sampleData.data();
+    auto numSamples = sampleData.size();
+    
     auto w = rect.getWidth();
     auto h = rect.getHeight();
     auto right = rect.getRight();
@@ -24,7 +27,7 @@ void UntriggeredOscilloscope::plot(const float* data, size_t numSamples, juce::G
     auto center = rect.getBottom() - offset;
     auto gain = h * scaler;
 
-    g.setColour(juce::Colours::beige);
+    g.setColour(WAVEFORMCOLOUR());
 
     for (size_t i = 1; i < numSamples; ++i)
     {
@@ -34,3 +37,10 @@ void UntriggeredOscilloscope::plot(const float* data, size_t numSamples, juce::G
                       center - gain * data[i] });
     }
 }
+
+void UntriggeredOscilloscope::subclassSpecificCallback()
+{
+  // Nothing to do for this subclass
+  return;
+}
+

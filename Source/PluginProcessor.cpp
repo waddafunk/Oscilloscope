@@ -7,7 +7,7 @@
 */
 
 #include "PluginProcessor.h"
-#include "PluginEditor.h"
+#include <PluginEditor.h>
 
 //==============================================================================
 OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
@@ -23,16 +23,50 @@ OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()
 #endif
     processorTreeState(*this, nullptr, juce::Identifier("PARAMETERS"),
     { 
+        
         std::make_unique<juce::AudioParameterBool>("drawGrid", "Draw Grid", false), 
         std::make_unique<juce::AudioParameterFloat>("bufferLength", "Scope Length", 0.05, 1, 0.2),
+        std::make_unique<juce::AudioParameterBool>("isProfessional", "Professional View", false),
+        std::make_unique<juce::AudioParameterBool>("isTriggered", "Trigger", false),
+        std::make_unique<juce::AudioParameterBool>("slopeButtonTriggered", "Slope", false),
+        std::make_unique<juce::AudioParameterBool>("autoTriggered", "Auto", false),
+        std::make_unique<juce::AudioParameterFloat>("triggerLevel", "Trigger Level", 0.05, 1, 0.2),
+        std::make_unique<juce::AudioParameterFloat>("decayTime", "Decay Time", 0.05, 1, static_cast<float> (0.2)),
+        std::make_unique<juce::AudioParameterBool>("muteOutput", "Mute", false),
+
     })
 {
+
+    if (juce::SystemStats::getOperatingSystemType() == juce::SystemStats::OperatingSystemType::Android)
+    {
+        processorTreeState.getParameter("muteOutput")->setValueNotifyingHost(true);
+    }
+
     audioBufferQueue.reset(new AudioBufferQueue<float>(44100, getEditorRefreshRate()));
     scopeDataCollector.reset(new ScopeDataCollector(*audioBufferQueue.get()));
+    
 }
 
 OscilloscopeAudioProcessor::~OscilloscopeAudioProcessor()
 {
+}
+
+void  OscilloscopeAudioProcessor::resetAllValuesToDefault(juce::ValueTree tree)
+{
+    for (int i = 0; i < tree.getNumChildren(); ++i)
+    {
+        juce::ValueTree child = tree.getChild(i);
+
+        // Check if the child has a default value
+        if (child.hasProperty("defaultValue"))
+        {
+            // Reset the value to the default value
+            child.setProperty("value", child.getProperty("defaultValue"), nullptr);
+        }
+
+        // Recursively reset the values of any child ValueTrees
+        resetAllValuesToDefault(child);
+    }
 }
 
 //==============================================================================
@@ -149,6 +183,12 @@ void OscilloscopeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
         buffer.clear(i, 0, buffer.getNumSamples());
 
     scopeDataCollector->process(buffer.getReadPointer(0), (size_t)buffer.getNumSamples());
+
+    if (processorTreeState.getParameterAsValue("muteOutput").getValue())
+    {
+        buffer.applyGain(0);
+    }
+    
 }
 
 //==============================================================================

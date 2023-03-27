@@ -3,46 +3,71 @@
 <JUCERPROJECT id="L8V3Yk" name="Oscilloscope" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
               pluginFormats="buildStandalone,buildVST3" pluginManufacturer="Waddafunk"
-              pluginManufacturerCode="Wdfk" cppLanguageStandard="latest">
+              pluginManufacturerCode="Wdfk" cppLanguageStandard="latest" version="0.2.0">
   <MAINGROUP id="Wv5BAZ" name="Oscilloscope">
     <GROUP id="{9EF2004F-D29B-378D-4DEE-0DF26C311E1A}" name="Source">
+      <GROUP id="{A58A2E85-099E-4558-6535-67D47647D806}" name="GUI">
+        <GROUP id="{C8C78B9C-E867-C2CD-D55B-AB4540D34E1D}" name="Controls">
+          <FILE id="BBMHzE" name="ProControls.cpp" compile="1" resource="0" file="Source/GUI/Controls/ProControls.cpp"/>
+          <FILE id="ib1uB2" name="ProControls.h" compile="0" resource="0" file="Source/GUI/Controls/ProControls.h"/>
+          <FILE id="VWOg41" name="BasicControls.cpp" compile="1" resource="0"
+                file="Source/GUI/Controls/BasicControls.cpp"/>
+          <FILE id="VCdHOq" name="BasicControls.h" compile="0" resource="0" file="Source/GUI/Controls/BasicControls.h"/>
+          <FILE id="jfaiUC" name="ControlSection.cpp" compile="1" resource="0"
+                file="Source/GUI/Controls/ControlSection.cpp"/>
+          <FILE id="wVJ8MX" name="ControlSection.h" compile="0" resource="0"
+                file="Source/GUI/Controls/ControlSection.h"/>
+        </GROUP>
+        <GROUP id="{B1C59797-A252-7052-5A36-B75F04FE0B99}" name="Oscilloscopes">
+          <FILE id="SIazOG" name="DecayCounter.cpp" compile="1" resource="0"
+                file="Source/GUI/Oscilloscopes/DecayCounter.cpp"/>
+          <FILE id="QATyGy" name="DecayCounter.h" compile="0" resource="0" file="Source/GUI/Oscilloscopes/DecayCounter.h"/>
+          <FILE id="UG1gLz" name="OscilloscopeComponent.cpp" compile="1" resource="0"
+                file="Source/GUI/Oscilloscopes/OscilloscopeComponent.cpp"/>
+          <FILE id="ctc9Y5" name="OscilloscopeComponent.h" compile="0" resource="0"
+                file="Source/GUI/Oscilloscopes/OscilloscopeComponent.h"/>
+          <FILE id="NJ0yps" name="TriggeredOscilloscope.cpp" compile="1" resource="0"
+                file="Source/GUI/Oscilloscopes/TriggeredOscilloscope.cpp"/>
+          <FILE id="GcBavh" name="TriggeredOscilloscope.h" compile="0" resource="0"
+                file="Source/GUI/Oscilloscopes/TriggeredOscilloscope.h"/>
+          <FILE id="fV8gVZ" name="TriggerListener.cpp" compile="1" resource="0"
+                file="Source/GUI/Oscilloscopes/TriggerListener.cpp"/>
+          <FILE id="ngWmLC" name="TriggerListener.h" compile="0" resource="0"
+                file="Source/GUI/Oscilloscopes/TriggerListener.h"/>
+          <FILE id="KQBAar" name="UntriggeredOscilloscope.cpp" compile="1" resource="0"
+                file="Source/GUI/Oscilloscopes/UntriggeredOscilloscope.cpp"/>
+          <FILE id="y0uYxu" name="UntriggeredOscilloscope.h" compile="0" resource="0"
+                file="Source/GUI/Oscilloscopes/UntriggeredOscilloscope.h"/>
+        </GROUP>
+        <FILE id="O1MH1R" name="ColorPalette.h" compile="0" resource="0" file="Source/GUI/ColorPalette.h"/>
+        <FILE id="IjacWq" name="GuiTransformer.cpp" compile="1" resource="0"
+              file="Source/GUI/GuiTransformer.cpp"/>
+        <FILE id="MjiiM4" name="GuiTransformer.h" compile="0" resource="0"
+              file="Source/GUI/GuiTransformer.h"/>
+        <FILE id="H0254O" name="PluginEditor.cpp" compile="1" resource="0"
+              file="Source/GUI/PluginEditor.cpp"/>
+        <FILE id="PyNtNf" name="PluginEditor.h" compile="0" resource="0" file="Source/GUI/PluginEditor.h"/>
+      </GROUP>
+      <GROUP id="{E8DBAC13-99DF-743E-F4A0-49592D450180}" name="Buffers">
+        <FILE id="SXnh42" name="ScopeDataCollector.h" compile="0" resource="0"
+              file="Source/Buffers/ScopeDataCollector.h"/>
+        <FILE id="Xubfic" name="AudioBufferQueue.h" compile="0" resource="0"
+              file="Source/Buffers/AudioBufferQueue.h"/>
+      </GROUP>
       <FILE id="ga1csY" name="InitVariables.h" compile="0" resource="0" file="Source/InitVariables.h"/>
-      <GROUP id="{98C0D305-E15F-5BE0-ADC4-AB71EAF6A2E9}" name="Oscilloscopes">
-        <FILE id="qasOIa" name="UntriggeredOscilloscope.cpp" compile="1" resource="0"
-              file="Source/UntriggeredOscilloscope.cpp"/>
-        <FILE id="YFBd5x" name="UntriggeredOscilloscope.h" compile="0" resource="0"
-              file="Source/UntriggeredOscilloscope.h"/>
-        <FILE id="QjvZey" name="TriggeredOscilloscope.cpp" compile="1" resource="0"
-              file="Source/TriggeredOscilloscope.cpp"/>
-        <FILE id="TA6Zec" name="TriggeredOscilloscope.h" compile="0" resource="0"
-              file="Source/TriggeredOscilloscope.h"/>
-        <FILE id="F7VNcN" name="OscilloscopeComponent.h" compile="0" resource="0"
-              file="Source/OscilloscopeComponent.h"/>
-        <FILE id="J6Strq" name="OscilloscopeComponent.cpp" compile="1" resource="0"
-              file="Source/OscilloscopeComponent.cpp"/>
-      </GROUP>
-      <GROUP id="{BAF17A05-21E2-90CC-DEC4-F1A5E49BD460}" name="Buffers">
-        <FILE id="ydQOPC" name="AudioBufferQueue.h" compile="0" resource="0"
-              file="Source/AudioBufferQueue.h"/>
-        <FILE id="oc9dVJ" name="ScopeDataCollector.h" compile="0" resource="0"
-              file="Source/ScopeDataCollector.h"/>
-      </GROUP>
       <FILE id="KLuk64" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="XIDUdZ" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
-      <FILE id="U0MfER" name="PluginEditor.cpp" compile="1" resource="0"
-            file="Source/PluginEditor.cpp"/>
-      <FILE id="zk3cwC" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
     <VS2022 targetFolder="Builds/VisualStudio2022">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="Oscilloscope"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="Oscilloscope" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="Oscilloscope" enablePluginBinaryCopyStep="1"
-                       vst3BinaryLocation="D:\VstPlugins\Oscilloscope"/>
+                       vst3BinaryLocation="D:\VstPlugins\Oscilloscope" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
@@ -62,8 +87,10 @@
     </VS2022>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug"/>
-        <CONFIGURATION isDebug="0" name="Release"/>
+        <CONFIGURATION isDebug="1" name="Debug" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"
+                       libraryPath="../../JuceLibraryCode"/>
+        <CONFIGURATION isDebug="0" name="Release" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"
+                       libraryPath="../../JuceLibraryCode" linkTimeOptimisation="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="D:\JUCE\modules"/>
@@ -81,6 +108,30 @@
         <MODULEPATH id="juce_gui_extra" path="D:\JUCE\modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
+    <ANDROIDSTUDIO targetFolder="Builds/Android" androidMinimumSDK="23" microphonePermissionNeeded="1"
+                   androidTheme="@android:style/Theme.NoTitleBar">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"
+                       libraryPath="../../JuceLibraryCode"/>
+        <CONFIGURATION isDebug="0" name="Release" headerPath="../../Source/&#10;../../Source/Buffers&#10;../../Source/GUI&#10;../../Source/GUI/Oscilloscopes&#10;../../Source/GUI/Controls"
+                       libraryPath="../../JuceLibraryCode"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_dsp" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+      </MODULEPATHS>
+    </ANDROIDSTUDIO>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
