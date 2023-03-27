@@ -1,0 +1,160 @@
+\hypertarget{classBasicControls}{}\doxysection{Basic\+Controls Class Reference}
+\label{classBasicControls}\index{BasicControls@{BasicControls}}
+
+
+{\ttfamily \#include $<$Basic\+Controls.\+h$>$}
+
+Inheritance diagram for Basic\+Controls\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classBasicControls}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBasicControls_ad0a8b698f13c6f77c004f1c8c0ba9fd6}{Basic\+Controls}} ()
+\item 
+\mbox{\hyperlink{classBasicControls_a6b00b5dd5d845ab77d287c2f80bc27b7}{$\sim$\+Basic\+Controls}} () override
+\item 
+void \mbox{\hyperlink{classBasicControls_a565b408ff0d0889afb71ed8a0df317e9}{paint}} (juce\+::\+Graphics \&) override
+\item 
+void \mbox{\hyperlink{classBasicControls_a07e9b564eee6b7e24512fb8b3d1ed85c}{resized}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+juce\+::\+Toggle\+Button \mbox{\hyperlink{classBasicControls_a665524de3f67af074478525e5f105b8d}{draw\+Grid}}
+\item 
+juce\+::\+Toggle\+Button \mbox{\hyperlink{classBasicControls_aa66a639c61f7d49211f031d614efcfe6}{mute\+Output}}
+\item 
+juce\+::\+Slider \mbox{\hyperlink{classBasicControls_ae020503d1f949f120588855eb100e7af}{buffer\+Length}}
+\item 
+std\+::unique\+\_\+ptr$<$ juce\+::\+Audio\+Processor\+Value\+Tree\+State\+::\+Slider\+Attachment $>$ \mbox{\hyperlink{classBasicControls_a81e86c2184b8f01149bbd8b3d83274d3}{buffer\+Length\+Attachment}}
+\item 
+std\+::unique\+\_\+ptr$<$ juce\+::\+Audio\+Processor\+Value\+Tree\+State\+::\+Button\+Attachment $>$ \mbox{\hyperlink{classBasicControls_a0299db9d23db1c207c7500aabf06fb1e}{grid\+Attachment}}
+\item 
+std\+::unique\+\_\+ptr$<$ juce\+::\+Audio\+Processor\+Value\+Tree\+State\+::\+Button\+Attachment $>$ \mbox{\hyperlink{classBasicControls_a3bd4546d9869c2963768bfe46a27aa51}{mute\+Output\+Attachment}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8h_source_l00018}{18}} of file \mbox{\hyperlink{BasicControls_8h_source}{Basic\+Controls.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBasicControls_ad0a8b698f13c6f77c004f1c8c0ba9fd6}\label{classBasicControls_ad0a8b698f13c6f77c004f1c8c0ba9fd6}} 
+\index{BasicControls@{BasicControls}!BasicControls@{BasicControls}}
+\index{BasicControls@{BasicControls}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{BasicControls()}{BasicControls()}}
+{\footnotesize\ttfamily Basic\+Controls\+::\+Basic\+Controls (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{BasicControls_8cpp_source}{Basic\+Controls.\+cpp}}.
+
+\mbox{\Hypertarget{classBasicControls_a6b00b5dd5d845ab77d287c2f80bc27b7}\label{classBasicControls_a6b00b5dd5d845ab77d287c2f80bc27b7}} 
+\index{BasicControls@{BasicControls}!````~BasicControls@{$\sim$BasicControls}}
+\index{````~BasicControls@{$\sim$BasicControls}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{$\sim$BasicControls()}{~BasicControls()}}
+{\footnotesize\ttfamily Basic\+Controls\+::$\sim$\+Basic\+Controls (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{BasicControls_8cpp_source}{Basic\+Controls.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBasicControls_a565b408ff0d0889afb71ed8a0df317e9}\label{classBasicControls_a565b408ff0d0889afb71ed8a0df317e9}} 
+\index{BasicControls@{BasicControls}!paint@{paint}}
+\index{paint@{paint}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void Basic\+Controls\+::paint (\begin{DoxyParamCaption}\item[{juce\+::\+Graphics \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{BasicControls_8cpp_source}{Basic\+Controls.\+cpp}}.
+
+\mbox{\Hypertarget{classBasicControls_a07e9b564eee6b7e24512fb8b3d1ed85c}\label{classBasicControls_a07e9b564eee6b7e24512fb8b3d1ed85c}} 
+\index{BasicControls@{BasicControls}!resized@{resized}}
+\index{resized@{resized}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{resized()}{resized()}}
+{\footnotesize\ttfamily void Basic\+Controls\+::resized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{BasicControls_8cpp_source}{Basic\+Controls.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBasicControls_ae020503d1f949f120588855eb100e7af}\label{classBasicControls_ae020503d1f949f120588855eb100e7af}} 
+\index{BasicControls@{BasicControls}!bufferLength@{bufferLength}}
+\index{bufferLength@{bufferLength}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{bufferLength}{bufferLength}}
+{\footnotesize\ttfamily juce\+::\+Slider Basic\+Controls\+::buffer\+Length}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8h_source_l00029}{29}} of file \mbox{\hyperlink{BasicControls_8h_source}{Basic\+Controls.\+h}}.
+
+\mbox{\Hypertarget{classBasicControls_a81e86c2184b8f01149bbd8b3d83274d3}\label{classBasicControls_a81e86c2184b8f01149bbd8b3d83274d3}} 
+\index{BasicControls@{BasicControls}!bufferLengthAttachment@{bufferLengthAttachment}}
+\index{bufferLengthAttachment@{bufferLengthAttachment}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{bufferLengthAttachment}{bufferLengthAttachment}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$juce\+::\+Audio\+Processor\+Value\+Tree\+State\+::\+Slider\+Attachment$>$ Basic\+Controls\+::buffer\+Length\+Attachment}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8h_source_l00030}{30}} of file \mbox{\hyperlink{BasicControls_8h_source}{Basic\+Controls.\+h}}.
+
+\mbox{\Hypertarget{classBasicControls_a665524de3f67af074478525e5f105b8d}\label{classBasicControls_a665524de3f67af074478525e5f105b8d}} 
+\index{BasicControls@{BasicControls}!drawGrid@{drawGrid}}
+\index{drawGrid@{drawGrid}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{drawGrid}{drawGrid}}
+{\footnotesize\ttfamily juce\+::\+Toggle\+Button Basic\+Controls\+::draw\+Grid}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8h_source_l00027}{27}} of file \mbox{\hyperlink{BasicControls_8h_source}{Basic\+Controls.\+h}}.
+
+\mbox{\Hypertarget{classBasicControls_a0299db9d23db1c207c7500aabf06fb1e}\label{classBasicControls_a0299db9d23db1c207c7500aabf06fb1e}} 
+\index{BasicControls@{BasicControls}!gridAttachment@{gridAttachment}}
+\index{gridAttachment@{gridAttachment}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{gridAttachment}{gridAttachment}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$juce\+::\+Audio\+Processor\+Value\+Tree\+State\+::\+Button\+Attachment$>$ Basic\+Controls\+::grid\+Attachment}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8h_source_l00031}{31}} of file \mbox{\hyperlink{BasicControls_8h_source}{Basic\+Controls.\+h}}.
+
+\mbox{\Hypertarget{classBasicControls_aa66a639c61f7d49211f031d614efcfe6}\label{classBasicControls_aa66a639c61f7d49211f031d614efcfe6}} 
+\index{BasicControls@{BasicControls}!muteOutput@{muteOutput}}
+\index{muteOutput@{muteOutput}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{muteOutput}{muteOutput}}
+{\footnotesize\ttfamily juce\+::\+Toggle\+Button Basic\+Controls\+::mute\+Output}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8h_source_l00028}{28}} of file \mbox{\hyperlink{BasicControls_8h_source}{Basic\+Controls.\+h}}.
+
+\mbox{\Hypertarget{classBasicControls_a3bd4546d9869c2963768bfe46a27aa51}\label{classBasicControls_a3bd4546d9869c2963768bfe46a27aa51}} 
+\index{BasicControls@{BasicControls}!muteOutputAttachment@{muteOutputAttachment}}
+\index{muteOutputAttachment@{muteOutputAttachment}!BasicControls@{BasicControls}}
+\doxysubsubsection{\texorpdfstring{muteOutputAttachment}{muteOutputAttachment}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$juce\+::\+Audio\+Processor\+Value\+Tree\+State\+::\+Button\+Attachment$>$ Basic\+Controls\+::mute\+Output\+Attachment}
+
+
+
+Definition at line \mbox{\hyperlink{BasicControls_8h_source_l00032}{32}} of file \mbox{\hyperlink{BasicControls_8h_source}{Basic\+Controls.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+GUI/\+Controls/\mbox{\hyperlink{BasicControls_8h}{Basic\+Controls.\+h}}\item 
+Source/\+GUI/\+Controls/\mbox{\hyperlink{BasicControls_8cpp}{Basic\+Controls.\+cpp}}\end{DoxyCompactItemize}

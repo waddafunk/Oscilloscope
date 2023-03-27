@@ -1,0 +1,159 @@
+\hypertarget{classControlSection}{}\doxysection{Control\+Section Class Reference}
+\label{classControlSection}\index{ControlSection@{ControlSection}}
+
+
+{\ttfamily \#include $<$Control\+Section.\+h$>$}
+
+Inheritance diagram for Control\+Section\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classControlSection}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classControlSection_af44832144070da2ef0e8d4c096ccce8c}{Control\+Section}} ()
+\item 
+\mbox{\hyperlink{classControlSection_a69b5f8990dc5448f0f3e9303404e1fa1}{$\sim$\+Control\+Section}} () override
+\item 
+void \mbox{\hyperlink{classControlSection_aa18ee0b03f08243249fe3ffee46fabc6}{set\+Attachment}} (juce\+::\+String attachment\+Name, juce\+::\+Audio\+Processor\+Value\+Tree\+State \&processor\+Tree\+State)
+\item 
+void \mbox{\hyperlink{classControlSection_adcfbf8a8edc9bf21f54c45e00afb6663}{set\+Multiple\+Attachments}} (std\+::vector$<$ juce\+::\+String $>$ attachment\+Names, juce\+::\+Audio\+Processor\+Value\+Tree\+State \&processor\+Tree\+State)
+\item 
+void \mbox{\hyperlink{classControlSection_a9e2eb492425608878926a5a2f7ac1db5}{reset\+Num\+Horizontal\+Sections}} ()
+\item 
+void \mbox{\hyperlink{classControlSection_a166e5978d651a802e3d419135435def8}{reset\+Button\+Text}} ()
+\item 
+void \mbox{\hyperlink{classControlSection_a998f739ba6ecd03df79af5bd616d37cf}{paint}} (juce\+::\+Graphics \&) override
+\item 
+void \mbox{\hyperlink{classControlSection_a2b9deea6d318fe2bc0f5fc228149e5c9}{resized}} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class handling the GUI controls. 
+
+Definition at line \mbox{\hyperlink{ControlSection_8h_source_l00023}{23}} of file \mbox{\hyperlink{ControlSection_8h_source}{Control\+Section.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classControlSection_af44832144070da2ef0e8d4c096ccce8c}\label{classControlSection_af44832144070da2ef0e8d4c096ccce8c}} 
+\index{ControlSection@{ControlSection}!ControlSection@{ControlSection}}
+\index{ControlSection@{ControlSection}!ControlSection@{ControlSection}}
+\doxysubsubsection{\texorpdfstring{ControlSection()}{ControlSection()}}
+{\footnotesize\ttfamily Control\+Section\+::\+Control\+Section (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{ControlSection_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{ControlSection_8cpp_source}{Control\+Section.\+cpp}}.
+
+\mbox{\Hypertarget{classControlSection_a69b5f8990dc5448f0f3e9303404e1fa1}\label{classControlSection_a69b5f8990dc5448f0f3e9303404e1fa1}} 
+\index{ControlSection@{ControlSection}!````~ControlSection@{$\sim$ControlSection}}
+\index{````~ControlSection@{$\sim$ControlSection}!ControlSection@{ControlSection}}
+\doxysubsubsection{\texorpdfstring{$\sim$ControlSection()}{~ControlSection()}}
+{\footnotesize\ttfamily Control\+Section\+::$\sim$\+Control\+Section (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{ControlSection_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{ControlSection_8cpp_source}{Control\+Section.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classControlSection_a998f739ba6ecd03df79af5bd616d37cf}\label{classControlSection_a998f739ba6ecd03df79af5bd616d37cf}} 
+\index{ControlSection@{ControlSection}!paint@{paint}}
+\index{paint@{paint}!ControlSection@{ControlSection}}
+\doxysubsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void Control\+Section\+::paint (\begin{DoxyParamCaption}\item[{juce\+::\+Graphics \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{ControlSection_8cpp_source_l00154}{154}} of file \mbox{\hyperlink{ControlSection_8cpp_source}{Control\+Section.\+cpp}}.
+
+\mbox{\Hypertarget{classControlSection_a166e5978d651a802e3d419135435def8}\label{classControlSection_a166e5978d651a802e3d419135435def8}} 
+\index{ControlSection@{ControlSection}!resetButtonText@{resetButtonText}}
+\index{resetButtonText@{resetButtonText}!ControlSection@{ControlSection}}
+\doxysubsubsection{\texorpdfstring{resetButtonText()}{resetButtonText()}}
+{\footnotesize\ttfamily void Control\+Section\+::reset\+Button\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{ControlSection_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{ControlSection_8cpp_source}{Control\+Section.\+cpp}}.
+
+\mbox{\Hypertarget{classControlSection_a9e2eb492425608878926a5a2f7ac1db5}\label{classControlSection_a9e2eb492425608878926a5a2f7ac1db5}} 
+\index{ControlSection@{ControlSection}!resetNumHorizontalSections@{resetNumHorizontalSections}}
+\index{resetNumHorizontalSections@{resetNumHorizontalSections}!ControlSection@{ControlSection}}
+\doxysubsubsection{\texorpdfstring{resetNumHorizontalSections()}{resetNumHorizontalSections()}}
+{\footnotesize\ttfamily void Control\+Section\+::reset\+Num\+Horizontal\+Sections (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets
+\begin{DoxyParams}{Parameters}
+{\em num\+Horizontal\+Sections} & in order to reflect the number of horizontal control sections to display (i.\+e. 1 if not professional view wor 2 if professional view) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ControlSection_8cpp_source_l00128}{128}} of file \mbox{\hyperlink{ControlSection_8cpp_source}{Control\+Section.\+cpp}}.
+
+\mbox{\Hypertarget{classControlSection_a2b9deea6d318fe2bc0f5fc228149e5c9}\label{classControlSection_a2b9deea6d318fe2bc0f5fc228149e5c9}} 
+\index{ControlSection@{ControlSection}!resized@{resized}}
+\index{resized@{resized}!ControlSection@{ControlSection}}
+\doxysubsubsection{\texorpdfstring{resized()}{resized()}}
+{\footnotesize\ttfamily void Control\+Section\+::resized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{ControlSection_8cpp_source_l00166}{166}} of file \mbox{\hyperlink{ControlSection_8cpp_source}{Control\+Section.\+cpp}}.
+
+\mbox{\Hypertarget{classControlSection_aa18ee0b03f08243249fe3ffee46fabc6}\label{classControlSection_aa18ee0b03f08243249fe3ffee46fabc6}} 
+\index{ControlSection@{ControlSection}!setAttachment@{setAttachment}}
+\index{setAttachment@{setAttachment}!ControlSection@{ControlSection}}
+\doxysubsubsection{\texorpdfstring{setAttachment()}{setAttachment()}}
+{\footnotesize\ttfamily void Control\+Section\+::set\+Attachment (\begin{DoxyParamCaption}\item[{juce\+::\+String}]{attachment\+Name,  }\item[{juce\+::\+Audio\+Processor\+Value\+Tree\+State \&}]{processor\+Tree\+State }\end{DoxyParamCaption})}
+
+Set attachment between control and treestate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em attachment\+Name} & Attachment name, \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+attachment\+Map 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em processor\+Tree\+State} & Audio processor\textquotesingle{}s Treestate. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ControlSection_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{ControlSection_8cpp_source}{Control\+Section.\+cpp}}.
+
+\mbox{\Hypertarget{classControlSection_adcfbf8a8edc9bf21f54c45e00afb6663}\label{classControlSection_adcfbf8a8edc9bf21f54c45e00afb6663}} 
+\index{ControlSection@{ControlSection}!setMultipleAttachments@{setMultipleAttachments}}
+\index{setMultipleAttachments@{setMultipleAttachments}!ControlSection@{ControlSection}}
+\doxysubsubsection{\texorpdfstring{setMultipleAttachments()}{setMultipleAttachments()}}
+{\footnotesize\ttfamily void Control\+Section\+::set\+Multiple\+Attachments (\begin{DoxyParamCaption}\item[{std\+::vector$<$ juce\+::\+String $>$}]{attachment\+Names,  }\item[{juce\+::\+Audio\+Processor\+Value\+Tree\+State \&}]{processor\+Tree\+State }\end{DoxyParamCaption})}
+
+Set multiple attachments.
+
+
+\begin{DoxyParams}{Parameters}
+{\em attachment\+Names} & Vector of attachment names. \\
+\hline
+{\em processor\+Tree\+State} & Audio processor\textquotesingle{}s Treestate. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ControlSection_8cpp_source_l00119}{119}} of file \mbox{\hyperlink{ControlSection_8cpp_source}{Control\+Section.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+GUI/\+Controls/\mbox{\hyperlink{ControlSection_8h}{Control\+Section.\+h}}\item 
+Source/\+GUI/\+Controls/\mbox{\hyperlink{ControlSection_8cpp}{Control\+Section.\+cpp}}\end{DoxyCompactItemize}

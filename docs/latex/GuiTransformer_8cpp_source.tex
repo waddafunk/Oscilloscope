@@ -1,0 +1,99 @@
+\hypertarget{GuiTransformer_8cpp_source}{}\doxysection{Gui\+Transformer.\+cpp}
+\label{GuiTransformer_8cpp_source}\index{Source/GUI/GuiTransformer.cpp@{Source/GUI/GuiTransformer.cpp}}
+\mbox{\hyperlink{GuiTransformer_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00002}00002 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00003}00003 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00004}00004 \textcolor{comment}{    GuiTransformer.cpp}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00005}00005 \textcolor{comment}{    Created: 9 Mar 2023 9:40:25pm}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00006}00006 \textcolor{comment}{    Author:  covariant}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00007}00007 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00008}00008 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00009}00009 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{GuiTransformer_8h}{GuiTransformer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00013}\mbox{\hyperlink{classGuiTransformer_af554bf3f8d3b8802547f8330fe035144}{00013}} \mbox{\hyperlink{classGuiTransformer_af554bf3f8d3b8802547f8330fe035144}{GuiTransformer::GuiTransformer}}(}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00014}00014    \mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\& aProcessor, }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00015}00015    \textcolor{keywordtype}{float} transitionDuration, }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00016}00016    std::function<\textcolor{keywordtype}{void}()> expandLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00017}00017    std::function<\textcolor{keywordtype}{void}()> contractLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00018}00018    std::function<\textcolor{keywordtype}{void}()> expandStartedLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00019}00019    std::function<\textcolor{keywordtype}{void}()> contractStartedLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00020}00020    std::function<\textcolor{keywordtype}{void}()> expandEndedLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00021}00021    std::function<\textcolor{keywordtype}{void}()> contractEndedLambdaFunction}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00022}00022   )}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00023}00023 \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00024}00024   this-\/>transitionDuration = transitionDuration;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00026}00026   isProfessional = aProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>getParameterAsValue(\textcolor{stringliteral}{"{}isProfessional"{}}).getValue();}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00028}00028   aProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>addParameterListener(\textcolor{stringliteral}{"{}isProfessional"{}}, \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00030}00030   framesRemaining = float(EDITOR\_INITIAL\_RATE()) * transitionDuration;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00031}00031   }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00032}00032   expandLambda = expandLambdaFunction; }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00033}00033   expandStartedLambda = expandStartedLambdaFunction;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00034}00034   expandEndedLambda = expandEndedLambdaFunction;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00035}00035   contractLambda = contractLambdaFunction;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00036}00036   contractStartedLambda = contractStartedLambdaFunction;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00037}00037   contractEndedLambda = contractEndedLambdaFunction;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00039}00039 \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00041}\mbox{\hyperlink{classGuiTransformer_a0e041d2cb9f790d84539e16195576e01}{00041}} \mbox{\hyperlink{classGuiTransformer_a0e041d2cb9f790d84539e16195576e01}{GuiTransformer::\string~GuiTransformer}}()}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00043}00043 \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00045}00045 \textcolor{keywordtype}{void} GuiTransformer::timerCallback()}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00046}00046 \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00047}00047   \textcolor{keywordflow}{if} (framesRemaining-\/-\/ > 0)}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00048}00048   \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00049}00049     \textcolor{keywordflow}{if} (isProfessional)}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00050}00050     \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00051}00051       expandLambda();}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00052}00052     \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00053}00053     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00054}00054     \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00055}00055       contractLambda();}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00056}00056     \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00057}00057   \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00058}00058   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00059}00059   \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00060}00060     \textcolor{keywordflow}{if} (isProfessional)}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00061}00061     \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00062}00062       expandEndedLambda();}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00063}00063     \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00064}00064     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00065}00065     \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00066}00066       contractEndedLambda();}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00067}00067     \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00068}00068     framesRemaining = float(EDITOR\_INITIAL\_RATE()) * transitionDuration;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00069}00069     stopTimer();}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00070}00070   \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00071}00071 \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00073}00073 \textcolor{keywordtype}{void} GuiTransformer::parameterChanged(\textcolor{keyword}{const} juce::String \&parameterID, \textcolor{keywordtype}{float} newValue)}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00074}00074 \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00076}00076   isProfessional = bool(newValue);}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00078}00078   \textcolor{keywordflow}{if} (isProfessional)}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00079}00079   \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00081}00081     expandStartedLambda();}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00082}00082   }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00083}00083   \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00084}00084   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00085}00085   \{}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00086}00086   }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00087}00087     contractStartedLambda();}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00088}00088   }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00089}00089   \}}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00091}00091   startTimerHz(EDITOR\_INITIAL\_RATE());}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8cpp_source_l00093}00093 \}}
+
+\end{DoxyCode}

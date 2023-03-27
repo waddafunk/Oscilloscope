@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['oscilloscopeaudioprocessor_0',['OscilloscopeAudioProcessor',['../classOscilloscopeAudioProcessor.html',1,'OscilloscopeAudioProcessor'],['../classOscilloscopeAudioProcessor.html#a7c4a32cb63e3149cb70f4d416b14eee4',1,'OscilloscopeAudioProcessor::OscilloscopeAudioProcessor()']]],
-  ['oscilloscopeaudioprocessoreditor_1',['OscilloscopeAudioProcessorEditor',['../classOscilloscopeAudioProcessorEditor.html',1,'OscilloscopeAudioProcessorEditor'],['../classOscilloscopeAudioProcessorEditor.html#abd81a115d8bb055f20820a533e3ffc67',1,'OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor()']]],
-  ['oscilloscopecomponent_2',['OscilloscopeComponent',['../classOscilloscopeComponent.html',1,'OscilloscopeComponent'],['../classOscilloscopeComponent.html#aee1470a825285738d1348a622ebc57d1',1,'OscilloscopeComponent::OscilloscopeComponent()']]],
-  ['oscilloscopecomponent_2ecpp_3',['OscilloscopeComponent.cpp',['../OscilloscopeComponent_8cpp.html',1,'']]],
-  ['oscilloscopecomponent_2eh_4',['OscilloscopeComponent.h',['../OscilloscopeComponent_8h.html',1,'']]]
+  ['initvariables_2eh_0',['InitVariables.h',['../InitVariables_8h.html',1,'']]],
+  ['isbuseslayoutsupported_1',['isBusesLayoutSupported',['../classOscilloscopeAudioProcessor.html#af7c170b2f7a354710ea4a6a15968806f',1,'OscilloscopeAudioProcessor']]],
+  ['ismidieffect_2',['isMidiEffect',['../classOscilloscopeAudioProcessor.html#a607485a92684296c89fa7ad74bfc86d5',1,'OscilloscopeAudioProcessor']]]
 ];

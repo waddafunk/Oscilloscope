@@ -1,0 +1,119 @@
+\hypertarget{classDecayCounter}{}\doxysection{Decay\+Counter Class Reference}
+\label{classDecayCounter}\index{DecayCounter@{DecayCounter}}
+
+
+{\ttfamily \#include $<$Decay\+Counter.\+h$>$}
+
+Inheritance diagram for Decay\+Counter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDecayCounter}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDecayCounter_a1a92842e8a42312770305a9f283c5a20}{Decay\+Counter}} (int frames\+Per\+Second, float decay\+Seconds)
+\item 
+\mbox{\hyperlink{classDecayCounter_ad0c22074b880e9028198f802db7c7bfa}{$\sim$\+Decay\+Counter}} ()
+\item 
+bool \mbox{\hyperlink{classDecayCounter_a6fda9ce2cee63cff8c4b637a2d30af0f}{refresh\+Needed}} ()
+\item 
+void \mbox{\hyperlink{classDecayCounter_a901fa2114573976b3a6bb1db82cf94e6}{reset\+Decay\+Time}} ()
+\item 
+void \mbox{\hyperlink{classDecayCounter_abb0cb5c2c113f96b50f0523924ca4a87}{parameter\+Changed}} (const juce\+::\+String \&parameter\+ID, float new\+Value) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class keeping track of decay time of the Oscilloscope 
+
+Definition at line \mbox{\hyperlink{DecayCounter_8h_source_l00019}{19}} of file \mbox{\hyperlink{DecayCounter_8h_source}{Decay\+Counter.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDecayCounter_a1a92842e8a42312770305a9f283c5a20}\label{classDecayCounter_a1a92842e8a42312770305a9f283c5a20}} 
+\index{DecayCounter@{DecayCounter}!DecayCounter@{DecayCounter}}
+\index{DecayCounter@{DecayCounter}!DecayCounter@{DecayCounter}}
+\doxysubsubsection{\texorpdfstring{DecayCounter()}{DecayCounter()}}
+{\footnotesize\ttfamily Decay\+Counter\+::\+Decay\+Counter (\begin{DoxyParamCaption}\item[{int}]{frames\+Per\+Second,  }\item[{float}]{decay\+Seconds }\end{DoxyParamCaption})}
+
+Construct a new Decay Counter object
+
+
+\begin{DoxyParams}{Parameters}
+{\em frames\+Per\+Second} & Plugin\+Editor refresh rate. \\
+\hline
+{\em decay\+Seconds} & Decay time in seconds. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{DecayCounter_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{DecayCounter_8cpp_source}{Decay\+Counter.\+cpp}}.
+
+\mbox{\Hypertarget{classDecayCounter_ad0c22074b880e9028198f802db7c7bfa}\label{classDecayCounter_ad0c22074b880e9028198f802db7c7bfa}} 
+\index{DecayCounter@{DecayCounter}!````~DecayCounter@{$\sim$DecayCounter}}
+\index{````~DecayCounter@{$\sim$DecayCounter}!DecayCounter@{DecayCounter}}
+\doxysubsubsection{\texorpdfstring{$\sim$DecayCounter()}{~DecayCounter()}}
+{\footnotesize\ttfamily Decay\+Counter\+::$\sim$\+Decay\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{DecayCounter_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{DecayCounter_8cpp_source}{Decay\+Counter.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDecayCounter_abb0cb5c2c113f96b50f0523924ca4a87}\label{classDecayCounter_abb0cb5c2c113f96b50f0523924ca4a87}} 
+\index{DecayCounter@{DecayCounter}!parameterChanged@{parameterChanged}}
+\index{parameterChanged@{parameterChanged}!DecayCounter@{DecayCounter}}
+\doxysubsubsection{\texorpdfstring{parameterChanged()}{parameterChanged()}}
+{\footnotesize\ttfamily void Decay\+Counter\+::parameter\+Changed (\begin{DoxyParamCaption}\item[{const juce\+::\+String \&}]{parameter\+ID,  }\item[{float}]{new\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Listens to changes in Audio\+Processor\+Value\+Tree\+State\textquotesingle{}s \char`\"{}decay\+Time\char`\"{} and updates decay\+Time accordingly
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter\+ID} & Always \char`\"{}decay\+Time\char`\"{}. \\
+\hline
+{\em new\+Value} & New value (between 0 and 1). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{DecayCounter_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{DecayCounter_8cpp_source}{Decay\+Counter.\+cpp}}.
+
+\mbox{\Hypertarget{classDecayCounter_a6fda9ce2cee63cff8c4b637a2d30af0f}\label{classDecayCounter_a6fda9ce2cee63cff8c4b637a2d30af0f}} 
+\index{DecayCounter@{DecayCounter}!refreshNeeded@{refreshNeeded}}
+\index{refreshNeeded@{refreshNeeded}!DecayCounter@{DecayCounter}}
+\doxysubsubsection{\texorpdfstring{refreshNeeded()}{refreshNeeded()}}
+{\footnotesize\ttfamily bool Decay\+Counter\+::refresh\+Needed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Decrements decay time and returns whether if it is time to refresh the wave plot.
+
+\begin{DoxyReturn}{Returns}
+true if decay\+Time \texorpdfstring{$<$}{<}= 0. 
+
+false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DecayCounter_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{DecayCounter_8cpp_source}{Decay\+Counter.\+cpp}}.
+
+\mbox{\Hypertarget{classDecayCounter_a901fa2114573976b3a6bb1db82cf94e6}\label{classDecayCounter_a901fa2114573976b3a6bb1db82cf94e6}} 
+\index{DecayCounter@{DecayCounter}!resetDecayTime@{resetDecayTime}}
+\index{resetDecayTime@{resetDecayTime}!DecayCounter@{DecayCounter}}
+\doxysubsubsection{\texorpdfstring{resetDecayTime()}{resetDecayTime()}}
+{\footnotesize\ttfamily void Decay\+Counter\+::reset\+Decay\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets decay time to frames\+Per\+Seconds $\ast$ decay\+Seconds 
+
+Definition at line \mbox{\hyperlink{DecayCounter_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{DecayCounter_8cpp_source}{Decay\+Counter.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{DecayCounter_8h}{Decay\+Counter.\+h}}\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{DecayCounter_8cpp}{Decay\+Counter.\+cpp}}\end{DoxyCompactItemize}

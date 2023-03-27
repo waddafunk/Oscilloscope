@@ -1,0 +1,76 @@
+\hypertarget{classGuiTransformer}{}\doxysection{Gui\+Transformer Class Reference}
+\label{classGuiTransformer}\index{GuiTransformer@{GuiTransformer}}
+
+
+{\ttfamily \#include $<$Gui\+Transformer.\+h$>$}
+
+Inheritance diagram for Gui\+Transformer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGuiTransformer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGuiTransformer_af554bf3f8d3b8802547f8330fe035144}{Gui\+Transformer}} (\mbox{\hyperlink{classOscilloscopeAudioProcessor}{Oscilloscope\+Audio\+Processor}} \&a\+Processor, float transition\+Duration, std\+::function$<$ void()$>$ expand\+Lambda\+Function, std\+::function$<$ void()$>$ contract\+Lambda\+Function, std\+::function$<$ void()$>$ expand\+Started\+Lambda\+Function, std\+::function$<$ void()$>$ contract\+Started\+Lambda\+Function, std\+::function$<$ void()$>$ expand\+Ended\+Lambda\+Function, std\+::function$<$ void()$>$ contract\+Ended\+Lambda\+Function)
+\item 
+\mbox{\hyperlink{classGuiTransformer_a0e041d2cb9f790d84539e16195576e01}{$\sim$\+Gui\+Transformer}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to handle GUI transition between Pro and raw modalities. 
+
+Definition at line \mbox{\hyperlink{GuiTransformer_8h_source_l00022}{22}} of file \mbox{\hyperlink{GuiTransformer_8h_source}{Gui\+Transformer.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGuiTransformer_af554bf3f8d3b8802547f8330fe035144}\label{classGuiTransformer_af554bf3f8d3b8802547f8330fe035144}} 
+\index{GuiTransformer@{GuiTransformer}!GuiTransformer@{GuiTransformer}}
+\index{GuiTransformer@{GuiTransformer}!GuiTransformer@{GuiTransformer}}
+\doxysubsubsection{\texorpdfstring{GuiTransformer()}{GuiTransformer()}}
+{\footnotesize\ttfamily Gui\+Transformer\+::\+Gui\+Transformer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOscilloscopeAudioProcessor}{Oscilloscope\+Audio\+Processor}} \&}]{a\+Processor,  }\item[{float}]{transition\+Duration,  }\item[{std\+::function$<$ void()$>$}]{expand\+Lambda\+Function,  }\item[{std\+::function$<$ void()$>$}]{contract\+Lambda\+Function,  }\item[{std\+::function$<$ void()$>$}]{expand\+Started\+Lambda\+Function,  }\item[{std\+::function$<$ void()$>$}]{contract\+Started\+Lambda\+Function,  }\item[{std\+::function$<$ void()$>$}]{expand\+Ended\+Lambda\+Function,  }\item[{std\+::function$<$ void()$>$}]{contract\+Ended\+Lambda\+Function }\end{DoxyParamCaption})}
+
+Construct a new Gui Transformer object
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+Processor} & Plugin\+Processor reference. \\
+\hline
+{\em transition\+Duration} & Duration of the transition in seconds. \\
+\hline
+{\em expand\+Lambda\+Function} & Lambda function to call when expanding \mbox{\hyperlink{classControlSection}{Control\+Section}}. \\
+\hline
+{\em contract\+Lambda\+Function} & Lambda function to call when contracting \mbox{\hyperlink{classControlSection}{Control\+Section}}. \\
+\hline
+{\em expand\+Started\+Lambda\+Function} & Lambda function to call when \mbox{\hyperlink{classControlSection}{Control\+Section}} expansion starts. \\
+\hline
+{\em contract\+Started\+Lambda\+Function} & Lambda function to call when \mbox{\hyperlink{classControlSection}{Control\+Section}} contraction starts. \\
+\hline
+{\em expand\+Ended\+Lambda\+Function} & Lambda function to call when \mbox{\hyperlink{classControlSection}{Control\+Section}} expansion ends. \\
+\hline
+{\em contract\+Ended\+Lambda\+Function} & Lambda function to call when \mbox{\hyperlink{classControlSection}{Control\+Section}} contraction ends. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GuiTransformer_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{GuiTransformer_8cpp_source}{Gui\+Transformer.\+cpp}}.
+
+\mbox{\Hypertarget{classGuiTransformer_a0e041d2cb9f790d84539e16195576e01}\label{classGuiTransformer_a0e041d2cb9f790d84539e16195576e01}} 
+\index{GuiTransformer@{GuiTransformer}!````~GuiTransformer@{$\sim$GuiTransformer}}
+\index{````~GuiTransformer@{$\sim$GuiTransformer}!GuiTransformer@{GuiTransformer}}
+\doxysubsubsection{\texorpdfstring{$\sim$GuiTransformer()}{~GuiTransformer()}}
+{\footnotesize\ttfamily Gui\+Transformer\+::$\sim$\+Gui\+Transformer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{GuiTransformer_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{GuiTransformer_8cpp_source}{Gui\+Transformer.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+GUI/\mbox{\hyperlink{GuiTransformer_8h}{Gui\+Transformer.\+h}}\item 
+Source/\+GUI/\mbox{\hyperlink{GuiTransformer_8cpp}{Gui\+Transformer.\+cpp}}\end{DoxyCompactItemize}

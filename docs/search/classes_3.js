@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['untriggeredoscilloscope_0',['UntriggeredOscilloscope',['../classUntriggeredOscilloscope.html',1,'']]]
+  ['decaycounter_0',['DecayCounter',['../classDecayCounter.html',1,'']]]
 ];

@@ -1,0 +1,76 @@
+\hypertarget{ProControls_8cpp_source}{}\doxysection{Pro\+Controls.\+cpp}
+\label{ProControls_8cpp_source}\index{Source/GUI/Controls/ProControls.cpp@{Source/GUI/Controls/ProControls.cpp}}
+\mbox{\hyperlink{ProControls_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00002}00002 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00003}00003 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00004}00004 \textcolor{comment}{    ProControls.cpp}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00005}00005 \textcolor{comment}{    Created: 16 Mar 2023 11:53:07am}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00006}00006 \textcolor{comment}{    Author:  covariant}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00007}00007 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00008}00008 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00009}00009 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <JuceHeader.h>}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ProControls_8h}{ProControls.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00014}00014 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00015}\mbox{\hyperlink{classProControls_a7a685d449190dd309854631eb516d0b6}{00015}} \mbox{\hyperlink{classProControls_a7a685d449190dd309854631eb516d0b6}{ProControls::ProControls}}() }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00016}00016 \{}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00017}00017     \textcolor{comment}{// make elements visible}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00018}00018     addAndMakeVisible(\mbox{\hyperlink{classProControls_a01366f91a5dc1109c24f6d2d19627023}{triggerButton}});}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00019}00019     addAndMakeVisible(\mbox{\hyperlink{classProControls_a199a233099a72604bd17c9d5b38aec94}{slopeButton}});}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00020}00020     addAndMakeVisible(\mbox{\hyperlink{classProControls_afd3bef96bd8988b5efbebf7e8393543a}{triggerLevel}});}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00021}00021     addAndMakeVisible(\mbox{\hyperlink{classProControls_ad1df67ad939d01a36bf354a3b8b5d05c}{refreshTime}});}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00023}00023     \textcolor{comment}{// add autoTrigger}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00024}00024     addChildComponent(\mbox{\hyperlink{classProControls_a21b7eb49689ee131b21117710bbcb76a}{autoTriggerButton}});}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00026}00026     \textcolor{comment}{// set buttons' text}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00027}00027     \mbox{\hyperlink{classProControls_a01366f91a5dc1109c24f6d2d19627023}{triggerButton}}.setButtonText(\textcolor{stringliteral}{"{}Trigger"{}});}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00028}00028     \mbox{\hyperlink{classProControls_a21b7eb49689ee131b21117710bbcb76a}{autoTriggerButton}}.setButtonText(\textcolor{stringliteral}{"{}Auto"{}});}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00029}00029     \mbox{\hyperlink{classProControls_a199a233099a72604bd17c9d5b38aec94}{slopeButton}}.setButtonText(\textcolor{stringliteral}{"{}Slope"{}});}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00031}00031     \textcolor{comment}{// show autoTrigger only if triggered}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00032}00032     \mbox{\hyperlink{classProControls_a01366f91a5dc1109c24f6d2d19627023}{triggerButton}}.onClick = [\textcolor{keyword}{this}]()\{}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00033}00033       \textcolor{keywordtype}{bool} isTriggered = \mbox{\hyperlink{classProControls_a01366f91a5dc1109c24f6d2d19627023}{triggerButton}}.getToggleState();}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00034}00034       \mbox{\hyperlink{classProControls_a21b7eb49689ee131b21117710bbcb76a}{autoTriggerButton}}.setVisible(isTriggered);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00035}00035     \};}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00037}00037     \textcolor{comment}{// set sliders style}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00038}00038     \mbox{\hyperlink{classProControls_afd3bef96bd8988b5efbebf7e8393543a}{triggerLevel}}.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00039}00039     \mbox{\hyperlink{classProControls_afd3bef96bd8988b5efbebf7e8393543a}{triggerLevel}}.setTextBoxStyle(juce::Slider::NoTextBox, \textcolor{keyword}{true}, 0, 0);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00040}00040     \mbox{\hyperlink{classProControls_ad1df67ad939d01a36bf354a3b8b5d05c}{refreshTime}}.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00041}00041     \mbox{\hyperlink{classProControls_ad1df67ad939d01a36bf354a3b8b5d05c}{refreshTime}}.setTextBoxStyle(juce::Slider::NoTextBox, \textcolor{keyword}{true}, 0, 0);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00043}00043 \}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00045}\mbox{\hyperlink{classProControls_a37280127c689cefb010de265c35affca}{00045}} \mbox{\hyperlink{classProControls_a37280127c689cefb010de265c35affca}{ProControls::\string~ProControls}}()}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00046}00046 \{}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00047}00047 \}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00049}\mbox{\hyperlink{classProControls_aa02a1808c795c35f9bf735f0d6296fad}{00049}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classProControls_aa02a1808c795c35f9bf735f0d6296fad}{ProControls::paint}} (juce::Graphics\& g)}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00050}00050 \{}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00053}\mbox{\hyperlink{classProControls_aaf61dc1a7057bb15ad5cf2cfd7940283}{00053}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classProControls_aaf61dc1a7057bb15ad5cf2cfd7940283}{ProControls::resized}}()}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00054}00054 \{}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00060}00060   \mbox{\hyperlink{classProControls_a01366f91a5dc1109c24f6d2d19627023}{triggerButton}}.setSize(getWidth() / 10., getHeight() * 3. / 4.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00061}00061   \mbox{\hyperlink{classProControls_a01366f91a5dc1109c24f6d2d19627023}{triggerButton}}.setTopLeftPosition(10, getHeight() / 8.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00063}00063   \mbox{\hyperlink{classProControls_a21b7eb49689ee131b21117710bbcb76a}{autoTriggerButton}}.setSize(getWidth() / 10., getHeight() * 3. / 4.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00064}00064   \mbox{\hyperlink{classProControls_a21b7eb49689ee131b21117710bbcb76a}{autoTriggerButton}}.setTopLeftPosition(10 + getWidth() / 10, getHeight() / 8.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00066}00066   \mbox{\hyperlink{classProControls_a199a233099a72604bd17c9d5b38aec94}{slopeButton}}.setSize(getWidth() / 5., getHeight() * 3. / 4.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00067}00067   \mbox{\hyperlink{classProControls_a199a233099a72604bd17c9d5b38aec94}{slopeButton}}.setTopLeftPosition(10 + getWidth() * 2. / 5., getHeight() / 8.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00069}00069   \mbox{\hyperlink{classProControls_afd3bef96bd8988b5efbebf7e8393543a}{triggerLevel}}.setSize(getWidth() / 8, getHeight() * 3. / 4.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00070}00070   \mbox{\hyperlink{classProControls_afd3bef96bd8988b5efbebf7e8393543a}{triggerLevel}}.setTopLeftPosition(getWidth() * 3. / 5., getHeight() / 8.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00072}00072   \mbox{\hyperlink{classProControls_ad1df67ad939d01a36bf354a3b8b5d05c}{refreshTime}}.setSize(getWidth() / 8, getHeight() * 3. / 4.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00073}00073   \mbox{\hyperlink{classProControls_ad1df67ad939d01a36bf354a3b8b5d05c}{refreshTime}}.setTopLeftPosition(getWidth() * 7. / 10., getHeight() / 8.);}
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{ProControls_8cpp_source_l00075}00075 \}}
+
+\end{DoxyCode}

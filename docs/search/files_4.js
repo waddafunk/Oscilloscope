@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['scopedatacollector_2eh_0',['ScopeDataCollector.h',['../ScopeDataCollector_8h.html',1,'']]]
+  ['guitransformer_2ecpp_0',['GuiTransformer.cpp',['../GuiTransformer_8cpp.html',1,'']]],
+  ['guitransformer_2eh_1',['GuiTransformer.h',['../GuiTransformer_8h.html',1,'']]]
 ];

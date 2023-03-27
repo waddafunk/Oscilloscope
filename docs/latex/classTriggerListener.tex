@@ -1,0 +1,67 @@
+\hypertarget{classTriggerListener}{}\doxysection{Trigger\+Listener Class Reference}
+\label{classTriggerListener}\index{TriggerListener@{TriggerListener}}
+
+
+{\ttfamily \#include $<$Trigger\+Listener.\+h$>$}
+
+Inheritance diagram for Trigger\+Listener\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTriggerListener}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTriggerListener_a3085d16f0781ebf11ec758514a7ebf69}{Trigger\+Listener}} (std\+::function$<$ void()$>$ set\+Triggered, std\+::function$<$ void()$>$ set\+Untriggered)
+\item 
+void \mbox{\hyperlink{classTriggerListener_a0df6ebb9a042bff1289962fc457348ed}{parameter\+Changed}} (const juce\+::\+String \&parameter\+ID, float new\+Value) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class listening whether the oscilloscope is set on triggered or untriggered mode and resetting the \mbox{\hyperlink{classOscilloscopeComponent}{Oscilloscope\+Component}} properly. 
+
+Definition at line \mbox{\hyperlink{TriggerListener_8h_source_l00022}{22}} of file \mbox{\hyperlink{TriggerListener_8h_source}{Trigger\+Listener.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTriggerListener_a3085d16f0781ebf11ec758514a7ebf69}\label{classTriggerListener_a3085d16f0781ebf11ec758514a7ebf69}} 
+\index{TriggerListener@{TriggerListener}!TriggerListener@{TriggerListener}}
+\index{TriggerListener@{TriggerListener}!TriggerListener@{TriggerListener}}
+\doxysubsubsection{\texorpdfstring{TriggerListener()}{TriggerListener()}}
+{\footnotesize\ttfamily Trigger\+Listener\+::\+Trigger\+Listener (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{set\+Triggered,  }\item[{std\+::function$<$ void()$>$}]{set\+Untriggered }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{TriggerListener_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{TriggerListener_8cpp_source}{Trigger\+Listener.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTriggerListener_a0df6ebb9a042bff1289962fc457348ed}\label{classTriggerListener_a0df6ebb9a042bff1289962fc457348ed}} 
+\index{TriggerListener@{TriggerListener}!parameterChanged@{parameterChanged}}
+\index{parameterChanged@{parameterChanged}!TriggerListener@{TriggerListener}}
+\doxysubsubsection{\texorpdfstring{parameterChanged()}{parameterChanged()}}
+{\footnotesize\ttfamily void Trigger\+Listener\+::parameter\+Changed (\begin{DoxyParamCaption}\item[{const juce\+::\+String \&}]{parameter\+ID,  }\item[{float}]{new\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Callback executed each time is\+Triggered param of Plugin\+Processors\textquotesingle{} Tree\+State is modified.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter\+ID} & Parameter ID, always \char`\"{}is\+Triggered\char`\"{} \\
+\hline
+{\em new\+Value} & Whether if the oscilloscope is triggered. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{TriggerListener_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{TriggerListener_8cpp_source}{Trigger\+Listener.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{TriggerListener_8h}{Trigger\+Listener.\+h}}\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{TriggerListener_8cpp}{Trigger\+Listener.\+cpp}}\end{DoxyCompactItemize}

@@ -1,4 +1,10 @@
 var searchData=
 [
-  ['drawgrid_0',['drawGrid',['../classOscilloscopeComponent.html#a0d3352f4713d20d05063ee65158f98ea',1,'OscilloscopeComponent']]]
+  ['changeprogramname_0',['changeProgramName',['../classOscilloscopeAudioProcessor.html#af3a2a1f6201e8cd2ffbcb01bfa727f5e',1,'OscilloscopeAudioProcessor']]],
+  ['colorpalette_2eh_1',['ColorPalette.h',['../ColorPalette_8h.html',1,'']]],
+  ['controlsection_2',['ControlSection',['../classControlSection.html',1,'ControlSection'],['../classControlSection.html#af44832144070da2ef0e8d4c096ccce8c',1,'ControlSection::ControlSection()']]],
+  ['controlsection_2ecpp_3',['ControlSection.cpp',['../ControlSection_8cpp.html',1,'']]],
+  ['controlsection_2eh_4',['ControlSection.h',['../ControlSection_8h.html',1,'']]],
+  ['createeditor_5',['createEditor',['../classOscilloscopeAudioProcessor.html#a0f03ca47f57998ee6f1ccbbea87253f2',1,'OscilloscopeAudioProcessor']]],
+  ['createpluginfilter_6',['createPluginFilter',['../PluginProcessor_8cpp.html#a62f69a86baff96d3ee5c287e100adc66',1,'PluginProcessor.cpp']]]
 ];

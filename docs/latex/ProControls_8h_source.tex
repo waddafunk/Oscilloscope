@@ -1,0 +1,57 @@
+\hypertarget{ProControls_8h_source}{}\doxysection{Pro\+Controls.\+h}
+\label{ProControls_8h_source}\index{Source/GUI/Controls/ProControls.h@{Source/GUI/Controls/ProControls.h}}
+\mbox{\hyperlink{ProControls_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00002}00002 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00003}00003 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00004}00004 \textcolor{comment}{    ProControls.h}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00005}00005 \textcolor{comment}{    Created: 16 Mar 2023 11:53:07am}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00006}00006 \textcolor{comment}{    Author:  covariant}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00007}00007 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00008}00008 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00009}00009 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00011}00011 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <JuceHeader.h>}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00015}00015 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00016}00016 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00017}00017 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00018}\mbox{\hyperlink{classProControls}{00018}} \textcolor{keyword}{class }\mbox{\hyperlink{classProControls}{ProControls}}  : \textcolor{keyword}{public} juce::Component}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00020}00020 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00021}00021     \mbox{\hyperlink{classProControls_a7a685d449190dd309854631eb516d0b6}{ProControls}}();}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00022}00022     \mbox{\hyperlink{classProControls_a37280127c689cefb010de265c35affca}{\string~ProControls}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00024}00024     \textcolor{keywordtype}{void} \mbox{\hyperlink{classProControls_aa02a1808c795c35f9bf735f0d6296fad}{paint}} (juce::Graphics\&) \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00025}00025     \textcolor{keywordtype}{void} \mbox{\hyperlink{classProControls_aaf61dc1a7057bb15ad5cf2cfd7940283}{resized}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00031}\mbox{\hyperlink{classProControls_a01366f91a5dc1109c24f6d2d19627023}{00031}}     juce::ToggleButton \mbox{\hyperlink{classProControls_a01366f91a5dc1109c24f6d2d19627023}{triggerButton}};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00037}\mbox{\hyperlink{classProControls_a21b7eb49689ee131b21117710bbcb76a}{00037}}     juce::ToggleButton \mbox{\hyperlink{classProControls_a21b7eb49689ee131b21117710bbcb76a}{autoTriggerButton}};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00043}\mbox{\hyperlink{classProControls_a199a233099a72604bd17c9d5b38aec94}{00043}}     juce::ToggleButton \mbox{\hyperlink{classProControls_a199a233099a72604bd17c9d5b38aec94}{slopeButton}};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00050}\mbox{\hyperlink{classProControls_afd3bef96bd8988b5efbebf7e8393543a}{00050}}     juce::Slider \mbox{\hyperlink{classProControls_afd3bef96bd8988b5efbebf7e8393543a}{triggerLevel}};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00056}\mbox{\hyperlink{classProControls_ad1df67ad939d01a36bf354a3b8b5d05c}{00056}}     juce::Slider \mbox{\hyperlink{classProControls_ad1df67ad939d01a36bf354a3b8b5d05c}{refreshTime}};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00062}\mbox{\hyperlink{classProControls_a3f43246a3b2251796e80c47809dae141}{00062}}     std::unique\_ptr <juce::AudioProcessorValueTreeState::SliderAttachment> \mbox{\hyperlink{classProControls_a3f43246a3b2251796e80c47809dae141}{triggerLevelAttachment}};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00068}\mbox{\hyperlink{classProControls_ae9e29262345321feb59a9a1494009a96}{00068}}     std::unique\_ptr <juce::AudioProcessorValueTreeState::SliderAttachment> \mbox{\hyperlink{classProControls_ae9e29262345321feb59a9a1494009a96}{refreshTimeAttachment}}; }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00074}\mbox{\hyperlink{classProControls_a3c6b54e4f27d50cbe5db0f4b8bced5fa}{00074}}     std::unique\_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> \mbox{\hyperlink{classProControls_a3c6b54e4f27d50cbe5db0f4b8bced5fa}{triggerButtonAttachment}};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00080}\mbox{\hyperlink{classProControls_a273f9cd7f89bb7c5273f5020d227aa70}{00080}}     std::unique\_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> \mbox{\hyperlink{classProControls_a273f9cd7f89bb7c5273f5020d227aa70}{autoTriggerButtonAttachment}};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00086}\mbox{\hyperlink{classProControls_afde01563e26026ec53947185ad7e2cbe}{00086}}     std::unique\_ptr <juce::AudioProcessorValueTreeState::ButtonAttachment> \mbox{\hyperlink{classProControls_afde01563e26026ec53947185ad7e2cbe}{slopeButtonAttachment}};}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00087}00087     }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00088}00088 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00090}00090     JUCE\_DECLARE\_NON\_COPYABLE\_WITH\_LEAK\_DETECTOR (\mbox{\hyperlink{classProControls}{ProControls}})}
+\DoxyCodeLine{\Hypertarget{ProControls_8h_source_l00091}00091 \};}
+
+\end{DoxyCode}

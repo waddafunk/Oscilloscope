@@ -1,0 +1,60 @@
+\hypertarget{DecayCounter_8cpp_source}{}\doxysection{Decay\+Counter.\+cpp}
+\label{DecayCounter_8cpp_source}\index{Source/GUI/Oscilloscopes/DecayCounter.cpp@{Source/GUI/Oscilloscopes/DecayCounter.cpp}}
+\mbox{\hyperlink{DecayCounter_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00002}00002 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00003}00003 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00004}00004 \textcolor{comment}{    DecayCounter.cpp}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00005}00005 \textcolor{comment}{    Created: 23 Mar 2023 8:10:55pm}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00006}00006 \textcolor{comment}{    Author:  covariant}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00007}00007 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00008}00008 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00009}00009 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{DecayCounter_8h}{DecayCounter.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00013}\mbox{\hyperlink{classDecayCounter_a1a92842e8a42312770305a9f283c5a20}{00013}} \mbox{\hyperlink{classDecayCounter_a1a92842e8a42312770305a9f283c5a20}{DecayCounter::DecayCounter}}(\textcolor{keywordtype}{int} framesPerSecond, \textcolor{keywordtype}{float} decaySeconds)}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00014}00014 \{}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00015}00015   }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00016}00016   this-\/>framesPerSecond = framesPerSecond;}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00017}00017   this-\/>decaySeconds = decaySeconds;}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00018}00018   this-\/>decayTime = framesPerSecond * decaySeconds;}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00019}00019   this-\/>maxDecayTime = OSCILLOSCOPE\_MAX\_DECAY\_TIME();}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00021}00021 \}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00023}\mbox{\hyperlink{classDecayCounter_ad0c22074b880e9028198f802db7c7bfa}{00023}} \mbox{\hyperlink{classDecayCounter_ad0c22074b880e9028198f802db7c7bfa}{DecayCounter::\string~DecayCounter}}()}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00024}00024 \{}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00025}00025 \}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00027}\mbox{\hyperlink{classDecayCounter_a6fda9ce2cee63cff8c4b637a2d30af0f}{00027}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classDecayCounter_a6fda9ce2cee63cff8c4b637a2d30af0f}{DecayCounter::refreshNeeded}}()}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00028}00028 \{}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00029}00029   \textcolor{comment}{// decrement decayTime and return whether it hit 0}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00030}00030   \textcolor{keywordflow}{if} (decayTime-\/-\/ > 0)}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00031}00031   \{}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00032}00032     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00033}00033   \}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00034}00034   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00035}00035   \{}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00036}00036     \mbox{\hyperlink{classDecayCounter_a901fa2114573976b3a6bb1db82cf94e6}{resetDecayTime}}();}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00037}00037     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00038}00038   \}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00039}00039 \}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00041}\mbox{\hyperlink{classDecayCounter_a901fa2114573976b3a6bb1db82cf94e6}{00041}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classDecayCounter_a901fa2114573976b3a6bb1db82cf94e6}{DecayCounter::resetDecayTime}}()}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00044}00044   decayTime = framesPerSecond * decaySeconds;}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00048}\mbox{\hyperlink{classDecayCounter_abb0cb5c2c113f96b50f0523924ca4a87}{00048}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classDecayCounter_abb0cb5c2c113f96b50f0523924ca4a87}{DecayCounter::parameterChanged}}(\textcolor{keyword}{const} juce::String \&parameterID, \textcolor{keywordtype}{float} newValue)}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00051}00051   decaySeconds = newValue * maxDecayTime;}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00052}00052   \mbox{\hyperlink{classDecayCounter_a901fa2114573976b3a6bb1db82cf94e6}{resetDecayTime}}();}
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{DecayCounter_8cpp_source_l00054}00054 \}}
+
+\end{DoxyCode}

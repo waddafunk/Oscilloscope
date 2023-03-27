@@ -1,5 +1,5 @@
 \hypertarget{UntriggeredOscilloscope_8cpp_source}{}\doxysection{Untriggered\+Oscilloscope.\+cpp}
-\label{UntriggeredOscilloscope_8cpp_source}\index{Source/UntriggeredOscilloscope.cpp@{Source/UntriggeredOscilloscope.cpp}}
+\label{UntriggeredOscilloscope_8cpp_source}\index{Source/GUI/Oscilloscopes/UntriggeredOscilloscope.cpp@{Source/GUI/Oscilloscopes/UntriggeredOscilloscope.cpp}}
 \mbox{\hyperlink{UntriggeredOscilloscope_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00001}00001 \textcolor{comment}{/*}}
@@ -19,24 +19,34 @@
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00015}00015 \{}
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00016}00016 \}}
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00017}00017 }
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00018}\mbox{\hyperlink{classUntriggeredOscilloscope_aee2ec401d9995b81ac259e622fa4d4e5}{00018}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classUntriggeredOscilloscope_aee2ec401d9995b81ac259e622fa4d4e5}{UntriggeredOscilloscope::plot}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float}* data, \textcolor{keywordtype}{size\_t} numSamples, juce::Graphics\& g, juce::Rectangle<float> rect, \textcolor{keywordtype}{float} scaler, \textcolor{keywordtype}{float} offset)}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00018}00018 \textcolor{keywordtype}{void} UntriggeredOscilloscope::plot(juce::Graphics\& g, juce::Rectangle<float> rect, \textcolor{keywordtype}{float} scaler, \textcolor{keywordtype}{float} offset)}
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00019}00019 \{}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00020}00020     \textcolor{keyword}{auto} w = rect.getWidth();}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00021}00021     \textcolor{keyword}{auto} h = rect.getHeight();}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00022}00022     \textcolor{keyword}{auto} right = rect.getRight();}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00023}00023 }
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00024}00024     \textcolor{keyword}{auto} center = rect.getBottom() -\/ offset;}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00025}00025     \textcolor{keyword}{auto} gain = h * scaler;}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00020}00020     \textcolor{keyword}{auto} data = \mbox{\hyperlink{classOscilloscopeComponent_ab11a2bfef0310419b0959a7521009265}{sampleData}}.data();}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00021}00021     \textcolor{keyword}{auto} numSamples = \mbox{\hyperlink{classOscilloscopeComponent_ab11a2bfef0310419b0959a7521009265}{sampleData}}.size();}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00022}00022     }
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00023}00023     \textcolor{keyword}{auto} w = rect.getWidth();}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00024}00024     \textcolor{keyword}{auto} h = rect.getHeight();}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00025}00025     \textcolor{keyword}{auto} right = rect.getRight();}
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00026}00026 }
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00027}00027     g.setColour(juce::Colours::beige);}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00028}00028 }
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00029}00029     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < numSamples; ++i)}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00030}00030     \{}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00031}00031         g.drawLine(\{ juce::jmap(\textcolor{keywordtype}{float}(i -\/ 1), \textcolor{keywordtype}{float}(0), \textcolor{keywordtype}{float}(numSamples -\/ 1), \textcolor{keywordtype}{float}(right -\/ w), \textcolor{keywordtype}{float}(right)),}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00032}00032                       center -\/ gain * data[i -\/ 1],}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00033}00033                       juce::jmap(\textcolor{keywordtype}{float}(i), \textcolor{keywordtype}{float}(0), \textcolor{keywordtype}{float}(numSamples -\/ 1), \textcolor{keywordtype}{float}(right -\/ w), \textcolor{keywordtype}{float}(right)),}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00034}00034                       center -\/ gain * data[i] \});}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00035}00035     \}}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00036}00036 \}}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00027}00027     \textcolor{keyword}{auto} center = rect.getBottom() -\/ offset;}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00028}00028     \textcolor{keyword}{auto} gain = h * scaler;}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00030}00030     g.setColour(WAVEFORMCOLOUR());}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00032}00032     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < numSamples; ++i)}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00033}00033     \{}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00034}00034         g.drawLine(\{ juce::jmap(\textcolor{keywordtype}{float}(i -\/ 1), \textcolor{keywordtype}{float}(0), \textcolor{keywordtype}{float}(numSamples -\/ 1), \textcolor{keywordtype}{float}(right -\/ w), \textcolor{keywordtype}{float}(right)),}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00035}00035                       center -\/ gain * data[i -\/ 1],}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00036}00036                       juce::jmap(\textcolor{keywordtype}{float}(i), \textcolor{keywordtype}{float}(0), \textcolor{keywordtype}{float}(numSamples -\/ 1), \textcolor{keywordtype}{float}(right -\/ w), \textcolor{keywordtype}{float}(right)),}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00037}00037                       center -\/ gain * data[i] \});}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00038}00038     \}}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00039}00039 \}}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00041}00041 \textcolor{keywordtype}{void} UntriggeredOscilloscope::subclassSpecificCallback()}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00043}00043   \textcolor{comment}{// Nothing to do for this subclass}}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00044}00044   \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00045}00045 \}}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8cpp_source_l00046}00046 }
 
 \end{DoxyCode}

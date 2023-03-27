@@ -1,5 +1,5 @@
 \hypertarget{ScopeDataCollector_8h_source}{}\doxysection{Scope\+Data\+Collector.\+h}
-\label{ScopeDataCollector_8h_source}\index{Source/ScopeDataCollector.h@{Source/ScopeDataCollector.h}}
+\label{ScopeDataCollector_8h_source}\index{Source/Buffers/ScopeDataCollector.h@{Source/Buffers/ScopeDataCollector.h}}
 \mbox{\hyperlink{ScopeDataCollector_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00001}00001 \textcolor{comment}{/*}}
@@ -16,85 +16,87 @@
 \DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{AudioBufferQueue_8h}{AudioBufferQueue.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <cstdlib>}}
 \DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00015}00015 \textcolor{keyword}{namespace }ranges = std::ranges;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00016}00016 }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00022}00022 \textcolor{keyword}{template} <\textcolor{keyword}{typename} SampleType>}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00023}\mbox{\hyperlink{classScopeDataCollector}{00023}} \textcolor{keyword}{class }\mbox{\hyperlink{classScopeDataCollector}{ScopeDataCollector}}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00024}00024 \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00025}00025 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00026}00026     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00027}\mbox{\hyperlink{classScopeDataCollector_a0c942f7455007a4f5864734ef4688e17}{00027}}     \mbox{\hyperlink{classScopeDataCollector_a0c942f7455007a4f5864734ef4688e17}{ScopeDataCollector}}(\mbox{\hyperlink{classAudioBufferQueue}{AudioBufferQueue<SampleType>}}\& queueToUse)}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00028}00028         : audioBufferQueue(queueToUse)}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00029}00029     \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00030}00030         buffer.resize(queueToUse.\mbox{\hyperlink{classAudioBufferQueue_ad1582df2e1e0375dcb7a5860e67e094d}{getBufferSize}}());}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00031}00031         bufferSize = buffer.size();}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00032}00032         numCollected = 0;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00033}00033     \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00034}00034 }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00035}00035     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00042}\mbox{\hyperlink{classScopeDataCollector_a4b9b4a82d92efe81a0c1374483cebb8a}{00042}} \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{classScopeDataCollector_a4b9b4a82d92efe81a0c1374483cebb8a}{process}}(\textcolor{keyword}{const} SampleType* data, \textcolor{keywordtype}{size\_t} numSamples)}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00043}00043     \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00044}00044         \textcolor{keywordtype}{size\_t} index = 0;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00045}00045 }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00046}00046         \textcolor{keywordtype}{int} numBuffersToPush = numSamples / bufferSize;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00047}00047         \textcolor{keywordtype}{int} numSamplesExceeding = numSamples \% bufferSize;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00048}00048         \textcolor{keywordtype}{int} numEmptyBuffers = 0;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00049}00049         \textcolor{keywordtype}{int} additionalSamples = 0;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00051}00051         \textcolor{keywordflow}{if} (state == State::waitingForTrigger)}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00052}00052         \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00053}00053             std::fill(buffer.begin(), buffer.end(), 0);}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00054}00054             \textcolor{comment}{// If no sample over treshold push silence.}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00055}00055             \textcolor{keywordflow}{if} (std::all\_of(data, data + numSamples, [](SampleType i) \{\textcolor{keywordflow}{return} i < triggerLevel; \}))}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00056}00056             \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00057}00057                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < numBuffersToPush; i++)}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00058}00058                 \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00059}00059                     audioBufferQueue.push(buffer.data(), bufferSize);}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00060}00060                 \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00061}00061                 numCollected = numSamplesExceeding;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00062}00062             \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00063}00063             \textcolor{comment}{// Else setup collecting stage}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00064}00064             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00065}00065             \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00066}00066                 \textcolor{keyword}{auto} result = ranges::find\_if(data, data + numSamples, [](SampleType i) \{\textcolor{keywordflow}{return} i > triggerLevel; \});}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00067}00067                 prevSample = *result;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00068}00068                 state = State::collecting;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00069}00069                 \textcolor{keywordtype}{int} firstSample = result -\/ data;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00070}00070                 numEmptyBuffers = firstSample / bufferSize;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00071}00071                 additionalSamples = firstSample \% bufferSize;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00072}00072                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < numEmptyBuffers; i++)}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00073}00073                 \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00074}00074                     audioBufferQueue.push(buffer.data(), bufferSize);}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00075}00075                 \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00076}00076                 numCollected = additionalSamples;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00077}00077                 index = firstSample;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00078}00078             \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00079}00079         \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00080}00080 }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00081}00081         \textcolor{keywordflow}{if} (state == State::collecting)}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00082}00082         \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00083}00083             \textcolor{keywordflow}{while} (index++ < numSamples)}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00084}00084             \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00085}00085                 buffer[numCollected++] = *data++;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00086}00086 }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00087}00087                 \textcolor{keywordflow}{if} (numCollected == buffer.size())}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00088}00088                 \{}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00089}00089                     audioBufferQueue.push(buffer.data(), buffer.size());}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00090}00090                     numCollected = 0;}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00091}00091                 \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00092}00092             \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00093}00093         \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00094}00094     \}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00095}00095 }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00096}00096 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00097}00097     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00098}00098     \mbox{\hyperlink{classAudioBufferQueue}{AudioBufferQueue<SampleType>}}\& audioBufferQueue; }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00099}00099     std::vector<SampleType> buffer; }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00100}00100     \textcolor{keywordtype}{int} bufferSize; }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00101}00101     \textcolor{keywordtype}{size\_t} numCollected; }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00102}00102     SampleType prevSample = SampleType(100); }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00104}00104     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} triggerLevel = SampleType(0); }
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00108}00108     \textcolor{keyword}{enum class} State \{ waitingForTrigger, collecting \} state\{ State::waitingForTrigger \};}
-\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00109}00109 \};}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00020}00020 \textcolor{keyword}{template} <\textcolor{keyword}{typename} SampleType>}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00021}\mbox{\hyperlink{classScopeDataCollector}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{classScopeDataCollector}{ScopeDataCollector}}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00023}00023 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00024}00024     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00025}\mbox{\hyperlink{classScopeDataCollector_a0c942f7455007a4f5864734ef4688e17}{00025}}     \mbox{\hyperlink{classScopeDataCollector_a0c942f7455007a4f5864734ef4688e17}{ScopeDataCollector}}(\mbox{\hyperlink{classAudioBufferQueue}{AudioBufferQueue<SampleType>}}\& queueToUse)}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00026}00026         : audioBufferQueue(queueToUse)}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00027}00027     \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00028}00028         buffer.resize(queueToUse.\mbox{\hyperlink{classAudioBufferQueue_ad1582df2e1e0375dcb7a5860e67e094d}{getBufferSize}}());}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00029}00029         bufferSize = buffer.size();}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00030}00030         numCollected = 0;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00031}00031     \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00033}00033     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00040}\mbox{\hyperlink{classScopeDataCollector_a4b9b4a82d92efe81a0c1374483cebb8a}{00040}} \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{classScopeDataCollector_a4b9b4a82d92efe81a0c1374483cebb8a}{process}}(\textcolor{keyword}{const} SampleType* data, \textcolor{keywordtype}{size\_t} numSamples)}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00041}00041     \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00042}00042         \textcolor{keywordtype}{size\_t} index = 0;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00044}00044         \textcolor{keywordtype}{int} numBuffersToPush = numSamples / bufferSize;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00045}00045         \textcolor{keywordtype}{int} numSamplesExceeding = numSamples \% bufferSize;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00046}00046         \textcolor{keywordtype}{int} numEmptyBuffers = 0;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00047}00047         \textcolor{keywordtype}{int} additionalSamples = 0;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00049}00049         \textcolor{keywordflow}{if} (state == State::waitingForTrigger)}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00050}00050         \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00051}00051             std::fill(buffer.begin(), buffer.end(), 0);}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00052}00052             \textcolor{comment}{// If no sample over treshold push silence.}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00053}00053             \textcolor{keywordflow}{if} (std::all\_of(data, data + numSamples, [](SampleType i) \{\textcolor{keywordflow}{return} i < triggerLevel; \}))}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00054}00054             \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00055}00055                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < numBuffersToPush; i++)}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00056}00056                 \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00057}00057                     audioBufferQueue.push(buffer.data(), bufferSize);}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00058}00058                 \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00059}00059                 numCollected = numSamplesExceeding;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00060}00060             \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00061}00061             \textcolor{comment}{// Else setup collecting stage}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00062}00062             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00063}00063             \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00064}00064                 \textcolor{keyword}{auto} result = data;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00065}00065                 \textcolor{keywordflow}{while}(*result < triggerLevel)}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00066}00066                 \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00067}00067                     result++;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00068}00068                 \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00069}00069                 prevSample = *result;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00070}00070                 state = State::collecting;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00071}00071                 \textcolor{keywordtype}{int} firstSample = result -\/ data;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00072}00072                 numEmptyBuffers = firstSample / bufferSize;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00073}00073                 additionalSamples = firstSample \% bufferSize;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00074}00074                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < numEmptyBuffers; i++)}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00075}00075                 \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00076}00076                     audioBufferQueue.push(buffer.data(), bufferSize);}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00077}00077                 \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00078}00078                 numCollected = additionalSamples;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00079}00079                 index = firstSample;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00080}00080             \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00081}00081         \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00083}00083         \textcolor{keywordflow}{if} (state == State::collecting)}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00084}00084         \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00085}00085             \textcolor{keywordflow}{while} (index++ < numSamples)}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00086}00086             \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00087}00087                 buffer[numCollected++] = *data++;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00089}00089                 \textcolor{keywordflow}{if} (numCollected == buffer.size())}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00090}00090                 \{}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00091}00091                     audioBufferQueue.push(buffer.data(), buffer.size());}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00092}00092                     numCollected = 0;}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00093}00093                 \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00094}00094             \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00095}00095         \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00096}00096     \}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00098}00098 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00099}00099     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00100}00100     \mbox{\hyperlink{classAudioBufferQueue}{AudioBufferQueue<SampleType>}}\& audioBufferQueue; }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00101}00101     std::vector<SampleType> buffer; }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00102}00102     \textcolor{keywordtype}{int} bufferSize; }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00103}00103     \textcolor{keywordtype}{size\_t} numCollected; }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00104}00104     SampleType prevSample = SampleType(100); }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00106}00106     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} triggerLevel = SampleType(0); }
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00111}00111     \textcolor{keyword}{enum class} State \{ waitingForTrigger, collecting \} state\{ State::waitingForTrigger \};}
+\DoxyCodeLine{\Hypertarget{ScopeDataCollector_8h_source_l00112}00112 \};}
 
 \end{DoxyCode}

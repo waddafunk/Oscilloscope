@@ -1,5 +1,5 @@
 \hypertarget{UntriggeredOscilloscope_8h_source}{}\doxysection{Untriggered\+Oscilloscope.\+h}
-\label{UntriggeredOscilloscope_8h_source}\index{Source/UntriggeredOscilloscope.h@{Source/UntriggeredOscilloscope.h}}
+\label{UntriggeredOscilloscope_8h_source}\index{Source/GUI/Oscilloscopes/UntriggeredOscilloscope.h@{Source/GUI/Oscilloscopes/UntriggeredOscilloscope.h}}
 \mbox{\hyperlink{UntriggeredOscilloscope_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00001}00001 \textcolor{comment}{/*}}
@@ -15,18 +15,23 @@
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00011}00011 \textcolor{preprocessor}{\#pragma once}}
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00012}00012 \textcolor{preprocessor}{\#include<JuceHeader.h>}}
 \DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00013}00013 \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{OscilloscopeComponent_8h}{OscilloscopeComponent.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00019}\mbox{\hyperlink{classUntriggeredOscilloscope}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{classUntriggeredOscilloscope}{UntriggeredOscilloscope}} : \textcolor{keyword}{public} \mbox{\hyperlink{classOscilloscopeComponent}{OscilloscopeComponent}}}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00020}00020 \{}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00021}00021 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00022}00022 \mbox{\hyperlink{classUntriggeredOscilloscope}{UntriggeredOscilloscope}}(\mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\& aProcessor, \textcolor{keywordtype}{int} sampleRate);}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00023}00023 }
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00024}00024 \textcolor{keywordtype}{void} \mbox{\hyperlink{classUntriggeredOscilloscope_aee2ec401d9995b81ac259e622fa4d4e5}{plot}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float}* data,}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00025}00025     \textcolor{keywordtype}{size\_t} numSamples,}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00026}00026     juce::Graphics\& g,}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00027}00027     juce::Rectangle<float> rect,}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00028}00028     \textcolor{keywordtype}{float} scaler = \textcolor{keywordtype}{float}(1),}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00029}00029     \textcolor{keywordtype}{float} offset = \textcolor{keywordtype}{float}(0)) \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00030}00030 \};}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ColorPalette_8h}{ColorPalette.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00021}\mbox{\hyperlink{classUntriggeredOscilloscope}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{classUntriggeredOscilloscope}{UntriggeredOscilloscope}} : \textcolor{keyword}{public} \mbox{\hyperlink{classOscilloscopeComponent}{OscilloscopeComponent}}}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00023}00023   \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00024}00024   \mbox{\hyperlink{classUntriggeredOscilloscope}{UntriggeredOscilloscope}}(\mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\& aProcessor, \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeComponent_a3865049ba2a00ae768a65f8da25f900c}{sampleRate}});}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00026}00026   \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00027}00027   \textcolor{keywordtype}{void} plot(}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00028}00028       juce::Graphics\& g,}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00029}00029       juce::Rectangle<float> rect,}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00030}00030       \textcolor{keywordtype}{float} scaler = \textcolor{keywordtype}{float}(1),}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00031}00031       \textcolor{keywordtype}{float} offset = \textcolor{keywordtype}{float}(0)) \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00033}00033   \textcolor{keywordtype}{void} subclassSpecificCallback() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{UntriggeredOscilloscope_8h_source_l00035}00035 \};}
 
 \end{DoxyCode}

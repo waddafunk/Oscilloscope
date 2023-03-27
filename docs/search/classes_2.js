@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scopedatacollector_0',['ScopeDataCollector',['../classScopeDataCollector.html',1,'']]]
+  ['controlsection_0',['ControlSection',['../classControlSection.html',1,'']]]
 ];

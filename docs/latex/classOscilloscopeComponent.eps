@@ -177,6 +177,7 @@ boxfont setfont
 (juce::Component) cw
 (juce::AudioProcessorValueTreeState::Listener) cw
 (juce::Timer) cw
+(TriggeredOscilloscope) cw
 (UntriggeredOscilloscope) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
@@ -193,7 +194,8 @@ boundx scalefactor div boundy scalefactor div scale
  (juce::Component) 0.000000 2.000000 box
  (juce::AudioProcessorValueTreeState::Listener) 1.000000 2.000000 box
  (juce::Timer) 2.000000 2.000000 box
- (UntriggeredOscilloscope) 1.000000 0.000000 box
+ (TriggeredOscilloscope) 0.500000 0.000000 box
+ (UntriggeredOscilloscope) 1.500000 0.000000 box
 
 % ----- relations -----
 
@@ -203,11 +205,15 @@ solid
 0.000000 2.000000 2.000000 conn
 solid
 1 0.000000 2.000000 in
-dotted
+solid
 1 1.000000 2.000000 in
 dotted
 1 2.000000 2.000000 in
 solid
 1 1.000000 0.250000 out
 solid
-0 1.000000 0.750000 in
+0.500000 1.500000 1.000000 conn
+solid
+0 0.500000 0.750000 in
+solid
+0 1.500000 0.750000 in

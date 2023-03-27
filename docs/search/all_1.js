@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['changeprogramname_0',['changeProgramName',['../classOscilloscopeAudioProcessor.html#af3a2a1f6201e8cd2ffbcb01bfa727f5e',1,'OscilloscopeAudioProcessor']]],
-  ['createeditor_1',['createEditor',['../classOscilloscopeAudioProcessor.html#a0f03ca47f57998ee6f1ccbbea87253f2',1,'OscilloscopeAudioProcessor']]],
-  ['createpluginfilter_2',['createPluginFilter',['../PluginProcessor_8cpp.html#a62f69a86baff96d3ee5c287e100adc66',1,'PluginProcessor.cpp']]]
+  ['basiccontrols_0',['BasicControls',['../classBasicControls.html',1,'BasicControls'],['../classBasicControls.html#ad0a8b698f13c6f77c004f1c8c0ba9fd6',1,'BasicControls::BasicControls()']]],
+  ['basiccontrols_2ecpp_1',['BasicControls.cpp',['../BasicControls_8cpp.html',1,'']]],
+  ['basiccontrols_2eh_2',['BasicControls.h',['../BasicControls_8h.html',1,'']]],
+  ['bufferlength_3',['bufferLength',['../classBasicControls.html#ae020503d1f949f120588855eb100e7af',1,'BasicControls']]],
+  ['bufferlengthattachment_4',['bufferLengthAttachment',['../classBasicControls.html#a81e86c2184b8f01149bbd8b3d83274d3',1,'BasicControls']]]
 ];
