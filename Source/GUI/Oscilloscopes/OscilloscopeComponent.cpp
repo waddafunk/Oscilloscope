@@ -31,6 +31,11 @@ OscilloscopeComponent::OscilloscopeComponent(OscilloscopeAudioProcessor& aProces
     interpolator.reset();
 }
 
+OscilloscopeComponent::~OscilloscopeComponent()
+{
+    audioProcessor.getTreeState()->removeParameterListener("bufferLength", this);
+}
+
 void OscilloscopeComponent::setFramesPerSecond(int framesPerSecond)
 {
     jassert(framesPerSecond > 0 && framesPerSecond < 1000);

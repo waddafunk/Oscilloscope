@@ -94,6 +94,7 @@ public:
     int getEditorRefreshRate();
 
 private:
+    void resetAllValuesToDefault(juce::ValueTree tree);
     void parameterChanged(const juce::String& parameterID, float newValue);
     //==============================================================================
     std::unique_ptr<AudioBufferQueue<float>> audioBufferQueue;

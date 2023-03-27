@@ -10,7 +10,7 @@
 
 #include "DecayCounter.h"
 
-DecayCounter::DecayCounter(int framesPerSecond, int decaySeconds)
+DecayCounter::DecayCounter(int framesPerSecond, float decaySeconds)
 {
   
   this->framesPerSecond = framesPerSecond;
@@ -26,7 +26,7 @@ DecayCounter::~DecayCounter()
 
 bool DecayCounter::refreshNeeded()
 {
-  // decrement decayTime and redurn whether it hit 0
+  // decrement decayTime and return whether it hit 0
   if (decayTime-- > 0)
   {
     return false;

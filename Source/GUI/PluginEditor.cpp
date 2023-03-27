@@ -25,7 +25,15 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
   }
 
   // reset oscilloscopeComponent and guiTransformer pointers
-  oscilloscopeComponent.reset(new UntriggeredOscilloscope(audioProcessor, audioProcessor.getSampleRate()));
+  if (audioProcessor.getTreeState()->getParameterAsValue("isProfessional").getValue())
+  {
+    oscilloscopeComponent.reset(new TriggeredOscilloscope(audioProcessor, audioProcessor.getSampleRate()));
+  }
+  else
+  {
+    oscilloscopeComponent.reset(new UntriggeredOscilloscope(audioProcessor, audioProcessor.getSampleRate()));
+  }
+
   guiTransformer.reset(new GuiTransformer(
     audioProcessor,
     GUI_EXPAND_ANIMATION_DURATION(),
@@ -36,6 +44,29 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
     [this] () { this->expansionEndedCallback(); },
     [this] () { this->contractionEndedCallback(); }
   ));
+
+  // reset triggerListener
+  triggerListener.reset(
+    new TriggerListener(
+      [this](){ 
+        removeChildComponent(oscilloscopeComponent.get());
+        oscilloscopeComponent.reset(
+          new TriggeredOscilloscope(audioProcessor, audioProcessor.getSampleRate())
+        ); 
+        addAndMakeVisible(oscilloscopeComponent.get());
+        resized();
+      },
+      [this](){ 
+        removeChildComponent(oscilloscopeComponent.get());
+        oscilloscopeComponent.reset(
+          new UntriggeredOscilloscope(audioProcessor, audioProcessor.getSampleRate())
+        ); 
+        addAndMakeVisible(oscilloscopeComponent.get());
+        resized();
+      } 
+    )
+  );
+  audioProcessor.getTreeState()->addParameterListener("isTriggered", triggerListener.get());
 
   // add and make visible components
   addAndMakeVisible(oscilloscopeComponent.get());
@@ -55,6 +86,7 @@ OscilloscopeAudioProcessorEditor::OscilloscopeAudioProcessorEditor (Oscilloscope
   attachmentNames.push_back("autoTriggered");
   attachmentNames.push_back("refreshTime");
   attachmentNames.push_back("muteOutput");
+  attachmentNames.push_back("decayTime");
   controlSection.setMultipleAttachments(attachmentNames, *audioProcessor.getTreeState());
 
 

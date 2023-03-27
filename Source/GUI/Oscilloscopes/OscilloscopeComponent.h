@@ -20,7 +20,7 @@
  * Inherits from <a href="https://docs.juce.com/master/classComponent.html">JUCE Component</a> 
  * and <a href="https://docs.juce.com/master/classTimer.html">JUCE timer</a> 
  */
-class OscilloscopeComponent : public juce::Component, private juce::AudioProcessorValueTreeState::Listener,
+class OscilloscopeComponent : public juce::Component, public juce::AudioProcessorValueTreeState::Listener,
     private juce::Timer
 {
 public:
@@ -32,6 +32,12 @@ public:
      * \param queueToUse AudioBufferQueue to use
      */
     OscilloscopeComponent(OscilloscopeAudioProcessor& aProcessor, int sampleRate, int framesPerSecond);
+
+    /**
+     * Destroy the Oscilloscope Component object.
+     * 
+     */
+    ~OscilloscopeComponent();
 
     //==============================================================================
     /**

@@ -63,4 +63,4 @@ static constexpr float GUI_EXPANDED_MARGIN_MULTIPLIER() { return 10.5 / 13.; }
  * 
  * \return constexpr float Max decay time of TriggeredOscilloscope.
  */
-static constexpr float OSCILLOSCOPE_MAX_DECAY_TIME() { return 10; }
+static constexpr float OSCILLOSCOPE_MAX_DECAY_TIME() { return 10.; }

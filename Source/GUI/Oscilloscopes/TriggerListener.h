@@ -29,7 +29,7 @@ public:
  * Callback executed each time isTriggered param of PluginProcessors' TreeState
  * is modified.
  * 
- * \param parameterID Parameter ID, always isTriggered
+ * \param parameterID Parameter ID, always "isTriggered"
  * \param newValue Whether if the oscilloscope is triggered.
  */
   void parameterChanged (const juce::String& parameterID, float newValue) override;

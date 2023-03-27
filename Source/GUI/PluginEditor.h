@@ -15,6 +15,7 @@
 #include "TriggeredOscilloscope.h"
 #include "ControlSection.h"
 #include "GuiTransformer.h"
+#include "TriggerListener.h"
 
 //==============================================================================
 /**
@@ -34,8 +35,15 @@ private:
     // access the processor object that created it.
     OscilloscopeAudioProcessor& audioProcessor;
     ControlSection controlSection;
-    std::unique_ptr<OscilloscopeComponent> oscilloscopeComponent;
     std::unique_ptr<GuiTransformer> guiTransformer;
+    std::unique_ptr<TriggerListener> triggerListener;
+
+    /**
+     * Currently plotted oscilloscope. Can be TriggeredOscilloscope
+     * or UntriggeredOscilloscope.
+     * 
+     */
+    std::unique_ptr<OscilloscopeComponent> oscilloscopeComponent;
 
     float margin_multiplier;
     void expandCallback();

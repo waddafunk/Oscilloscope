@@ -43,7 +43,7 @@ private:
    * Decay time in seconds.
    * 
    */
-  int decaySeconds;
+  float decaySeconds;
 
 public:
   /**
@@ -52,11 +52,11 @@ public:
    * \param framesPerSecond PluginEditor refresh rate.
    * \param decaySeconds Decay time in seconds.
    */
-  DecayCounter(int framesPerSecond, int decaySeconds);
+  DecayCounter(int framesPerSecond, float decaySeconds);
   ~DecayCounter();
 
   /**
-   * Decrements decay time and rturns whether if it is time to 
+   * Decrements decay time and returns whether if it is time to 
    * refresh the wave plot.
    * 
    * \return true if decayTime <= 0.
