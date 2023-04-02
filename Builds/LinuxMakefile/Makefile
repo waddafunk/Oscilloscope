@@ -113,6 +113,7 @@ OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/ControlSection_d3fb864e.o \
   $(JUCE_OBJDIR)/DecayCounter_8ff436a.o \
   $(JUCE_OBJDIR)/OscilloscopeComponent_dc1995f0.o \
+  $(JUCE_OBJDIR)/SampleFinder_a6732df8.o \
   $(JUCE_OBJDIR)/TriggeredOscilloscope_5730ea48.o \
   $(JUCE_OBJDIR)/TriggerListener_ca26d8e.o \
   $(JUCE_OBJDIR)/UntriggeredOscilloscope_80a45a8f.o \
@@ -206,6 +207,11 @@ $(JUCE_OBJDIR)/DecayCounter_8ff436a.o: ../../Source/GUI/Oscilloscopes/DecayCount
 $(JUCE_OBJDIR)/OscilloscopeComponent_dc1995f0.o: ../../Source/GUI/Oscilloscopes/OscilloscopeComponent.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling OscilloscopeComponent.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/SampleFinder_a6732df8.o: ../../Source/GUI/Oscilloscopes/SampleFinder.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling SampleFinder.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/TriggeredOscilloscope_5730ea48.o: ../../Source/GUI/Oscilloscopes/TriggeredOscilloscope.cpp

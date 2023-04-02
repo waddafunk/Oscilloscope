@@ -89,10 +89,10 @@ void TriggeredOscilloscope::refreshDislayed()
     // search in all currentlyDisplayedData
     for (auto i = currentlyDisplayedData.begin(); i < currentlyDisplayedData.end() - 1; ++i)
     {
-      // when found set firstSampleToPlot and stop
+      firstSampleToPlot = i;
+      // when found stop
       if (condition(i[0], i[1]))
       {
-        firstSampleToPlot = i;
         found = true;
         break;
       }
@@ -100,7 +100,7 @@ void TriggeredOscilloscope::refreshDislayed()
   }
 
   // if not found display flat line
-  if (!found)
+  if (std::distance(firstSampleToPlot, currentlyDisplayedData.end()) <= 2)
   {
     std::fill(currentlyDisplayedData.begin(), currentlyDisplayedData.end(), 0.);
     firstSampleToPlot = currentlyDisplayedData.begin();

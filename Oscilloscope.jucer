@@ -26,6 +26,9 @@
                 file="Source/GUI/Oscilloscopes/OscilloscopeComponent.cpp"/>
           <FILE id="ctc9Y5" name="OscilloscopeComponent.h" compile="0" resource="0"
                 file="Source/GUI/Oscilloscopes/OscilloscopeComponent.h"/>
+          <FILE id="dXnjzH" name="SampleFinder.cpp" compile="1" resource="0"
+                file="Source/GUI/Oscilloscopes/SampleFinder.cpp"/>
+          <FILE id="KlMKYm" name="SampleFinder.h" compile="0" resource="0" file="Source/GUI/Oscilloscopes/SampleFinder.h"/>
           <FILE id="NJ0yps" name="TriggeredOscilloscope.cpp" compile="1" resource="0"
                 file="Source/GUI/Oscilloscopes/TriggeredOscilloscope.cpp"/>
           <FILE id="GcBavh" name="TriggeredOscilloscope.h" compile="0" resource="0"
