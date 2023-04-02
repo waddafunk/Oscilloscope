@@ -11,31 +11,28 @@
 #include "GuiTransformer.h"
 
 GuiTransformer::GuiTransformer(
-   OscilloscopeAudioProcessor& aProcessor, 
-   float transitionDuration, 
-   std::function<void()> expandLambdaFunction,
-   std::function<void()> contractLambdaFunction,
-   std::function<void()> expandStartedLambdaFunction,
-   std::function<void()> contractStartedLambdaFunction,
-   std::function<void()> expandEndedLambdaFunction,
-   std::function<void()> contractEndedLambdaFunction
-  )
+    OscilloscopeAudioProcessor &aProcessor,
+    float transitionDuration,
+    std::function<void()> expandLambdaFunction,
+    std::function<void()> contractLambdaFunction,
+    std::function<void()> expandStartedLambdaFunction,
+    std::function<void()> contractStartedLambdaFunction,
+    std::function<void()> expandEndedLambdaFunction,
+    std::function<void()> contractEndedLambdaFunction)
 {
+  // save variables
   this->transitionDuration = transitionDuration;
-
   isProfessional = aProcessor.getTreeState()->getParameterAsValue("isProfessional").getValue();
-
   aProcessor.getTreeState()->addParameterListener("isProfessional", this);
-
   framesRemaining = float(EDITOR_INITIAL_RATE()) * transitionDuration;
-  
-  expandLambda = expandLambdaFunction; 
+
+  // save lambdas
+  expandLambda = expandLambdaFunction;
   expandStartedLambda = expandStartedLambdaFunction;
   expandEndedLambda = expandEndedLambdaFunction;
   contractLambda = contractLambdaFunction;
   contractStartedLambda = contractStartedLambdaFunction;
   contractEndedLambda = contractEndedLambdaFunction;
-
 }
 
 GuiTransformer::~GuiTransformer()
@@ -44,6 +41,7 @@ GuiTransformer::~GuiTransformer()
 
 void GuiTransformer::timerCallback()
 {
+  // if animation not ended expand/contract
   if (framesRemaining-- > 0)
   {
     if (isProfessional)
@@ -55,6 +53,7 @@ void GuiTransformer::timerCallback()
       contractLambda();
     }
   }
+  // else trigger end lambda and stop
   else
   {
     if (isProfessional)
@@ -72,22 +71,21 @@ void GuiTransformer::timerCallback()
 
 void GuiTransformer::parameterChanged(const juce::String &parameterID, float newValue)
 {
-
+  // save new value
   isProfessional = bool(newValue);
 
+  // trigger appropriate start lambda
   if (isProfessional)
   {
 
     expandStartedLambda();
-  
   }
   else
   {
-  
+
     contractStartedLambda();
-  
   }
 
+  // start timer
   startTimerHz(EDITOR_INITIAL_RATE());
-
 }

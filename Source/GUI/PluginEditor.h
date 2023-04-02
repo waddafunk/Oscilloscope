@@ -19,39 +19,61 @@
 
 //==============================================================================
 /**
-*/
-class OscilloscopeAudioProcessorEditor  : public juce::AudioProcessorEditor
+ */
+class OscilloscopeAudioProcessorEditor : public juce::AudioProcessorEditor
 {
 public:
-    OscilloscopeAudioProcessorEditor (OscilloscopeAudioProcessor&);
-    ~OscilloscopeAudioProcessorEditor() override;
+  OscilloscopeAudioProcessorEditor(OscilloscopeAudioProcessor &);
+  ~OscilloscopeAudioProcessorEditor() override;
 
-    //==============================================================================
-    void paint (juce::Graphics&) override;
-    void resized() override;
+  //==============================================================================
+  void paint(juce::Graphics &) override;
+  void resized() override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
-    OscilloscopeAudioProcessor& audioProcessor;
-    ControlSection controlSection;
-    std::unique_ptr<GuiTransformer> guiTransformer;
-    std::unique_ptr<TriggerListener> triggerListener;
+  // This reference is provided as a quick way for your editor to
+  // access the processor object that created it.
+  OscilloscopeAudioProcessor &audioProcessor;
 
-    /**
-     * Currently plotted oscilloscope. Can be TriggeredOscilloscope
-     * or UntriggeredOscilloscope.
-     * 
-     */
-    std::unique_ptr<OscilloscopeComponent> oscilloscopeComponent;
+  /**
+   * Control Section component.
+   *
+   */
+  ControlSection controlSection;
 
-    float margin_multiplier;
-    void expandCallback();
-    void expansionEndedCallback();
-    void contractCallback();
-    void contractionEndedCallback();
-    void expansionStartedCallback();
-    void contractionStartedCallback();
+  /**
+   * Gui transformer. Handles expansion & contraction of
+   * \ref controlSection.
+   *
+   */
+  std::unique_ptr<GuiTransformer> guiTransformer;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscilloscopeAudioProcessorEditor)
+  /**
+   * TriggerListener. Handles whether to plot in trigger mode or not.
+   *
+   */
+  std::unique_ptr<TriggerListener> triggerListener;
+
+  /**
+   * Currently plotted oscilloscope. Can be TriggeredOscilloscope
+   * or UntriggeredOscilloscope.
+   *
+   */
+  std::unique_ptr<OscilloscopeComponent> oscilloscopeComponent;
+
+  /**
+   * Display component heigth over PluginEditor heigth
+   *
+   */
+  float margin_multiplier;
+
+  // GUI animation callbacks
+  void expandCallback();
+  void expansionEndedCallback();
+  void contractCallback();
+  void contractionEndedCallback();
+  void expansionStartedCallback();
+  void contractionStartedCallback();
+
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OscilloscopeAudioProcessorEditor)
 };

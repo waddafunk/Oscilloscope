@@ -12,12 +12,11 @@
 
 DecayCounter::DecayCounter(int framesPerSecond, float decaySeconds)
 {
-  
+  // save parameters.
   this->framesPerSecond = framesPerSecond;
   this->decaySeconds = decaySeconds;
   this->decayTime = framesPerSecond * decaySeconds;
   this->maxDecayTime = OSCILLOSCOPE_MAX_DECAY_TIME();
-
 }
 
 DecayCounter::~DecayCounter()
@@ -40,15 +39,13 @@ bool DecayCounter::refreshNeeded()
 
 void DecayCounter::resetDecayTime()
 {
-
+  // reset to initial value.
   decayTime = framesPerSecond * decaySeconds;
-
 }
 
 void DecayCounter::parameterChanged(const juce::String &parameterID, float newValue)
 {
-
+  // reset decay time
   decaySeconds = newValue * maxDecayTime;
   resetDecayTime();
-
 }

@@ -9,27 +9,31 @@
 */
 
 #pragma once
-#include<JuceHeader.h>
-#include"OscilloscopeComponent.h"
+#include <JuceHeader.h>
+#include "OscilloscopeComponent.h"
 #include "ColorPalette.h"
 
-
 /**
- * Untriggered oscilloscope. Displays data continuously updating with no control 
+ * Untriggered oscilloscope. Displays data continuously updating with no control
  * over trigger point and phase.
  */
 class UntriggeredOscilloscope : public OscilloscopeComponent
 {
-  public:
-  UntriggeredOscilloscope(OscilloscopeAudioProcessor& aProcessor, int sampleRate);
+public:
+  /**
+   * Construct a new Untriggered Oscilloscope object
+   *
+   * \param aProcessor AudioProcessor
+   * \param sampleRate Host sample rate
+   */
+  UntriggeredOscilloscope(OscilloscopeAudioProcessor &aProcessor, int sampleRate);
 
-  private:
+private:
   void plot(
-      juce::Graphics& g,
+      juce::Graphics &g,
       juce::Rectangle<float> rect,
       float scaler = float(1),
       float offset = float(0)) override;
 
   void subclassSpecificCallback() override;
-
 };

@@ -14,43 +14,48 @@
 
 /**
  * Class handling AudioBufferQueue.
- * 
- * Automatically fills a buffer, pushes it to the queue and starts filling the next one. 
+ *
+ * Automatically fills a buffer, pushes it to the queue and starts filling the next one.
  */
 template <typename SampleType>
 class ScopeDataCollector
 {
 public:
     //==============================================================================
-    ScopeDataCollector(AudioBufferQueue<SampleType>& queueToUse)
+    ScopeDataCollector(AudioBufferQueue<SampleType> &queueToUse)
         : audioBufferQueue(queueToUse)
     {
+        // resize buffer
         buffer.resize(queueToUse.getBufferSize());
         bufferSize = buffer.size();
+
+        // reset num collected
         numCollected = 0;
     }
 
     //==============================================================================
     /**
      * Processes incoming data.
-     * 
+     *
      * \param data pointer to a series of data.
      * \param numSamples number of samples in the series.
      */
-    void process(const SampleType* data, size_t numSamples)
+    void process(const SampleType *data, size_t numSamples)
     {
+        // declare variables
         size_t index = 0;
-
         int numBuffersToPush = numSamples / bufferSize;
         int numSamplesExceeding = numSamples % bufferSize;
         int numEmptyBuffers = 0;
         int additionalSamples = 0;
 
+        // if no samples still collected
         if (state == State::waitingForTrigger)
         {
             std::fill(buffer.begin(), buffer.end(), 0);
             // If no sample over treshold push silence.
-            if (std::all_of(data, data + numSamples, [](SampleType i) {return i < triggerLevel; }))
+            if (std::all_of(data, data + numSamples, [](SampleType i)
+                            { return i < triggerLevel; }))
             {
                 for (size_t i = 0; i < numBuffersToPush; i++)
                 {
@@ -62,7 +67,7 @@ public:
             else
             {
                 auto result = data;
-                while(*result < triggerLevel)
+                while (*result < triggerLevel)
                 {
                     result++;
                 }
@@ -80,6 +85,7 @@ public:
             }
         }
 
+        // if already collecting
         if (state == State::collecting)
         {
             while (index++ < numSamples)
@@ -97,16 +103,20 @@ public:
 
 private:
     //==============================================================================
-    AudioBufferQueue<SampleType>& audioBufferQueue; /**< AudioBufferQueue */
-    std::vector<SampleType> buffer; /**< Buffer to fill and push to audioBufferQueue */
-    int bufferSize; /**< Size of @param buffer */
-    size_t numCollected; /**< Number of samples collected. */
-    SampleType prevSample = SampleType(100); /**< Last sample collected. */
+    AudioBufferQueue<SampleType> &audioBufferQueue; /**< AudioBufferQueue */
+    std::vector<SampleType> buffer;                 /**< Buffer to fill and push to audioBufferQueue */
+    int bufferSize;                                 /**< Size of @param buffer */
+    size_t numCollected;                            /**< Number of samples collected. */
+    SampleType prevSample = SampleType(100);        /**< Last sample collected. */
 
     static constexpr auto triggerLevel = SampleType(0); /**< Level above which the oscilloscope starts drawing the waveform. */
-    
+
     /**
      * States of the class.
      */
-    enum class State { waitingForTrigger, collecting } state{ State::waitingForTrigger };
+    enum class State
+    {
+        waitingForTrigger,
+        collecting
+    } state{State::waitingForTrigger};
 };
