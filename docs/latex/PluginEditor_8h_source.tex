@@ -22,35 +22,40 @@
 \DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{TriggerListener_8h}{TriggerListener.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00019}00019 }
 \DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00020}00020 \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00023}\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor}{00023}} \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor}{OscilloscopeAudioProcessorEditor}}  : \textcolor{keyword}{public} juce::AudioProcessorEditor}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00023}\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor}{00023}} \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor}{OscilloscopeAudioProcessorEditor}} : \textcolor{keyword}{public} juce::AudioProcessorEditor}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00024}00024 \{}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00025}00025 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00026}00026     \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor}{OscilloscopeAudioProcessorEditor}} (\mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\&);}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00027}00027     \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_aafec2e98cebcef5ac499aba85077717b}{\string~OscilloscopeAudioProcessorEditor}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00026}00026   \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor}{OscilloscopeAudioProcessorEditor}}(\mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}} \&);}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00027}00027   \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_aafec2e98cebcef5ac499aba85077717b}{\string~OscilloscopeAudioProcessorEditor}}() \textcolor{keyword}{override};}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00028}00028 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00029}00029     \textcolor{comment}{//==============================================================================}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00030}00030     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a23575ad8b290e1ff518fab0cd51dabe7}{paint}} (juce::Graphics\&) \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00031}00031     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a0104937177acfe678f1bd373ed9bd7f1}{resized}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00029}00029   \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00030}00030   \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a23575ad8b290e1ff518fab0cd51dabe7}{paint}}(juce::Graphics \&) \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00031}00031   \textcolor{keywordtype}{void} \mbox{\hyperlink{classOscilloscopeAudioProcessorEditor_a0104937177acfe678f1bd373ed9bd7f1}{resized}}() \textcolor{keyword}{override};}
 \DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00032}00032 }
 \DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00033}00033 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00034}00034     \textcolor{comment}{// This reference is provided as a quick way for your editor to}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00035}00035     \textcolor{comment}{// access the processor object that created it.}}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00036}00036     \mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\& audioProcessor;}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00037}00037     \mbox{\hyperlink{classControlSection}{ControlSection}} controlSection;}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00038}00038     std::unique\_ptr<GuiTransformer> guiTransformer;}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00039}00039     std::unique\_ptr<TriggerListener> triggerListener;}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00040}00040 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00046}00046     std::unique\_ptr<OscilloscopeComponent> oscilloscopeComponent;}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00048}00048     \textcolor{keywordtype}{float} margin\_multiplier;}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00049}00049     \textcolor{keywordtype}{void} expandCallback();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00050}00050     \textcolor{keywordtype}{void} expansionEndedCallback();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00051}00051     \textcolor{keywordtype}{void} contractCallback();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00052}00052     \textcolor{keywordtype}{void} contractionEndedCallback();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00053}00053     \textcolor{keywordtype}{void} expansionStartedCallback();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00054}00054     \textcolor{keywordtype}{void} contractionStartedCallback();}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00055}00055 }
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00056}00056     JUCE\_DECLARE\_NON\_COPYABLE\_WITH\_LEAK\_DETECTOR (\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor}{OscilloscopeAudioProcessorEditor}})}
-\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00057}00057 \};}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00034}00034   \textcolor{comment}{// This reference is provided as a quick way for your editor to}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00035}00035   \textcolor{comment}{// access the processor object that created it.}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00036}00036   \mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}} \&audioProcessor;}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00042}00042   \mbox{\hyperlink{classControlSection}{ControlSection}} controlSection;}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00049}00049   std::unique\_ptr<GuiTransformer> guiTransformer;}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00055}00055   std::unique\_ptr<TriggerListener> triggerListener;}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00062}00062   std::unique\_ptr<OscilloscopeComponent> oscilloscopeComponent;}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00068}00068   \textcolor{keywordtype}{float} margin\_multiplier;}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00070}00070   \textcolor{comment}{// GUI animation callbacks}}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00071}00071   \textcolor{keywordtype}{void} expandCallback();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00072}00072   \textcolor{keywordtype}{void} expansionEndedCallback();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00073}00073   \textcolor{keywordtype}{void} contractCallback();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00074}00074   \textcolor{keywordtype}{void} contractionEndedCallback();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00075}00075   \textcolor{keywordtype}{void} expansionStartedCallback();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00076}00076   \textcolor{keywordtype}{void} contractionStartedCallback();}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00078}00078   JUCE\_DECLARE\_NON\_COPYABLE\_WITH\_LEAK\_DETECTOR(\mbox{\hyperlink{classOscilloscopeAudioProcessorEditor}{OscilloscopeAudioProcessorEditor}})}
+\DoxyCodeLine{\Hypertarget{PluginEditor_8h_source_l00079}00079 \};}
 
 \end{DoxyCode}

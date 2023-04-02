@@ -11,39 +11,34 @@
 \DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00022}\mbox{\hyperlink{classGuiTransformer}{00022}} \textcolor{keyword}{class }\mbox{\hyperlink{classGuiTransformer}{GuiTransformer}} : \textcolor{keyword}{public} juce::Timer, \textcolor{keyword}{private} juce::AudioProcessorValueTreeState::Listener}
 \DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00023}00023 \{}
 \DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00024}00024 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00025}00025 }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00038}00038   \mbox{\hyperlink{classGuiTransformer}{GuiTransformer}}(}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00039}00039    \mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\& aProcessor, }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00040}00040    \textcolor{keywordtype}{float} transitionDuration, }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00041}00041    std::function<\textcolor{keywordtype}{void}()> expandLambdaFunction,}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00042}00042    std::function<\textcolor{keywordtype}{void}()> contractLambdaFunction,}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00043}00043    std::function<\textcolor{keywordtype}{void}()> expandStartedLambdaFunction,}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00044}00044    std::function<\textcolor{keywordtype}{void}()> contractStartedLambdaFunction,}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00045}00045    std::function<\textcolor{keywordtype}{void}()> expandEndedLambdaFunction,}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00046}00046    std::function<\textcolor{keywordtype}{void}()> contractEndedLambdaFunction}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00047}00047    );}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00048}00048   \mbox{\hyperlink{classGuiTransformer_a0e041d2cb9f790d84539e16195576e01}{\string~GuiTransformer}}();}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00050}00050   \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00051}00051 }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00056}00056   \textcolor{keywordtype}{int} framesRemaining;}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00062}00062   \textcolor{keywordtype}{float} transitionDuration;}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00063}00063 }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00069}00069    \textcolor{keywordtype}{void} timerCallback() \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00070}00070 }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00077}00077    \textcolor{keywordtype}{void} parameterChanged(\textcolor{keyword}{const} juce::String\& parameterID, \textcolor{keywordtype}{float} newValue) \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00078}00078 }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00083}00083    std::function<void()> expandLambda;}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00088}00088    std::function<void()> contractLambda;  }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00093}00093    std::function<void()> expandStartedLambda;}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00098}00098    std::function<void()> contractStartedLambda;}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00103}00103    std::function<void()> expandEndedLambda;}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00108}00108    std::function<void()> contractEndedLambda;}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00109}00109 }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00115}00115    \textcolor{keywordtype}{bool} isProfessional;}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00116}00116 \};}
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00117}00117 }
-\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00037}00037    \mbox{\hyperlink{classGuiTransformer}{GuiTransformer}}(}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00038}00038        \mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}} \&aProcessor,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00039}00039        \textcolor{keywordtype}{float} transitionDuration,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00040}00040        std::function<\textcolor{keywordtype}{void}()> expandLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00041}00041        std::function<\textcolor{keywordtype}{void}()> contractLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00042}00042        std::function<\textcolor{keywordtype}{void}()> expandStartedLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00043}00043        std::function<\textcolor{keywordtype}{void}()> contractStartedLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00044}00044        std::function<\textcolor{keywordtype}{void}()> expandEndedLambdaFunction,}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00045}00045        std::function<\textcolor{keywordtype}{void}()> contractEndedLambdaFunction);}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00046}00046    \mbox{\hyperlink{classGuiTransformer_a0e041d2cb9f790d84539e16195576e01}{\string~GuiTransformer}}();}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00048}00048 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00053}00053    \textcolor{keywordtype}{int} framesRemaining;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00059}00059    \textcolor{keywordtype}{float} transitionDuration;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00066}00066    \textcolor{keywordtype}{void} timerCallback() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00074}00074    \textcolor{keywordtype}{void} parameterChanged(\textcolor{keyword}{const} juce::String \&parameterID, \textcolor{keywordtype}{float} newValue) \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00080}00080    std::function<void()> expandLambda;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00085}00085    std::function<void()> contractLambda;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00090}00090    std::function<void()> expandStartedLambda;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00095}00095    std::function<void()> contractStartedLambda;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00100}00100    std::function<void()> expandEndedLambda;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00105}00105    std::function<void()> contractEndedLambda;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00112}00112    \textcolor{keywordtype}{bool} isProfessional;}
+\DoxyCodeLine{\Hypertarget{GuiTransformer_8h_source_l00113}00113 \};}
 
 \end{DoxyCode}

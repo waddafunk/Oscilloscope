@@ -77,6 +77,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Oscilloscope audio processor.  
+ <a href="classOscilloscopeAudioProcessor.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="PluginProcessor_8h_source.html">PluginProcessor.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for OscilloscopeAudioProcessor:</div>
@@ -143,8 +146,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2251fac84c94c91c7f4c4300d22a6314"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8h_source.html#l00019">19</a> of file <a class="el" href="PluginProcessor_8h_source.html">PluginProcessor.h</a>.</p>
+<div class="textblock"><p >Oscilloscope audio processor. </p>
+<p >This class handles all the audio I/O operations, initialization and state retrieval. </p>
+
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8h_source.html#l00024">24</a> of file <a class="el" href="PluginProcessor_8h_source.html">PluginProcessor.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7c4a32cb63e3149cb70f4d416b14eee4" name="a7c4a32cb63e3149cb70f4d416b14eee4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c4a32cb63e3149cb70f4d416b14eee4">&#9670;&#160;</a></span>OscilloscopeAudioProcessor()</h2>
@@ -160,6 +165,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Construct a new Oscilloscope Audio Processor object </p>
 
 <p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00013">13</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
@@ -187,8 +193,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Destroy the Oscilloscope Audio Processor object </p>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00050">50</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00061">61</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -215,8 +222,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Returns whether the plugin accepts midi.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if the plugin accepts midi. </dd>
+<dd>
+false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00078">78</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00083">83</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -254,7 +265,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00130">130</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00123">123</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -280,8 +291,10 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Create a Editor object</p>
+<dl class="section return"><dt>Returns</dt><dd>juce::AudioProcessorEditor* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00200">200</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00190">190</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -299,8 +312,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Get the <a class="el" href="classAudioBufferQueue.html">AudioBufferQueue</a> object</p>
+<dl class="section return"><dt>Returns</dt><dd>AudioBufferQueue&lt;float&gt;* Audio Buffer Queue object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00241">241</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00227">227</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -327,7 +342,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00116">116</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00115">115</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -348,7 +363,7 @@ Public Member Functions</h2></td></tr>
 <p >Get editor height.</p>
 <dl class="section return"><dt>Returns</dt><dd>Editor height. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00263">263</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00247">247</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -369,7 +384,7 @@ Public Member Functions</h2></td></tr>
 <p >Get the stored refresh rate.</p>
 <dl class="section return"><dt>Returns</dt><dd>Stored editors' refresh rate. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00276">276</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00264">264</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -390,7 +405,7 @@ Public Member Functions</h2></td></tr>
 <p >Get editor width.</p>
 <dl class="section return"><dt>Returns</dt><dd>Editor width. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00258">258</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00241">241</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -416,8 +431,10 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the Name object</p>
+<dl class="section return"><dt>Returns</dt><dd>const juce::String </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00073">73</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00079">79</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -444,7 +461,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00110">110</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00109">109</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -472,7 +489,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00125">125</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00119">119</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -490,8 +507,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Get the Sample Rate of the host.</p>
+<dl class="section return"><dt>Returns</dt><dd>int sample rate. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00236">236</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00225">225</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -518,8 +537,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the State Information object</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">destData</td><td>memory block where to store information. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00206">206</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00195">195</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -546,7 +572,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00105">105</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00107">107</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -564,8 +590,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Get the TreeState object</p>
+<dl class="section return"><dt>Returns</dt><dd>juce::AudioProcessorValueTreeState* TreeState. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00246">246</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00231">231</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -591,8 +619,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return whether the plugin has an editor.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if the plugin has an editor. </dd>
+<dd>
+false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00195">195</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00186">186</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -620,7 +652,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00151">151</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00141">141</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -646,8 +678,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return whether the plugin is a midi effect.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if the plugin is a midi effect. </dd>
+<dd>
+false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00096">96</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00099">99</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -684,8 +720,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Use this method as the place to do any pre-playback initialisation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sampleRate</td><td>Sample rate. </td></tr>
+    <tr><td class="paramname">samplesPerBlock</td><td>Samples per block. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00135">135</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00127">127</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -722,8 +766,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Process a block of audio data. </p>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00176">176</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00166">166</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -749,8 +794,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Returns whether the plugin produces midi.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if the plugin produces midi. </dd>
+<dd>
+false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00087">87</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00091">91</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -776,8 +825,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >When playback stops, you can use this as an opportunity to free up any spare memory, etc. </p>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00144">144</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00138">138</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -805,7 +855,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00121">121</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00117">117</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -842,8 +892,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the State Information object</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>memory block where to read information. </td></tr>
+    <tr><td class="paramname">sizeInBytes</td><td>size in bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00216">216</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00205">205</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -881,7 +939,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00269">269</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PluginProcessor_8cpp_source.html#l00254">254</a> of file <a class="el" href="PluginProcessor_8cpp_source.html">PluginProcessor.cpp</a>.</p>
 
 </div>
 </div>

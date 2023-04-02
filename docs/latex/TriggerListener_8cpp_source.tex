@@ -16,24 +16,23 @@
 \DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00012}00012 }
 \DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00013}\mbox{\hyperlink{classTriggerListener_a3085d16f0781ebf11ec758514a7ebf69}{00013}} \mbox{\hyperlink{classTriggerListener_a3085d16f0781ebf11ec758514a7ebf69}{TriggerListener::TriggerListener}}(std::function<\textcolor{keywordtype}{void}()> setTriggered, std::function<\textcolor{keywordtype}{void}()> setUntriggered)}
 \DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00014}00014 \{}
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00015}00015   \textcolor{comment}{// set lambdas}}
 \DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00016}00016   this-\/>setTriggered = setTriggered;}
 \DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00017}00017   this-\/>setUntriggered = setUntriggered;}
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00019}00019 \}}
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00021}\mbox{\hyperlink{classTriggerListener_a0df6ebb9a042bff1289962fc457348ed}{00021}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classTriggerListener_a0df6ebb9a042bff1289962fc457348ed}{TriggerListener::parameterChanged}}(\textcolor{keyword}{const} juce::String \&parameterID, \textcolor{keywordtype}{float} newValue)}
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00022}00022 \{}
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00023}00023 }
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00024}00024   \textcolor{keywordflow}{if} (newValue)}
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00025}00025   \{}
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00026}00026     setTriggered();}
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00027}00027   \}}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00018}00018 \}}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00020}\mbox{\hyperlink{classTriggerListener_a0df6ebb9a042bff1289962fc457348ed}{00020}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classTriggerListener_a0df6ebb9a042bff1289962fc457348ed}{TriggerListener::parameterChanged}}(\textcolor{keyword}{const} juce::String \&parameterID, \textcolor{keywordtype}{float} newValue)}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00022}00022   \textcolor{comment}{// if triggered mode}}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00023}00023   \textcolor{keywordflow}{if} (newValue)}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00024}00024   \{}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00025}00025     setTriggered();}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00026}00026   \}}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00027}00027   \textcolor{comment}{// if untriggered mode}}
 \DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00028}00028   \textcolor{keywordflow}{else}}
 \DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00029}00029   \{}
 \DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00030}00030     setUntriggered();}
 \DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00031}00031   \}}
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00032}00032 }
-\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00033}00033 \}}
+\DoxyCodeLine{\Hypertarget{TriggerListener_8cpp_source_l00032}00032 \}}
 
 \end{DoxyCode}

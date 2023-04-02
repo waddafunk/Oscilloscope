@@ -94,33 +94,31 @@ $(function() {
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classDecayCounter.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classDecayCounter.html">DecayCounter</a> : <span class="keyword">public</span> juce::AudioProcessorValueTreeState::Listener</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordtype">int</span> decayTime;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keywordtype">int</span> maxDecayTime;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keywordtype">int</span> framesPerSecond;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keywordtype">float</span> decaySeconds;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <a class="code hl_class" href="classDecayCounter.html">DecayCounter</a>(<span class="keywordtype">int</span> framesPerSecond, <span class="keywordtype">float</span> decaySeconds);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <a class="code hl_function" href="classDecayCounter.html#ad0c22074b880e9028198f802db7c7bfa">~DecayCounter</a>();</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classDecayCounter.html#a6fda9ce2cee63cff8c4b637a2d30af0f">refreshNeeded</a>();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classDecayCounter.html#a901fa2114573976b3a6bb1db82cf94e6">resetDecayTime</a>();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classDecayCounter.html#abb0cb5c2c113f96b50f0523924ca4a87">parameterChanged</a> (<span class="keyword">const</span> juce::String&amp; parameterID, <span class="keywordtype">float</span> newValue) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>};</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordtype">int</span> decayTime;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keywordtype">int</span> maxDecayTime;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keywordtype">int</span> framesPerSecond;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keywordtype">float</span> decaySeconds;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <a class="code hl_class" href="classDecayCounter.html">DecayCounter</a>(<span class="keywordtype">int</span> framesPerSecond, <span class="keywordtype">float</span> decaySeconds);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <a class="code hl_function" href="classDecayCounter.html#ad0c22074b880e9028198f802db7c7bfa">~DecayCounter</a>();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classDecayCounter.html#a6fda9ce2cee63cff8c4b637a2d30af0f">refreshNeeded</a>();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classDecayCounter.html#a901fa2114573976b3a6bb1db82cf94e6">resetDecayTime</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classDecayCounter.html#abb0cb5c2c113f96b50f0523924ca4a87">parameterChanged</a>(<span class="keyword">const</span> juce::String &amp;parameterID, <span class="keywordtype">float</span> newValue) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
 <div class="ttc" id="aInitVariables_8h_html"><div class="ttname"><a href="InitVariables_8h.html">InitVariables.h</a></div></div>
 <div class="ttc" id="aclassDecayCounter_html"><div class="ttname"><a href="classDecayCounter.html">DecayCounter</a></div><div class="ttdef"><b>Definition:</b> <a href="DecayCounter_8h_source.html#l00019">DecayCounter.h:20</a></div></div>
-<div class="ttc" id="aclassDecayCounter_html_a6fda9ce2cee63cff8c4b637a2d30af0f"><div class="ttname"><a href="classDecayCounter.html#a6fda9ce2cee63cff8c4b637a2d30af0f">DecayCounter::refreshNeeded</a></div><div class="ttdeci">bool refreshNeeded()</div><div class="ttdef"><b>Definition:</b> <a href="DecayCounter_8cpp_source.html#l00027">DecayCounter.cpp:27</a></div></div>
-<div class="ttc" id="aclassDecayCounter_html_a901fa2114573976b3a6bb1db82cf94e6"><div class="ttname"><a href="classDecayCounter.html#a901fa2114573976b3a6bb1db82cf94e6">DecayCounter::resetDecayTime</a></div><div class="ttdeci">void resetDecayTime()</div><div class="ttdef"><b>Definition:</b> <a href="DecayCounter_8cpp_source.html#l00041">DecayCounter.cpp:41</a></div></div>
-<div class="ttc" id="aclassDecayCounter_html_abb0cb5c2c113f96b50f0523924ca4a87"><div class="ttname"><a href="classDecayCounter.html#abb0cb5c2c113f96b50f0523924ca4a87">DecayCounter::parameterChanged</a></div><div class="ttdeci">void parameterChanged(const juce::String &amp;parameterID, float newValue) override</div><div class="ttdef"><b>Definition:</b> <a href="DecayCounter_8cpp_source.html#l00048">DecayCounter.cpp:48</a></div></div>
-<div class="ttc" id="aclassDecayCounter_html_ad0c22074b880e9028198f802db7c7bfa"><div class="ttname"><a href="classDecayCounter.html#ad0c22074b880e9028198f802db7c7bfa">DecayCounter::~DecayCounter</a></div><div class="ttdeci">~DecayCounter()</div><div class="ttdef"><b>Definition:</b> <a href="DecayCounter_8cpp_source.html#l00023">DecayCounter.cpp:23</a></div></div>
+<div class="ttc" id="aclassDecayCounter_html_a6fda9ce2cee63cff8c4b637a2d30af0f"><div class="ttname"><a href="classDecayCounter.html#a6fda9ce2cee63cff8c4b637a2d30af0f">DecayCounter::refreshNeeded</a></div><div class="ttdeci">bool refreshNeeded()</div><div class="ttdef"><b>Definition:</b> <a href="DecayCounter_8cpp_source.html#l00026">DecayCounter.cpp:26</a></div></div>
+<div class="ttc" id="aclassDecayCounter_html_a901fa2114573976b3a6bb1db82cf94e6"><div class="ttname"><a href="classDecayCounter.html#a901fa2114573976b3a6bb1db82cf94e6">DecayCounter::resetDecayTime</a></div><div class="ttdeci">void resetDecayTime()</div><div class="ttdef"><b>Definition:</b> <a href="DecayCounter_8cpp_source.html#l00040">DecayCounter.cpp:40</a></div></div>
+<div class="ttc" id="aclassDecayCounter_html_abb0cb5c2c113f96b50f0523924ca4a87"><div class="ttname"><a href="classDecayCounter.html#abb0cb5c2c113f96b50f0523924ca4a87">DecayCounter::parameterChanged</a></div><div class="ttdeci">void parameterChanged(const juce::String &amp;parameterID, float newValue) override</div><div class="ttdef"><b>Definition:</b> <a href="DecayCounter_8cpp_source.html#l00046">DecayCounter.cpp:46</a></div></div>
+<div class="ttc" id="aclassDecayCounter_html_ad0c22074b880e9028198f802db7c7bfa"><div class="ttname"><a href="classDecayCounter.html#ad0c22074b880e9028198f802db7c7bfa">DecayCounter::~DecayCounter</a></div><div class="ttdeci">~DecayCounter()</div><div class="ttdef"><b>Definition:</b> <a href="DecayCounter_8cpp_source.html#l00022">DecayCounter.cpp:22</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

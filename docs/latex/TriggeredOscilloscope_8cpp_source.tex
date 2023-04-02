@@ -17,130 +17,150 @@
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00013}\mbox{\hyperlink{classTriggeredOscilloscope_a7b89c5da5e65f98464d0028483c198d9}{00013}} \mbox{\hyperlink{classTriggeredOscilloscope_a7b89c5da5e65f98464d0028483c198d9}{TriggeredOscilloscope::TriggeredOscilloscope}}(\mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}} \&aProcessor, \textcolor{keywordtype}{int} sampleRate)}
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00014}00014     : \mbox{\hyperlink{classOscilloscopeComponent}{OscilloscopeComponent}}(aProcessor, sampleRate, aProcessor.getEditorRefreshRate())}
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00015}00015 \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00016}00016   }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00016}00016   \textcolor{comment}{// get decay time}}
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00017}00017   \textcolor{keywordtype}{float} decayTimeRelative = aProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>getParameterAsValue(\textcolor{stringliteral}{"{}decayTime"{}}).getValue();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00018}00018   decayTimeRelative = std::max(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(0.05), decayTimeRelative);}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00019}00019   decayCounter.reset(}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00020}00020     \textcolor{keyword}{new} \mbox{\hyperlink{classDecayCounter}{DecayCounter}}(}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00021}00021       aProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a2251fac84c94c91c7f4c4300d22a6314}{getEditorRefreshRate}}(), }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00022}00022       decayTimeRelative * OSCILLOSCOPE\_MAX\_DECAY\_TIME()}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00023}00023     )}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00024}00024   );}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00018}00018   decayTimeRelative = std::max(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(0.05), decayTimeRelative); \textcolor{comment}{// sometimes it inizializes to 0}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00020}00020   \textcolor{comment}{// reset decayCounter \& add it as listener}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00021}00021   decayCounter.reset(}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00022}00022       \textcolor{keyword}{new} \mbox{\hyperlink{classDecayCounter}{DecayCounter}}(}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00023}00023           aProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a2251fac84c94c91c7f4c4300d22a6314}{getEditorRefreshRate}}(),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00024}00024           decayTimeRelative * OSCILLOSCOPE\_MAX\_DECAY\_TIME()));}
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00025}00025   aProcessor.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>addParameterListener(\textcolor{stringliteral}{"{}decayTime"{}}, decayCounter.get());}
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00026}00026 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00027}00027   \mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{refreshDislayed}}();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00028}00028 \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00029}00029 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00030}\mbox{\hyperlink{classTriggeredOscilloscope_a37d3f865140967c8973f5578ca60caa5}{00030}} \mbox{\hyperlink{classTriggeredOscilloscope_a37d3f865140967c8973f5578ca60caa5}{TriggeredOscilloscope::\string~TriggeredOscilloscope}}()}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00031}00031 \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00032}00032   \mbox{\hyperlink{classOscilloscopeComponent_a43092835135f0ec93c38b290105eb76d}{audioProcessor}}.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>removeParameterListener(\textcolor{stringliteral}{"{}decayTime"{}}, decayCounter.get());}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00033}00033 \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00034}00034 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00035}\mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{00035}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{TriggeredOscilloscope::refreshDislayed}}()}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00036}00036 \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00037}00037   currentlyDisplayedData.resize(\mbox{\hyperlink{classOscilloscopeComponent_ab11a2bfef0310419b0959a7521009265}{sampleData}}.size());}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00038}00038   std::copy(\mbox{\hyperlink{classOscilloscopeComponent_ab11a2bfef0310419b0959a7521009265}{sampleData}}.begin(), \mbox{\hyperlink{classOscilloscopeComponent_ab11a2bfef0310419b0959a7521009265}{sampleData}}.end(), currentlyDisplayedData.begin());}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00039}00039     }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00040}00040   \textcolor{keyword}{auto} data = currentlyDisplayedData.begin();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00041}00041   \textcolor{keyword}{auto} numSamples = currentlyDisplayedData.size();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00042}00042   \textcolor{keywordtype}{bool} decrescentSlope = \mbox{\hyperlink{classOscilloscopeComponent_a43092835135f0ec93c38b290105eb76d}{audioProcessor}}.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>getParameterAsValue(\textcolor{stringliteral}{"{}slopeButtonTriggered"{}}).getValue();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00043}00043   triggerLevel = \mbox{\hyperlink{classOscilloscopeComponent_a43092835135f0ec93c38b290105eb76d}{audioProcessor}}.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>getParameterAsValue(\textcolor{stringliteral}{"{}triggerLevel"{}}).getValue();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00044}00044   firstSampleToPlot = currentlyDisplayedData.begin();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00045}00045 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00046}00046   \textcolor{keyword}{auto} max\_el = *std::max\_element(currentlyDisplayedData.begin(), currentlyDisplayedData.end());}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00048}00048   \textcolor{keywordtype}{bool} found = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00049}00049   }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00050}00050   \textcolor{keywordflow}{if} (decrescentSlope)}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00051}00051   \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00052}00052     \textcolor{comment}{// while not at trigger level or with correct slope}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00053}00053     \textcolor{keyword}{auto} condition = [\textcolor{keyword}{this}](\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} subseq)\{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00054}00054       \textcolor{keywordtype}{bool} firstCondition = std::abs(x -\/ triggerLevel) < 0.05;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00055}00055       \textcolor{keywordtype}{bool} secondCondition = subseq < x;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00056}00056       \textcolor{keywordflow}{return} firstCondition \&\& secondCondition;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00057}00057     \};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00058}00058     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = currentlyDisplayedData.begin(); i < currentlyDisplayedData.end() -\/ 1; ++i) \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00059}00059       \textcolor{keywordflow}{if} (condition(i[0], i[1])) \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00060}00060         firstSampleToPlot = i;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00061}00061         found = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00062}00062         \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00063}00063       \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00064}00064     \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00065}00065   \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00066}00066   \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00067}00067   \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00068}00068     \textcolor{comment}{// while not at trigger level or with correct slope}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00069}00069     \textcolor{keyword}{auto} condition = [\textcolor{keyword}{this}](\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} subseq)\{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00070}00070       \textcolor{keywordtype}{bool} firstCondition = std::abs(x -\/ triggerLevel) < 0.05;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00071}00071       \textcolor{keywordtype}{bool} secondCondition = subseq > x;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00072}00072       \textcolor{keywordflow}{return} firstCondition \&\& secondCondition;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00073}00073     \};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00074}00074     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = currentlyDisplayedData.begin(); i < currentlyDisplayedData.end() -\/ 1; ++i) \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00075}00075       \textcolor{keywordflow}{if} (condition(i[0], i[1])) \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00076}00076         firstSampleToPlot = i;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00077}00077         found = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00078}00078         \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00079}00079       \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00080}00080     \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00081}00081   \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00082}00082   \textcolor{keywordflow}{if} (!found)}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00083}00083   \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00084}00084     std::fill(currentlyDisplayedData.begin(), currentlyDisplayedData.end(), 0.);}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00085}00085     firstSampleToPlot = currentlyDisplayedData.begin();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00086}00086   \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00087}00087 \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00027}00027   \textcolor{comment}{// refresh displayed data}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00028}00028   \mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{refreshDislayed}}();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00031}\mbox{\hyperlink{classTriggeredOscilloscope_a37d3f865140967c8973f5578ca60caa5}{00031}} \mbox{\hyperlink{classTriggeredOscilloscope_a37d3f865140967c8973f5578ca60caa5}{TriggeredOscilloscope::\string~TriggeredOscilloscope}}()}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00033}00033   \textcolor{comment}{// remove decayCounter as listener}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00034}00034   \mbox{\hyperlink{classOscilloscopeComponent_a43092835135f0ec93c38b290105eb76d}{audioProcessor}}.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>removeParameterListener(\textcolor{stringliteral}{"{}decayTime"{}}, decayCounter.get());}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00035}00035 \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00037}\mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{00037}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{TriggeredOscilloscope::refreshDislayed}}()}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00039}00039   \textcolor{comment}{// resize buffer and copy from sampleData}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00040}00040   currentlyDisplayedData.resize(\mbox{\hyperlink{classOscilloscopeComponent_ab11a2bfef0310419b0959a7521009265}{sampleData}}.size());}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00041}00041   std::copy(\mbox{\hyperlink{classOscilloscopeComponent_ab11a2bfef0310419b0959a7521009265}{sampleData}}.begin(), \mbox{\hyperlink{classOscilloscopeComponent_ab11a2bfef0310419b0959a7521009265}{sampleData}}.end(), currentlyDisplayedData.begin());}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00043}00043   \textcolor{comment}{// declare variables}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00044}00044   \textcolor{keywordtype}{bool} found = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00045}00045   \textcolor{keyword}{auto} data = currentlyDisplayedData.begin();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00046}00046   \textcolor{keyword}{auto} numSamples = currentlyDisplayedData.size();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00047}00047   \textcolor{keywordtype}{bool} decrescentSlope = \mbox{\hyperlink{classOscilloscopeComponent_a43092835135f0ec93c38b290105eb76d}{audioProcessor}}.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>getParameterAsValue(\textcolor{stringliteral}{"{}slopeButtonTriggered"{}}).getValue();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00049}00049   \textcolor{comment}{// get trigger level}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00050}00050   triggerLevel = \mbox{\hyperlink{classOscilloscopeComponent_a43092835135f0ec93c38b290105eb76d}{audioProcessor}}.\mbox{\hyperlink{classOscilloscopeAudioProcessor_a88406729883710df23d0b10f7bdb0f0d}{getTreeState}}()-\/>getParameterAsValue(\textcolor{stringliteral}{"{}triggerLevel"{}}).getValue();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00052}00052   \textcolor{comment}{// reset firstSampleToPlot}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00053}00053   firstSampleToPlot = currentlyDisplayedData.begin();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00055}00055   \textcolor{comment}{// if decrescent slope search for trigger position with decrescent slope}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00056}00056   \textcolor{keywordflow}{if} (decrescentSlope)}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00057}00057   \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00058}00058     \textcolor{comment}{// condition to stop searching (lamda func)}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00059}00059     \textcolor{keyword}{auto} condition = [\textcolor{keyword}{this}](\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} subseq)}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00060}00060     \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00061}00061       \textcolor{keywordtype}{bool} firstCondition = std::abs(x -\/ triggerLevel) < 0.05;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00062}00062       \textcolor{keywordtype}{bool} secondCondition = subseq < x;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00063}00063       \textcolor{keywordflow}{return} firstCondition \&\& secondCondition;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00064}00064     \};}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00066}00066     \textcolor{comment}{// search in all currentlyDisplayedData}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00067}00067     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = currentlyDisplayedData.begin(); i < currentlyDisplayedData.end() -\/ 1; ++i)}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00068}00068     \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00069}00069       \textcolor{comment}{// when found set firstSampleToPlot and stop}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00070}00070       \textcolor{keywordflow}{if} (condition(i[0], i[1]))}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00071}00071       \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00072}00072         firstSampleToPlot = i;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00073}00073         found = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00074}00074         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00075}00075       \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00076}00076     \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00077}00077   \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00078}00078   \textcolor{comment}{// else search for trigger position with crescent slope}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00079}00079   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00080}00080   \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00081}00081     \textcolor{comment}{// condition to stop searching (lamda func)}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00082}00082     \textcolor{keyword}{auto} condition = [\textcolor{keyword}{this}](\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} subseq)}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00083}00083     \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00084}00084       \textcolor{keywordtype}{bool} firstCondition = std::abs(x -\/ triggerLevel) < 0.05;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00085}00085       \textcolor{keywordtype}{bool} secondCondition = subseq > x;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00086}00086       \textcolor{keywordflow}{return} firstCondition \&\& secondCondition;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00087}00087     \};}
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00088}00088 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00089}00089 std::vector<float>::iterator TriggeredOscilloscope::closest(std::vector<float>::iterator begin, std::vector<float>::iterator end, \textcolor{keywordtype}{float} value)}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00090}00090 \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00091}00091     \textcolor{keyword}{auto} closest = std::lower\_bound(begin, end, value);}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00092}00092     \textcolor{keywordflow}{return} closest;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00093}00093 \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00094}00094 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00095}00095 \textcolor{keywordtype}{void} TriggeredOscilloscope::plot(juce::Graphics \&g, juce::Rectangle<float> rect, \textcolor{keywordtype}{float} scaler, \textcolor{keywordtype}{float} offset)}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00096}00096 \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00097}00097   \textcolor{keyword}{auto} data = currentlyDisplayedData.begin();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00098}00098   \textcolor{keyword}{auto} numSamples = currentlyDisplayedData.size();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00099}00099   }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00100}00100   \textcolor{keyword}{auto} w = rect.getWidth();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00101}00101   \textcolor{keyword}{auto} h = rect.getHeight();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00102}00102   \textcolor{keyword}{auto} right = rect.getRight();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00103}00103   \textcolor{keyword}{auto} center = rect.getBottom() -\/ offset;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00104}00104   \textcolor{keyword}{auto} gain = h * scaler;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00105}00105   g.setColour(WAVEFORMCOLOUR());}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00106}00106 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00107}00107   \textcolor{keywordtype}{int} sampleOffset = std::distance(data, firstSampleToPlot);}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00108}00108   \textcolor{keywordtype}{float} widthRatio = sampleOffset / numSamples;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00089}00089     \textcolor{comment}{// search in all currentlyDisplayedData}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00090}00090     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = currentlyDisplayedData.begin(); i < currentlyDisplayedData.end() -\/ 1; ++i)}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00091}00091     \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00092}00092       \textcolor{comment}{// when found set firstSampleToPlot and stop}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00093}00093       \textcolor{keywordflow}{if} (condition(i[0], i[1]))}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00094}00094       \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00095}00095         firstSampleToPlot = i;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00096}00096         found = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00097}00097         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00098}00098       \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00099}00099     \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00100}00100   \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00102}00102   \textcolor{comment}{// if not found display flat line}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00103}00103   \textcolor{keywordflow}{if} (!found)}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00104}00104   \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00105}00105     std::fill(currentlyDisplayedData.begin(), currentlyDisplayedData.end(), 0.);}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00106}00106     firstSampleToPlot = currentlyDisplayedData.begin();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00107}00107   \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00108}00108 \}}
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00109}00109 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00110}00110   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < numSamples -\/ sampleOffset; ++i)}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00111}00111     \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00112}00112       \textcolor{keyword}{auto} xMapPrevious = juce::jmap(}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00113}00113         \textcolor{keywordtype}{float}(i -\/ 1), }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00114}00114         \textcolor{keywordtype}{float}(sampleOffset), }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00115}00115         \textcolor{keywordtype}{float}(numSamples -\/ 1), }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00116}00116         \textcolor{keywordtype}{float}(right -\/ w), }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00117}00117         \textcolor{keywordtype}{float}(right * (1 -\/ widthRatio))}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00118}00118       );}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00119}00119       \textcolor{keyword}{auto} xMap = juce::jmap(}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00120}00120         \textcolor{keywordtype}{float}(i), }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00121}00121         \textcolor{keywordtype}{float}(sampleOffset), }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00122}00122         \textcolor{keywordtype}{float}(numSamples -\/ 1), }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00123}00123         \textcolor{keywordtype}{float}(right -\/ w), }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00124}00124         \textcolor{keywordtype}{float}(right * (1 -\/ widthRatio))}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00125}00125       );}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00110}00110 \textcolor{keywordtype}{void} TriggeredOscilloscope::plot(juce::Graphics \&g, juce::Rectangle<float> rect, \textcolor{keywordtype}{float} scaler, \textcolor{keywordtype}{float} offset)}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00111}00111 \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00112}00112   \textcolor{comment}{// get beginning and num samples}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00113}00113   \textcolor{keyword}{auto} data = currentlyDisplayedData.begin();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00114}00114   \textcolor{keyword}{auto} numSamples = currentlyDisplayedData.size();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00116}00116   \textcolor{comment}{// get bounds}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00117}00117   \textcolor{keyword}{auto} w = rect.getWidth();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00118}00118   \textcolor{keyword}{auto} h = rect.getHeight();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00119}00119   \textcolor{keyword}{auto} right = rect.getRight();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00120}00120   \textcolor{keyword}{auto} center = rect.getBottom() -\/ offset;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00121}00121   \textcolor{keyword}{auto} gain = h * scaler;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00122}00122   g.setColour(WAVEFORMCOLOUR());}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00124}00124   \textcolor{comment}{// get distance of trigger point from beginning}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00125}00125   \textcolor{keywordtype}{int} sampleOffset = std::distance(data, firstSampleToPlot);}
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00126}00126 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00127}00127       g.drawLine(\{ xMapPrevious,}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00128}00128                   center -\/ gain * firstSampleToPlot[i -\/ 1],}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00129}00129                   xMap,}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00130}00130                   center -\/ gain * firstSampleToPlot[i] \});}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00131}00131     \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00132}00132 \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00133}00133 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00134}00134 \textcolor{keywordtype}{void} TriggeredOscilloscope::subclassSpecificCallback()}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00135}00135 \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00136}00136   \textcolor{keywordflow}{if} (decayCounter.get()-\/>refreshNeeded())}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00137}00137   \{}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00138}00138     \mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{refreshDislayed}}();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00139}00139   \}}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00140}00140 \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00127}00127   \textcolor{comment}{// ratio sampleOffset / numSamples to map correctly waveform}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00128}00128   \textcolor{keywordtype}{float} widthRatio = sampleOffset / numSamples;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00130}00130   \textcolor{comment}{// for each point map \& draw line}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00131}00131   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < numSamples -\/ sampleOffset; ++i)}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00132}00132   \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00133}00133     \textcolor{keyword}{auto} xMapPrevious = juce::jmap(}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00134}00134         \textcolor{keywordtype}{float}(i -\/ 1),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00135}00135         \textcolor{keywordtype}{float}(sampleOffset),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00136}00136         \textcolor{keywordtype}{float}(numSamples -\/ 1),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00137}00137         \textcolor{keywordtype}{float}(right -\/ w),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00138}00138         \textcolor{keywordtype}{float}(right * (1 -\/ widthRatio)));}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00139}00139     \textcolor{keyword}{auto} xMap = juce::jmap(}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00140}00140         \textcolor{keywordtype}{float}(i),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00141}00141         \textcolor{keywordtype}{float}(sampleOffset),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00142}00142         \textcolor{keywordtype}{float}(numSamples -\/ 1),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00143}00143         \textcolor{keywordtype}{float}(right -\/ w),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00144}00144         \textcolor{keywordtype}{float}(right * (1 -\/ widthRatio)));}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00146}00146     g.drawLine(\{xMapPrevious,}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00147}00147                 center -\/ gain * firstSampleToPlot[i -\/ 1],}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00148}00148                 xMap,}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00149}00149                 center -\/ gain * firstSampleToPlot[i]\});}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00150}00150   \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00151}00151 \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00153}00153 \textcolor{keywordtype}{void} TriggeredOscilloscope::subclassSpecificCallback()}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00154}00154 \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00155}00155   \textcolor{comment}{// if refresh is needed refresh displayed data}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00156}00156   \textcolor{keywordflow}{if} (decayCounter.get()-\/>refreshNeeded())}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00157}00157   \{}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00158}00158     \mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{refreshDislayed}}();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00159}00159   \}}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8cpp_source_l00160}00160 \}}
 
 \end{DoxyCode}

@@ -22,33 +22,28 @@
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00018}00018 \{}
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00019}00019 }
 \DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00020}00020 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00021}00021 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00028}00028   \mbox{\hyperlink{classTriggeredOscilloscope}{TriggeredOscilloscope}}(\mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}}\& aProcessor, \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeComponent_a3865049ba2a00ae768a65f8da25f900c}{sampleRate}});}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00029}00029   \mbox{\hyperlink{classTriggeredOscilloscope_a37d3f865140967c8973f5578ca60caa5}{\string~TriggeredOscilloscope}}();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00030}00030 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00035}00035   \textcolor{keywordtype}{void} \mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{refreshDislayed}}();}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00036}00036 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00037}00037 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00038}00038 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00043}00043   \textcolor{keywordtype}{float} triggerLevel;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00044}00044   }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00049}00049   std::unique\_ptr<DecayCounter> decayCounter;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00055}00055   std::vector<float> currentlyDisplayedData;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00056}00056 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00061}00061   std::vector<float>::iterator firstSampleToPlot;}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00062}00062 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00070}00070   std::vector<float>::iterator closest(std::vector<float>::iterator begin, std::vector<float>::iterator end, \textcolor{keywordtype}{float} value);}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00071}00071   }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00072}00072   \textcolor{keywordtype}{void} plot(}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00073}00073       juce::Graphics\& g,}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00074}00074       juce::Rectangle<float> rect,}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00075}00075       \textcolor{keywordtype}{float} scaler = \textcolor{keywordtype}{float}(1),}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00076}00076       \textcolor{keywordtype}{float} offset = \textcolor{keywordtype}{float}(0)) \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00077}00077 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00078}00078   \textcolor{keywordtype}{void} subclassSpecificCallback() \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00079}00079 }
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00080}00080 \};}
-\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00027}00027   \mbox{\hyperlink{classTriggeredOscilloscope}{TriggeredOscilloscope}}(\mbox{\hyperlink{classOscilloscopeAudioProcessor}{OscilloscopeAudioProcessor}} \&aProcessor, \textcolor{keywordtype}{int} \mbox{\hyperlink{classOscilloscopeComponent_a3865049ba2a00ae768a65f8da25f900c}{sampleRate}});}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00033}00033   \mbox{\hyperlink{classTriggeredOscilloscope_a37d3f865140967c8973f5578ca60caa5}{\string~TriggeredOscilloscope}}();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00039}00039   \textcolor{keywordtype}{void} \mbox{\hyperlink{classTriggeredOscilloscope_afbfaa0556450dc9dc99b4026d98b3980}{refreshDislayed}}();}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00041}00041 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00046}00046   \textcolor{keywordtype}{float} triggerLevel;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00052}00052   std::unique\_ptr<DecayCounter> decayCounter;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00058}00058   std::vector<float> currentlyDisplayedData;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00064}00064   std::vector<float>::iterator firstSampleToPlot;}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00066}00066   \textcolor{keywordtype}{void} plot(}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00067}00067       juce::Graphics \&g,}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00068}00068       juce::Rectangle<float> rect,}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00069}00069       \textcolor{keywordtype}{float} scaler = \textcolor{keywordtype}{float}(1),}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00070}00070       \textcolor{keywordtype}{float} offset = \textcolor{keywordtype}{float}(0)) \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00072}00072   \textcolor{keywordtype}{void} subclassSpecificCallback() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{TriggeredOscilloscope_8h_source_l00073}00073 \};}
 
 \end{DoxyCode}
