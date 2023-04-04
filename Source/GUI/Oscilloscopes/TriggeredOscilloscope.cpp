@@ -12,6 +12,10 @@
 
 TriggeredOscilloscope::TriggeredOscilloscope(OscilloscopeAudioProcessor &aProcessor, int sampleRate)
     : OscilloscopeComponent(aProcessor, sampleRate, aProcessor.getEditorRefreshRate())
+    , sampleFinder(
+      !aProcessor.getTreeState()->getParameterAsValue("slopeButtonTriggered").getValue(),
+      aProcessor.getTreeState()->getParameterAsValue("autoTriggered").getValue()
+    )
 {
   // get decay time
   float decayTimeRelative = aProcessor.getTreeState()->getParameterAsValue("decayTime").getValue();
@@ -24,83 +28,40 @@ TriggeredOscilloscope::TriggeredOscilloscope(OscilloscopeAudioProcessor &aProces
           decayTimeRelative * OSCILLOSCOPE_MAX_DECAY_TIME()));
   aProcessor.getTreeState()->addParameterListener("decayTime", decayCounter.get());
 
+  // add sampleFinder listeners
+  aProcessor.getTreeState()->addParameterListener("autoTriggered", &sampleFinder);
+  aProcessor.getTreeState()->addParameterListener("slopeButtonTriggered", &sampleFinder.autoFinder);
+  aProcessor.getTreeState()->addParameterListener("slopeButtonTriggered", &sampleFinder.manualFinder);
+
   // refresh displayed data
   refreshDislayed();
 }
 
 TriggeredOscilloscope::~TriggeredOscilloscope()
 {
-  // remove decayCounter as listener
+  // remove listeners
   audioProcessor.getTreeState()->removeParameterListener("decayTime", decayCounter.get());
+  audioProcessor.getTreeState()->removeParameterListener("autoTriggered", &sampleFinder);
+  audioProcessor.getTreeState()->removeParameterListener("slopeButtonTriggered", &sampleFinder.autoFinder);
+  audioProcessor.getTreeState()->removeParameterListener("slopeButtonTriggered", &sampleFinder.manualFinder);
 }
 
 void TriggeredOscilloscope::refreshDislayed()
 {
   // resize buffer and copy from sampleData
+  auto size = sampleData.size();
   currentlyDisplayedData.resize(sampleData.size());
   std::copy(sampleData.begin(), sampleData.end(), currentlyDisplayedData.begin());
-
-  // declare variables
-  bool found = false;
-  auto data = currentlyDisplayedData.begin();
-  auto numSamples = currentlyDisplayedData.size();
-  bool decrescentSlope = audioProcessor.getTreeState()->getParameterAsValue("slopeButtonTriggered").getValue();
 
   // get trigger level
   triggerLevel = audioProcessor.getTreeState()->getParameterAsValue("triggerLevel").getValue();
 
   // reset firstSampleToPlot
-  firstSampleToPlot = currentlyDisplayedData.begin();
-
-  // if decrescent slope search for trigger position with decrescent slope
-  if (decrescentSlope)
-  {
-    // condition to stop searching (lamda func)
-    auto condition = [this](float x, float subseq)
-    {
-      bool firstCondition = std::abs(x - triggerLevel) < 0.05;
-      bool secondCondition = subseq < x;
-      return firstCondition && secondCondition;
-    };
-
-    // search in all currentlyDisplayedData
-    for (auto i = currentlyDisplayedData.begin(); i < currentlyDisplayedData.end() - 1; ++i)
-    {
-      // when found set firstSampleToPlot and stop
-      if (condition(i[0], i[1]))
-      {
-        firstSampleToPlot = i;
-        found = true;
-        break;
-      }
-    }
-  }
-  // else search for trigger position with crescent slope
-  else
-  {
-    // condition to stop searching (lamda func)
-    auto condition = [this](float x, float subseq)
-    {
-      bool firstCondition = std::abs(x - triggerLevel) < 0.05;
-      bool secondCondition = subseq > x;
-      return firstCondition && secondCondition;
-    };
-
-    // search in all currentlyDisplayedData
-    for (auto i = currentlyDisplayedData.begin(); i < currentlyDisplayedData.end() - 1; ++i)
-    {
-      firstSampleToPlot = i;
-      // when found stop
-      if (condition(i[0], i[1]))
-      {
-        found = true;
-        break;
-      }
-    }
-  }
+  const int offset = sampleFinder.findFirstSample(triggerLevel, currentlyDisplayedData);
+  firstSampleToPlot = currentlyDisplayedData.begin() + offset;
 
   // if not found display flat line
-  if (std::distance(firstSampleToPlot, currentlyDisplayedData.end()) <= 2)
+  if (offset == -1)
   {
     std::fill(currentlyDisplayedData.begin(), currentlyDisplayedData.end(), 0.);
     firstSampleToPlot = currentlyDisplayedData.begin();

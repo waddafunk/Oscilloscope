@@ -13,6 +13,7 @@
 #include "DecayCounter.h"
 #include "InitVariables.h"
 #include "ColorPalette.h"
+#include "SampleFinder.h"
 
 class TriggeredOscilloscope : public OscilloscopeComponent
 {
@@ -62,6 +63,8 @@ private:
    *
    */
   std::vector<float>::iterator firstSampleToPlot;
+
+  SampleFinder sampleFinder;
 
   void plot(
       juce::Graphics &g,

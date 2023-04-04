@@ -13,27 +13,25 @@
 
 namespace FindMethods
 {
-  std::vector<float>::iterator crescentFirst(float triggerLevel, std::vector<float> &currentlyDisplayedData);
-  std::vector<float>::iterator autoCrescentFirst(float triggerLevel, std::vector<float> &currentlyDisplayedData);
-  std::vector<float>::iterator decrescentFirst(float triggerLevel, std::vector<float> &currentlyDisplayedData);
-  std::vector<float>::iterator autoDecrescentFirst(float triggerLevel, std::vector<float> &currentlyDisplayedData);
+  int crescentFirst(float triggerLevel, std::vector<float> currentlyDisplayedData);
+  int autoCrescentFirst(float triggerLevel, std::vector<float> currentlyDisplayedData);
+  int decrescentFirst(float triggerLevel, std::vector<float> currentlyDisplayedData);
+  int autoDecrescentFirst(float triggerLevel, std::vector<float> currentlyDisplayedData);
 };
 
 class BaseFinder : public juce::AudioProcessorValueTreeState::Listener
 {
 public:
-  std::vector<float>::iterator findFirstSample(float triggerLevel, std::vector<float> &currentlyDisplayedData);
+  int findFirstSample(float triggerLevel, std::vector<float> currentlyDisplayedData);
 
 protected:
-  std::function<std::vector<float>::iterator(float, std::vector<float> &)> findSample;
+  std::function<int (float, std::vector<float>)> findSample;
 };
 
 class AutoSampleFinder : public BaseFinder
 {
-public:
-  std::function<std::vector<float>::iterator(float, std::vector<float> &)> findSample;
 
-private:
+public:
   /**
    * Sets findSample accordingly to whether to search for crescent or
    * decrescent slope
@@ -46,7 +44,7 @@ private:
 
 class ManualSampleFinder : public BaseFinder
 {
-private:
+public:
   /**
    * Sets findSample accordingly to whether to search for crescent or
    * decrescent slope
@@ -60,10 +58,10 @@ private:
 class SampleFinder : public juce::AudioProcessorValueTreeState::Listener
 {
 public:
-  SampleFinder();
+  SampleFinder(bool isCrescent, bool isAuto);
   ~SampleFinder();
 
-  std::vector<float>::iterator findFirstSample(float triggerLevel, std::vector<float> &currentlyDisplayedData);
+  int findFirstSample(float triggerLevel, std::vector<float> currentlyDisplayedData);
 
   /**
    * Sets finder according to whether the search is automatic or manual.
