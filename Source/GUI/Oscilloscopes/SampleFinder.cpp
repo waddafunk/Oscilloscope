@@ -12,11 +12,13 @@
 
 void AutoSampleFinder::parameterChanged(const juce::String &parameterID, float newValue)
 {
+  // if decrescent
   if (newValue)
   {
     this->findSample = [](float triggerLevel, std::vector<float> currentlyDisplayedData)
     { return FindMethods::autoDecrescentFirst(triggerLevel, currentlyDisplayedData); };
   }
+  // if crescent
   else
   {
     this->findSample = [](float triggerLevel, std::vector<float> currentlyDisplayedData)
@@ -26,11 +28,13 @@ void AutoSampleFinder::parameterChanged(const juce::String &parameterID, float n
 
 void ManualSampleFinder::parameterChanged(const juce::String &parameterID, float newValue)
 {
+  // if decrescent
   if (newValue)
   {
     this->findSample = [](float triggerLevel, std::vector<float> currentlyDisplayedData)
     { return FindMethods::decrescentFirst(triggerLevel, currentlyDisplayedData); };
   }
+  // if crescent
   else
   {
     this->findSample = [](float triggerLevel, std::vector<float> currentlyDisplayedData)
@@ -38,10 +42,10 @@ void ManualSampleFinder::parameterChanged(const juce::String &parameterID, float
   }
 }
 
-SampleFinder::SampleFinder(bool isCrescent, bool isAuto) {
-  
+SampleFinder::SampleFinder(bool isCrescent, bool isAuto)
+{
+  // set current state for all listeners
   parameterChanged("", isAuto);
-
   autoFinder.parameterChanged("", isCrescent);
   manualFinder.parameterChanged("", isCrescent);
 }
@@ -49,17 +53,20 @@ SampleFinder::SampleFinder(bool isCrescent, bool isAuto) {
 SampleFinder::~SampleFinder() {}
 
 int SampleFinder::findFirstSample(float triggerLevel,
-                                   std::vector<float> currentlyDisplayedData)
+                                  std::vector<float> currentlyDisplayedData)
 {
+  // just return the value found from the currently active finder
   return this->currentFinder->findFirstSample(triggerLevel, currentlyDisplayedData);
 }
 
 void SampleFinder::parameterChanged(const juce::String &parameterID, float newValue)
 {
+  // if automatic
   if (newValue)
   {
     currentFinder = &autoFinder;
   }
+  // if manual
   else
   {
     currentFinder = &manualFinder;
@@ -68,7 +75,7 @@ void SampleFinder::parameterChanged(const juce::String &parameterID, float newVa
 
 int FindMethods::crescentFirst(float triggerLevel, std::vector<float> currentlyDisplayedData)
 {
-
+  // declare variables
   auto data = currentlyDisplayedData.begin();
   auto numSamples = currentlyDisplayedData.size();
   std::vector<float>::iterator firstToPlot;
@@ -92,13 +99,14 @@ int FindMethods::crescentFirst(float triggerLevel, std::vector<float> currentlyD
       return distance;
     }
   }
-
+  // if not found return -1
   int notFound = -1;
   return notFound;
 }
 
 int FindMethods::autoCrescentFirst(float triggerLevel, std::vector<float> currentlyDisplayedData)
 {
+  // declare variables
   float max = *std::max_element(currentlyDisplayedData.begin(), currentlyDisplayedData.end());
   float triggerPoint = max * triggerLevel;
   std::vector<float>::iterator firstToPlot;
@@ -126,12 +134,14 @@ int FindMethods::autoCrescentFirst(float triggerLevel, std::vector<float> curren
     }
   }
 
+  // if not found return -1
   int notFound = -1;
   return notFound;
 }
 
 int FindMethods::decrescentFirst(float triggerLevel, std::vector<float> currentlyDisplayedData)
 {
+  // declare variables
   auto data = currentlyDisplayedData.begin();
   auto numSamples = currentlyDisplayedData.size();
   std::vector<float>::iterator firstToPlot;
@@ -156,12 +166,14 @@ int FindMethods::decrescentFirst(float triggerLevel, std::vector<float> currentl
     }
   }
 
+  // if not found return -1
   int notFound = -1;
   return notFound;
 }
 
 int FindMethods::autoDecrescentFirst(float triggerLevel, std::vector<float> currentlyDisplayedData)
 {
+  // declare variables
   float max = *std::max_element(currentlyDisplayedData.begin(), currentlyDisplayedData.end());
   float triggerPoint = max * triggerLevel;
   std::vector<float>::iterator firstToPlot;
@@ -188,11 +200,14 @@ int FindMethods::autoDecrescentFirst(float triggerLevel, std::vector<float> curr
       return distance;
     }
   }
+
+  // if not found return -1
   int notFound = -1;
   return notFound;
 }
 
 int BaseFinder::findFirstSample(float triggerLevel, std::vector<float> currentlyDisplayedData)
 {
+  // Return the value found from the currently active finder.
   return this->findSample(triggerLevel, currentlyDisplayedData);
 }

@@ -64,6 +64,10 @@ private:
    */
   std::vector<float>::iterator firstSampleToPlot;
 
+  /**
+   * Class handling the logic to find the first sample to plot.
+   *
+   */
   SampleFinder sampleFinder;
 
   void plot(
