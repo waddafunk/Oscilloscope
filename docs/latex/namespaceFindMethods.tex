@@ -1,0 +1,107 @@
+\hypertarget{namespaceFindMethods}{}\doxysection{Find\+Methods Namespace Reference}
+\label{namespaceFindMethods}\index{FindMethods@{FindMethods}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespaceFindMethods_a35414829e83d685b6a1d4f68674166bf}{crescent\+First}} (float trigger\+Level, std\+::vector$<$ float $>$ currently\+Displayed\+Data)
+\item 
+int \mbox{\hyperlink{namespaceFindMethods_a13aae3de08ac2574d160baaac8341860}{auto\+Crescent\+First}} (float trigger\+Level, std\+::vector$<$ float $>$ currently\+Displayed\+Data)
+\item 
+int \mbox{\hyperlink{namespaceFindMethods_afc81e67397de1a00aa40c1faef05e932}{decrescent\+First}} (float trigger\+Level, std\+::vector$<$ float $>$ currently\+Displayed\+Data)
+\item 
+int \mbox{\hyperlink{namespaceFindMethods_abec70ca03a13f54b09bfbdf5a117fbf1}{auto\+Decrescent\+First}} (float trigger\+Level, std\+::vector$<$ float $>$ currently\+Displayed\+Data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Methods to find the first sample to plot when in triggered mode. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceFindMethods_a13aae3de08ac2574d160baaac8341860}\label{namespaceFindMethods_a13aae3de08ac2574d160baaac8341860}} 
+\index{FindMethods@{FindMethods}!autoCrescentFirst@{autoCrescentFirst}}
+\index{autoCrescentFirst@{autoCrescentFirst}!FindMethods@{FindMethods}}
+\doxysubsubsection{\texorpdfstring{autoCrescentFirst()}{autoCrescentFirst()}}
+{\footnotesize\ttfamily int Find\+Methods\+::auto\+Crescent\+First (\begin{DoxyParamCaption}\item[{float}]{trigger\+Level,  }\item[{std\+::vector$<$ float $>$}]{currently\+Displayed\+Data }\end{DoxyParamCaption})}
+
+Find first sample to plot with crescent slope in automatic mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Level} & Trigger level. \\
+\hline
+{\em currently\+Displayed\+Data} & Currently displayed buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Distance in samples of first sample to plot. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+
+\mbox{\Hypertarget{namespaceFindMethods_abec70ca03a13f54b09bfbdf5a117fbf1}\label{namespaceFindMethods_abec70ca03a13f54b09bfbdf5a117fbf1}} 
+\index{FindMethods@{FindMethods}!autoDecrescentFirst@{autoDecrescentFirst}}
+\index{autoDecrescentFirst@{autoDecrescentFirst}!FindMethods@{FindMethods}}
+\doxysubsubsection{\texorpdfstring{autoDecrescentFirst()}{autoDecrescentFirst()}}
+{\footnotesize\ttfamily int Find\+Methods\+::auto\+Decrescent\+First (\begin{DoxyParamCaption}\item[{float}]{trigger\+Level,  }\item[{std\+::vector$<$ float $>$}]{currently\+Displayed\+Data }\end{DoxyParamCaption})}
+
+Find first sample to plot with decrescent slope in automatic mode
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Level} & Trigger level. \\
+\hline
+{\em currently\+Displayed\+Data} & Currently displayed buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Distance in samples of first sample to plot. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00174}{174}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+
+\mbox{\Hypertarget{namespaceFindMethods_a35414829e83d685b6a1d4f68674166bf}\label{namespaceFindMethods_a35414829e83d685b6a1d4f68674166bf}} 
+\index{FindMethods@{FindMethods}!crescentFirst@{crescentFirst}}
+\index{crescentFirst@{crescentFirst}!FindMethods@{FindMethods}}
+\doxysubsubsection{\texorpdfstring{crescentFirst()}{crescentFirst()}}
+{\footnotesize\ttfamily int Find\+Methods\+::crescent\+First (\begin{DoxyParamCaption}\item[{float}]{trigger\+Level,  }\item[{std\+::vector$<$ float $>$}]{currently\+Displayed\+Data }\end{DoxyParamCaption})}
+
+Find first sample to plot with crescent slope.
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Level} & Trigger level. \\
+\hline
+{\em currently\+Displayed\+Data} & Currently displayed buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Distance in samples of first sample to plot. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+
+\mbox{\Hypertarget{namespaceFindMethods_afc81e67397de1a00aa40c1faef05e932}\label{namespaceFindMethods_afc81e67397de1a00aa40c1faef05e932}} 
+\index{FindMethods@{FindMethods}!decrescentFirst@{decrescentFirst}}
+\index{decrescentFirst@{decrescentFirst}!FindMethods@{FindMethods}}
+\doxysubsubsection{\texorpdfstring{decrescentFirst()}{decrescentFirst()}}
+{\footnotesize\ttfamily int Find\+Methods\+::decrescent\+First (\begin{DoxyParamCaption}\item[{float}]{trigger\+Level,  }\item[{std\+::vector$<$ float $>$}]{currently\+Displayed\+Data }\end{DoxyParamCaption})}
+
+Find first sample to plot with decrescent slope
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Level} & Trigger level. \\
+\hline
+{\em currently\+Displayed\+Data} & Currently displayed buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Distance in samples of first sample to plot. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+

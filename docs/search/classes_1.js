@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['basiccontrols_0',['BasicControls',['../classBasicControls.html',1,'']]]
+  ['basefinder_0',['BaseFinder',['../classBaseFinder.html',1,'']]],
+  ['basiccontrols_1',['BasicControls',['../classBasicControls.html',1,'']]]
 ];

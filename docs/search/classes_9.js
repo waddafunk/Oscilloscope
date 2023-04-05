@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['untriggeredoscilloscope_0',['UntriggeredOscilloscope',['../classUntriggeredOscilloscope.html',1,'']]]
+  ['triggeredoscilloscope_0',['TriggeredOscilloscope',['../classTriggeredOscilloscope.html',1,'']]],
+  ['triggerlistener_1',['TriggerListener',['../classTriggerListener.html',1,'']]]
 ];

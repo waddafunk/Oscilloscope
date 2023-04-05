@@ -1,0 +1,53 @@
+\hypertarget{classManualSampleFinder}{}\doxysection{Manual\+Sample\+Finder Class Reference}
+\label{classManualSampleFinder}\index{ManualSampleFinder@{ManualSampleFinder}}
+
+
+{\ttfamily \#include $<$Sample\+Finder.\+h$>$}
+
+Inheritance diagram for Manual\+Sample\+Finder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classManualSampleFinder}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classManualSampleFinder_abda3a7a21650c23def726dda66888c4b}{parameter\+Changed}} (const juce\+::\+String \&parameter\+ID, float new\+Value) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class finding the first sample to plot in manual mode. 
+
+Definition at line \mbox{\hyperlink{SampleFinder_8h_source_l00106}{106}} of file \mbox{\hyperlink{SampleFinder_8h_source}{Sample\+Finder.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classManualSampleFinder_abda3a7a21650c23def726dda66888c4b}\label{classManualSampleFinder_abda3a7a21650c23def726dda66888c4b}} 
+\index{ManualSampleFinder@{ManualSampleFinder}!parameterChanged@{parameterChanged}}
+\index{parameterChanged@{parameterChanged}!ManualSampleFinder@{ManualSampleFinder}}
+\doxysubsubsection{\texorpdfstring{parameterChanged()}{parameterChanged()}}
+{\footnotesize\ttfamily void Manual\+Sample\+Finder\+::parameter\+Changed (\begin{DoxyParamCaption}\item[{const juce\+::\+String \&}]{parameter\+ID,  }\item[{float}]{new\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Sets find\+Sample accordingly to whether to search for crescent or decrescent slope
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter\+ID} & Parameter to listen (always \char`\"{}slope\+Button\+Triggered\char`\"{}) \\
+\hline
+{\em new\+Value} & true if the plot has to be decrescent, false otherwise \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{SampleFinder_8h}{Sample\+Finder.\+h}}\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{SampleFinder_8cpp}{Sample\+Finder.\+cpp}}\end{DoxyCompactItemize}

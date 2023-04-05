@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['sampledata_0',['sampleData',['../classOscilloscopeComponent.html#ab11a2bfef0310419b0959a7521009265',1,'OscilloscopeComponent']]],
-  ['samplerate_1',['sampleRate',['../classOscilloscopeComponent.html#a3865049ba2a00ae768a65f8da25f900c',1,'OscilloscopeComponent']]],
-  ['slopebutton_2',['slopeButton',['../classProControls.html#a199a233099a72604bd17c9d5b38aec94',1,'ProControls']]],
-  ['slopebuttonattachment_3',['slopeButtonAttachment',['../classProControls.html#afde01563e26026ec53947185ad7e2cbe',1,'ProControls']]]
+  ['manualfinder_0',['manualFinder',['../classSampleFinder.html#a04e9f936335cdfac2fc9c5cc7443cd1a',1,'SampleFinder']]],
+  ['muteoutput_1',['muteOutput',['../classBasicControls.html#aa66a639c61f7d49211f031d614efcfe6',1,'BasicControls']]],
+  ['muteoutputattachment_2',['muteOutputAttachment',['../classBasicControls.html#a3bd4546d9869c2963768bfe46a27aa51',1,'BasicControls']]]
 ];

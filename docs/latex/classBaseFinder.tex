@@ -1,0 +1,73 @@
+\hypertarget{classBaseFinder}{}\doxysection{Base\+Finder Class Reference}
+\label{classBaseFinder}\index{BaseFinder@{BaseFinder}}
+
+
+{\ttfamily \#include $<$Sample\+Finder.\+h$>$}
+
+Inheritance diagram for Base\+Finder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classBaseFinder}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classBaseFinder_af98583aa24f7d4992099d9b32b1f24c9}{find\+First\+Sample}} (float trigger\+Level, std\+::vector$<$ float $>$ currently\+Displayed\+Data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::function$<$ int(float, std\+::vector$<$ float $>$)$>$ \mbox{\hyperlink{classBaseFinder_af86586bd754887ab8916b7beefae1c6f}{find\+Sample}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Virtual base class from where to inherit to implement all cases of how to find the first sample to plot. 
+
+Definition at line \mbox{\hyperlink{SampleFinder_8h_source_l00062}{62}} of file \mbox{\hyperlink{SampleFinder_8h_source}{Sample\+Finder.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBaseFinder_af98583aa24f7d4992099d9b32b1f24c9}\label{classBaseFinder_af98583aa24f7d4992099d9b32b1f24c9}} 
+\index{BaseFinder@{BaseFinder}!findFirstSample@{findFirstSample}}
+\index{findFirstSample@{findFirstSample}!BaseFinder@{BaseFinder}}
+\doxysubsubsection{\texorpdfstring{findFirstSample()}{findFirstSample()}}
+{\footnotesize\ttfamily int Base\+Finder\+::find\+First\+Sample (\begin{DoxyParamCaption}\item[{float}]{trigger\+Level,  }\item[{std\+::vector$<$ float $>$}]{currently\+Displayed\+Data }\end{DoxyParamCaption})}
+
+Find first sample to plot in the current modality.
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Level} & Trigger level. \\
+\hline
+{\em currently\+Displayed\+Data} & Currently displayed buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Distance in samples of first sample to plot or -\/1 if no feasible sample is found. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00209}{209}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBaseFinder_af86586bd754887ab8916b7beefae1c6f}\label{classBaseFinder_af86586bd754887ab8916b7beefae1c6f}} 
+\index{BaseFinder@{BaseFinder}!findSample@{findSample}}
+\index{findSample@{findSample}!BaseFinder@{BaseFinder}}
+\doxysubsubsection{\texorpdfstring{findSample}{findSample}}
+{\footnotesize\ttfamily std\+::function$<$int(float, std\+::vector$<$float$>$)$>$ Base\+Finder\+::find\+Sample\hspace{0.3cm}{\ttfamily [protected]}}
+
+Lambda triggering the element of \mbox{\hyperlink{namespaceFindMethods}{Find\+Methods}} corresponding to the current find modality 
+
+Definition at line \mbox{\hyperlink{SampleFinder_8h_source_l00081}{81}} of file \mbox{\hyperlink{SampleFinder_8h_source}{Sample\+Finder.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{SampleFinder_8h}{Sample\+Finder.\+h}}\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{SampleFinder_8cpp}{Sample\+Finder.\+cpp}}\end{DoxyCompactItemize}

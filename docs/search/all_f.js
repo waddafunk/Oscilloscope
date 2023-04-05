@@ -8,5 +8,6 @@ var searchData=
   ['_7eoscilloscopeaudioprocessoreditor_5',['~OscilloscopeAudioProcessorEditor',['../classOscilloscopeAudioProcessorEditor.html#aafec2e98cebcef5ac499aba85077717b',1,'OscilloscopeAudioProcessorEditor']]],
   ['_7eoscilloscopecomponent_6',['~OscilloscopeComponent',['../classOscilloscopeComponent.html#a9756a699adf7cbaf204fc73303697dd8',1,'OscilloscopeComponent']]],
   ['_7eprocontrols_7',['~ProControls',['../classProControls.html#a37280127c689cefb010de265c35affca',1,'ProControls']]],
-  ['_7etriggeredoscilloscope_8',['~TriggeredOscilloscope',['../classTriggeredOscilloscope.html#a37d3f865140967c8973f5578ca60caa5',1,'TriggeredOscilloscope']]]
+  ['_7esamplefinder_8',['~SampleFinder',['../classSampleFinder.html#a99a9f1beeb1b5f2b116a13d65edad93d',1,'SampleFinder']]],
+  ['_7etriggeredoscilloscope_9',['~TriggeredOscilloscope',['../classTriggeredOscilloscope.html#a37d3f865140967c8973f5578ca60caa5',1,'TriggeredOscilloscope']]]
 ];

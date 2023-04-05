@@ -1,0 +1,154 @@
+\hypertarget{classSampleFinder}{}\doxysection{Sample\+Finder Class Reference}
+\label{classSampleFinder}\index{SampleFinder@{SampleFinder}}
+
+
+{\ttfamily \#include $<$Sample\+Finder.\+h$>$}
+
+Inheritance diagram for Sample\+Finder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSampleFinder}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSampleFinder_a5b818b76979250b84eac46054e6c47f2}{Sample\+Finder}} (bool is\+Crescent, bool is\+Auto)
+\item 
+\mbox{\hyperlink{classSampleFinder_a99a9f1beeb1b5f2b116a13d65edad93d}{$\sim$\+Sample\+Finder}} ()
+\item 
+int \mbox{\hyperlink{classSampleFinder_ad3520c12bac52b25bbcc68721ae9ebe3}{find\+First\+Sample}} (float trigger\+Level, std\+::vector$<$ float $>$ currently\+Displayed\+Data)
+\item 
+void \mbox{\hyperlink{classSampleFinder_a7b4d749f3988d2bbe7e8d48b1e6d7043}{parameter\+Changed}} (const juce\+::\+String \&parameter\+ID, float new\+Value) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAutoSampleFinder}{Auto\+Sample\+Finder}} \mbox{\hyperlink{classSampleFinder_a2ea23e9c3cd21214439c88fa45bb5b4b}{auto\+Finder}}
+\item 
+\mbox{\hyperlink{classManualSampleFinder}{Manual\+Sample\+Finder}} \mbox{\hyperlink{classSampleFinder_a04e9f936335cdfac2fc9c5cc7443cd1a}{manual\+Finder}}
+\item 
+\mbox{\hyperlink{classBaseFinder}{Base\+Finder}} $\ast$ \mbox{\hyperlink{classSampleFinder_ae0eae0237b3b072dbf84340b5a5c3c81}{current\+Finder}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class finding first sample to plot handling the logic for all modalities. Add this and its auto\+Finder and manual\+Finder params as listeners of \char`\"{}auto\+Triggered\char`\"{} and \char`\"{}slope\+Button\+Triggered\char`\"{} respectively and just call find\+First\+Sample. 
+
+Definition at line \mbox{\hyperlink{SampleFinder_8h_source_l00126}{126}} of file \mbox{\hyperlink{SampleFinder_8h_source}{Sample\+Finder.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSampleFinder_a5b818b76979250b84eac46054e6c47f2}\label{classSampleFinder_a5b818b76979250b84eac46054e6c47f2}} 
+\index{SampleFinder@{SampleFinder}!SampleFinder@{SampleFinder}}
+\index{SampleFinder@{SampleFinder}!SampleFinder@{SampleFinder}}
+\doxysubsubsection{\texorpdfstring{SampleFinder()}{SampleFinder()}}
+{\footnotesize\ttfamily Sample\+Finder\+::\+Sample\+Finder (\begin{DoxyParamCaption}\item[{bool}]{is\+Crescent,  }\item[{bool}]{is\+Auto }\end{DoxyParamCaption})}
+
+Construct a new Sample Finder object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Crescent} & Whether the slope is crescent. \\
+\hline
+{\em is\+Auto} & Whether the mode is automatic. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+
+\mbox{\Hypertarget{classSampleFinder_a99a9f1beeb1b5f2b116a13d65edad93d}\label{classSampleFinder_a99a9f1beeb1b5f2b116a13d65edad93d}} 
+\index{SampleFinder@{SampleFinder}!````~SampleFinder@{$\sim$SampleFinder}}
+\index{````~SampleFinder@{$\sim$SampleFinder}!SampleFinder@{SampleFinder}}
+\doxysubsubsection{\texorpdfstring{$\sim$SampleFinder()}{~SampleFinder()}}
+{\footnotesize\ttfamily Sample\+Finder\+::$\sim$\+Sample\+Finder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destroy the Sample Finder object 
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSampleFinder_ad3520c12bac52b25bbcc68721ae9ebe3}\label{classSampleFinder_ad3520c12bac52b25bbcc68721ae9ebe3}} 
+\index{SampleFinder@{SampleFinder}!findFirstSample@{findFirstSample}}
+\index{findFirstSample@{findFirstSample}!SampleFinder@{SampleFinder}}
+\doxysubsubsection{\texorpdfstring{findFirstSample()}{findFirstSample()}}
+{\footnotesize\ttfamily int Sample\+Finder\+::find\+First\+Sample (\begin{DoxyParamCaption}\item[{float}]{trigger\+Level,  }\item[{std\+::vector$<$ float $>$}]{currently\+Displayed\+Data }\end{DoxyParamCaption})}
+
+Find first sample to plot in the current modality.
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Level} & Trigger level. \\
+\hline
+{\em currently\+Displayed\+Data} & Currently displayed buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Distance in samples of first sample to plot. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+
+\mbox{\Hypertarget{classSampleFinder_a7b4d749f3988d2bbe7e8d48b1e6d7043}\label{classSampleFinder_a7b4d749f3988d2bbe7e8d48b1e6d7043}} 
+\index{SampleFinder@{SampleFinder}!parameterChanged@{parameterChanged}}
+\index{parameterChanged@{parameterChanged}!SampleFinder@{SampleFinder}}
+\doxysubsubsection{\texorpdfstring{parameterChanged()}{parameterChanged()}}
+{\footnotesize\ttfamily void Sample\+Finder\+::parameter\+Changed (\begin{DoxyParamCaption}\item[{const juce\+::\+String \&}]{parameter\+ID,  }\item[{float}]{new\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Sets finder according to whether the search is automatic or manual.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter\+ID} & Parameter to listen (always \char`\"{}auto\+Triggered\char`\"{}) \\
+\hline
+{\em new\+Value} & true if automatic, false otherwise \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{SampleFinder_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{SampleFinder_8cpp_source}{Sample\+Finder.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSampleFinder_a2ea23e9c3cd21214439c88fa45bb5b4b}\label{classSampleFinder_a2ea23e9c3cd21214439c88fa45bb5b4b}} 
+\index{SampleFinder@{SampleFinder}!autoFinder@{autoFinder}}
+\index{autoFinder@{autoFinder}!SampleFinder@{SampleFinder}}
+\doxysubsubsection{\texorpdfstring{autoFinder}{autoFinder}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAutoSampleFinder}{Auto\+Sample\+Finder}} Sample\+Finder\+::auto\+Finder}
+
+Finds first sample when in automatic mode. 
+
+Definition at line \mbox{\hyperlink{SampleFinder_8h_source_l00164}{164}} of file \mbox{\hyperlink{SampleFinder_8h_source}{Sample\+Finder.\+h}}.
+
+\mbox{\Hypertarget{classSampleFinder_ae0eae0237b3b072dbf84340b5a5c3c81}\label{classSampleFinder_ae0eae0237b3b072dbf84340b5a5c3c81}} 
+\index{SampleFinder@{SampleFinder}!currentFinder@{currentFinder}}
+\index{currentFinder@{currentFinder}!SampleFinder@{SampleFinder}}
+\doxysubsubsection{\texorpdfstring{currentFinder}{currentFinder}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseFinder}{Base\+Finder}}$\ast$ Sample\+Finder\+::current\+Finder}
+
+Points to the currently active finder. 
+
+Definition at line \mbox{\hyperlink{SampleFinder_8h_source_l00176}{176}} of file \mbox{\hyperlink{SampleFinder_8h_source}{Sample\+Finder.\+h}}.
+
+\mbox{\Hypertarget{classSampleFinder_a04e9f936335cdfac2fc9c5cc7443cd1a}\label{classSampleFinder_a04e9f936335cdfac2fc9c5cc7443cd1a}} 
+\index{SampleFinder@{SampleFinder}!manualFinder@{manualFinder}}
+\index{manualFinder@{manualFinder}!SampleFinder@{SampleFinder}}
+\doxysubsubsection{\texorpdfstring{manualFinder}{manualFinder}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classManualSampleFinder}{Manual\+Sample\+Finder}} Sample\+Finder\+::manual\+Finder}
+
+Finds first sample when in manual mode. 
+
+Definition at line \mbox{\hyperlink{SampleFinder_8h_source_l00170}{170}} of file \mbox{\hyperlink{SampleFinder_8h_source}{Sample\+Finder.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{SampleFinder_8h}{Sample\+Finder.\+h}}\item 
+Source/\+GUI/\+Oscilloscopes/\mbox{\hyperlink{SampleFinder_8cpp}{Sample\+Finder.\+cpp}}\end{DoxyCompactItemize}
