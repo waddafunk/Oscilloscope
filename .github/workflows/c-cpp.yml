@@ -14,13 +14,11 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: build_action
-    - name: cd into folder
-      run: cd Builds/LinuxMakefile
     - name: ls
       run: ls
     - name: make
-      run: make Makefile
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+      working-directory: ./Builds/LinuxMakefile
+      run: |
+        make 
+        make check 
+        make distcheck
