@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: cd into folder
-      run: cd Builds/LinuxMakefile
     - uses: actions/checkout@v3
+      with:
+        ref: build_action
+    - name: cd into folder
+      run: cd Oscilloscope/Builds/LinuxMakefile
     - name: configure
       run: ./configure
     - name: make
