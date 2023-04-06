@@ -21,5 +21,5 @@ jobs:
       run: |
         ls
         make clean
-        make
+        make --include-dir=../../JuceLibraryCode
         ls
