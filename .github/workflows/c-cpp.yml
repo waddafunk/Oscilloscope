@@ -1,0 +1,27 @@
+
+on:
+  push:
+    branches: [ "build_action" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: install dependencies
+      run: sudo apt-get install libasound2-dev libudev-dev libcurl4-openssl-dev libwebkit2gtk-4.0 
+    - uses: actions/checkout@v3
+      with:
+        ref: build_action
+    - name: clone JUCE
+      run: git clone https://github.com/juce-framework/JUCE.git
+    - name: make
+      working-directory: ./Builds/LinuxMakefile
+      run: |
+        ls
+        make clean
+        make --include-dir=../../JUCE/modules
+        ls
