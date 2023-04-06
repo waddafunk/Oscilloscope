@@ -15,7 +15,7 @@ jobs:
       with:
         ref: build_action
     - name: cd into folder
-      run: cd Oscilloscope/Builds/LinuxMakefile
+      run: cd Builds/LinuxMakefile
     - name: configure
       run: ./configure
     - name: make
