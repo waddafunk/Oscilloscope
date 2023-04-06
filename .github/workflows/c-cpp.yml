@@ -16,8 +16,6 @@ jobs:
         ref: build_action
     - name: cd into folder
       run: cd Builds/LinuxMakefile
-    - name: configure
-      run: ./configure
     - name: make
       run: make
     - name: make check
