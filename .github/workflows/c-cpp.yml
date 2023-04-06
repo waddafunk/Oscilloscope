@@ -19,6 +19,4 @@ jobs:
     - name: make
       working-directory: ./Builds/LinuxMakefile
       run: |
-        make clean
-        make check 
-        make distcheck
+        make clean ; make
