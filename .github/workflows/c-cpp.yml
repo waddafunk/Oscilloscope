@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: install dependencies
-      run: sudo apt install alsa libcurl webkit2gtk-4.0 gtk+-x11-3.0
+      run: sudo apt-get install alsa libcurl4-openssl-dev libwebkit2gtk-4.0 
     - uses: actions/checkout@v3
       with:
         ref: build_action
