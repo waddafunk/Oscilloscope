@@ -16,10 +16,12 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: build_action
+    - name: clone JUCE
+      run: git clone https://github.com/juce-framework/JUCE.git
     - name: make
       working-directory: ./Builds/LinuxMakefile
       run: |
         ls
         make clean
-        make --include-dir=../../JuceLibraryCode
+        make --include-dir=../../JUCE/modules
         ls
